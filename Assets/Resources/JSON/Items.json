@@ -1,0 +1,88 @@
+[
+	{
+		"objectSlug": "sword",
+		"itemName": "Sword",
+		"description": "A long, sharp blade.",
+		"itemType": "RightItem",
+		"weaponType": "onesword",
+		"actionName": "Equip",
+		"itemModifier": 0,
+		"stats":
+		[
+			{
+				"StatType": "Power",
+				"BaseValue": 6,
+				"StatName": "Power"
+			},
+			{
+				"StatType": "Toughness",
+				"BaseValue": 5,
+				"StatName": "Toughness"
+			},
+			{
+				"StatType": "AttackSpeed",
+				"BaseValue": 4,
+				"StatName": "Attack Speed"
+			}
+		]
+	},
+	{
+		"objectSlug": "staff",
+		"itemName": "Staff",
+		"description": "An elemental staff of Fire",
+		"itemType": "LeftItem",
+		"weaponType": "staff",
+		"actionName": "Equip",
+		"itemModifier": 0,
+		"stats":
+		[
+			{
+				"StatType": "Toughness",
+				"BaseValue": 8,
+				"StatName": "Toughness"
+			}
+		]
+	},
+	{
+		"objectSlug": "shield",
+		"itemName": "Shield",
+		"description": "A sturdy wooden shield",
+		"itemType": "LeftItem",
+		"weaponType": "shield",
+		"actionName": "Equip",
+		"itemModifier": 0,
+		"stats":
+		[
+			{
+				"StatType": "Toughness",
+				"BaseValue": 8,
+				"StatName": "Toughness"
+			}
+		]
+	},
+	{
+		"objectSlug": "bow",
+		"itemName": "Bow",
+		"description": "A wooden recurve bow",
+		"itemType": "LeftItem",
+		"weaponType": "bow",
+		"actionName": "Equip",
+		"itemModifier": 0,
+		"stats":
+		[
+			{
+				"StatType": "Power",
+				"BaseValue": 3,
+				"StatName": "Power"
+			}
+		]
+	},
+	{
+		"objectSlug": "potion_log",
+		"itemName": "Log Potion",
+		"description": "A potion that logs something to the console.",
+		"itemType": "Consumable",
+		"actionName": "Drink",
+		"itemModifier": 0
+	}
+]
