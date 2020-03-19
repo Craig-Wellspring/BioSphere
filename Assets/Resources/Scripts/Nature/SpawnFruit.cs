@@ -30,9 +30,13 @@ public class SpawnFruit : MonoBehaviour
     [Header("Triggers")]
     public bool triggerSpawn = false;
 
+    private Transform planetCore;
+
 
     public void Start()
     {
+        planetCore = PlanetCore.Core.transform;
+
         if (popBasedSeedChance)
         {
             //success chance modifier gets lower as current pop gets higher
@@ -86,9 +90,10 @@ public class SpawnFruit : MonoBehaviour
             }
 
             //Get desired rotation
-            Quaternion newRot = transform.rotation;
+            Vector3 gravityUp = (transform.position - planetCore.position).normalized;
+            Quaternion newRot = Quaternion.FromToRotation(transform.up, gravityUp) * transform.rotation;
             if (randomYRotation)
-                newRot = Quaternion.Euler(transform.rotation.x, (Random.Range(1f, 360f)), transform.rotation.z);
+                newRot = Quaternion.Euler(newRot.x, (Random.Range(1f, 360f)), newRot.z);
 
 
             //Get Parent relationship
