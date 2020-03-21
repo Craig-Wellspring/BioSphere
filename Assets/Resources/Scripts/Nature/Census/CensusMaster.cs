@@ -7,10 +7,10 @@ public class CensusMaster : MonoBehaviour
 {
     [Tooltip("Emergency stop for overpopulation")]
     public int overgrowthThreshold = 1000;
-    [Space(10)]
-    public List<CensusData> listOfSpecies;
 
     public static CensusMaster Census { get; private set; }
+
+    public List<CensusData> listOfSpecies;
 
     private void Awake()
     {
