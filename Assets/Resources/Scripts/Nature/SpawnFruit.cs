@@ -89,11 +89,12 @@ public class SpawnFruit : MonoBehaviour
                 newPos = new Vector3(randomPoint.x, transform.position.y, randomPoint.z);
             }
 
-            //Get desired rotation
-            Vector3 gravityUp = (transform.position - planetCore.position).normalized;
-            Quaternion newRot = Quaternion.FromToRotation(transform.up, gravityUp) * transform.rotation;
-            if (randomYRotation)
-                newRot = Quaternion.Euler(newRot.x, (Random.Range(1f, 360f)), newRot.z);
+        //Get desired rotation
+        Vector3 gravityUp = (transform.position - planetCore.position).normalized;
+        Quaternion newRot = Quaternion.FromToRotation(transform.up, gravityUp) * transform.rotation;
+        if (randomYRotation)
+            newRot = Quaternion.Euler(newRot.x, (Random.Range(1f, 360f)), newRot.z);
+        //Quaternion newRot = transform.rotation;
 
 
             //Get Parent relationship
