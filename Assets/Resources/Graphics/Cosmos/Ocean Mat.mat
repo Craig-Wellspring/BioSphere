@@ -26,7 +26,7 @@ Material:
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2001
   stringTagMap: {}
   disabledShaderPasses:
   - SHADOWCASTER
@@ -38,8 +38,8 @@ Material:
         m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: a5c98dee3744c1944a469568d41d8eb4, type: 3}
-        m_Scale: {x: 2, y: 1}
+        m_Texture: {fileID: 2800000, guid: 7d7d59aaca791d54c9726e6b4e1feb61, type: 3}
+        m_Scale: {x: 1.5, y: 1.5}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FoamMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9db26ebe8235b5e42924bb2c54ad0c80, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FoamRamp:
@@ -126,14 +126,14 @@ Material:
     - _Attenuation: 1
     - _Blend: 1
     - _BumpAmt: 0
-    - _BumpScale: 0.28
+    - _BumpScale: 0.25
     - _C: 0.1
     - _Cull: 0
     - _Cutoff: 0.43
-    - _Density: 1
+    - _Density: 0.015
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EdgeBlend: 0.15
+    - _EdgeBlend: 0.1
     - _EnableRefraction: 1
     - _EnvironmentReflections: 1
     - _FalloffDepth: 0.5
@@ -142,11 +142,11 @@ Material:
     - _Foam: 1
     - _FoamAmount: 0.1
     - _FoamRampLerp: 0
-    - _FoamScale: 4
-    - _FoamSlopStrength: 0.85
-    - _FoamSmoothness: 0.3
+    - _FoamScale: 2
+    - _FoamSlopStrength: 0.18
+    - _FoamSmoothness: 0.1
     - _FoamSoftIntersectionFactor: 0.5
-    - _FoamTiling: 2
+    - _FoamTiling: 30
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -170,7 +170,7 @@ Material:
     - _Refraction: 0.25
     - _RefractionStrength: 0.3
     - _RoundAdjuster: 0
-    - _Smoothness: 0.2
+    - _Smoothness: 0.352
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -188,13 +188,13 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.03355288, g: 0.2844445, b: 0.5471698, a: 1}
     - _DeepColor: {r: 0.13, g: 0.57, b: 0.73, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamSpeed: {r: 0.1, g: 0, b: 0, a: 0}
-    - _SecondaryTilingSpeedRefractBump: {r: 2, g: 2.3, b: 0.1, a: 0.4}
+    - _FoamSpeed: {r: 1, g: 0, b: 0, a: 0}
+    - _SecondaryTilingSpeedRefractBump: {r: 2, g: 0.35, b: 0.8, a: 0.18}
     - _ShallowColor: {r: 0.65, g: 0.9, b: 1, a: 1}
-    - _SpecColor: {r: 0.20790316, g: 0.3850031, b: 0.6037736, a: 1}
-    - _Speed: {r: 0.1, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 0.18155926, g: 0.4374976, b: 0.754717, a: 1}
+    - _Speed: {r: 0.08, g: 0.03, b: 0, a: 0}
     - _WaveDir: {r: 0, g: 0, b: 0.1, a: 1}

@@ -26,16 +26,19 @@ public class SpawnFruit : MonoBehaviour
     public bool randomYRotation = false;
     public bool randomSpawnPosition = false;
     public float spawnArea = 1f;
-    
+
     [Header("Triggers")]
     public bool triggerSpawn = false;
+    public bool drawDebug = false;
 
-    private Transform planetCore;
-
-
+    private BoxCollider seedCloud;
+    
+    
     public void Start()
     {
-        planetCore = PlanetCore.Core.transform;
+        seedCloud = GetComponent<BoxCollider>();
+        seedCloud.size.Set(seedCloud.size.x * spawnArea, seedCloud.size.y, seedCloud.size.z * spawnArea);
+        Debug.Log(seedCloud.size);
 
         if (popBasedSeedChance)
         {
@@ -47,6 +50,7 @@ public class SpawnFruit : MonoBehaviour
 
     public void Update()
     {
+
         /*if (seedSuccessChance > 200)
         {
             seedSuccessChance = 100;
@@ -62,7 +66,7 @@ public class SpawnFruit : MonoBehaviour
                     CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
             }
 
-            if (whenToSpawn == WhenToSpawn.OnFullyGrown && GetComponent<GenericGrow>().fullyGrown)
+            if (whenToSpawn == WhenToSpawn.OnFullyGrown && transform.root.GetComponentInChildren<GenericGrow>().fullyGrown)
             {
                 seeds -= 1;
                 if (RandomRoll() <= seedSuccessChance)
@@ -77,53 +81,97 @@ public class SpawnFruit : MonoBehaviour
                     CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
             }
         }
+
+        if (drawDebug)
+        {
+            DrawDebug();
+            drawDebug = false;
+        }
     }
 
     private void CreateFruit(GameObject _newFruit)
     {
-            //Get desired spawn location
-            Vector3 newPos = transform.position;
-            if (randomSpawnPosition)
-            {
-                Vector3 randomPoint = GetRandomPoint();
-                newPos = new Vector3(randomPoint.x, transform.position.y, randomPoint.z);
-            }
+        //Get desired spawn location
+        Vector3 newPos = transform.root.position;
+        if (randomSpawnPosition)
+        {
+            Vector3 seedCloudPos = GetRandomPointOnCol(GetComponent<BoxCollider>());
+            newPos = PointOnTerrainUnderPosition(seedCloudPos);
+        }
 
         //Get desired rotation
-        Vector3 gravityUp = (transform.position - planetCore.position).normalized;
-        Quaternion newRot = Quaternion.FromToRotation(transform.up, gravityUp) * transform.rotation;
+        //Vector3 gravityUp = (transform.root.position - planetCore.position).normalized;
+        Quaternion newRot = Quaternion.FromToRotation(transform.root.up, -GravityVector(transform.root.position)) * transform.root.rotation;
         if (randomYRotation)
             newRot = Quaternion.Euler(newRot.x, (Random.Range(1f, 360f)), newRot.z);
-        //Quaternion newRot = transform.rotation;
 
 
-            //Get Parent relationship
-            Transform parent = null;
-            if (parentRelationship == ParentType.Child)
-                parent = transform;
-            if (parentRelationship == ParentType.Sibling && transform.parent != null)
-                parent = transform.parent;
+        //Get Parent relationship
+        Transform parent = null;
+        if (parentRelationship == ParentType.Child)
+            parent = transform;
+        if (parentRelationship == ParentType.Sibling && transform.parent != null)
+            parent = transform.parent;
 
 
-            //Spawn Child Fruit
-            GameObject tmpFruit = (GameObject)Instantiate(_newFruit, newPos, newRot, parent);
-            tmpFruit.name = _newFruit.name;
+        //Spawn Child Fruit
+        GameObject fruitToSpawn = (GameObject)Instantiate(_newFruit, newPos, newRot, parent);
+        fruitToSpawn.name = _newFruit.name;
     }
 
-    Vector3 GetRandomPoint()
+
+    private Vector3 GetRandomPointOnCol(Collider collider)
     {
-        float xRandom = 0;
-        float zRandom = 0;
-
-        xRandom = (float)Random.Range(transform.position.x - spawnArea, transform.position.x + spawnArea);
-        zRandom = (float)Random.Range(transform.position.z - spawnArea, transform.position.z + spawnArea);
-
-        return new Vector3(xRandom, 0.0f, zRandom);
+        return new Vector3(
+            Random.Range(collider.bounds.min.x, collider.bounds.max.x),
+            Random.Range(collider.bounds.min.y, collider.bounds.max.y),
+            Random.Range(collider.bounds.min.z, collider.bounds.max.z));
     }
 
-    private float RandomRoll()
+    private Vector3 PointOnTerrainUnderPosition(Vector3 fromPos)
     {
-        return Random.Range(1f, 100f);
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(fromPos, GravityVector(fromPos), out hit, 5000, 1 << 20))
+        {
+            if (hit.collider.CompareTag("Ground"))
+            {
+                return hit.point;
+            }
+            else
+            {
+                Debug.Log("SeedCast Ray didn't hit [Ground]");
+                return Vector3.zero;
+            }
+        }
+        else
+        {
+            Debug.Log("SeedCast Ray didn't hit [Anything]");
+            return Vector3.zero;
+        }
+    }
+
+    private void DrawDebug()
+    {
+        //Find potential planting location
+        Vector3 drawFromPos = GetRandomPointOnCol(GetComponent<BoxCollider>());
+        Vector3 drawSpherePoint = PointOnTerrainUnderPosition(drawFromPos);
+
+        //Draw Sphere at potential planting location
+        Debug.DrawRay(drawFromPos, GravityVector(drawFromPos), Color.red, 10);
+        GameObject debugSphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), drawSpherePoint, transform.rotation);
+        debugSphere.transform.localScale *= 0.2f;
+        Destroy(debugSphere, 10);
+    }
+
+    private Vector3 GravityVector(Vector3 fromPos)
+    {
+        Vector3 gravityUp = (fromPos - PlanetCore.Core.transform.position).normalized;
+        return -gravityUp;
+    }
+
+    private float RandomRoll(float min = 1f, float max = 100f)
+    {
+        return Random.Range(min, max);
     }
 
     int CurrentPopulation(string nameOfSpecies)
