@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 15;
-    private Vector3 moveDir;
-    private Rigidbody rbody;
+    public Vector2 mouseSensitivity = new Vector2(250f, 250f);
+    public Vector2 verticalLookClamp = new Vector2(-60, 60);
+
+    Transform mainCam;
+    float verticalLookRotation;
+
+    Vector3 moveAmount;
 
     private void Start()
     {
-        rbody = GetComponentInParent<Rigidbody>();
+        mainCam = GetComponentInChildren<Camera>().transform;
     }
 
     void Update()
     {
-        moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        transform.root.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity.x);
+        verticalLookRotation += Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity.y;
+        verticalLookRotation = Mathf.Clamp(verticalLookRotation, verticalLookClamp.x, verticalLookClamp.y);
+        mainCam.localEulerAngles = Vector3.left * verticalLookRotation;
     }
 
     private void FixedUpdate()
     {
-        rbody.MovePosition(rbody.position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime);
+        
     }
 }

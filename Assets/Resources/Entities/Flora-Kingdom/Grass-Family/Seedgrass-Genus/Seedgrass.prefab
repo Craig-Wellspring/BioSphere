@@ -44,7 +44,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.001, z: 1}
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &1367338993083236462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,19 +58,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newFruit:
-  - {fileID: 3501813778060912223, guid: fd0f7911b6e364a48bcc95d670e0090b, type: 3}
+  - {fileID: 8737545700984536676, guid: 05224e0a04ecbb4469d5ec704449dd33, type: 3}
   parentRelationship: 0
   whenToSpawn: 1
-  seeds: 1
-  seedSuccessChance: 100
-  popBasedSeedChance: 1
+  seeds: 10
+  seedSuccessChance: 80
+  popBasedSeedChance: 0
   basedOnPopOf: {fileID: 6842223849493786181}
   populationModifier: 800
-  randomYRotation: 0
+  randomYRotation: 1
   randomSpawnPosition: 1
-  spawnArea: 5
+  spawnArea: 10
   triggerSpawn: 0
-  drawDebug: 0
+  drawDebugSeed: 0
 --- !u!1 &4763684185420451173
 GameObject:
   m_ObjectHideFlags: 0

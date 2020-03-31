@@ -44,7 +44,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.001, z: 1}
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7260563178982595501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,17 +61,17 @@ MonoBehaviour:
   - {fileID: 6842223849493786181, guid: 288ff8e7fcd13e740aee790d49106778, type: 3}
   parentRelationship: 0
   whenToSpawn: 1
-  seeds: 2
+  seeds: 1
   seedSuccessChance: 100
   popBasedSeedChance: 1
-  basedOnPopOf: {fileID: 6842223849493786181, guid: 288ff8e7fcd13e740aee790d49106778,
+  basedOnPopOf: {fileID: 8737545700984536676, guid: 05224e0a04ecbb4469d5ec704449dd33,
     type: 3}
   populationModifier: 400
-  randomYRotation: 0
+  randomYRotation: 1
   randomSpawnPosition: 1
-  spawnArea: 10
+  spawnArea: 40
   triggerSpawn: 0
-  drawDebug: 0
+  drawDebugSeed: 0
 --- !u!1 &3501813778060912219
 GameObject:
   m_ObjectHideFlags: 0

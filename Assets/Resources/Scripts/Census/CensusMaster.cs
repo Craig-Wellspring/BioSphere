@@ -6,7 +6,7 @@ using UnityEngine;
 public class CensusMaster : MonoBehaviour
 {
     [Tooltip("Emergency stop for overpopulation")]
-    public int overgrowthThreshold = 1000;
+    public int overgrowthThreshold = 10000;
 
     public static CensusMaster Census { get; private set; }
 

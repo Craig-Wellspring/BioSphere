@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof (Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
-    private Transform myTransform;
     private Rigidbody rbody;
     
     void Start()
@@ -12,11 +12,10 @@ public class GravityBody : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         rbody.constraints = RigidbodyConstraints.FreezeRotation;
         rbody.useGravity = false;
-        myTransform = transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        PlanetCore.Core.Attract(myTransform);
+        PlanetCore.Core.Attract(transform);
     }
 }

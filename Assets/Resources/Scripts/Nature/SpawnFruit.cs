@@ -29,17 +29,20 @@ public class SpawnFruit : MonoBehaviour
 
     [Header("Triggers")]
     public bool triggerSpawn = false;
-    public bool drawDebug = false;
+    public bool drawDebugSeed = false;
 
-    private BoxCollider seedCloud;
+    private BoxCollider seedPodArea;
     
     
     public void Start()
     {
-        seedCloud = GetComponent<BoxCollider>();
-        seedCloud.size.Set(seedCloud.size.x * spawnArea, seedCloud.size.y, seedCloud.size.z * spawnArea);
-        Debug.Log(seedCloud.size);
+        seedPodArea = GetComponent<BoxCollider>();
 
+        //Adjust spawn area
+        seedPodArea.size.Set(spawnArea, 0.001f, spawnArea);
+        seedPodArea.center.Set(0, 50, 0);
+
+        //Adjust spawn chance
         if (popBasedSeedChance)
         {
             //success chance modifier gets lower as current pop gets higher
@@ -62,14 +65,14 @@ public class SpawnFruit : MonoBehaviour
             if (whenToSpawn == WhenToSpawn.OnSelfSpawn)
             {
                 seeds -= 1;
-                if (RandomRoll() <= seedSuccessChance)
+                if (Random.Range(1f, 100f) <= seedSuccessChance)
                     CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
             }
 
             if (whenToSpawn == WhenToSpawn.OnFullyGrown && transform.root.GetComponentInChildren<GenericGrow>().fullyGrown)
             {
                 seeds -= 1;
-                if (RandomRoll() <= seedSuccessChance)
+                if (Random.Range(1f, 100f) <= seedSuccessChance)
                     CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
             }
 
@@ -77,21 +80,22 @@ public class SpawnFruit : MonoBehaviour
             {
                 seeds -= 1;
                 triggerSpawn = false;
-                if (RandomRoll() <= seedSuccessChance)
+                if (Random.Range(1f, 100f) <= seedSuccessChance)
                     CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
             }
         }
 
-        if (drawDebug)
+        if (drawDebugSeed)
         {
             DrawDebug();
-            drawDebug = false;
+            drawDebugSeed = false;
         }
     }
 
+
     private void CreateFruit(GameObject _newFruit)
     {
-        //Get desired spawn location
+        //Get desired spawn position
         Vector3 newPos = transform.root.position;
         if (randomSpawnPosition)
         {
@@ -100,11 +104,8 @@ public class SpawnFruit : MonoBehaviour
         }
 
         //Get desired rotation
-        //Vector3 gravityUp = (transform.root.position - planetCore.position).normalized;
         Quaternion newRot = Quaternion.FromToRotation(transform.root.up, -GravityVector(transform.root.position)) * transform.root.rotation;
-        if (randomYRotation)
-            newRot = Quaternion.Euler(newRot.x, (Random.Range(1f, 360f)), newRot.z);
-
+        
 
         //Get Parent relationship
         Transform parent = null;
@@ -115,41 +116,22 @@ public class SpawnFruit : MonoBehaviour
 
 
         //Spawn Child Fruit
-        GameObject fruitToSpawn = (GameObject)Instantiate(_newFruit, newPos, newRot, parent);
-        fruitToSpawn.name = _newFruit.name;
-    }
-
-
-    private Vector3 GetRandomPointOnCol(Collider collider)
-    {
-        return new Vector3(
-            Random.Range(collider.bounds.min.x, collider.bounds.max.x),
-            Random.Range(collider.bounds.min.y, collider.bounds.max.y),
-            Random.Range(collider.bounds.min.z, collider.bounds.max.z));
-    }
-
-    private Vector3 PointOnTerrainUnderPosition(Vector3 fromPos)
-    {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(fromPos, GravityVector(fromPos), out hit, 5000, 1 << 20))
+        if (newPos != Vector3.zero)
         {
-            if (hit.collider.CompareTag("Ground"))
-            {
-                return hit.point;
-            }
-            else
-            {
-                Debug.Log("SeedCast Ray didn't hit [Ground]");
-                return Vector3.zero;
-            }
+            GameObject fruitToSpawn = (GameObject)Instantiate(_newFruit, newPos, newRot, parent);
+            fruitToSpawn.name = _newFruit.name;
+            if (randomYRotation)
+                fruitToSpawn.transform.RotateAround(fruitToSpawn.transform.position, fruitToSpawn.transform.up, Random.Range(1f, 360f));
         }
         else
         {
-            Debug.Log("SeedCast Ray didn't hit [Anything]");
-            return Vector3.zero;
+            //Failed to find appropriate surface, recast seed
+            CreateFruit(_newFruit);
         }
     }
 
+
+    #region Custom Functions
     private void DrawDebug()
     {
         //Find potential planting location
@@ -163,16 +145,45 @@ public class SpawnFruit : MonoBehaviour
         Destroy(debugSphere, 10);
     }
 
+
+    private Vector3 GetRandomPointOnCol(Collider collider)
+    {
+        return new Vector3(
+            Random.Range(collider.bounds.min.x, collider.bounds.max.x),
+            Random.Range(collider.bounds.min.y, collider.bounds.max.y),
+            Random.Range(collider.bounds.min.z, collider.bounds.max.z));
+    }
+
+
+    private Vector3 PointOnTerrainUnderPosition(Vector3 fromPos)
+    {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(fromPos, GravityVector(fromPos), out hit, 5000, 1 << 20))
+        {
+            if (hit.collider.CompareTag("Ground"))
+            {
+                return hit.point;
+            }
+            else
+            {
+                //Debug.Log("SeedCast Ray didn't hit [Ground]");
+                return Vector3.zero;
+            }
+        }
+        else
+        {
+            //Debug.Log("SeedCast Ray didn't hit [Anything]");
+            return Vector3.zero;
+        }
+    }
+
+
     private Vector3 GravityVector(Vector3 fromPos)
     {
         Vector3 gravityUp = (fromPos - PlanetCore.Core.transform.position).normalized;
         return -gravityUp;
     }
 
-    private float RandomRoll(float min = 1f, float max = 100f)
-    {
-        return Random.Range(min, max);
-    }
 
     int CurrentPopulation(string nameOfSpecies)
     {
@@ -187,4 +198,5 @@ public class SpawnFruit : MonoBehaviour
         }
         return currentPopulation;
     }
+    #endregion
 }

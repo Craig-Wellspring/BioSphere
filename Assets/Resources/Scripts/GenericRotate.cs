@@ -10,6 +10,22 @@ public class GenericRotate : MonoBehaviour
     public float yRotationSpeed = 1f;
     public bool zRotate = false;
     public float zRotationSpeed = 1f;
+    public bool rotateAround = false;
+    public Transform rotationTarget;
+    public enum CircuitAxis { X, Y, Z };
+    public CircuitAxis circuitAxis;
+    private Vector3 _circuitAxis;
+    public float circuitSpeed;
+
+    private void OnGUI()
+    {
+        if (circuitAxis == CircuitAxis.X)
+            _circuitAxis = Vector3.right;
+        if (circuitAxis == CircuitAxis.Y)
+            _circuitAxis = Vector3.up;
+        if (circuitAxis == CircuitAxis.Z)
+            _circuitAxis = Vector3.forward;
+    }
 
     void Update()
     {
@@ -21,5 +37,11 @@ public class GenericRotate : MonoBehaviour
 
         if (zRotate)
             transform.Rotate(0, 0, Time.deltaTime * zRotationSpeed);
+
+
+        if (rotateAround && rotationTarget != null)
+        {
+            transform.RotateAround(rotationTarget.position, _circuitAxis, Time.deltaTime * circuitSpeed);
+        }
     }
 }

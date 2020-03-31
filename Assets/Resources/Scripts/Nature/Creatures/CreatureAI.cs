@@ -148,7 +148,7 @@ public class CreatureAI : MonoBehaviour
             if (targetFood != null)
             {
                 //Turn to look at food
-                var turnTo = Quaternion.LookRotation(targetFood.transform.position - transform.root.position);
+                var turnTo = Quaternion.LookRotation(targetFood.transform.position - transform.root.position, transform.root.up);
                 transform.root.rotation = Quaternion.RotateTowards(transform.root.rotation, turnTo, navAgent.angularSpeed * Time.deltaTime);
 
                 eatingTime += Time.deltaTime;
@@ -217,6 +217,8 @@ public class CreatureAI : MonoBehaviour
     }
     #endregion
 
+
+    #region Combat
     void ChaseTarget(GameObject target)
     {
         if (!navAgent.hasPath || navAgent.remainingDistance >= navAgent.stoppingDistance)
@@ -257,6 +259,7 @@ public class CreatureAI : MonoBehaviour
         navAgent.SetDestination(hit.position);
         navAgent.speed = fleeSpeed;
     }
+    #endregion
 
     void Wander()
     {
@@ -277,7 +280,7 @@ public class CreatureAI : MonoBehaviour
     }
 
 
-
+    #region Utility Functions
     Vector3 GetRandomPoint()
     {
         float xRandom = 0;
@@ -307,4 +310,5 @@ public class CreatureAI : MonoBehaviour
         }
         return bestTarget;
     }
+    #endregion
 }
