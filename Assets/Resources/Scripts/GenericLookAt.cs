@@ -5,10 +5,14 @@ using UnityEngine;
 public class GenericLookAt : MonoBehaviour
 {
     public Transform targetTransform;
+    public bool inverted;
     
 
     void FixedUpdate()
     {
-        transform.LookAt(targetTransform);
+        if (inverted)
+            transform.rotation = Quaternion.LookRotation(transform.position - targetTransform.position);
+        else
+            transform.LookAt(targetTransform.position);
     }
 }
