@@ -20,6 +20,7 @@ TagManager:
   - Grain
   - Interactable Object
   - Ground
+  - Bush
   layers:
   - Default
   - TransparentFX
@@ -45,8 +46,8 @@ TagManager:
   - PlanetCore
   - Atmosphere
   - Solaris
-  - Lunula Prime
   - Lunula
+  - Littlerock
   - 
   - 
   - 

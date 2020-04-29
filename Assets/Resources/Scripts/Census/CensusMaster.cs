@@ -31,7 +31,7 @@ public class CensusMaster : MonoBehaviour
         foreach (CensusData member in listOfSpecies)
         {
             //If already on the list, add to population
-            if (member.speciesName.Contains(newMember))
+            if (member.speciesName.Equals(newMember))
             {
                 //Debug.Log(newMember + " population increased to " + member.populationSize);
                 member.populationSize += 1;

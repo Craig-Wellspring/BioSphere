@@ -59,7 +59,10 @@ public class GenericGrow : MonoBehaviour
     {
         if (transform.localScale.y >= maxSize)
         {
+            //Trigger Fully Grown
             fullyGrown = true;
+            if (GetComponentInParent<Animator>() != null)
+                GetComponentInParent<Animator>().SetBool("FullyGrown", true);
 
             //Gain independence
             if (gainIndependence)

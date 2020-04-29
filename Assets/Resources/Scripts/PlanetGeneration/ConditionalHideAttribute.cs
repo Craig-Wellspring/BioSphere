@@ -9,6 +9,10 @@ public class ConditionalHideAttribute : PropertyAttribute
     public string conditionalSourceField;
     public int enumIndex;
 
+    public ConditionalHideAttribute()
+    {
+    }
+
     public ConditionalHideAttribute(string boolVariableName)
     {
         conditionalSourceField = boolVariableName;

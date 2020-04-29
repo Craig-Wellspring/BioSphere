@@ -31,16 +31,23 @@ public class SpawnFruit : MonoBehaviour
     public bool triggerSpawn = false;
     public bool drawDebugSeed = false;
 
-    private BoxCollider seedPodArea;
+    //private BoxCollider seedPodArea;
     
     
     public void Start()
     {
+        /*
         seedPodArea = GetComponent<BoxCollider>();
-
-        //Adjust spawn area
         seedPodArea.size.Set(spawnArea, 0.001f, spawnArea);
         seedPodArea.center.Set(0, 50, 0);
+        */
+
+        //Adjust spawn area
+        if (randomSpawnPosition)
+        {
+            transform.localScale = new Vector3(spawnArea, 1, spawnArea);
+            transform.localPosition = new Vector3(0f, 100f, 0f);
+        }
 
         //Adjust spawn chance
         if (popBasedSeedChance)
