@@ -1,72 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GenericGrow : MonoBehaviour
 {
-    private Vector3 scaleChange;
-    private float growTime = 0;
-    private float maxSize;
-    
-
-    //public Transform growObject;
-    public enum GrowType { growOverTime, growByTrigger };
-    public GrowType growType;
-    [Tooltip("Only applies to Grow Over Time types")]
-    public float growTimeSeconds = 3f;
-    public float growRate = 0.1f;
-    public float maxSizeMin, maxSizeMax;
+    [Header("Triggers")]
     [Tooltip("Detach from Parent when FullyGrown")]
     public bool gainIndependence = false;
-    [Header("Triggers")]
-    public bool triggerGrowth = false;
     public bool fullyGrown = false;
 
+    private Animator anim;
 
-    void Start()
+    private void Start()
     {
-        scaleChange = new Vector3(growRate, growRate, growRate);
-        maxSize = Random.Range(maxSizeMin, maxSizeMax);
+        anim = GetComponent<Animator>();
     }
 
-    void Update()
+    void EndGrowth()
     {
-        if (!fullyGrown)
-        {
-            if (growType == GrowType.growOverTime)
-            {
-                //Tick
-                growTime += Time.deltaTime;
-                if (growTime > growTimeSeconds)
-                {
-                    growTime = 0;
-                    //Grow
-                    transform.localScale += scaleChange;
-                    CheckIfFullyGrown();
-                }
-            }
-            if (growType == GrowType.growByTrigger && triggerGrowth)
-            {
-                //Grow
-                transform.localScale += scaleChange;
-                CheckIfFullyGrown();
-                triggerGrowth = false;
-            }
-        }
+        fullyGrown = true;
+        if (anim.parameterCount > 0)
+            anim.SetBool("FullyGrown", true);
     }
 
-    void CheckIfFullyGrown()
+    void GainIndependence()
     {
-        if (transform.localScale.y >= maxSize)
-        {
-            //Trigger Fully Grown
-            fullyGrown = true;
-            if (GetComponentInParent<Animator>() != null)
-                GetComponentInParent<Animator>().SetBool("FullyGrown", true);
-
-            //Gain independence
-            if (gainIndependence)
-                transform.SetParent(null);
-        }
+        if (gainIndependence)
+            transform.SetParent(null);
     }
 }

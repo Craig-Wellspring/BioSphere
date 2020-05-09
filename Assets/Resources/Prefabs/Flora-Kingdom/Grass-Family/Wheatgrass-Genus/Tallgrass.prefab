@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5720314661256713520}
   - component: {fileID: 2913247599306845569}
   - component: {fileID: 3475022186470022292}
+  - component: {fileID: 247831758622870357}
   m_Layer: 10
   m_Name: Leaves
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6880680960160033711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8049714870707708571}
   - {fileID: 8049714870707708573}
@@ -83,14 +84,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f21c54e54d58ab48bcc44047536ce63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growType: 0
-  growTimeSeconds: 3
-  growRate: 0.01
-  maxSizeMin: 0.7
-  maxSizeMax: 1.2
   gainIndependence: 0
-  triggerGrowth: 0
   fullyGrown: 0
+--- !u!95 &247831758622870357
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880680960160033711}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9dcc3f95efde9734abc7dcf8364b1adb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8049714870707420857
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +116,6 @@ GameObject:
   - component: {fileID: 8049714870707708569}
   - component: {fileID: 2334579735319398257}
   - component: {fileID: 1436090046084611489}
-  - component: {fileID: 5033882509095116463}
   m_Layer: 0
   m_Name: Tallgrass
   m_TagString: Grass
@@ -150,25 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nutritionalValue: 10
---- !u!95 &5033882509095116463
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8049714870707420857}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9dcc3f95efde9734abc7dcf8364b1adb, type: 2}
-  m_CullingMode: 2
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8049714870707420859
 GameObject:
   m_ObjectHideFlags: 0

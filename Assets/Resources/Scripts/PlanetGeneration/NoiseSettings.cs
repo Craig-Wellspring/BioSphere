@@ -8,9 +8,9 @@ public class NoiseSettings
     public enum FilterType { Simple, Ridgid };
     public FilterType filterType;
 
-    [ConditionalHide("filterType", 0)]
+    [PlanetConditionalHide("filterType", 0)]
     public SimpleNoiseSettings simpleNoiseSettings;
-    [ConditionalHide("filterType", 1)]
+    [PlanetConditionalHide("filterType", 1)]
     public RidgidNoiseSettings ridgidNoiseSettings;
 
     [System.Serializable]

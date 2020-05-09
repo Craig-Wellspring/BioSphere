@@ -2,13 +2,13 @@
 using UnityEditor;
 using System.Collections.Generic;
 
-[CustomPropertyDrawer(typeof(ConditionalHideAttribute))]
-public class ConditionalHidePropertyDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(PlanetConditionalHideAttribute))]
+public class PlanetConditionalHidePropertyDrawer : PropertyDrawer
 {
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        ConditionalHideAttribute condHAtt = (ConditionalHideAttribute)attribute;
+        PlanetConditionalHideAttribute condHAtt = (PlanetConditionalHideAttribute)attribute;
         bool enabled = GetConditionalHideAttributeResult(condHAtt, property);
 
         if (enabled)
@@ -19,7 +19,7 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        ConditionalHideAttribute condHAtt = (ConditionalHideAttribute)attribute;
+        PlanetConditionalHideAttribute condHAtt = (PlanetConditionalHideAttribute)attribute;
         bool enabled = GetConditionalHideAttributeResult(condHAtt, property);
 
         if (enabled)
@@ -31,7 +31,7 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
 
     }
 
-    bool GetConditionalHideAttributeResult(ConditionalHideAttribute condHAtt, SerializedProperty property)
+    bool GetConditionalHideAttributeResult(PlanetConditionalHideAttribute condHAtt, SerializedProperty property)
     {
         SerializedProperty sourcePropertyValue = null;
 
@@ -64,7 +64,7 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
         return true;
     }
 
-    bool CheckPropertyType(ConditionalHideAttribute condHAtt, SerializedProperty sourcePropertyValue)
+    bool CheckPropertyType(PlanetConditionalHideAttribute condHAtt, SerializedProperty sourcePropertyValue)
     {
         //Note: add others for custom handling if desired
         switch (sourcePropertyValue.propertyType)
