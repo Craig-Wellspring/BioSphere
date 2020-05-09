@@ -754,6 +754,7 @@ namespace MalbersAnimations.Controller
             set { gravityDirection.Value = value; }
         }
 
+
         /// <summary> Up Vector is the Opposite direction of the Gravity dir</summary>
         public Vector3 UpVector => -gravityDirection.Value;
 
