@@ -34,8 +34,8 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Creature
+  - 
+  - 
   - Food
   - 
   - 
@@ -45,14 +45,14 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Terrain
+  - Player
+  - Creature
   - PlanetCore
   - Atmosphere
   - Solaris
   - Lunula
   - Littlerock
-  - 
+  - Terrain
   - 
   - 
   - 

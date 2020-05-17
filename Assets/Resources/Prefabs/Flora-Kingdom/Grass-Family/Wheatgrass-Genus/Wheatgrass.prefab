@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 257350218105296150}
   - component: {fileID: 781502363424636185}
   - component: {fileID: 8384973335558252590}
+  - component: {fileID: 3387882509346472051}
   m_Layer: 10
   m_Name: Leaves
   m_TagString: Untagged
@@ -105,6 +106,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3387882509346472051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170604805792254264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutritionalValue: 15
+  timeToEat: 6
 --- !u!1 &6172271342905759355
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6982027621122526712}
   - component: {fileID: 2878617818814468246}
-  - component: {fileID: 3184451486608003382}
   m_Layer: 0
   m_Name: Wheatgrass
   m_TagString: Grass
@@ -222,19 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3184451486608003382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982027621122888152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nutritionalValue: 10
 --- !u!1 &6982027621122888154
 GameObject:
   m_ObjectHideFlags: 0

@@ -589,6 +589,7 @@ namespace MalbersAnimations.Controller
 
 
             if (ground_Changes_Gravity) GravityDirection  = -hit_Hip.normal;
+            GravityDirection = -transform.up;
 
             CalculateSurfaceNormal();
 

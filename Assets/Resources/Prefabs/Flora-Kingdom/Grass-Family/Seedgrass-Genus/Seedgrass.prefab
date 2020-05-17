@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 6288051310848217311}
   - component: {fileID: 8894019929491026763}
   - component: {fileID: 7236413480300703074}
+  - component: {fileID: 6633853599854001687}
   m_Layer: 10
   m_Name: Leaves
   m_TagString: Untagged
@@ -318,6 +319,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gainIndependence: 0
   fullyGrown: 0
+--- !u!114 &6633853599854001687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763684185420451173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutritionalValue: 10
+  timeToEat: 5
 --- !u!1 &6842223849493786177
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +422,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6842223849494278757}
   - component: {fileID: 694792480652514699}
-  - component: {fileID: -1058223105936584073}
   m_Layer: 0
   m_Name: Seedgrass
   m_TagString: Grass
@@ -445,19 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1058223105936584073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6842223849493786181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nutritionalValue: 10
 --- !u!1 &6842223849493786183
 GameObject:
   m_ObjectHideFlags: 0

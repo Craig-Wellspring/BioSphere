@@ -54,7 +54,10 @@ MonoBehaviour:
       LockInput: 0
       Colliders: 1
   debug: 0
-  AlignSmooth: 10
+  WaterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  AlignSmooth: 5
   Bounce: 5
   TryExitTime: 0.5
   WaterIsStatic: 1

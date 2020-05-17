@@ -165,7 +165,7 @@ public class SpawnFruit : MonoBehaviour
     private Vector3 PointOnTerrainUnderPosition(Vector3 fromPos)
     {
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(fromPos, GravityVector(fromPos), out hit, 5000, 1 << 20))
+        if (Physics.Raycast(fromPos, GravityVector(fromPos), out hit, 5000, 1 << 26))
         {
             if (hit.collider.CompareTag("Ground"))
             {

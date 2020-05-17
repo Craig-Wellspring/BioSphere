@@ -240,7 +240,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3501813778060950143}
   - component: {fileID: 8750163366579585465}
-  - component: {fileID: 2303835546730519148}
   m_Layer: 0
   m_Name: Leafgrass
   m_TagString: Grass
@@ -276,19 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2303835546730519148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3501813778060912223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nutritionalValue: 10
 --- !u!1 &6995454114915986358
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +288,7 @@ GameObject:
   - component: {fileID: 1953847716540290592}
   - component: {fileID: 6430290419958743782}
   - component: {fileID: 7270038600912090390}
+  - component: {fileID: 2947877093699826258}
   m_Layer: 10
   m_Name: Leaves
   m_TagString: Untagged
@@ -394,3 +381,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2947877093699826258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6995454114915986358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutritionalValue: 5
+  timeToEat: 3

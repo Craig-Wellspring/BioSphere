@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7502547288509417930}
   - component: {fileID: 4830844531855195594}
   - component: {fileID: 3067941067380264228}
+  - component: {fileID: 7607097067855154002}
   m_Layer: 10
   m_Name: Leaves
   m_TagString: Untagged
@@ -105,6 +106,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7607097067855154002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271941090879731253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutritionalValue: 15
+  timeToEat: 10
 --- !u!1 &1706303471575706740
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,10 +281,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8737545700984431172}
   - component: {fileID: -5788609714652063709}
-  - component: {fileID: 3345982886578939703}
   m_Layer: 0
   m_Name: Bushgrass
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,19 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3345982886578939703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8737545700984536676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nutritionalValue: 10
 --- !u!1 &8737545700984536678
 GameObject:
   m_ObjectHideFlags: 0

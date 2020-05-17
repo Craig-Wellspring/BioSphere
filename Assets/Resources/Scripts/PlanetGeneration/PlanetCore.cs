@@ -27,6 +27,12 @@ public class PlanetCore : MonoBehaviour
         Vector3 bodyUp = body.up;
 
         body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity);
+    }
+
+    public void AlignWithGravity(Transform body)
+    {
+        Vector3 gravityUp = (body.position - transform.position).normalized;
+        Vector3 bodyUp = body.up;
 
         Quaternion targetRotation = Quaternion.FromToRotation(bodyUp, gravityUp) * body.rotation;
         body.rotation = Quaternion.Slerp(body.rotation, targetRotation, 50 * Time.deltaTime);

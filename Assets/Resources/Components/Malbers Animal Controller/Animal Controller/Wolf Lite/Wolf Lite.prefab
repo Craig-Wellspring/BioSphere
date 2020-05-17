@@ -1423,6 +1423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e01b55904fd2474cb72a9e1f45998b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  constrainRotation: 1
+  useGravity: 0
+  alignWithGravity: 1
 --- !u!54 &54745952662030160
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1797,7 +1800,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue:
       serializedVersion: 2
-      m_Bits: 1048576
+      m_Bits: 67108864
     Variable: {fileID: 0}
   currentStance: 0
   defaultStance: 0
@@ -2551,7 +2554,7 @@ MonoBehaviour:
       Variable: {fileID: 0}
   gravityDirection:
     UseConstant: 1
-    ConstantValue: {x: -0, y: -1, z: -0}
+    ConstantValue: {x: -0, y: 0, z: -0}
     Variable: {fileID: 0}
   GravityForce:
     UseConstant: 1

@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class CensusMaster : MonoBehaviour
 {
-    [Tooltip("Emergency stop for overpopulation")]
-    public int overgrowthThreshold = 10000;
-
     public static CensusMaster Census { get; private set; }
 
+    [Tooltip("Emergency stop for global overpopulation"), SerializeField]
+    private int globalOvergrowth = 30000;
+    [Tooltip("Emergency stop for overpopulation of each species"), SerializeField]
+    private int speciesOvergrowth = 10000;
+    [SerializeField]
+    private int totalPopulation = 0;
     public List<CensusData> listOfSpecies;
+
 
     private void Awake()
     {
@@ -35,11 +39,17 @@ public class CensusMaster : MonoBehaviour
             {
                 //Debug.Log(newMember + " population increased to " + member.populationSize);
                 member.populationSize += 1;
-                
+                totalPopulation += 1;
+
                 //Crash if population is too high
-                if (member.populationSize >= overgrowthThreshold)
+                if (member.populationSize >= speciesOvergrowth)
                 {
                     Debug.Log("Crash due to " + newMember + " overgrowth");
+                    UnityEditor.EditorApplication.isPlaying = false;
+                }
+                if (totalPopulation >= globalOvergrowth)
+                {
+                    Debug.Log("Crash due to global population overgrowth");
                     UnityEditor.EditorApplication.isPlaying = false;
                 }
                 found = true;
@@ -50,6 +60,7 @@ public class CensusMaster : MonoBehaviour
         {
             //If not found on the list, add to list
             listOfSpecies.Add(new CensusData(newMember, 1));
+            totalPopulation += 1;
         }
 
     }
@@ -63,6 +74,7 @@ public class CensusMaster : MonoBehaviour
             {
                 //Debug.Log(lostMember + " population decreased to " + member.populationSize);
                 member.populationSize -= 1;
+                totalPopulation -= 1;
 
                 if (member.populationSize < 1)
                 {

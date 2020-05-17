@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2913247599306845569}
   - component: {fileID: 3475022186470022292}
   - component: {fileID: 247831758622870357}
+  - component: {fileID: 7393973821474404406}
   m_Layer: 10
   m_Name: Leaves
   m_TagString: Untagged
@@ -105,6 +106,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7393973821474404406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880680960160033711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutritionalValue: 12
+  timeToEat: 15
 --- !u!1 &8049714870707420857
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8049714870707708569}
   - component: {fileID: 2334579735319398257}
-  - component: {fileID: 1436090046084611489}
   m_Layer: 0
   m_Name: Tallgrass
   m_TagString: Grass
@@ -150,19 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1436090046084611489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8049714870707420857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nutritionalValue: 10
 --- !u!1 &8049714870707420859
 GameObject:
   m_ObjectHideFlags: 0
