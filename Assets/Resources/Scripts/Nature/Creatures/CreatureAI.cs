@@ -52,13 +52,14 @@ namespace Pathfinding
         private float idleTime = 0f;
         private GameObject targetFood;
         private Animator animator;
+        private Metabolism metabolism;
 
         IAstarAI ai;
         #endregion
 
         void OnEnable()
         {
-            ai = GetComponent<IAstarAI>();
+            ai = GetComponentInParent<IAstarAI>();
             if (ai != null) ai.onSearchPath += Update;
         }
         void OnDisable()
@@ -69,7 +70,9 @@ namespace Pathfinding
         void Start()
         {
             animator = GetComponentInParent<Animator>();
-            dietList = GetComponentInParent<Metabolism>().dietList;
+            metabolism = GetComponentInParent<Metabolism>();
+            dietList = metabolism.dietList;
+            
 
             //Initialize
             idleTime = Random.Range(minIdleTime, maxIdleTime);
@@ -105,7 +108,7 @@ namespace Pathfinding
             if (withinEatingRange.Contains(selfCollider))
                 withinEatingRange.Remove(selfCollider);
             foreach (Collider col in withinEatingRange)
-                if (dietList.Contains(col.transform.root.tag))
+                if (dietList.Contains(col.transform.tag))
                     canEat.Add(col);
 
 
@@ -132,7 +135,9 @@ namespace Pathfinding
             if (fleeFrom.Count == 0 && aggroTo.Count == 0 && canEat.Count > 0 && !eating && GetComponentInParent<Metabolism>().hungerIndex >= grazeAtHungerIndex)
             {
                 targetFood = GetClosestTarget(canEat).gameObject;
-                RunToFood(targetFood);
+                if (!ai.pathPending && !ai.hasPath)
+                    FindPathToFood(targetFood);
+
             }
 
             // 4) If nothing is in range
@@ -177,18 +182,23 @@ namespace Pathfinding
             }
         }
 
+        public void FindPathToFood(GameObject food)
+        {
+            ai.destination = food.transform.position;
+            ai.SearchPath();
+            Debug.Log("Finding path to " + food.name);
+        }
+
+
+        /////////////////Currently unused
         public void RunToFood(GameObject target)
         {
             //Go to food if out of range
-            if (!ai.hasPath)
-            {
-                ai.destination = target.transform.position;
-                ai.SearchPath();
-                ai.maxSpeed = gallopSpeed;
-            }
+                    ai.maxSpeed = gallopSpeed;
+                    Debug.Log("Changed speed");
 
             //Eat food is in range
-            else if (ai.remainingDistance < 0.7f)
+            if (ai.remainingDistance < 0.7f)
             {
                 StartEating();
             }
@@ -224,9 +234,9 @@ namespace Pathfinding
 
 
                 //Destroy food
-                if (target.transform.parent != null) /*&& target.transform.parent.childCount == 1*/
+                if (target.GetComponent<Food>().destroyParent)
                 {
-                    Destroy(target.transform.parent.gameObject);
+                    Destroy(target.transform.root.gameObject);
                 }
                 else
                 {

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections.Generic;
 using Pathfinding;
 
 public class Vitality : MonoBehaviour
 {
+    public Slider healthBar;
     [Header("Body Parts")]
     [Tooltip("GameObject that represents the Creature's corpse")]
     public GameObject corpse;
@@ -53,14 +55,14 @@ public class Vitality : MonoBehaviour
     public void Die()
     {
         //Die
-        animator.SetBool("Dead", true);
+        //animator.SetBool("Dead", true);
         dead = true;
         foreach (Collider body in bodyColliders)
             body.enabled = false;
         
         corpse.gameObject.SetActive(true);
 
-        GetComponent<NavMeshAgent>().enabled = false;
+        //GetComponent<NavMeshAgent>().enabled = false;
         if (creatureAI != null)
             creatureAI.enabled = false;
 
@@ -71,14 +73,14 @@ public class Vitality : MonoBehaviour
     public void Revivify()
     {
         //Come back to life
-        animator.SetBool("Dead", false);
+        //animator.SetBool("Dead", false);
         dead = false;
         foreach (Collider body in bodyColliders)
             body.enabled = true;
 
         corpse.gameObject.SetActive(false);
 
-        GetComponent<NavMeshAgent>().enabled = true;
+        //GetComponent<NavMeshAgent>().enabled = true;
         if (creatureAI != null)
             creatureAI.enabled = true;
 

@@ -19,7 +19,7 @@ public class GravityBody : MonoBehaviour
             rbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (useGravity)
             PlanetCore.Core.Attract(transform);

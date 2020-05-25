@@ -333,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nutritionalValue: 10
   timeToEat: 5
+  destroyParent: 1
 --- !u!1 &6842223849493786177
 GameObject:
   m_ObjectHideFlags: 0
