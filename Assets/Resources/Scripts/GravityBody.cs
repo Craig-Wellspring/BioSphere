@@ -21,9 +21,13 @@ public class GravityBody : MonoBehaviour
 
     void Update()
     {
-        if (useGravity)
-            PlanetCore.Core.Attract(transform);
         if (alignWithGravity)
             PlanetCore.Core.AlignWithGravity(transform);
+    }
+
+    private void FixedUpdate()
+    {
+        if (useGravity)
+            PlanetCore.Core.Attract(transform);
     }
 }

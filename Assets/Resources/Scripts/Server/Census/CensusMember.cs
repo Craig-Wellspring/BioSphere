@@ -12,6 +12,7 @@ public class CensusMember : MonoBehaviour
 
     void OnDisable()
     {
-        CensusMaster.Census.PopulationDecrease(name);
+        if (Application.isPlaying)
+            CensusMaster.Census.PopulationDecrease(name);
     }
 }

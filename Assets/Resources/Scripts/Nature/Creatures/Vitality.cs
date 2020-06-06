@@ -6,38 +6,46 @@ using Pathfinding;
 
 public class Vitality : MonoBehaviour
 {
+    [Header("Health")]
     public Slider healthBar;
+    public float maxHealth;
+    public float currentHealth;
+    [Space(10)]
+    public bool dead = false;
+
     [Header("Body Parts")]
     [Tooltip("GameObject that represents the Creature's corpse")]
     public GameObject corpse;
     [Tooltip("GameObjects that contain the Creature's body colliders")]
     public List<Collider> bodyColliders;
 
+    #region Private Variables
     private CreatureAI creatureAI;
+    private Metabolism metabolism;
     private Animator animator;
-    
-    [Header("Health")]
-    public float maxHealth;
-    public float currentHealth;
-    [Space(10)]
-    public bool dead = false;
+    private CreatureData cData;
+    #endregion
+
 
 
     void Start()
     {
+        creatureAI = GetComponent<CreatureAI>();
+        metabolism = GetComponent<Metabolism>();
         animator = GetComponent<Animator>();
-        creatureAI = GetComponentInChildren<CreatureAI>();
+        cData = GetComponent<CreatureData>();
     }
 
     public void TakeDamage(int amount)
     {
         if (!dead)
         {
+            healthBar.gameObject.SetActive(true);
             currentHealth -= amount;
             animator.SetTrigger("TakeDamage");
 
-            if (creatureAI.eating)
-                creatureAI.StopEating();
+            if (metabolism.isEating)
+                metabolism.StopEating();
 
             if (currentHealth <= 0)
                 Die();
@@ -57,12 +65,16 @@ public class Vitality : MonoBehaviour
         //Die
         //animator.SetBool("Dead", true);
         dead = true;
+        if (healthBar.gameObject.activeSelf)
+            healthBar.gameObject.SetActive(false);
         foreach (Collider body in bodyColliders)
             body.enabled = false;
         
         corpse.gameObject.SetActive(true);
 
-        //GetComponent<NavMeshAgent>().enabled = false;
+        corpse.GetComponent<FoodData>().nutritionalValue = cData.energyUnits;
+        cData.energyUnits = 0;
+        
         if (creatureAI != null)
             creatureAI.enabled = false;
 
@@ -75,9 +87,11 @@ public class Vitality : MonoBehaviour
         //Come back to life
         //animator.SetBool("Dead", false);
         dead = false;
+        healthBar.gameObject.SetActive(true);
         foreach (Collider body in bodyColliders)
             body.enabled = true;
 
+        corpse.GetComponent<FoodData>().nutritionalValue = 0;
         corpse.gameObject.SetActive(false);
 
         //GetComponent<NavMeshAgent>().enabled = true;

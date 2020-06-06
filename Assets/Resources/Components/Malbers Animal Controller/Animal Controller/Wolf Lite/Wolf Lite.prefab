@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constrainRotation: 1
-  useGravity: 0
+  useGravity: 1
   alignWithGravity: 1
 --- !u!54 &54745952662030160
 Rigidbody:
@@ -5275,9 +5275,9 @@ GameObject:
   - component: {fileID: 33186052458903980}
   - component: {fileID: 23260877118188230}
   - component: {fileID: 136729519214594152}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Spine1
-  m_TagString: Untagged
+  m_TagString: Wolf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

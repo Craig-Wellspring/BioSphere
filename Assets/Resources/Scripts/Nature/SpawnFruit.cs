@@ -17,10 +17,11 @@ public class SpawnFruit : MonoBehaviour
     [Header("Seed Settings")]
     public int seeds = 1;
     public float seedSuccessChance = 100;
-    [Tooltip("Species population size affects seed success chance")]
+    public bool divideRemainingEnergy = false;
+    /*[Tooltip("Species population size affects seed success chance")]
     public bool popBasedSeedChance = false;
     public GameObject basedOnPopOf;
-    public int populationModifier = 800;
+    public int populationModifier = 800;*/
 
     [Header("Placing Settings")]
     public bool randomYRotation = false;
@@ -31,64 +32,56 @@ public class SpawnFruit : MonoBehaviour
     public bool triggerSpawn = false;
     public bool drawDebugSeed = false;
 
-    //private BoxCollider seedPodArea;
+    private FoodData foodData;
+    private float energyToGive;
     
     
     public void Start()
     {
-        /*
-        seedPodArea = GetComponent<BoxCollider>();
-        seedPodArea.size.Set(spawnArea, 0.001f, spawnArea);
-        seedPodArea.center.Set(0, 50, 0);
-        */
+        foodData = transform.root.GetComponentInChildren<FoodData>();
 
         //Adjust spawn area
         if (randomSpawnPosition)
         {
             transform.localScale = new Vector3(spawnArea, 1, spawnArea);
-            transform.localPosition = new Vector3(0f, 100f, 0f);
+            transform.localPosition = new Vector3(0f, 50f, 0f);
         }
-
+        /*
         //Adjust spawn chance
         if (popBasedSeedChance)
         {
             //success chance modifier gets lower as current pop gets higher
             seedSuccessChance = 100f * (1f / CurrentPopulation(basedOnPopOf.name)) * (populationModifier * 0.2f);
-        }
+        }*/
     }
 
 
     public void Update()
     {
-
-        /*if (seedSuccessChance > 200)
-        {
-            seedSuccessChance = 100;
-            seeds += 1;
-        }*/
-
         if (seeds > 0 && newFruit.Count > 0)
         {
-            if (whenToSpawn == WhenToSpawn.OnSelfSpawn)
-            {
-                seeds -= 1;
-                if (Random.Range(1f, 100f) <= seedSuccessChance)
-                    CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
-            }
+            GameObject fruitToSpawn = newFruit[Random.Range(0, newFruit.Count)];
+            float energyRequired = fruitToSpawn.GetComponentInChildren<FoodData>().nutritionalValue;
 
-            if (whenToSpawn == WhenToSpawn.OnFullyGrown && transform.root.GetComponentInChildren<GenericGrow>().fullyGrown)
+            if (foodData.energyStored > energyRequired)
             {
-                seeds -= 1;
-                if (Random.Range(1f, 100f) <= seedSuccessChance)
-                    CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
-            }
+                if ((whenToSpawn == WhenToSpawn.OnSelfSpawn) || 
+                    (whenToSpawn == WhenToSpawn.OnFullyGrown && transform.root.GetComponentInChildren<GenericGrow>().fullyGrown) || 
+                    (whenToSpawn == WhenToSpawn.OnTrigger && triggerSpawn))
+                {
+                    if (Random.Range(1f, 100f) <= seedSuccessChance)
+                        CreateFruit(fruitToSpawn);
 
-            if (whenToSpawn == WhenToSpawn.OnTrigger && triggerSpawn)
+                    seeds -= 1;
+
+                    if (triggerSpawn)
+                        triggerSpawn = false;
+                }
+            }
+            else
             {
-                seeds -= 1;
-                triggerSpawn = false;
-                if (Random.Range(1f, 100f) <= seedSuccessChance)
-                    CreateFruit(newFruit[Random.Range(0, newFruit.Count)]);
+                //Spawn Grasshopper Egg
+
             }
         }
 
@@ -102,17 +95,9 @@ public class SpawnFruit : MonoBehaviour
 
     private void CreateFruit(GameObject _newFruit)
     {
-        //Get desired spawn position
-        Vector3 newPos = transform.root.position;
-        if (randomSpawnPosition)
-        {
-            Vector3 seedCloudPos = GetRandomPointOnCol(GetComponent<BoxCollider>());
-            newPos = PointOnTerrainUnderPosition(seedCloudPos);
-        }
 
-        //Get desired rotation
-        Quaternion newRot = Quaternion.FromToRotation(transform.root.up, -GravityVector(transform.root.position)) * transform.root.rotation;
-        
+        FoodData newFData = _newFruit.GetComponentInChildren<FoodData>();
+        Vector3 spawnPos = GetSpawnLocation();
 
         //Get Parent relationship
         Transform parent = null;
@@ -123,18 +108,52 @@ public class SpawnFruit : MonoBehaviour
 
 
         //Spawn Child Fruit
-        if (newPos != Vector3.zero)
+        if (spawnPos != Vector3.zero)
         {
-            GameObject fruitToSpawn = (GameObject)Instantiate(_newFruit, newPos, newRot, parent);
+            GameObject fruitToSpawn = (GameObject)Instantiate(_newFruit, spawnPos, SpawnOrientation(), parent);
             fruitToSpawn.name = _newFruit.name;
+
+            //Random Rotation
             if (randomYRotation)
                 fruitToSpawn.transform.RotateAround(fruitToSpawn.transform.position, fruitToSpawn.transform.up, Random.Range(1f, 360f));
+            
+
+            //Allocate energy
+            if (divideRemainingEnergy)
+                energyToGive = foodData.energyStored / seeds;
+            else
+                energyToGive = newFData.nutritionalValue;
+
+            foodData.energyStored -= energyToGive;
+            fruitToSpawn.GetComponentInChildren<FoodData>().energyStored = energyToGive - newFData.nutritionalValue;
         }
         else
         {
             //Failed to find appropriate surface, recast seed
             CreateFruit(_newFruit);
         }
+    }
+
+
+    private Vector3 GetSpawnLocation()
+    {
+        //Get desired spawn position
+        Vector3 pos = transform.root.position;
+        if (randomSpawnPosition)
+        {
+            Vector3 seedCloudPos = GetRandomPointOnCol(GetComponent<BoxCollider>());
+            pos = PointOnTerrainUnderPosition(seedCloudPos);
+        }
+        
+        return pos;
+    }
+
+    private Quaternion SpawnOrientation()
+    {
+        //Get desired rotation
+        Quaternion rot = Quaternion.FromToRotation(transform.root.up, -GravityVector(transform.root.position)) * transform.root.rotation;
+
+        return rot;
     }
 
 
@@ -190,20 +209,6 @@ public class SpawnFruit : MonoBehaviour
         Vector3 gravityUp = (fromPos - PlanetCore.Core.transform.position).normalized;
         return -gravityUp;
     }
-
-
-    int CurrentPopulation(string nameOfSpecies)
-    {
-        int currentPopulation = 0;
-        foreach (CensusData speciesType in CensusMaster.Census.listOfSpecies)
-        {
-            if (speciesType.speciesName.Contains(nameOfSpecies))
-            {
-                currentPopulation = speciesType.populationSize;
-                break;
-            }
-        }
-        return currentPopulation;
-    }
+    
     #endregion
 }

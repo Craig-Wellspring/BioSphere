@@ -57,8 +57,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nutritionalValue: 15
-  timeToEat: 10
+  energyStored: 0
+  nutritionalValue: 10
+  timeToEat: 8
+  currentlyEdible: 1
+  destroyParent: 1
+  spawnSeed: 1
 --- !u!1 &1706303471575706740
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +80,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7746115344927138099
 Transform:
   m_ObjectHideFlags: 0
@@ -123,9 +127,7 @@ MonoBehaviour:
   whenToSpawn: 1
   seeds: 1
   seedSuccessChance: 10
-  popBasedSeedChance: 0
-  basedOnPopOf: {fileID: 8737545700984536676}
-  populationModifier: 2500
+  divideRemainingEnergy: 0
   randomYRotation: 1
   randomSpawnPosition: 1
   spawnArea: 5
@@ -313,7 +315,7 @@ GameObject:
   - component: {fileID: -5788609714652063709}
   m_Layer: 0
   m_Name: Bushgrass
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

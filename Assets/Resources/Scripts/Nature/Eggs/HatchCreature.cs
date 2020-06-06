@@ -5,6 +5,7 @@ using UnityEngine;
 public class HatchCreature : MonoBehaviour
 {
     public GameObject creatureToHatch;
+    public bool canHatch = false;
 
 
     public void Hatch()

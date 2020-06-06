@@ -1,0 +1,629 @@
+fileFormatVersion: 2
+guid: 9892081205f26704495a2fdae07c5c59
+timeCreated: 1516827342
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: grasshopper_Abdomen1_bone
+    100004: grasshopper_Abdomen2_bone
+    100006: grasshopper_Abdomen3_bone
+    100008: grasshopper_Abdomen4_bone
+    100010: grasshopper_Abdomen5_bone
+    100012: grasshopper_Abdomen6_bone
+    100014: grasshopper_Abdomen7-nub_bone
+    100016: grasshopper_Abdomen7_bone
+    100018: grasshopper_Abdomen_ctrl
+    100020: grasshopper_AbdomenEnd_ctrl002
+    100022: grasshopper_Body_mesh
+    100024: grasshopper_COM_ctrl
+    100026: grasshopper_Head-nub_bone
+    100028: grasshopper_Head_bone
+    100030: grasshopper_Head_ctrl
+    100032: grasshopper_Hip_ctrl
+    100034: grasshopper_l_Antennae1_bone
+    100036: grasshopper_l_Antennae1_ctrl
+    100038: grasshopper_l_Antennae2_bone
+    100040: grasshopper_l_Antennae2_ctrl
+    100042: grasshopper_l_Antennae3_bone
+    100044: grasshopper_l_Antennae3_ctrl
+    100046: grasshopper_l_Antennae4_bone
+    100048: grasshopper_l_Antennae4_ctrl
+    100050: grasshopper_l_Antennae5_bone
+    100052: grasshopper_l_Antennae5_ctrl
+    100054: grasshopper_l_Antennae6-nub_bone
+    100056: grasshopper_l_Antennae6_bone
+    100058: grasshopper_l_Antennae6_ctrl
+    100060: grasshopper_l_backball_IKGoal
+    100062: grasshopper_l_BackClaw-nub_bone
+    100064: grasshopper_l_BackClaw_bone
+    100066: grasshopper_l_BackFemur_bone
+    100068: grasshopper_l_BackFoot_ctrl
+    100070: grasshopper_l_BackHeel_hlp
+    100072: grasshopper_l_backheel_IKGoal
+    100074: grasshopper_l_BackHeelPeel_hlp
+    100076: grasshopper_l_BackTarsus_bone
+    100078: grasshopper_l_BackTibia_bone
+    100080: grasshopper_l_backtoe_IKGoal
+    100082: grasshopper_l_BackToeLift_hlp
+    100084: grasshopper_l_BackToeTap_hlp
+    100086: grasshopper_l_ball_IKGoal
+    100088: grasshopper_l_Claw-nub_bone
+    100090: grasshopper_l_Claw_bone
+    100092: grasshopper_l_Femur_bone
+    100094: grasshopper_l_Foot_ctrl
+    100096: grasshopper_l_foreball_IKGoal
+    100098: grasshopper_l_ForeFoot_ctrl
+    100100: grasshopper_l_ForeFoot_ctrl001
+    100102: grasshopper_l_ForeHeel_hlp
+    100104: grasshopper_l_foreheel_IKGoal
+    100106: grasshopper_l_ForeHeelPeel_hlp
+    100108: grasshopper_l_foretoe_IKGoal
+    100110: grasshopper_l_ForeToeLift_hlp
+    100112: grasshopper_l_ForeToeTap_hlp
+    100114: grasshopper_l_FrontClaw-nub_bone
+    100116: grasshopper_l_FrontClaw_bone
+    100118: grasshopper_l_FrontFemur_bone
+    100120: grasshopper_l_FrontTarsus_bone
+    100122: grasshopper_l_FrontTibia_bone
+    100124: grasshopper_l_Heel_hlp
+    100126: grasshopper_l_heel_IKGoal
+    100128: grasshopper_l_HeelPeel_hlp
+    100130: grasshopper_l_Tarsus_bone
+    100132: grasshopper_l_Tibia_bone
+    100134: grasshopper_l_toe_IKGoal
+    100136: grasshopper_l_ToeLift_hlp
+    100138: grasshopper_l_ToeTap_hlp
+    100140: grasshopper_Main_ctrl
+    100142: grasshopper_r_Antennae1_bone
+    100144: grasshopper_r_Antennae1_ctrl
+    100146: grasshopper_r_Antennae2_bone
+    100148: grasshopper_r_Antennae2_ctrl
+    100150: grasshopper_r_Antennae3_bone
+    100152: grasshopper_r_Antennae3_ctrl
+    100154: grasshopper_r_Antennae4_bone
+    100156: grasshopper_r_Antennae4_ctrl
+    100158: grasshopper_r_Antennae5_bone
+    100160: grasshopper_r_Antennae5_ctrl
+    100162: grasshopper_r_Antennae6-nub_bone
+    100164: grasshopper_r_Antennae6_bone
+    100166: grasshopper_r_Antennae6_ctrl
+    100168: grasshopper_r_backball_IKGoa
+    100170: grasshopper_r_BackClaw-nub_bone
+    100172: grasshopper_r_BackClaw_bone
+    100174: grasshopper_r_BackFemur_bone
+    100176: grasshopper_r_BackFoot_ctrl
+    100178: grasshopper_r_BackHeel_hlp
+    100180: grasshopper_r_backheel_IKGoal
+    100182: grasshopper_r_BackHeelPeel_hlp
+    100184: grasshopper_r_BackTarsus_bone
+    100186: grasshopper_r_BackTibia_bone
+    100188: grasshopper_r_backtoe_IKGoal
+    100190: grasshopper_r_BackToeLift_hlp
+    100192: grasshopper_r_BackToeTap_hlp
+    100194: grasshopper_r_ball_IKGoal
+    100196: grasshopper_r_Claw-nub_bone
+    100198: grasshopper_r_Claw_bone
+    100200: grasshopper_r_Femur_bone
+    100202: grasshopper_r_Foot_ctrl
+    100204: grasshopper_r_foreball_IKGoal
+    100206: grasshopper_r_ForeHeel_hlp
+    100208: grasshopper_r_foreheel_IKGoal
+    100210: grasshopper_r_ForeHeelPeel_hlp
+    100212: grasshopper_r_foretoe_IKGoal
+    100214: grasshopper_r_ForeToeLift_hlp
+    100216: grasshopper_r_ForeToeTap_hlp
+    100218: grasshopper_r_FrontClaw-nub_bone
+    100220: grasshopper_r_FrontClaw_bone
+    100222: grasshopper_r_FrontFemur_bone
+    100224: grasshopper_r_FrontTarsus_bone
+    100226: grasshopper_r_FrontTibia_bone
+    100228: grasshopper_r_Heel_hlp
+    100230: grasshopper_r_heel_IKGoal
+    100232: grasshopper_r_HeelPeel_hlp
+    100234: grasshopper_r_Tarsus_bone
+    100236: grasshopper_r_Tibia_bone
+    100238: grasshopper_r_toe_IKGoal
+    100240: grasshopper_r_ToeLift_hlp
+    100242: grasshopper_r_ToeTap_hlp
+    100244: grasshopper_Spine_ctrl
+    100246: grasshopper_SpineBase_ctrl
+    100248: grasshopper_Thorax_bone
+    100250: Line016
+    100252: wegrasshopper_AbdomenBase_ctrl
+    400000: //RootNode
+    400002: grasshopper_Abdomen1_bone
+    400004: grasshopper_Abdomen2_bone
+    400006: grasshopper_Abdomen3_bone
+    400008: grasshopper_Abdomen4_bone
+    400010: grasshopper_Abdomen5_bone
+    400012: grasshopper_Abdomen6_bone
+    400014: grasshopper_Abdomen7-nub_bone
+    400016: grasshopper_Abdomen7_bone
+    400018: grasshopper_Abdomen_ctrl
+    400020: grasshopper_AbdomenEnd_ctrl002
+    400022: grasshopper_Body_mesh
+    400024: grasshopper_COM_ctrl
+    400026: grasshopper_Head-nub_bone
+    400028: grasshopper_Head_bone
+    400030: grasshopper_Head_ctrl
+    400032: grasshopper_Hip_ctrl
+    400034: grasshopper_l_Antennae1_bone
+    400036: grasshopper_l_Antennae1_ctrl
+    400038: grasshopper_l_Antennae2_bone
+    400040: grasshopper_l_Antennae2_ctrl
+    400042: grasshopper_l_Antennae3_bone
+    400044: grasshopper_l_Antennae3_ctrl
+    400046: grasshopper_l_Antennae4_bone
+    400048: grasshopper_l_Antennae4_ctrl
+    400050: grasshopper_l_Antennae5_bone
+    400052: grasshopper_l_Antennae5_ctrl
+    400054: grasshopper_l_Antennae6-nub_bone
+    400056: grasshopper_l_Antennae6_bone
+    400058: grasshopper_l_Antennae6_ctrl
+    400060: grasshopper_l_backball_IKGoal
+    400062: grasshopper_l_BackClaw-nub_bone
+    400064: grasshopper_l_BackClaw_bone
+    400066: grasshopper_l_BackFemur_bone
+    400068: grasshopper_l_BackFoot_ctrl
+    400070: grasshopper_l_BackHeel_hlp
+    400072: grasshopper_l_backheel_IKGoal
+    400074: grasshopper_l_BackHeelPeel_hlp
+    400076: grasshopper_l_BackTarsus_bone
+    400078: grasshopper_l_BackTibia_bone
+    400080: grasshopper_l_backtoe_IKGoal
+    400082: grasshopper_l_BackToeLift_hlp
+    400084: grasshopper_l_BackToeTap_hlp
+    400086: grasshopper_l_ball_IKGoal
+    400088: grasshopper_l_Claw-nub_bone
+    400090: grasshopper_l_Claw_bone
+    400092: grasshopper_l_Femur_bone
+    400094: grasshopper_l_Foot_ctrl
+    400096: grasshopper_l_foreball_IKGoal
+    400098: grasshopper_l_ForeFoot_ctrl
+    400100: grasshopper_l_ForeFoot_ctrl001
+    400102: grasshopper_l_ForeHeel_hlp
+    400104: grasshopper_l_foreheel_IKGoal
+    400106: grasshopper_l_ForeHeelPeel_hlp
+    400108: grasshopper_l_foretoe_IKGoal
+    400110: grasshopper_l_ForeToeLift_hlp
+    400112: grasshopper_l_ForeToeTap_hlp
+    400114: grasshopper_l_FrontClaw-nub_bone
+    400116: grasshopper_l_FrontClaw_bone
+    400118: grasshopper_l_FrontFemur_bone
+    400120: grasshopper_l_FrontTarsus_bone
+    400122: grasshopper_l_FrontTibia_bone
+    400124: grasshopper_l_Heel_hlp
+    400126: grasshopper_l_heel_IKGoal
+    400128: grasshopper_l_HeelPeel_hlp
+    400130: grasshopper_l_Tarsus_bone
+    400132: grasshopper_l_Tibia_bone
+    400134: grasshopper_l_toe_IKGoal
+    400136: grasshopper_l_ToeLift_hlp
+    400138: grasshopper_l_ToeTap_hlp
+    400140: grasshopper_Main_ctrl
+    400142: grasshopper_r_Antennae1_bone
+    400144: grasshopper_r_Antennae1_ctrl
+    400146: grasshopper_r_Antennae2_bone
+    400148: grasshopper_r_Antennae2_ctrl
+    400150: grasshopper_r_Antennae3_bone
+    400152: grasshopper_r_Antennae3_ctrl
+    400154: grasshopper_r_Antennae4_bone
+    400156: grasshopper_r_Antennae4_ctrl
+    400158: grasshopper_r_Antennae5_bone
+    400160: grasshopper_r_Antennae5_ctrl
+    400162: grasshopper_r_Antennae6-nub_bone
+    400164: grasshopper_r_Antennae6_bone
+    400166: grasshopper_r_Antennae6_ctrl
+    400168: grasshopper_r_backball_IKGoa
+    400170: grasshopper_r_BackClaw-nub_bone
+    400172: grasshopper_r_BackClaw_bone
+    400174: grasshopper_r_BackFemur_bone
+    400176: grasshopper_r_BackFoot_ctrl
+    400178: grasshopper_r_BackHeel_hlp
+    400180: grasshopper_r_backheel_IKGoal
+    400182: grasshopper_r_BackHeelPeel_hlp
+    400184: grasshopper_r_BackTarsus_bone
+    400186: grasshopper_r_BackTibia_bone
+    400188: grasshopper_r_backtoe_IKGoal
+    400190: grasshopper_r_BackToeLift_hlp
+    400192: grasshopper_r_BackToeTap_hlp
+    400194: grasshopper_r_ball_IKGoal
+    400196: grasshopper_r_Claw-nub_bone
+    400198: grasshopper_r_Claw_bone
+    400200: grasshopper_r_Femur_bone
+    400202: grasshopper_r_Foot_ctrl
+    400204: grasshopper_r_foreball_IKGoal
+    400206: grasshopper_r_ForeHeel_hlp
+    400208: grasshopper_r_foreheel_IKGoal
+    400210: grasshopper_r_ForeHeelPeel_hlp
+    400212: grasshopper_r_foretoe_IKGoal
+    400214: grasshopper_r_ForeToeLift_hlp
+    400216: grasshopper_r_ForeToeTap_hlp
+    400218: grasshopper_r_FrontClaw-nub_bone
+    400220: grasshopper_r_FrontClaw_bone
+    400222: grasshopper_r_FrontFemur_bone
+    400224: grasshopper_r_FrontTarsus_bone
+    400226: grasshopper_r_FrontTibia_bone
+    400228: grasshopper_r_Heel_hlp
+    400230: grasshopper_r_heel_IKGoal
+    400232: grasshopper_r_HeelPeel_hlp
+    400234: grasshopper_r_Tarsus_bone
+    400236: grasshopper_r_Tibia_bone
+    400238: grasshopper_r_toe_IKGoal
+    400240: grasshopper_r_ToeLift_hlp
+    400242: grasshopper_r_ToeTap_hlp
+    400244: grasshopper_Spine_ctrl
+    400246: grasshopper_SpineBase_ctrl
+    400248: grasshopper_Thorax_bone
+    400250: Line016
+    400252: wegrasshopper_AbdomenBase_ctrl
+    2300000: grasshopper_l_BackFoot_ctrl
+    2300002: grasshopper_l_Foot_ctrl
+    2300004: grasshopper_l_ForeFoot_ctrl
+    2300006: grasshopper_l_ForeFoot_ctrl001
+    2300008: grasshopper_r_BackFoot_ctrl
+    2300010: grasshopper_r_Foot_ctrl
+    3300000: grasshopper_l_BackFoot_ctrl
+    3300002: grasshopper_l_Foot_ctrl
+    3300004: grasshopper_l_ForeFoot_ctrl
+    3300006: grasshopper_l_ForeFoot_ctrl001
+    3300008: grasshopper_r_BackFoot_ctrl
+    3300010: grasshopper_r_Foot_ctrl
+    4300000: grasshopper_Body_mesh
+    4300002: grasshopper_l_ForeFoot_ctrl
+    4300004: grasshopper_l_ForeFoot_ctrl001
+    4300006: grasshopper_r_Foot_ctrl
+    4300008: grasshopper_l_Foot_ctrl
+    4300010: grasshopper_r_BackFoot_ctrl
+    4300012: grasshopper_l_BackFoot_ctrl
+    7400000: turnleft
+    9500000: //RootNode
+    13700000: grasshopper_Body_mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: turnleft
+      takeName: Take 001
+      firstFrame: 301
+      lastFrame: 337
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: grasshopper_Abdomen_ctrl
+        weight: 1
+      - path: grasshopper_AbdomenEnd_ctrl002
+        weight: 1
+      - path: grasshopper_Body_mesh
+        weight: 1
+      - path: grasshopper_Head_ctrl
+        weight: 1
+      - path: grasshopper_Hip_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_Abdomen2_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_Abdomen2_bone/grasshopper_Abdomen3_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_Abdomen2_bone/grasshopper_Abdomen3_bone/grasshopper_Abdomen4_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_Abdomen2_bone/grasshopper_Abdomen3_bone/grasshopper_Abdomen4_bone/grasshopper_Abdomen5_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_Abdomen2_bone/grasshopper_Abdomen3_bone/grasshopper_Abdomen4_bone/grasshopper_Abdomen5_bone/grasshopper_Abdomen6_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_Abdomen2_bone/grasshopper_Abdomen3_bone/grasshopper_Abdomen4_bone/grasshopper_Abdomen5_bone/grasshopper_Abdomen6_bone/grasshopper_Abdomen7_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_Abdomen2_bone/grasshopper_Abdomen3_bone/grasshopper_Abdomen4_bone/grasshopper_Abdomen5_bone/grasshopper_Abdomen6_bone/grasshopper_Abdomen7_bone/grasshopper_Abdomen7-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_l_BackFemur_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_l_BackFemur_bone/grasshopper_l_BackTibia_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_l_BackFemur_bone/grasshopper_l_BackTibia_bone/grasshopper_l_BackTarsus_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_l_BackFemur_bone/grasshopper_l_BackTibia_bone/grasshopper_l_BackTarsus_bone/grasshopper_l_BackClaw_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_l_BackFemur_bone/grasshopper_l_BackTibia_bone/grasshopper_l_BackTarsus_bone/grasshopper_l_BackClaw_bone/grasshopper_l_BackClaw-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_r_BackFemur_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_r_BackFemur_bone/grasshopper_r_BackTibia_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_r_BackFemur_bone/grasshopper_r_BackTibia_bone/grasshopper_r_BackTarsus_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_r_BackFemur_bone/grasshopper_r_BackTibia_bone/grasshopper_r_BackTarsus_bone/grasshopper_r_BackClaw_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Abdomen1_bone/grasshopper_r_BackFemur_bone/grasshopper_r_BackTibia_bone/grasshopper_r_BackTarsus_bone/grasshopper_r_BackClaw_bone/grasshopper_r_BackClaw-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_Head-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone/grasshopper_l_Antennae4_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone/grasshopper_l_Antennae4_ctrl/grasshopper_l_Antennae4_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone/grasshopper_l_Antennae4_ctrl/grasshopper_l_Antennae4_bone/grasshopper_l_Antennae5_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone/grasshopper_l_Antennae4_ctrl/grasshopper_l_Antennae4_bone/grasshopper_l_Antennae5_ctrl/grasshopper_l_Antennae5_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone/grasshopper_l_Antennae4_ctrl/grasshopper_l_Antennae4_bone/grasshopper_l_Antennae5_ctrl/grasshopper_l_Antennae5_bone/grasshopper_l_Antennae6_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone/grasshopper_l_Antennae4_ctrl/grasshopper_l_Antennae4_bone/grasshopper_l_Antennae5_ctrl/grasshopper_l_Antennae5_bone/grasshopper_l_Antennae6_ctrl/grasshopper_l_Antennae6_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_l_Antennae1_ctrl/grasshopper_l_Antennae1_bone/grasshopper_l_Antennae2_ctrl/grasshopper_l_Antennae2_bone/grasshopper_l_Antennae3_ctrl/grasshopper_l_Antennae3_bone/grasshopper_l_Antennae4_ctrl/grasshopper_l_Antennae4_bone/grasshopper_l_Antennae5_ctrl/grasshopper_l_Antennae5_bone/grasshopper_l_Antennae6_ctrl/grasshopper_l_Antennae6_bone/grasshopper_l_Antennae6-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone/grasshopper_r_Antennae4_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone/grasshopper_r_Antennae4_ctrl/grasshopper_r_Antennae4_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone/grasshopper_r_Antennae4_ctrl/grasshopper_r_Antennae4_bone/grasshopper_r_Antennae5_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone/grasshopper_r_Antennae4_ctrl/grasshopper_r_Antennae4_bone/grasshopper_r_Antennae5_ctrl/grasshopper_r_Antennae5_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone/grasshopper_r_Antennae4_ctrl/grasshopper_r_Antennae4_bone/grasshopper_r_Antennae5_ctrl/grasshopper_r_Antennae5_bone/grasshopper_r_Antennae6_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone/grasshopper_r_Antennae4_ctrl/grasshopper_r_Antennae4_bone/grasshopper_r_Antennae5_ctrl/grasshopper_r_Antennae5_bone/grasshopper_r_Antennae6_ctrl/grasshopper_r_Antennae6_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_Head_bone/grasshopper_r_Antennae1_ctrl/grasshopper_r_Antennae1_bone/grasshopper_r_Antennae2_ctrl/grasshopper_r_Antennae2_bone/grasshopper_r_Antennae3_ctrl/grasshopper_r_Antennae3_bone/grasshopper_r_Antennae4_ctrl/grasshopper_r_Antennae4_bone/grasshopper_r_Antennae5_ctrl/grasshopper_r_Antennae5_bone/grasshopper_r_Antennae6_ctrl/grasshopper_r_Antennae6_bone/grasshopper_r_Antennae6-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_Femur_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_Femur_bone/grasshopper_l_Tibia_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_Femur_bone/grasshopper_l_Tibia_bone/grasshopper_l_Tarsus_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_Femur_bone/grasshopper_l_Tibia_bone/grasshopper_l_Tarsus_bone/grasshopper_l_Claw_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_Femur_bone/grasshopper_l_Tibia_bone/grasshopper_l_Tarsus_bone/grasshopper_l_Claw_bone/grasshopper_l_Claw-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_FrontFemur_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_FrontFemur_bone/grasshopper_l_FrontTibia_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_FrontFemur_bone/grasshopper_l_FrontTibia_bone/grasshopper_l_FrontTarsus_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_FrontFemur_bone/grasshopper_l_FrontTibia_bone/grasshopper_l_FrontTarsus_bone/grasshopper_l_FrontClaw_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_l_FrontFemur_bone/grasshopper_l_FrontTibia_bone/grasshopper_l_FrontTarsus_bone/grasshopper_l_FrontClaw_bone/grasshopper_l_FrontClaw-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_Femur_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_Femur_bone/grasshopper_r_Tibia_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_Femur_bone/grasshopper_r_Tibia_bone/grasshopper_r_Tarsus_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_Femur_bone/grasshopper_r_Tibia_bone/grasshopper_r_Tarsus_bone/grasshopper_r_Claw_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_Femur_bone/grasshopper_r_Tibia_bone/grasshopper_r_Tarsus_bone/grasshopper_r_Claw_bone/grasshopper_r_Claw-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_FrontFemur_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_FrontFemur_bone/grasshopper_r_FrontTibia_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_FrontFemur_bone/grasshopper_r_FrontTibia_bone/grasshopper_r_FrontTarsus_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_FrontFemur_bone/grasshopper_r_FrontTibia_bone/grasshopper_r_FrontTarsus_bone/grasshopper_r_FrontClaw_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_COM_ctrl/grasshopper_Thorax_bone/grasshopper_r_FrontFemur_bone/grasshopper_r_FrontTibia_bone/grasshopper_r_FrontTarsus_bone/grasshopper_r_FrontClaw_bone/grasshopper_r_FrontClaw-nub_bone
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl/grasshopper_l_BackHeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl/grasshopper_l_BackHeel_hlp/grasshopper_l_BackToeLift_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl/grasshopper_l_BackHeel_hlp/grasshopper_l_BackToeLift_hlp/grasshopper_l_BackHeelPeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl/grasshopper_l_BackHeel_hlp/grasshopper_l_BackToeLift_hlp/grasshopper_l_BackHeelPeel_hlp/grasshopper_l_backball_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl/grasshopper_l_BackHeel_hlp/grasshopper_l_BackToeLift_hlp/grasshopper_l_BackHeelPeel_hlp/grasshopper_l_backheel_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl/grasshopper_l_BackHeel_hlp/grasshopper_l_BackToeLift_hlp/grasshopper_l_BackToeTap_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_BackFoot_ctrl/grasshopper_l_BackHeel_hlp/grasshopper_l_BackToeLift_hlp/grasshopper_l_BackToeTap_hlp/grasshopper_l_backtoe_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl/grasshopper_l_Heel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl/grasshopper_l_Heel_hlp/grasshopper_l_ToeLift_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl/grasshopper_l_Heel_hlp/grasshopper_l_ToeLift_hlp/grasshopper_l_HeelPeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl/grasshopper_l_Heel_hlp/grasshopper_l_ToeLift_hlp/grasshopper_l_HeelPeel_hlp/grasshopper_l_ball_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl/grasshopper_l_Heel_hlp/grasshopper_l_ToeLift_hlp/grasshopper_l_HeelPeel_hlp/grasshopper_l_heel_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl/grasshopper_l_Heel_hlp/grasshopper_l_ToeLift_hlp/grasshopper_l_ToeTap_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_Foot_ctrl/grasshopper_l_Heel_hlp/grasshopper_l_ToeLift_hlp/grasshopper_l_ToeTap_hlp/grasshopper_l_toe_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl/grasshopper_l_ForeHeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl/grasshopper_l_ForeHeel_hlp/grasshopper_l_ForeToeLift_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl/grasshopper_l_ForeHeel_hlp/grasshopper_l_ForeToeLift_hlp/grasshopper_l_ForeHeelPeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl/grasshopper_l_ForeHeel_hlp/grasshopper_l_ForeToeLift_hlp/grasshopper_l_ForeHeelPeel_hlp/grasshopper_l_foreball_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl/grasshopper_l_ForeHeel_hlp/grasshopper_l_ForeToeLift_hlp/grasshopper_l_ForeHeelPeel_hlp/grasshopper_l_foreheel_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl/grasshopper_l_ForeHeel_hlp/grasshopper_l_ForeToeLift_hlp/grasshopper_l_ForeToeTap_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl/grasshopper_l_ForeHeel_hlp/grasshopper_l_ForeToeLift_hlp/grasshopper_l_ForeToeTap_hlp/grasshopper_l_foretoe_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001/grasshopper_r_ForeHeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001/grasshopper_r_ForeHeel_hlp/grasshopper_r_ForeToeLift_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001/grasshopper_r_ForeHeel_hlp/grasshopper_r_ForeToeLift_hlp/grasshopper_r_ForeHeelPeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001/grasshopper_r_ForeHeel_hlp/grasshopper_r_ForeToeLift_hlp/grasshopper_r_ForeHeelPeel_hlp/grasshopper_r_foreball_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001/grasshopper_r_ForeHeel_hlp/grasshopper_r_ForeToeLift_hlp/grasshopper_r_ForeHeelPeel_hlp/grasshopper_r_foreheel_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001/grasshopper_r_ForeHeel_hlp/grasshopper_r_ForeToeLift_hlp/grasshopper_r_ForeToeTap_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_l_ForeFoot_ctrl001/grasshopper_r_ForeHeel_hlp/grasshopper_r_ForeToeLift_hlp/grasshopper_r_ForeToeTap_hlp/grasshopper_r_foretoe_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl/grasshopper_r_BackHeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl/grasshopper_r_BackHeel_hlp/grasshopper_r_BackToeLift_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl/grasshopper_r_BackHeel_hlp/grasshopper_r_BackToeLift_hlp/grasshopper_r_BackHeelPeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl/grasshopper_r_BackHeel_hlp/grasshopper_r_BackToeLift_hlp/grasshopper_r_BackHeelPeel_hlp/grasshopper_r_backball_IKGoa
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl/grasshopper_r_BackHeel_hlp/grasshopper_r_BackToeLift_hlp/grasshopper_r_BackHeelPeel_hlp/grasshopper_r_backheel_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl/grasshopper_r_BackHeel_hlp/grasshopper_r_BackToeLift_hlp/grasshopper_r_BackToeTap_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_BackFoot_ctrl/grasshopper_r_BackHeel_hlp/grasshopper_r_BackToeLift_hlp/grasshopper_r_BackToeTap_hlp/grasshopper_r_backtoe_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl/grasshopper_r_Heel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl/grasshopper_r_Heel_hlp/grasshopper_r_ToeLift_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl/grasshopper_r_Heel_hlp/grasshopper_r_ToeLift_hlp/grasshopper_r_HeelPeel_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl/grasshopper_r_Heel_hlp/grasshopper_r_ToeLift_hlp/grasshopper_r_HeelPeel_hlp/grasshopper_r_ball_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl/grasshopper_r_Heel_hlp/grasshopper_r_ToeLift_hlp/grasshopper_r_HeelPeel_hlp/grasshopper_r_heel_IKGoal
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl/grasshopper_r_Heel_hlp/grasshopper_r_ToeLift_hlp/grasshopper_r_ToeTap_hlp
+        weight: 1
+      - path: grasshopper_Main_ctrl/grasshopper_r_Foot_ctrl/grasshopper_r_Heel_hlp/grasshopper_r_ToeLift_hlp/grasshopper_r_ToeTap_hlp/grasshopper_r_toe_IKGoal
+        weight: 1
+      - path: grasshopper_Spine_ctrl
+        weight: 1
+      - path: grasshopper_SpineBase_ctrl
+        weight: 1
+      - path: Line016
+        weight: 1
+      - path: wegrasshopper_AbdomenBase_ctrl
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 301
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: grasshopper_Main_ctrl
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

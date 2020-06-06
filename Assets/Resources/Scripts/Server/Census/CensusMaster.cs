@@ -85,4 +85,19 @@ public class CensusMaster : MonoBehaviour
             }
         }
     }
+
+
+    int CurrentPopulation(string nameOfSpecies)
+    {
+        int currentPopulation = 0;
+        foreach (CensusData speciesType in listOfSpecies)
+        {
+            if (speciesType.speciesName.Contains(nameOfSpecies))
+            {
+                currentPopulation = speciesType.populationSize;
+                break;
+            }
+        }
+        return currentPopulation;
+    }
 }

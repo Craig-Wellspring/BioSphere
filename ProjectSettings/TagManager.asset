@@ -25,6 +25,7 @@ TagManager:
   - Water
   - Fly
   - Climb
+  - Wolf
   layers:
   - Default
   - TransparentFX

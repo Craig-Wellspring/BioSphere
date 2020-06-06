@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8450652229537595673}
   - component: {fileID: 6055552335522393816}
   - component: {fileID: 6582431988550478548}
-  m_Layer: 9
+  m_Layer: 30
   m_Name: eggshell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &6547489676839933374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nutritionalValue: 20
+  timeToEat: 5
+  destroyParent: 1
 --- !u!114 &6800496448447545596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,8 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4648f57e0d9d668419f4fc4b0b6f1e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatureToHatch: {fileID: 1644373995442134, guid: 0187bdd962557471faee34c9b592135c,
+  creatureToHatch: {fileID: 7342251847775023178, guid: 0121f4609896163448f68897ac76cd67,
     type: 3}
+  canHatch: 1
 --- !u!95 &267428337273843101
 Animator:
   serializedVersion: 3
