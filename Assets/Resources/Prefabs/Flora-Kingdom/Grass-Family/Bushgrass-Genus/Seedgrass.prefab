@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5805671300866458820
 Transform:
   m_ObjectHideFlags: 0
@@ -64,6 +64,8 @@ MonoBehaviour:
   seeds: 12
   seedSuccessChance: 80
   divideRemainingEnergy: 0
+  nextSeedPod: {fileID: 2458394783605000398}
+  castOffEntity: {fileID: 0}
   randomYRotation: 1
   randomSpawnPosition: 1
   spawnArea: 20
@@ -86,7 +88,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8897655627022808442
 Transform:
   m_ObjectHideFlags: 0
@@ -133,78 +135,12 @@ MonoBehaviour:
   seeds: 2
   seedSuccessChance: 100
   divideRemainingEnergy: 1
+  nextSeedPod: {fileID: 0}
+  castOffEntity: {fileID: 692861899004652731, guid: 9a483fcd344f0d149bb9a8be5207ab09,
+    type: 3}
   randomYRotation: 1
   randomSpawnPosition: 1
   spawnArea: 15
-  triggerSpawn: 0
-  drawDebugSeed: 0
---- !u!1 &4407690890154018599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4561036823427265512}
-  - component: {fileID: 3750334392791897819}
-  - component: {fileID: 5237449386549941881}
-  m_Layer: 0
-  m_Name: SeedPod - Wheat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4561036823427265512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4407690890154018599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6842223849494278757}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3750334392791897819
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4407690890154018599}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.001, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5237449386549941881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4407690890154018599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b7d1cb72d673c41a3f108b0e8704cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newFruit:
-  - {fileID: 6982027621122888152, guid: efd1327b27576d24db4a7d2ea87e1968, type: 3}
-  parentRelationship: 0
-  whenToSpawn: 1
-  seeds: 1
-  seedSuccessChance: 10
-  divideRemainingEnergy: 0
-  randomYRotation: 1
-  randomSpawnPosition: 1
-  spawnArea: 10
   triggerSpawn: 0
   drawDebugSeed: 0
 --- !u!1 &4763684185420451173
@@ -301,7 +237,7 @@ Transform:
   - {fileID: 6842223849494278759}
   - {fileID: 6842223849494278753}
   m_Father: {fileID: 6842223849494278757}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &7784330374298399770
 LODGroup:
@@ -469,7 +405,6 @@ Transform:
   - {fileID: 3590776062663426647}
   - {fileID: 5805671300866458820}
   - {fileID: 8897655627022808442}
-  - {fileID: 4561036823427265512}
   - {fileID: 4504033965896981743}
   m_Father: {fileID: 0}
   m_RootOrder: 0

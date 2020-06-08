@@ -15,6 +15,7 @@ public class Metabolism : MonoBehaviour
     [Tooltip("How Hungry the Creature currently feels")]
     public float hungerUnits = 0f;
     public float hungerPercentage = 0f;
+    public bool logEating = false;
     
     [Header("Metabolism Settings")]
     [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
@@ -110,7 +111,8 @@ public class Metabolism : MonoBehaviour
         {
             //Satiate
             Digest(target);
-            Debug.Log(this.transform.root.name + " ate " + target.name + " from " + target.transform.root.name);
+            if (logEating)
+                Debug.Log(this.transform.root.name + " ate " + target.name + " from " + target.transform.root.name);
             
             //Destroy food
             if (target.GetComponent<FoodData>().destroyParent)
@@ -127,6 +129,7 @@ public class Metabolism : MonoBehaviour
         float foodValue = food.GetComponent<FoodData>().nutritionalValue;
         hungerUnits -= foodValue;
         cData.energyUnits += foodValue;
+        food.GetComponent<FoodData>().nutritionalValue -= foodValue;
     }
 
 

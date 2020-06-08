@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenericDecay : MonoBehaviour
 {
     public float decayTime;
+    public bool destroyRoot = false;
 
     private void OnEnable()
     {
@@ -13,6 +14,9 @@ public class GenericDecay : MonoBehaviour
 
     private void Expire()
     {
-        Destroy(this.gameObject, decayTime);
+        if (destroyRoot)
+            Destroy(transform.root.gameObject, decayTime);
+        else
+            Destroy(this.gameObject, decayTime);
     }
 }

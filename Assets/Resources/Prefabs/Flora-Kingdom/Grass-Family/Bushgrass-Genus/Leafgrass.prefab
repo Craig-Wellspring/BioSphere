@@ -64,9 +64,12 @@ MonoBehaviour:
   seeds: 2
   seedSuccessChance: 100
   divideRemainingEnergy: 1
+  nextSeedPod: {fileID: 0}
+  castOffEntity: {fileID: 692861899004652731, guid: 9a483fcd344f0d149bb9a8be5207ab09,
+    type: 3}
   randomYRotation: 1
   randomSpawnPosition: 1
-  spawnArea: 250
+  spawnArea: 70
   triggerSpawn: 0
   drawDebugSeed: 0
 --- !u!1 &3501813778060912219

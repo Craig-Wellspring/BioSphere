@@ -7,7 +7,7 @@ using Pathfinding;
 public class Vitality : MonoBehaviour
 {
     [Header("Health")]
-    public Slider healthBar;
+    public GameObject creatureCanvas;
     public float maxHealth;
     public float currentHealth;
     [Space(10)]
@@ -32,15 +32,15 @@ public class Vitality : MonoBehaviour
     {
         creatureAI = GetComponent<CreatureAI>();
         metabolism = GetComponent<Metabolism>();
-        animator = GetComponent<Animator>();
         cData = GetComponent<CreatureData>();
+        animator = GetComponentInParent<Animator>();
     }
 
     public void TakeDamage(int amount)
     {
         if (!dead)
         {
-            healthBar.gameObject.SetActive(true);
+            creatureCanvas.gameObject.SetActive(true);
             currentHealth -= amount;
             animator.SetTrigger("TakeDamage");
 
@@ -65,14 +65,14 @@ public class Vitality : MonoBehaviour
         //Die
         //animator.SetBool("Dead", true);
         dead = true;
-        if (healthBar.gameObject.activeSelf)
-            healthBar.gameObject.SetActive(false);
+        if (creatureCanvas.gameObject.activeSelf)
+            creatureCanvas.gameObject.SetActive(false);
         foreach (Collider body in bodyColliders)
             body.enabled = false;
         
         corpse.gameObject.SetActive(true);
 
-        corpse.GetComponent<FoodData>().nutritionalValue = cData.energyUnits;
+        corpse.GetComponent<FoodData>().nutritionalValue += cData.energyUnits;
         cData.energyUnits = 0;
         
         if (creatureAI != null)
@@ -87,7 +87,7 @@ public class Vitality : MonoBehaviour
         //Come back to life
         //animator.SetBool("Dead", false);
         dead = false;
-        healthBar.gameObject.SetActive(true);
+        creatureCanvas.gameObject.SetActive(true);
         foreach (Collider body in bodyColliders)
             body.enabled = true;
 

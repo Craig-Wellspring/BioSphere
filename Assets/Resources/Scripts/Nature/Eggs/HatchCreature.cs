@@ -10,12 +10,23 @@ public class HatchCreature : MonoBehaviour
 
     public void Hatch()
     {
-        CrackShell();
         SpawnCreature(creatureToHatch);
+        CrackShell();
     }
 
 
 
+
+    private void SpawnCreature(GameObject newCreature)
+    {
+        GameObject creatureToSpawn = Instantiate(newCreature, transform.position, transform.rotation);
+        PlanetCore.Core.AlignWithGravity(creatureToSpawn.transform);
+        creatureToSpawn.name = newCreature.name;
+
+
+        //Allocate Energy
+        creatureToSpawn.GetComponentInChildren<CreatureData>().energyUnits = GetComponent<FoodData>().nutritionalValue;
+    }
 
 
     private void CrackShell()
@@ -30,13 +41,7 @@ public class HatchCreature : MonoBehaviour
         bottomshell.transform.localScale = currentScale;
         topshell.transform.SetParent(null);
         bottomshell.transform.SetParent(null);
-
+        
         Destroy(this.gameObject);
-    }
-
-    private void SpawnCreature(GameObject newCreature)
-    {
-        GameObject tmp = Instantiate(newCreature, transform.position, newCreature.transform.rotation);
-        tmp.name = newCreature.name;
     }
 }
