@@ -6,8 +6,13 @@ public class Morphology : MonoBehaviour
 {
     public GameObject carniMorph;
     public GameObject herbiMorph;
+
+    public float energyReserve = 20f;
+
+    public bool logEvolutions = false;
     
     CreatureData cData;
+    SeedSpawner seedSpawner;
 
     private bool carnivore = false;
 
@@ -16,18 +21,21 @@ public class Morphology : MonoBehaviour
     private void Start()
     {
         cData = GetComponent<CreatureData>();
+        seedSpawner = transform.root.GetComponentInChildren<SeedSpawner>(true); //Includes inactive GameObjects
     }
 
 
 
-    private void CalculateEvolutions()
+    private void CalculateMorphology()
     {
         if (cData.lifetimeDiet.Contains("Meat"))
             carnivore = true;
     }
 
-    private GameObject NewMorph()
+    private GameObject ChooseNewForm()
     {
+        CalculateMorphology();
+
         if (carnivore)
             return carniMorph;
         else
@@ -36,9 +44,26 @@ public class Morphology : MonoBehaviour
 
     public void Evolve()
     {
-        CalculateEvolutions();
-        GameObject morphToForm = NewMorph();
+        GameObject morphToForm = ChooseNewForm();
 
-        Debug.Log(transform.root.name + " is trying to morph into " + morphToForm.name);
+        //Spawn Seedgrass with excess energy
+        seedSpawner.PlantSeed(cData.energyUnits - energyReserve);
+        cData.energyUnits = energyReserve;
+
+        //Activate animation that triggers SpawnForm and DespawnForm
+
+        if (logEvolutions)
+            Debug.Log(transform.root.name + " is trying to morph into " + morphToForm.name);
+    }
+
+    public void SpawnForm()
+    {
+        //Spawn new Creature Form
+            //Allocate energy
+    }
+
+    public void DespawnForm()
+    {
+        //Despawn old Creature Form
     }
 }

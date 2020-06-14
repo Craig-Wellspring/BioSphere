@@ -111,7 +111,8 @@ PrefabInstance:
         type: 3}
       propertyPath: creatureToHatch
       value: 
-      objectReference: {fileID: 100250, guid: 83289961c5fa0d84089af5b69af31dfd, type: 3}
+      objectReference: {fileID: 2396180645501600818, guid: b97e40fac0541a6468aec3beb931521e,
+        type: 3}
     - target: {fileID: 6995924490321542597, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

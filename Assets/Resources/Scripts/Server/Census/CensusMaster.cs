@@ -11,6 +11,14 @@ public class CensusMaster : MonoBehaviour
     private int globalOvergrowth = 30000;
     [Tooltip("Emergency stop for overpopulation of each species"), SerializeField]
     private int speciesOvergrowth = 10000;
+
+    [Header("Event Log")]
+    public bool logPopulationIncrease = false;
+    public bool logPopulationDecrease = false;
+    public bool logExtinctions = false;
+    public bool logEmergences = false;
+
+    [Header("Current Populations")]
     [SerializeField]
     private int totalPopulation = 0;
     public List<CensusData> listOfSpecies;
@@ -37,9 +45,13 @@ public class CensusMaster : MonoBehaviour
             //If already on the list, add to population
             if (member.speciesName.Equals(newMember))
             {
-                //Debug.Log(newMember + " population increased to " + member.populationSize);
+
                 member.populationSize += 1;
                 totalPopulation += 1;
+
+                //Log
+                if (logPopulationIncrease)
+                    Debug.Log(newMember + " population increased to " + member.populationSize);
 
                 //Crash if population is too high
                 if (member.populationSize >= speciesOvergrowth)
@@ -61,6 +73,10 @@ public class CensusMaster : MonoBehaviour
             //If not found on the list, add to list
             listOfSpecies.Add(new CensusData(newMember, 1));
             totalPopulation += 1;
+
+            //Log
+            if (logEmergences)
+                Debug.Log(newMember + " has emerged in the world.");
         }
 
     }
@@ -72,14 +88,20 @@ public class CensusMaster : MonoBehaviour
         {
             if (member.speciesName.Contains(lostMember))
             {
-                //Debug.Log(lostMember + " population decreased to " + member.populationSize);
                 member.populationSize -= 1;
                 totalPopulation -= 1;
 
+                //Log
+                if (logPopulationDecrease)
+                    Debug.Log(lostMember + " population decreased to " + member.populationSize);
+
                 if (member.populationSize < 1)
                 {
-                    Debug.Log(lostMember + " has gone extinct.");
                     listOfSpecies.Remove(member);
+
+                    //Log
+                    if (logExtinctions)
+                        Debug.Log(lostMember + " has gone extinct.");
                 }
                 break;
             }

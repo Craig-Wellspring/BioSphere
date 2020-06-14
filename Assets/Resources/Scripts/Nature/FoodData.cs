@@ -5,21 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(SeedSpawner))]
 public class FoodData : MonoBehaviour
 {
+    [Header("Values")]
     [Tooltip("On Destroy, entity will spawn Seedgrass with remaining Energy Stored")]
     public float energyStored;
     public float nutritionalValue = 1f;
-    public float timeToEat = 5f;
+
+    [Header("Settings")]
     public float chewRateModifier = 1f;
-    //public bool currentlyEdible = true;
     [Tooltip("Destroy the parent entity when eaten")]
     public bool destroyParent = true;
+
 
     private bool spawnSeed = true;
     private SeedSpawner seedSpawner;
 
     private void Start()
     {
-        seedSpawner = GetComponent<SeedSpawner>();
+        seedSpawner = transform.root.GetComponentInChildren<SeedSpawner>();
     }
 
     private void OnApplicationQuit()
@@ -30,7 +32,7 @@ public class FoodData : MonoBehaviour
     private void OnDisable()
     {
         if (spawnSeed && (energyStored > 0 || nutritionalValue > 0))
-            seedSpawner.PlantSeed();
+            seedSpawner.PlantSeed(energyStored + nutritionalValue);
     }
 
 }

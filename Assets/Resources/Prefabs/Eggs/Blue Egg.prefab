@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3428721613616480298
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 395524401495371422, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ec49a9b40590a1b41afef8ac4ae823dd, type: 2}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_Name
+      value: Blue Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963490746402909659, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9290a69d2247fec46b8830e5faa2800d, type: 2}
+    - target: {fileID: 6389201056297927679, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: creatureToHatch
+      value: 
+      objectReference: {fileID: 2899459648303840798, guid: 6e45d92b269b98341b05e58dc60616e2,
+        type: 3}
+    - target: {fileID: 6995924490321542597, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9290a69d2247fec46b8830e5faa2800d, type: 2}
+    - target: {fileID: 7519281716937386244, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9290a69d2247fec46b8830e5faa2800d, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f54afc36c40abd94e96e3008b7d64a78, type: 3}

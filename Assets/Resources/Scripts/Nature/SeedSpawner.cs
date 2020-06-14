@@ -2,17 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(FoodData))]
 public class SeedSpawner : MonoBehaviour
 {
-    private FoodData fData;
-
-    private void Start()
-    {
-        fData = GetComponent<FoodData>();
-    }
-
-    public void PlantSeed()
+    public void PlantSeed(float _passDownEnergy)
     {
         //Find seed planting location
         Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - PlanetCore.Core.transform.position).normalized) * transform.root.rotation;
@@ -22,9 +14,9 @@ public class SeedSpawner : MonoBehaviour
 
         //Pass on remaining energy
         FoodData seedFData = newSeedgrass.GetComponentInChildren<FoodData>();
-        if (fData.energyStored + fData.nutritionalValue > seedFData.nutritionalValue)
-            seedFData.energyStored = fData.energyStored + fData.nutritionalValue - seedFData.nutritionalValue;
+        if (_passDownEnergy > seedFData.nutritionalValue)
+            seedFData.energyStored = _passDownEnergy - seedFData.nutritionalValue;
         else
-            seedFData.nutritionalValue = fData.energyStored + fData.nutritionalValue;
+            seedFData.nutritionalValue = _passDownEnergy;
     }
 }

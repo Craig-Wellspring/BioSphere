@@ -6,34 +6,34 @@ using System.Linq;
 public class VisualPerception : MonoBehaviour
 {
     public Collider selfCollider;
+    public Transform eyesTransform;
 
     [Header("Sight Range Settings")]
-    public float siblingPerceptionRange = 10f;
-    public float predatorPerceptionRange = 10f;
-    public float preyPerceptionRange = 10f;
+    public float creaturePerceptionRange = 10f;
     public float foodPerceptionRange = 10f;
 
-    
+    [Header("Draw Sight Lines")]
+    public bool predatorSightLines = true;
+    public bool preySightLines = true;
+    public bool foodSightLines = true;
+
+    [Header("Currently Visible")]
     [HideInInspector] public List<Collider> nearbySiblings;
-    [HideInInspector] public List<Collider> nearbyPredators;
-    [HideInInspector] public List<Collider> nearbyPrey;
+    public List<Collider> nearbyPredators;
+    public List<Collider> nearbyPrey;
     public List<Collider> nearbyFood;
+    
 
-    private LayerMask siblingLayerMask;
-    private LayerMask fleeLayerMask;
-    private LayerMask aggroLayerMask;
+    private LayerMask creatureLayerMask;
     private LayerMask eatingLayerMask;
-
-
+    
     private Metabolism metabolism;
     private CreatureData cData;
 
 
     void Start()
     {
-        siblingLayerMask = LayerMask.GetMask("Creature");
-        fleeLayerMask = LayerMask.GetMask("Creature");
-        aggroLayerMask = LayerMask.GetMask("Creature");
+        creatureLayerMask = LayerMask.GetMask("Creature");
         eatingLayerMask = LayerMask.GetMask("Food");
 
         metabolism = GetComponent<Metabolism>();
@@ -43,45 +43,56 @@ public class VisualPerception : MonoBehaviour
 
     void FixedUpdate()
     {
+        
+        nearbySiblings = new List<Collider>();
+        nearbyPredators = new List<Collider>();
+        nearbyPrey = new List<Collider>();
+        nearbyFood = new List<Collider>();
+
         // Check surroundings
 
-        //a.1) Look for Siblings
-        nearbySiblings = new List<Collider>();
-        List<Collider> withinSightRange = Physics.OverlapSphere(transform.root.position, siblingPerceptionRange, siblingLayerMask).ToList();
+        List<Collider> withinSightRange = Physics.OverlapSphere(transform.root.position, creaturePerceptionRange, creatureLayerMask + eatingLayerMask).ToList();
         if (withinSightRange.Contains(selfCollider))
             withinSightRange.Remove(selfCollider);
+
         foreach (Collider col in withinSightRange)
-            if (col.transform.root.tag == transform.root.tag)
-                nearbySiblings.Add(col);
+        {
+            //Check for clear Sight Line
+            RaycastHit hit;
+            Ray sightRay = new Ray(eyesTransform.position, col.transform.position - eyesTransform.position);
+            if (Physics.Raycast(sightRay, out hit, creaturePerceptionRange))
+            {
+                //Register nearby Siblings
+                if (hit.collider.transform.tag == transform.tag)
+                    nearbySiblings.Add(col);
 
+                //Register nearby Predators
+                if (cData.predatorList.Contains(hit.collider.transform.tag))
+                {
+                    nearbyPredators.Add(col);
 
-        //a) Look for Predators
-        nearbyPredators = new List<Collider>();
-        List<Collider> withinFleeRange = Physics.OverlapSphere(transform.root.position, predatorPerceptionRange, fleeLayerMask).ToList();
-        if (withinFleeRange.Contains(selfCollider))
-            withinFleeRange.Remove(selfCollider);
-        foreach (Collider col in withinFleeRange)
-            if (cData.predatorList.Contains(col.transform.root.tag))
-                nearbyPredators.Add(col);
+                    if (predatorSightLines)
+                        Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.red, Time.fixedDeltaTime);
+                }
 
+                //Register nearby Prey
+                if (cData.preyList.Contains(hit.collider.transform.tag))
+                {
+                    nearbyPrey.Add(col);
 
-        //b) Look for Prey
-        nearbyPrey = new List<Collider>();
-        List<Collider> withinAggroRange = Physics.OverlapSphere(transform.root.position, preyPerceptionRange, aggroLayerMask).ToList();
-        if (withinAggroRange.Contains(selfCollider))
-            withinAggroRange.Remove(selfCollider);
-        foreach (Collider col in withinAggroRange)
-            if (cData.preyList.Contains(col.transform.root.tag))
-                nearbyPrey.Add(col);
+                    if (preySightLines)
+                        Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.magenta, Time.fixedDeltaTime);
+                }
 
+                //Register nearby Food
+                if (metabolism.dietList.Contains(hit.collider.transform.tag))
+                {
+                    nearbyFood.Add(col);
 
-        //c) Look for Food
-        nearbyFood = new List<Collider>();
-        List<Collider> withinEatingRange = Physics.OverlapSphere(transform.root.position, foodPerceptionRange, eatingLayerMask).ToList();
-        if (withinEatingRange.Contains(selfCollider))
-            withinEatingRange.Remove(selfCollider);
-        foreach (Collider col in withinEatingRange)
-            if (metabolism.dietList.Contains(col.transform.tag))
-                nearbyFood.Add(col);
+                    if (foodSightLines)
+                        Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.cyan, Time.fixedDeltaTime);
+                }
+            }
+        }
     }
 }

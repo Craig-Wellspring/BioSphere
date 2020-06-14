@@ -28,6 +28,7 @@ TagManager:
   - Wolf
   - Grasshopper
   - Rabbit
+  - Seedling
   layers:
   - Default
   - TransparentFX
@@ -48,7 +49,7 @@ TagManager:
   - 
   - 
   - 
-  - Player
+  - CreatureAdl
   - Creature
   - PlanetCore
   - Atmosphere

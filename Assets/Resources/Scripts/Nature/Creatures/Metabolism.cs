@@ -9,7 +9,6 @@ public class Metabolism : MonoBehaviour
     #region Settings
 
     public Slider hungerSlider;
-    public Slider chewSlider;
 
     [Header("Current Hunger")]
     [Tooltip("How Hungry the Creature currently feels")]
@@ -45,7 +44,6 @@ public class Metabolism : MonoBehaviour
     private GameObject currentTargetFood = null;
     private float hungerTimer = 0f;
     private Image hungerBarColor;
-    //private float chewingTimer = 0f;
     private float chewRate;
     #endregion
 
@@ -74,12 +72,10 @@ public class Metabolism : MonoBehaviour
         currentTargetFood = _targetFood;
 
         hungerBarColor.color = hungerSlider.GetComponentInChildren<ColorPicker>().secondaryColor;
-        //chewSlider.gameObject.SetActive(true);
         //animator.SetBool("Eating", true);
 
         targetFData = _targetFood.GetComponent<FoodData>();
         chewRate = targetFData.chewRateModifier * chewSpeed;
-        //chewSlider.maxValue = food.timeToEat;
 
         if (!cData.lifetimeDiet.Contains(_targetFood.tag))
             cData.lifetimeDiet.Add(_targetFood.tag);
@@ -95,11 +91,8 @@ public class Metabolism : MonoBehaviour
         currentTargetFood = null;
 
         hungerBarColor.color = hungerSlider.GetComponentInChildren<ColorPicker>().primaryColor;
-        //chewSlider.gameObject.SetActive(false);
         //animator.SetBool("Eating", false);
-
-        //chewSlider.value = 0;
-        //chewSlider.maxValue = 1;
+        
     }
 
     //Continue eating if possible
@@ -109,7 +102,6 @@ public class Metabolism : MonoBehaviour
         {
             Ingest(targetFData, chewRate * Time.deltaTime);
             
-            //chewSlider.value = chewingTimer;
             if (targetFData.nutritionalValue == 0)
                 FinishEating(currentTargetFood);
         }

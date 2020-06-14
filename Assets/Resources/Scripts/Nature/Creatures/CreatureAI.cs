@@ -33,7 +33,6 @@ namespace Pathfinding
         private float hasBeenIdle = 0f;
         private float idleTime = 0f;
         private float wanderDistance;
-
         private float timeSiblingLastSeen;
 
         private GameObject targetFood;
@@ -92,14 +91,18 @@ namespace Pathfinding
             {
                 if (metabolism.isEating)
                     metabolism.StopEating();
-                FleeFromTarget(GetClosestTarget(vPerception.nearbyPredators).gameObject);
+                FleeFromTarget(GetClosestTarget(vPerception.nearbyPredators));
             }
 
             // 2) Chase target Prey
             if (vPerception.nearbyPredators.Count == 0 && vPerception.nearbyPrey.Count > 0)
             {
                 if (!metabolism.isEating)
-                    SeekTarget(GetClosestTarget(vPerception.nearbyPrey).gameObject);
+                {
+                    GameObject nearestPrey = GetClosestTarget(vPerception.nearbyPrey);
+                    if (destinationSetter.target != nearestPrey.transform)
+                        SeekTarget(nearestPrey);
+                }
             }
 
             // 3) Find Food if hungry and no threats present
@@ -124,27 +127,31 @@ namespace Pathfinding
 
 
             // 4) If nothing is in range
-            if (!metabolism.isEating)
+            if (vPerception.nearbyPredators.Count == 0 && vPerception.nearbyPrey.Count == 0 && vPerception.nearbyFood.Count == 0)
             {
-                //Lay egg if over threshold
-                if (cData.energyUnits >= layEggThreshold)
-                    if (Time.time - timeSiblingLastSeen > aloneThreshold)
-                        ovary.SpawnEgg(energyEndowed);
-
-                if (cData.energyUnits >= morphThreshold)
-                    morphology.Evolve();
-                    
-                
-                //Wander if nothing else to do
-                if (!aiPath.pathPending && (!aiPath.hasPath || aiPath.reachedEndOfPath))
+                if (!metabolism.isEating)
                 {
-                    hasBeenIdle += Time.deltaTime;
-                    if (hasBeenIdle > idleTime)
+                    // a) Lay egg if over threshold
+                    if (cData.energyUnits >= layEggThreshold)
+                        if (Time.time - timeSiblingLastSeen > aloneThreshold)
+                            ovary.SpawnEgg(energyEndowed);
+
+                    // b) Morph into next form if over threshold
+                    if (cData.energyUnits >= morphThreshold)
+                        morphology.Evolve();
+
+
+                    // c) Wander if nothing else to do
+                    if (!aiPath.pathPending && (!aiPath.hasPath || aiPath.reachedEndOfPath))
                     {
-                        hasBeenIdle = 0f;
-                        idleTime = Random.Range(minIdleTime, maxIdleTime);
-                        //Move around if idle for some time
-                        Wander();
+                        hasBeenIdle += Time.deltaTime;
+                        if (hasBeenIdle > idleTime)
+                        {
+                            hasBeenIdle = 0f;
+                            idleTime = Random.Range(minIdleTime, maxIdleTime);
+                            //Move around if idle for some time
+                            Wander();
+                        }
                     }
                 }
             }
@@ -160,6 +167,7 @@ namespace Pathfinding
 
         void SeekTarget(GameObject _seekTarget)
         {
+            ClearPathing();
             destinationSetter.target = _seekTarget.transform;
         }
 

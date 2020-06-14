@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public class CensusMember : MonoBehaviour
 {
+    private bool playMode = true;
+    private void OnApplicationQuit()
+    {
+        playMode = false;
+    }
+
     void Start()
     {
         string name = gameObject.name.Replace("(Clone)", "");
@@ -12,7 +18,7 @@ public class CensusMember : MonoBehaviour
 
     void OnDisable()
     {
-        if (Application.isPlaying)
+        if (playMode)
             CensusMaster.Census.PopulationDecrease(name);
     }
 }
