@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decayTime: 20
+  destroyRoot: 0
 --- !u!33 &1614924419584850197
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -246,6 +247,7 @@ GameObject:
   - component: {fileID: 1329027450117407909}
   - component: {fileID: 1258732225468077878}
   - component: {fileID: 6635610762450638525}
+  - component: {fileID: 4024518616019505653}
   - component: {fileID: 6389201056297927679}
   - component: {fileID: 395524401495371422}
   m_Layer: 10
@@ -318,7 +320,20 @@ MonoBehaviour:
   energyStored: 0
   nutritionalValue: 0
   timeToEat: 5
+  chewRateModifier: 1
   destroyParent: 1
+--- !u!114 &4024518616019505653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452051350941145613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6389201056297927679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decayTime: 20
+  destroyRoot: 0
 --- !u!33 &9403113312945072
 MeshFilter:
   m_ObjectHideFlags: 0

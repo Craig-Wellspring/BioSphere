@@ -15,6 +15,7 @@ public class Metabolism : MonoBehaviour
     [Tooltip("How Hungry the Creature currently feels")]
     public float hungerUnits = 0f;
     public float hungerPercentage = 0f;
+    public bool isEating = false;
     public bool logEating = false;
     
     [Header("Metabolism Settings")]
@@ -22,7 +23,9 @@ public class Metabolism : MonoBehaviour
     public float metabolismRate = 1f;
     [Tooltip("Units of Hunger gained per tick")]
     public float hungerGainedPerTick = 1f;
-    
+    [Tooltip("How quickly this creature consumes food. 1 is default.")]
+    public float chewSpeed = 1f;
+
     [Header("Creature Diet")]
     public List<string> dietList;
 
@@ -38,16 +41,18 @@ public class Metabolism : MonoBehaviour
 
     #region Internal Variables
     private CreatureData cData;
-    [HideInInspector] public bool isEating = false;
+    private FoodData targetFData;
     private GameObject currentTargetFood = null;
     private float hungerTimer = 0f;
-    private float chewingTimer = 0f;
-    private float chewTime;
+    private Image hungerBarColor;
+    //private float chewingTimer = 0f;
+    private float chewRate;
     #endregion
 
     private void Start()
     {
         cData = GetComponent<CreatureData>();
+        hungerBarColor = hungerSlider.GetComponentInChildren<Image>();
     }
 
     private void Update()
@@ -63,16 +68,24 @@ public class Metabolism : MonoBehaviour
 
 
     #region Functions
-    public void StartEating(GameObject targetFood)
+    public void StartEating(GameObject _targetFood)
     {
         isEating = true;
-        currentTargetFood = targetFood;
-        chewSlider.gameObject.SetActive(true);
+        currentTargetFood = _targetFood;
+
+        hungerBarColor.color = hungerSlider.GetComponentInChildren<ColorPicker>().secondaryColor;
+        //chewSlider.gameObject.SetActive(true);
         //animator.SetBool("Eating", true);
 
-        var food = targetFood.GetComponent<FoodData>();
-        chewTime = food.timeToEat;
-        chewSlider.maxValue = food.timeToEat;
+        targetFData = _targetFood.GetComponent<FoodData>();
+        chewRate = targetFData.chewRateModifier * chewSpeed;
+        //chewSlider.maxValue = food.timeToEat;
+
+        if (!cData.lifetimeDiet.Contains(_targetFood.tag))
+            cData.lifetimeDiet.Add(_targetFood.tag);
+
+        if (_targetFood.tag == "Egg")
+            _targetFood.GetComponent<HatchCreature>().canHatch = false;
     }
 
 
@@ -80,11 +93,13 @@ public class Metabolism : MonoBehaviour
     {
         isEating = false;
         currentTargetFood = null;
-        chewSlider.gameObject.SetActive(false);
+
+        hungerBarColor.color = hungerSlider.GetComponentInChildren<ColorPicker>().primaryColor;
+        //chewSlider.gameObject.SetActive(false);
         //animator.SetBool("Eating", false);
 
-        chewSlider.value = 0;
-        chewSlider.maxValue = 1;
+        //chewSlider.value = 0;
+        //chewSlider.maxValue = 1;
     }
 
     //Continue eating if possible
@@ -92,46 +107,47 @@ public class Metabolism : MonoBehaviour
     {
         if (currentTargetFood != null)
         {
-            chewingTimer += Time.deltaTime;
-            chewSlider.value = chewingTimer;
-            if (chewingTimer > chewTime)
-            {
-                chewingTimer = 0f;
+            Ingest(targetFData, chewRate * Time.deltaTime);
+            
+            //chewSlider.value = chewingTimer;
+            if (targetFData.nutritionalValue == 0)
                 FinishEating(currentTargetFood);
-            }
         }
         else StopEating();
     }
 
-    //Destroy food item and stop eating
-    private void FinishEating(GameObject target)
-    {
-        StopEating();
-        if (target.gameObject != null)
-        {
-            //Satiate
-            Digest(target);
-            if (logEating)
-                Debug.Log(this.transform.root.name + " ate " + target.name + " from " + target.transform.root.name);
-            
-            //Destroy food
-            if (target.GetComponent<FoodData>().destroyParent)
-                Destroy(target.transform.root.gameObject);
-            else
-                Destroy(target);
-        }
-    }
-
 
     //Gain nutritional value from the food
-    private void Digest(GameObject food)
+    private void Ingest(FoodData _fData, float _biteSize)
     {
-        float foodValue = food.GetComponent<FoodData>().nutritionalValue;
-        hungerUnits -= foodValue;
-        cData.energyUnits += foodValue;
-        food.GetComponent<FoodData>().nutritionalValue -= foodValue;
+        if (_fData.nutritionalValue < _biteSize)
+            _biteSize = _fData.nutritionalValue;
+
+        _fData.nutritionalValue -= _biteSize;
+        if (hungerUnits > 0)
+            hungerUnits -= _biteSize;
+        cData.energyUnits += _biteSize;
+
     }
 
+    //Destroy food item and stop eating
+    private void FinishEating(GameObject _target)
+    {
+        StopEating();
+        if (_target.gameObject != null)
+        {
+            //Satiate
+            if (logEating)
+                Debug.Log(this.transform.root.name + " ate " + _target.name + " from " + _target.transform.root.name);
+            
+            //Destroy food
+            if (targetFData.destroyParent)
+                Destroy(_target.transform.root.gameObject);
+            else
+                Destroy(_target);
+        }
+    }
+    
 
     //Become more hungry over time
     private void Metabolise()
@@ -159,7 +175,11 @@ public class Metabolism : MonoBehaviour
     public bool IsWasting()
     {
         if (hungerPercentage >= wastingAtPercent)
+        {
+            if (!dietList.Contains("Meat"))
+                dietList.Add("Meat");
             return true;
+        }
         else return false;
     }
 
@@ -167,7 +187,7 @@ public class Metabolism : MonoBehaviour
     //hungerIndex > 90%, starving
     private void WasteAway()
     {
-        if (hungerPercentage >= 1)
+        if (hungerPercentage >= 100)
             GetComponent<Vitality>().Die();
     }
     #endregion

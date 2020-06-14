@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1862294484578648904}
   - component: {fileID: 7502547288509417930}
   - component: {fileID: 7607097067855154002}
+  - component: {fileID: 2778580527502075601}
   m_Layer: 10
   m_Name: Leaves
   m_TagString: Grass
@@ -60,9 +61,20 @@ MonoBehaviour:
   energyStored: 0
   nutritionalValue: 10
   timeToEat: 8
-  currentlyEdible: 1
+  chewRateModifier: 1
   destroyParent: 1
-  spawnSeed: 1
+--- !u!114 &2778580527502075601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271941090879731253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1706303471575706740
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +140,8 @@ MonoBehaviour:
   seeds: 1
   seedSuccessChance: 10
   divideRemainingEnergy: 0
+  nextSeedPod: {fileID: 0}
+  castOffEntity: {fileID: 0}
   randomYRotation: 1
   randomSpawnPosition: 1
   spawnArea: 5

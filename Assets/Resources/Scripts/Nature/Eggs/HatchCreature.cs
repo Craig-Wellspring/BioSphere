@@ -17,15 +17,18 @@ public class HatchCreature : MonoBehaviour
 
 
 
-    private void SpawnCreature(GameObject newCreature)
+    private void SpawnCreature(GameObject _newCreature)
     {
-        GameObject creatureToSpawn = Instantiate(newCreature, transform.position, transform.rotation);
+        GameObject creatureToSpawn = Instantiate(_newCreature, transform.position, transform.rotation);
         PlanetCore.Core.AlignWithGravity(creatureToSpawn.transform);
-        creatureToSpawn.name = newCreature.name;
+        creatureToSpawn.name = _newCreature.name;
 
 
         //Allocate Energy
-        creatureToSpawn.GetComponentInChildren<CreatureData>().energyUnits = GetComponent<FoodData>().nutritionalValue;
+        FoodData fData = GetComponent<FoodData>();
+        creatureToSpawn.GetComponentInChildren<CreatureData>().energyUnits = fData.nutritionalValue;
+        fData.nutritionalValue = 0;
+
     }
 
 

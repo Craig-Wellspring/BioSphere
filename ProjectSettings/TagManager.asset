@@ -26,6 +26,8 @@ TagManager:
   - Fly
   - Climb
   - Wolf
+  - Grasshopper
+  - Rabbit
   layers:
   - Default
   - TransparentFX

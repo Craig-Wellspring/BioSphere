@@ -185,19 +185,19 @@ public class SpawnFruit : MonoBehaviour
     }
 
 
-    private Vector3 GetRandomPointOnCol(Collider collider)
+    private Vector3 GetRandomPointOnCol(Collider _collider)
     {
         return new Vector3(
-            Random.Range(collider.bounds.min.x, collider.bounds.max.x),
-            Random.Range(collider.bounds.min.y, collider.bounds.max.y),
-            Random.Range(collider.bounds.min.z, collider.bounds.max.z));
+            Random.Range(_collider.bounds.min.x, _collider.bounds.max.x),
+            Random.Range(_collider.bounds.min.y, _collider.bounds.max.y),
+            Random.Range(_collider.bounds.min.z, _collider.bounds.max.z));
     }
 
 
-    private Vector3 PointOnTerrainUnderPosition(Vector3 fromPos)
+    private Vector3 PointOnTerrainUnderPosition(Vector3 _fromPos)
     {
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(fromPos, GravityVector(fromPos), out hit, 5000, 1 << 26))
+        if (Physics.Raycast(_fromPos, GravityVector(_fromPos), out hit, 5000, 1 << 26))
         {
             if (hit.collider.CompareTag("Ground"))
             {
@@ -217,9 +217,9 @@ public class SpawnFruit : MonoBehaviour
     }
 
 
-    private Vector3 GravityVector(Vector3 fromPos)
+    private Vector3 GravityVector(Vector3 _fromPos)
     {
-        Vector3 gravityUp = (fromPos - PlanetCore.Core.transform.position).normalized;
+        Vector3 gravityUp = (_fromPos - PlanetCore.Core.transform.position).normalized;
         return -gravityUp;
     }
 

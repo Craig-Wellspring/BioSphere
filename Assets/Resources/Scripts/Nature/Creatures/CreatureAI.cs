@@ -9,28 +9,47 @@ namespace Pathfinding
     {
 
         #region Settings
+        [Header("Energy Usage Settings")]
+        public float morphThreshold = 120f;
+        public float layEggThreshold = 100f;
+        public float energyEndowed = 30f;
+        public float aloneThreshold = 30f;
         [Header("Flee Settings")]
         [Tooltip("1000 ~= 1 meter")]
         public int runAwayDistance = 10000;
         [Header("Wander Settings")]
         public float minIdleTime = 1f;
         public float maxIdleTime = 10f;
-        public float wanderArea = 10f;
-        public float wanderSpeed = 1f;
+        //public float wanderArea = 10f;
+        //public float wanderSpeed = 1f;
+        [Space(10)]
+        [Tooltip("1000 = 1 meter")]
+        public float minWanderDistance = 10f;
+        public float maxWanderDistance = 100f;
         #endregion
-        
+
 
         #region Internal Variables
         private float hasBeenIdle = 0f;
         private float idleTime = 0f;
-        private GameObject targetFood;
-        private Animator animator;
-        private Metabolism metabolism;
-        private VisualPerception vPerception;
+        private float wanderDistance;
 
+        private float timeSiblingLastSeen;
+
+        private GameObject targetFood;
+
+        private Metabolism metabolism;
+        private Ovary ovary;
+        private VisualPerception vPerception;
+        private CreatureData cData;
+        private Morphology morphology;
+
+        private Animator animator;
         private AIDestinationSetter destinationSetter;
         private Seeker seeker;
         IAstarAI aiPath;
+
+
         #endregion
 
         void OnEnable()
@@ -45,19 +64,29 @@ namespace Pathfinding
 
         void Start()
         {
+            metabolism = GetComponent<Metabolism>();
+            ovary = GetComponent<Ovary>();
+            vPerception = GetComponent<VisualPerception>();
+            cData = GetComponent<CreatureData>();
+            morphology = GetComponent<Morphology>();
+
+            animator = GetComponentInParent<Animator>();
             destinationSetter = GetComponentInParent<AIDestinationSetter>();
             seeker = GetComponentInParent<Seeker>();
-            animator = GetComponentInParent<Animator>();
-            metabolism = GetComponent<Metabolism>();
-            vPerception = GetComponent<VisualPerception>();
 
-            
+
             //Initialize
             idleTime = Random.Range(minIdleTime, maxIdleTime);
+            wanderDistance = Random.Range(minWanderDistance, maxWanderDistance);
+
         }
 
         void Update()
         {
+            // Remember when last Sibling seen
+            if (vPerception.nearbySiblings.Count > 0)
+                timeSiblingLastSeen = Time.time;
+
             // 1) Run from Predator if present
             if (vPerception.nearbyPredators.Count > 0)
             {
@@ -78,29 +107,45 @@ namespace Pathfinding
             {
                 if (metabolism.IsHungry() && !metabolism.isEating)
                 {
-                    targetFood = GetClosestTarget(vPerception.nearbyFood).gameObject;
-                    if (destinationSetter.target != targetFood.transform)
-                        SeekTarget(targetFood);
-
-                    if (!aiPath.pathPending && aiPath.reachedDestination && targetFood.transform == destinationSetter.target)
+                    targetFood = GetClosestTarget(vPerception.nearbyFood);
+                    if (targetFood != null)
                     {
-                        destinationSetter.target = null;
-                        aiPath.SetPath(null);
-                        metabolism.StartEating(targetFood);
+                        if (destinationSetter.target != targetFood.transform)
+                        {
+                            SeekTarget(targetFood);
+                            return;
+                        }
+                        else
+                            if (!aiPath.pathPending && (!aiPath.hasPath || aiPath.reachedEndOfPath))
+                                metabolism.StartEating(targetFood);
                     }
                 }
             }
 
+
             // 4) If nothing is in range
-            if (!metabolism.isEating && !aiPath.hasPath && !aiPath.pathPending)
+            if (!metabolism.isEating)
             {
-                hasBeenIdle += Time.deltaTime;
-                if (hasBeenIdle > idleTime)
+                //Lay egg if over threshold
+                if (cData.energyUnits >= layEggThreshold)
+                    if (Time.time - timeSiblingLastSeen > aloneThreshold)
+                        ovary.SpawnEgg(energyEndowed);
+
+                if (cData.energyUnits >= morphThreshold)
+                    morphology.Evolve();
+                    
+                
+                //Wander if nothing else to do
+                if (!aiPath.pathPending && (!aiPath.hasPath || aiPath.reachedEndOfPath))
                 {
-                    hasBeenIdle = 0f;
-                    idleTime = Random.Range(minIdleTime, maxIdleTime);
-                    //Move around if idle for some time
-                    Wander();
+                    hasBeenIdle += Time.deltaTime;
+                    if (hasBeenIdle > idleTime)
+                    {
+                        hasBeenIdle = 0f;
+                        idleTime = Random.Range(minIdleTime, maxIdleTime);
+                        //Move around if idle for some time
+                        Wander();
+                    }
                 }
             }
 
@@ -112,20 +157,17 @@ namespace Pathfinding
 
 
         #region Movement
-        public void PerformAttack()
+
+        void SeekTarget(GameObject _seekTarget)
         {
-            //player.TakeDamage(5);
+            destinationSetter.target = _seekTarget.transform;
         }
 
-
-        void SeekTarget(GameObject target)
+        void FleeFromTarget(GameObject _fleeTarget)
         {
-            destinationSetter.target = target.transform;
-        }
+            ClearPathing();
 
-        void FleeFromTarget(GameObject target)
-        {
-            FleePath fleePath = FleePath.Construct(transform.position, target.transform.position, runAwayDistance);
+            FleePath fleePath = FleePath.Construct(transform.position, _fleeTarget.transform.position, runAwayDistance);
             fleePath.aimStrength = 1;
             fleePath.spread = 4000;
             seeker.StartPath(fleePath);
@@ -133,22 +175,26 @@ namespace Pathfinding
 
         void Wander()
         {
-            Vector3 randomDirection = Random.insideUnitSphere * wanderArea;
-            randomDirection += transform.position;
+            ClearPathing();
 
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomDirection, out hit, wanderArea, NavMesh.AllAreas);
+            RandomPath wanderPath = RandomPath.Construct(transform.position, Mathf.RoundToInt(wanderDistance * metabolism.hungerPercentage));
+            wanderPath.spread = 5000;
+            seeker.StartPath(wanderPath);
 
-            aiPath.destination = hit.position;
-            aiPath.SearchPath();
-            aiPath.maxSpeed = wanderSpeed;
+            wanderDistance = Random.Range(minWanderDistance, maxWanderDistance);
+        }
+
+        void ClearPathing()
+        {
+            destinationSetter.target = null;
+            aiPath.SetPath(null);
+            aiPath.destination = Vector3.positiveInfinity;
         }
 
         void StopEverything()
         {
             metabolism.StopEating();
-            destinationSetter.target = null;
-            aiPath.SetPath(null);
+            ClearPathing();
         }
         #endregion
 
@@ -157,24 +203,12 @@ namespace Pathfinding
 
 
         #region Utility Functions
-        Vector3 GetRandomPoint()
+        GameObject GetClosestTarget(List<Collider> _targets)
         {
-            float xRandom = 0;
-            float zRandom = 0;
-
-            xRandom = (float)Random.Range(transform.position.x - wanderArea, transform.position.x + wanderArea);
-            zRandom = (float)Random.Range(transform.position.z - wanderArea, transform.position.z + wanderArea);
-
-            return new Vector3(xRandom, 0.0f, zRandom);
-        }
-
-
-        Collider GetClosestTarget(List<Collider> targets)
-        {
-            Collider bestTarget = null;
+            GameObject bestTarget = null;
             float closestDistanceSqr = Mathf.Infinity;
             Vector3 currentPosition = transform.position;
-            foreach (Collider potentialTarget in targets)
+            foreach (Collider potentialTarget in _targets)
             {
                 if (potentialTarget != null)
                 {
@@ -183,7 +217,7 @@ namespace Pathfinding
                     if (dSqrToTarget < closestDistanceSqr && potentialTarget.gameObject != this.gameObject)
                     {
                         closestDistanceSqr = dSqrToTarget;
-                        bestTarget = potentialTarget;
+                        bestTarget = potentialTarget.gameObject;
                     }
                 }
             }

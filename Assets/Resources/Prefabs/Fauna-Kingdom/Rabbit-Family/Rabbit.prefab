@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5255138725765442541
 Transform:
   m_ObjectHideFlags: 0
@@ -117,6 +117,8 @@ GameObject:
   - component: {fileID: 2083509605160846810}
   - component: {fileID: 1219221829118405505}
   - component: {fileID: 4191813494433978899}
+  - component: {fileID: 589018760064015097}
+  - component: {fileID: 5028330362886645526}
   m_Layer: 10
   m_Name: Corpse
   m_TagString: Meat
@@ -164,9 +166,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energyStored: 0
   nutritionalValue: 0
   timeToEat: 5
+  chewRateModifier: 1
   destroyParent: 1
+--- !u!114 &589018760064015097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6491066992778855220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5028330362886645526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6491066992778855220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2862520a16287a545bbe9a687be84ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decayTime: 120
+  destroyRoot: 1
 --- !u!1 &7342251847775023104
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +380,7 @@ Transform:
   m_Children:
   - {fileID: 7342251847774792718}
   m_Father: {fileID: 7342251847774792810}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7342251847775023126
 GameObject:
@@ -709,10 +739,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2425730784699638857}
-  - {fileID: 7342251847774792754}
+  - {fileID: 6511710856208740612}
   - {fileID: 7342251847774792808}
   - {fileID: 2083509605160846810}
-  - {fileID: 6511710856208740612}
+  - {fileID: 7342251847774792754}
   - {fileID: 5255138725765442541}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1610,7 +1640,7 @@ GameObject:
   - component: {fileID: 3953396816464272834}
   m_Layer: 20
   m_Name: Spine
-  m_TagString: Creature
+  m_TagString: Rabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1709,7 +1739,7 @@ PrefabInstance:
     - target: {fileID: 657132332051147503, guid: 4c5662776a8b6784aa5b332631a44fc5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 657132332051147503, guid: 4c5662776a8b6784aa5b332631a44fc5,
         type: 3}
@@ -1803,12 +1833,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c5662776a8b6784aa5b332631a44fc5, type: 3}
---- !u!224 &6511710856208740612 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 657132332051147503, guid: 4c5662776a8b6784aa5b332631a44fc5,
+--- !u!114 &482748578171952927 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6193493594384811252, guid: 4c5662776a8b6784aa5b332631a44fc5,
     type: 3}
   m_PrefabInstance: {fileID: 5998975960508357611}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6443021821864340863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 732559448796903060, guid: 4c5662776a8b6784aa5b332631a44fc5,
@@ -1821,21 +1857,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1617896757932318563 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4986408779483088008, guid: 4c5662776a8b6784aa5b332631a44fc5,
+--- !u!224 &6511710856208740612 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 657132332051147503, guid: 4c5662776a8b6784aa5b332631a44fc5,
     type: 3}
   m_PrefabInstance: {fileID: 5998975960508357611}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &482748578171952927 stripped
+--- !u!114 &1617896757932318563 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6193493594384811252, guid: 4c5662776a8b6784aa5b332631a44fc5,
+  m_CorrespondingSourceObject: {fileID: 4986408779483088008, guid: 4c5662776a8b6784aa5b332631a44fc5,
     type: 3}
   m_PrefabInstance: {fileID: 5998975960508357611}
   m_PrefabAsset: {fileID: 0}
@@ -1887,6 +1917,11 @@ PrefabInstance:
       propertyPath: chewSlider
       value: 
       objectReference: {fileID: 482748578171952927}
+    - target: {fileID: 5531598088087270011, guid: 95b19741c7b9a03488f3a1b194dbf330,
+        type: 3}
+      propertyPath: chewSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5905762855087687671, guid: 95b19741c7b9a03488f3a1b194dbf330,
         type: 3}
       propertyPath: selfCollider
@@ -1950,7 +1985,7 @@ PrefabInstance:
     - target: {fileID: 7576456897897177354, guid: 95b19741c7b9a03488f3a1b194dbf330,
         type: 3}
       propertyPath: energyUnits
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b19741c7b9a03488f3a1b194dbf330, type: 3}

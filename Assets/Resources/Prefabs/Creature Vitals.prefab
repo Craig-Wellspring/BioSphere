@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6916549418519083538}
   - component: {fileID: 3801116620313667913}
   - component: {fileID: 5531598088087270011}
+  - component: {fileID: 5237385356748504199}
   - component: {fileID: 4028180835784384988}
   - component: {fileID: 5905762855087687671}
   - component: {fileID: 7576456897897177354}
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  creatureCanvas: {fileID: 0}
   maxHealth: 10
   currentHealth: 10
   dead: 0
@@ -71,14 +72,28 @@ MonoBehaviour:
   chewSlider: {fileID: 0}
   hungerUnits: 0
   hungerPercentage: 0
+  isEating: 0
+  logEating: 0
   metabolismRate: 1
   hungerGainedPerTick: 1
+  chewSpeed: 1
   dietList:
   - Grass
   hungryAtPercent: 10
   wastingAtPercent: 90
   maximumHungerUnits: 100
-  isEating: 0
+--- !u!114 &5237385356748504199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060356500608096991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4028180835784384988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,11 +107,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
+  offspringCreature: {fileID: 0}
+  energyEndowed: 30
+  layEggThreshold: 100
   runAwayDistance: 10000
   minIdleTime: 1
   maxIdleTime: 10
-  wanderArea: 10
-  wanderSpeed: 1
+  maxWanderDistance: 100
+  minWanderDistance: 1000
 --- !u!114 &5905762855087687671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,3 +149,4 @@ MonoBehaviour:
   energyUnits: 0
   predatorList: []
   preyList: []
+  lifetimeDiet: []
