@@ -114,10 +114,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1065377328634644644, guid: 288ff8e7fcd13e740aee790d49106778,
+    - target: {fileID: 3402847854711864255, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
-      propertyPath: activateObjectHG
+      propertyPath: newSeed
       value: 
+      objectReference: {fileID: 4949613627835273838, guid: 960363e38c23bf044b783e994943bf70,
+        type: 3}
+    - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.32999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.14691274
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.0014872141
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.001956381
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.085860275
       objectReference: {fileID: 0}
     - target: {fileID: 6842223849493786181, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
@@ -257,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
       propertyPath: seeds
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}

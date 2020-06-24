@@ -164,7 +164,7 @@ public class SpawnFruit : MonoBehaviour
         GameObject castOff = (GameObject)Instantiate(castOffEntity, transform.position, transform.rotation);
         castOff.name = castOffEntity.name;
 
-        castOff.GetComponent<FoodData>().nutritionalValue += rootFData.energyStored;
+        castOff.GetComponentInChildren<FoodData>().nutritionalValue += rootFData.energyStored;
         rootFData.energyStored = 0;
     }
 

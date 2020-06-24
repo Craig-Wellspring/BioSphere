@@ -67,6 +67,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brown Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 4701508348408450060, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: creatureToHatch
+      value: 
+      objectReference: {fileID: 2285759280214289225, guid: 03e12790c4f2801438488ee905de8b05,
+        type: 3}
     - target: {fileID: 5963490746402909659, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

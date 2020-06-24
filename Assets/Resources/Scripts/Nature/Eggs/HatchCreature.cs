@@ -25,7 +25,7 @@ public class HatchCreature : MonoBehaviour
 
 
         //Allocate Energy
-        FoodData fData = GetComponent<FoodData>();
+        FoodData fData = GetComponentInChildren<FoodData>();
         creatureToSpawn.GetComponentInChildren<CreatureData>().energyUnits = fData.nutritionalValue;
         fData.nutritionalValue = 0;
 
@@ -34,9 +34,9 @@ public class HatchCreature : MonoBehaviour
 
     private void CrackShell()
     {
-        Vector3 currentScale = transform.GetChild(0).transform.localScale;
-        GameObject topshell = transform.GetChild(1).gameObject;
-        GameObject bottomshell = transform.GetChild(2).gameObject;
+        Vector3 currentScale = transform.localScale;
+        GameObject topshell = transform.root.GetChild(1).gameObject;
+        GameObject bottomshell = transform.root.GetChild(2).gameObject;
 
         topshell.SetActive(true);
         bottomshell.SetActive(true);
@@ -45,6 +45,6 @@ public class HatchCreature : MonoBehaviour
         topshell.transform.SetParent(null);
         bottomshell.transform.SetParent(null);
         
-        Destroy(this.gameObject);
+        Destroy(transform.root.gameObject);
     }
 }

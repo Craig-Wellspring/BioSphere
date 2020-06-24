@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5903858121702242424}
   - component: {fileID: 766094858670492952}
   - component: {fileID: 3402847854711864255}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Leaves
   m_TagString: Seedling
   m_Icon: {fileID: 0}
@@ -127,9 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyStored: 0
   nutritionalValue: 10
-  timeToEat: 5
   chewRateModifier: 1
-  destroyParent: 1
+  destroyRoot: 1
 --- !u!114 &3402847854711864255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSeed: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24, type: 3}
+  spawnSeed: 1
 --- !u!1 &6842223849493786177
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6842223849493786177}
-  m_LocalRotation: {x: -1.7112914e-15, y: 1, z: -0.000000021855694, w: -0.0000000754979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -290,7 +291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6842223849493786183}
-  m_LocalRotation: {x: -1.7112914e-15, y: 1, z: -0.000000021855694, w: -0.0000000754979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

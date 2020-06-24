@@ -20,7 +20,7 @@ public class Ovary : MonoBehaviour
         GameObject newEgg = (GameObject)Instantiate(eggToSpawn, transform.position, transform.rotation);
         newEgg.name = eggToSpawn.name;
         
-        newEgg.GetComponent<FoodData>().nutritionalValue += _energyEndowed;
+        newEgg.GetComponentInChildren<FoodData>().nutritionalValue += _energyEndowed;
         cData.energyUnits -= _energyEndowed;
 
         if (logEggLaying)

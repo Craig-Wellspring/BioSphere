@@ -15,6 +15,7 @@ public class Morphology : MonoBehaviour
     SeedSpawner seedSpawner;
 
     private bool carnivore = false;
+    private GameObject morphToForm;
 
 
 
@@ -44,7 +45,7 @@ public class Morphology : MonoBehaviour
 
     public void Evolve()
     {
-        GameObject morphToForm = ChooseNewForm();
+        morphToForm = ChooseNewForm();
 
         //Spawn Seedgrass with excess energy
         seedSpawner.PlantSeed(cData.energyUnits - energyReserve);
@@ -59,7 +60,14 @@ public class Morphology : MonoBehaviour
     public void SpawnForm()
     {
         //Spawn new Creature Form
-            //Allocate energy
+        GameObject creatureToSpawn = Instantiate(morphToForm, transform.position, transform.rotation);
+        PlanetCore.Core.AlignWithGravity(creatureToSpawn.transform);
+        creatureToSpawn.name = morphToForm.name;
+
+
+        //Allocate Energy
+        creatureToSpawn.GetComponentInChildren<CreatureData>().energyUnits = cData.energyUnits;
+        cData.energyUnits = 0;
     }
 
     public void DespawnForm()

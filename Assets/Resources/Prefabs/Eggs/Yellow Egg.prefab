@@ -19,41 +19,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 834156339536324638, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
@@ -72,36 +37,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 900247564299706058, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 900247564299706058, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 1258732225468077878, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1258732225468077878, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329027450117407909, guid: f54afc36c40abd94e96e3008b7d64a78,
-        type: 3}
-      propertyPath: useGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
       propertyPath: m_Name
       value: Yellow Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 4701508348408450060, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: creatureToHatch
+      value: 
+      objectReference: {fileID: 2396180645501600818, guid: b97e40fac0541a6468aec3beb931521e,
+        type: 3}
     - target: {fileID: 5963490746402909659, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -118,6 +64,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e082590c6c769c946b6e711b74141798, type: 2}
+    - target: {fileID: 7514558022492730038, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 53e5cf3add23fd4409a61f4a03743e00, type: 2}
     - target: {fileID: 7519281716937386244, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

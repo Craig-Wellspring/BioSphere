@@ -72,6 +72,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 4701508348408450060, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: creatureToHatch
+      value: 
+      objectReference: {fileID: 2899459648303840798, guid: 6e45d92b269b98341b05e58dc60616e2,
+        type: 3}
     - target: {fileID: 5963490746402909659, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -88,6 +94,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9290a69d2247fec46b8830e5faa2800d, type: 2}
+    - target: {fileID: 7514558022492730038, guid: f54afc36c40abd94e96e3008b7d64a78,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ec49a9b40590a1b41afef8ac4ae823dd, type: 2}
     - target: {fileID: 7519281716937386244, guid: f54afc36c40abd94e96e3008b7d64a78,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

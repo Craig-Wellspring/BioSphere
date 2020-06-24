@@ -39,25 +39,25 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Food
-  - 
-  - 
-  - SafePlace
+  - Targetting
+  - FoodItem
+  - Foliage
+  - Flora
+  - Corpse
   - 
   - 
   - 
   - 
   - 
   - CreatureAdl
-  - Creature
+  - Fauna
   - PlanetCore
   - Atmosphere
   - Solaris
   - Lunula
   - Littlerock
   - Terrain
-  - 
+  - SafePlace
   - 
   - 
   - Item

@@ -8,12 +8,15 @@ public class Metabolism : MonoBehaviour
 {
     #region Settings
 
-    public Slider hungerSlider;
+    [SerializeField] private Slider hungerBar;
+    [SerializeField] private Image hungerFill;
 
     [Header("Current Hunger")]
     [Tooltip("How Hungry the Creature currently feels")]
     public float hungerUnits = 0f;
     public float hungerPercentage = 0f;
+    private FoodData targetFData;
+    [SerializeField] private GameObject currentTargetFood = null;
     public bool isEating = false;
     public bool logEating = false;
     
@@ -39,18 +42,28 @@ public class Metabolism : MonoBehaviour
 
 
     #region Internal Variables
+    [Space(10)]
     private CreatureData cData;
-    private FoodData targetFData;
-    private GameObject currentTargetFood = null;
+    private Animator animator;
+    private CreatureAI creatureAI;
+
+    private Color primaryColor;
+    private Color secondaryColor;
+
     private float hungerTimer = 0f;
-    private Image hungerBarColor;
     private float chewRate;
     #endregion
 
     private void Start()
     {
         cData = GetComponent<CreatureData>();
-        hungerBarColor = hungerSlider.GetComponentInChildren<Image>();
+        animator = GetComponentInParent<Animator>();
+        creatureAI = GetComponent<CreatureAI>();
+
+        primaryColor = hungerFill.GetComponent<ColorPicker>().primaryColor;
+        secondaryColor = hungerFill.GetComponent<ColorPicker>().secondaryColor;
+
+        
     }
 
     private void Update()
@@ -70,12 +83,13 @@ public class Metabolism : MonoBehaviour
     {
         isEating = true;
         currentTargetFood = _targetFood;
-
-        hungerBarColor.color = hungerSlider.GetComponentInChildren<ColorPicker>().secondaryColor;
-        //animator.SetBool("Eating", true);
-
         targetFData = _targetFood.GetComponent<FoodData>();
         chewRate = targetFData.chewRateModifier * chewSpeed;
+
+        hungerFill.color = secondaryColor;
+        animator.SetBool("IsEating", true);
+
+
 
         if (!cData.lifetimeDiet.Contains(_targetFood.tag))
             cData.lifetimeDiet.Add(_targetFood.tag);
@@ -89,10 +103,13 @@ public class Metabolism : MonoBehaviour
     {
         isEating = false;
         currentTargetFood = null;
+        targetFData = null;
 
-        hungerBarColor.color = hungerSlider.GetComponentInChildren<ColorPicker>().primaryColor;
-        //animator.SetBool("Eating", false);
-        
+        hungerFill.color = primaryColor;
+        animator.SetBool("IsEating", false);
+
+        if (creatureAI != null && creatureAI.enabled == true)
+            creatureAI.ClearPathing();
     }
 
     //Continue eating if possible
@@ -125,7 +142,6 @@ public class Metabolism : MonoBehaviour
     //Destroy food item and stop eating
     private void FinishEating(GameObject _target)
     {
-        StopEating();
         if (_target.gameObject != null)
         {
             //Satiate
@@ -133,11 +149,12 @@ public class Metabolism : MonoBehaviour
                 Debug.Log(this.transform.root.name + " ate " + _target.name + " from " + _target.transform.root.name);
             
             //Destroy food
-            if (targetFData.destroyParent)
+            if (targetFData.destroyRoot)
                 Destroy(_target.transform.root.gameObject);
             else
                 Destroy(_target);
         }
+        StopEating();
     }
     
 
@@ -149,7 +166,7 @@ public class Metabolism : MonoBehaviour
         {
             hungerTimer = 0f;
             hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
-            hungerSlider.value = 100 - hungerPercentage;
+            hungerBar.value = 100 - hungerPercentage;
             if (hungerPercentage < 100)
                 hungerUnits += hungerGainedPerTick;
         }
