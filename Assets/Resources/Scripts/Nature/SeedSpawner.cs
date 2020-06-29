@@ -7,7 +7,7 @@ public class SeedSpawner : MonoBehaviour
     [SerializeField] private GameObject newSeed;
     [SerializeField] private bool spawnSeed = true;
 
-    private float collectedEnergy;
+    float collectedEnergy;
 
     
     private void OnApplicationQuit()
@@ -18,25 +18,28 @@ public class SeedSpawner : MonoBehaviour
     private void OnDisable()
     {
         if (spawnSeed)
-        {
-            CollectEnergy();
+            CollectAndPlant();
+    }
 
-            if (collectedEnergy > 0)
-            {
-                PlantSeed(collectedEnergy);
-                collectedEnergy = 0;
-            }
-        }        
+    public void CollectAndPlant()
+    {
+        CollectEnergy();
+
+        if (collectedEnergy > 0)
+        {
+            PlantSeed(collectedEnergy);
+            collectedEnergy = 0;
+        }
     }
 
     private void CollectEnergy()
     {
-        CreatureData cData = transform.root.GetComponentInChildren<CreatureData>();
-        if (cData != null)
-            if (cData.energyUnits > 0)
+        Metabolism metabolism = transform.root.GetComponentInChildren<Metabolism>();
+        if (metabolism != null)
+            if (metabolism.storedEnergy > 0)
             {
-                collectedEnergy += cData.energyUnits;
-                cData.energyUnits = 0;
+                collectedEnergy += metabolism.storedEnergy;
+                metabolism.storedEnergy = 0;
             }
 
         FoodData fData = transform.root.GetComponentInChildren<FoodData>(true);
@@ -65,4 +68,5 @@ public class SeedSpawner : MonoBehaviour
         else
             seedFData.nutritionalValue = _passDownEnergy;
     }
+
 }

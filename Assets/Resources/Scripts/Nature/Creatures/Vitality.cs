@@ -7,7 +7,7 @@ using Pathfinding;
 public class Vitality : MonoBehaviour
 {
     [Header("Health")]
-    public GameObject creatureCanvas;
+    public GameObject healthBar;
     public float maxHealth;
     public float currentHealth;
     [Space(10)]
@@ -20,86 +20,63 @@ public class Vitality : MonoBehaviour
     public List<Collider> bodyColliders;
 
     #region Private Variables
-    private CreatureAI creatureAI;
+    public event System.Action DamageTaken;
+    public event System.Action Death;
+
+    private AIBrainData AIData;
+    private Animator AIBrain;
     private Metabolism metabolism;
     private Animator animator;
-    private CreatureData cData;
+    private FoodData corpseFData;
     #endregion
 
 
 
     void Start()
     {
-        creatureAI = GetComponent<CreatureAI>();
+        AIData = GetComponent<AIBrainData>();
+        AIBrain = GetComponent<Animator>();
         metabolism = GetComponent<Metabolism>();
-        cData = GetComponent<CreatureData>();
-        animator = GetComponentInParent<Animator>();
+        animator = transform.root.GetComponent<Animator>();
+        corpseFData = corpse.GetComponent<FoodData>();
     }
 
     public void TakeDamage(int amount)
     {
         if (!dead)
         {
-            creatureCanvas.gameObject.SetActive(true);
-            currentHealth -= amount;
-            animator.SetTrigger("TakeDamage");
+            DamageTaken?.Invoke();
 
-            if (metabolism.isEating)
-                metabolism.StopEating();
+            if (!healthBar.activeSelf)
+                healthBar.SetActive(true);
+            currentHealth -= amount;
+
 
             if (currentHealth <= 0)
                 Die();
         }
     }
 
-    /*public void OnValidate()
-    {
-        if (dead)
-            Die();
-        else
-            Revivify();
-    }*/
-
     public void Die()
     {
         //Die
-        //animator.SetBool("Dead", true);
         dead = true;
-        if (creatureCanvas.gameObject.activeSelf)
-            creatureCanvas.gameObject.SetActive(false);
+        Death?.Invoke();
+
+        //Update Animator
+        if (healthBar.activeSelf)
+            healthBar.SetActive(false);
+
+
+        //Deactivate Body and Activate Corpse
         foreach (Collider body in bodyColliders)
             body.enabled = false;
-        
-        corpse.gameObject.SetActive(true);
+        corpse.SetActive(true);
 
-        corpse.GetComponent<FoodData>().nutritionalValue += cData.energyUnits;
-        cData.energyUnits = 0;
-        
-        if (creatureAI != null)
-            creatureAI.enabled = false;
+        //Transfer Energy to Corpse
+        corpseFData.nutritionalValue += metabolism.storedEnergy;
+        metabolism.SpendEnergy(metabolism.storedEnergy);
 
-        //Decay
-        //this.gameObject.GetComponent<Decay>().enabled = true;
-    }
-
-    public void Revivify()
-    {
-        //Come back to life
-        //animator.SetBool("Dead", false);
-        dead = false;
-        creatureCanvas.gameObject.SetActive(true);
-        foreach (Collider body in bodyColliders)
-            body.enabled = true;
-
-        corpse.GetComponent<FoodData>().nutritionalValue = 0;
-        corpse.gameObject.SetActive(false);
-
-        //GetComponent<NavMeshAgent>().enabled = true;
-        if (creatureAI != null)
-            creatureAI.enabled = true;
-
-        //Stop Decaying
-        //this.gameObject.GetComponent<Decay>().enabled = false;
-
+        gameObject.SetActive(false);
     }
 }

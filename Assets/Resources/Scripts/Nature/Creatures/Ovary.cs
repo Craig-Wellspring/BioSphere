@@ -5,13 +5,14 @@ using UnityEngine;
 public class Ovary : MonoBehaviour
 {
     public GameObject eggToSpawn;
+    public float reproductionCost;
     public bool logEggLaying = false;
     
-    private CreatureData cData;
+    private Metabolism metabolism;
 
     void Start()
     {
-        cData = GetComponent<CreatureData>();
+        metabolism = GetComponent<Metabolism>();
     }
     
 
@@ -21,7 +22,7 @@ public class Ovary : MonoBehaviour
         newEgg.name = eggToSpawn.name;
         
         newEgg.GetComponentInChildren<FoodData>().nutritionalValue += _energyEndowed;
-        cData.energyUnits -= _energyEndowed;
+        metabolism.SpendEnergy(_energyEndowed);
 
         if (logEggLaying)
             Debug.Log(transform.root.name + " laid an Egg.");

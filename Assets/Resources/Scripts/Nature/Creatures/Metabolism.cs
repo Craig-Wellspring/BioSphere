@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Vitality))]
-[RequireComponent(typeof(CreatureData))]
 public class Metabolism : MonoBehaviour
 {
     #region Settings
@@ -15,189 +14,218 @@ public class Metabolism : MonoBehaviour
     [Tooltip("How Hungry the Creature currently feels")]
     public float hungerUnits = 0f;
     public float hungerPercentage = 0f;
-    private FoodData targetFData;
-    [SerializeField] private GameObject currentTargetFood = null;
-    public bool isEating = false;
-    public bool logEating = false;
+    [Tooltip("Total Stored Energy Value")]
+    public float storedEnergy;
     
     [Header("Metabolism Settings")]
-    [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
-    public float metabolismRate = 1f;
-    [Tooltip("Units of Hunger gained per tick")]
-    public float hungerGainedPerTick = 1f;
-    [Tooltip("How quickly this creature consumes food. 1 is default.")]
+    [Tooltip("Time in Seconds it takes to gain one unit of Hunger"), SerializeField]
+    float metabolismRate = 3f;
+    [Tooltip("Units of Hunger gained per tick"), SerializeField]
+    float hungerGainedPerTick = 3f;
+    [Tooltip("How quickly this creature consumes food. 1 is default."), SerializeField]
     public float chewSpeed = 1f;
 
     [Header("Creature Diet")]
+    public List<string> dietHistory;
+    [Space(15)]
     public List<string> dietList;
+    public List<string> preyList;
+
 
     [Header("Hunger Index Settings")]
-    [Tooltip("Hunger Percentage to become Hungry")]
-    public float hungryAtPercent = 10f;
-    [Tooltip("Hunger Percentage to begin Wasting")]
-    public float wastingAtPercent = 90f;
-    [Tooltip("Die when hunger level maximum reached")]
-    public float maximumHungerUnits = 100f;
+    [Tooltip("Hunger Percentage to become Hungry"), SerializeField]
+    float hungryAtPercent = 10f;
+    [Tooltip("Hunger Percentage to begin Wasting"), SerializeField]
+    float wastingAtPercent = 90f;
+    [Tooltip("Die when hunger level maximum reached"), SerializeField]
+    float maximumHungerUnits = 100f;
+
+    [Header("Debug")]
+    public FoodData targetFData;
+    public GameObject currentTargetFood = null;
+    [SerializeField] private bool logEating = false;
     #endregion
 
 
     #region Internal Variables
-    [Space(10)]
-    private CreatureData cData;
-    private Animator animator;
-    private CreatureAI creatureAI;
-
     private Color primaryColor;
     private Color secondaryColor;
 
-    private float hungerTimer = 0f;
-    private float chewRate;
+    float hungerTimer = 0f;
+
+    public event System.Action BeginEating;
+    public event System.Action CeaseEating;
+    public event System.Action BecomeHungry;
+    public event System.Action BecomeSatiated;
+    public event System.Action BeginWasting;
+    public event System.Action CeaseWasting;
+    public event System.Action EnergySpent;
+    public event System.Action EnergyGained;
     #endregion
 
     private void Start()
     {
-        cData = GetComponent<CreatureData>();
-        animator = GetComponentInParent<Animator>();
-        creatureAI = GetComponent<CreatureAI>();
-
         primaryColor = hungerFill.GetComponent<ColorPicker>().primaryColor;
         secondaryColor = hungerFill.GetComponent<ColorPicker>().secondaryColor;
-
-        
     }
 
     private void Update()
     {
         Metabolise();
-
-        if (isEating)
-            Chew();
-
-        if (IsWasting())
-            WasteAway();
     }
 
-
-    #region Functions
-    public void StartEating(GameObject _targetFood)
-    {
-        isEating = true;
-        currentTargetFood = _targetFood;
-        targetFData = _targetFood.GetComponent<FoodData>();
-        chewRate = targetFData.chewRateModifier * chewSpeed;
-
-        hungerFill.color = secondaryColor;
-        animator.SetBool("IsEating", true);
-
-
-
-        if (!cData.lifetimeDiet.Contains(_targetFood.tag))
-            cData.lifetimeDiet.Add(_targetFood.tag);
-
-        if (_targetFood.tag == "Egg")
-            _targetFood.GetComponent<HatchCreature>().canHatch = false;
-    }
-
-
-    public void StopEating()
-    {
-        isEating = false;
-        currentTargetFood = null;
-        targetFData = null;
-
-        hungerFill.color = primaryColor;
-        animator.SetBool("IsEating", false);
-
-        if (creatureAI != null && creatureAI.enabled == true)
-            creatureAI.ClearPathing();
-    }
-
-    //Continue eating if possible
-    private void Chew()
-    {
-        if (currentTargetFood != null)
-        {
-            Ingest(targetFData, chewRate * Time.deltaTime);
-            
-            if (targetFData.nutritionalValue == 0)
-                FinishEating(currentTargetFood);
-        }
-        else StopEating();
-    }
-
-
-    //Gain nutritional value from the food
-    private void Ingest(FoodData _fData, float _biteSize)
-    {
-        if (_fData.nutritionalValue < _biteSize)
-            _biteSize = _fData.nutritionalValue;
-
-        _fData.nutritionalValue -= _biteSize;
-        if (hungerUnits > 0)
-            hungerUnits -= _biteSize;
-        cData.energyUnits += _biteSize;
-
-    }
-
-    //Destroy food item and stop eating
-    private void FinishEating(GameObject _target)
-    {
-        if (_target.gameObject != null)
-        {
-            //Satiate
-            if (logEating)
-                Debug.Log(this.transform.root.name + " ate " + _target.name + " from " + _target.transform.root.name);
-            
-            //Destroy food
-            if (targetFData.destroyRoot)
-                Destroy(_target.transform.root.gameObject);
-            else
-                Destroy(_target);
-        }
-        StopEating();
-    }
     
 
-    //Become more hungry over time
+    //// Start Eating \\\\
+    public void StartEating(GameObject _targetFood)
+    {
+        BeginEating();
+
+        currentTargetFood = _targetFood;
+        targetFData = currentTargetFood.GetComponent<FoodData>();
+        
+        //Update animator
+        if (!hungerBar.gameObject.activeSelf)
+        {
+            hungerBar.gameObject.SetActive(true);
+            hungerFill.color = secondaryColor;
+        }
+        
+        //Update diet history
+        if (!dietHistory.Contains(_targetFood.tag))
+            dietHistory.Add(_targetFood.tag);
+
+        //Disable egg hatching
+        if (_targetFood.tag == "Egg")
+            _targetFood.GetComponentInParent<Animator>().SetBool("CanHatch", false);
+    }
+
+
+
+    //// Stop Eating \\\\
+    public void StopEating()
+    {
+        CeaseEating();
+
+        currentTargetFood = null;
+        targetFData = null;
+        
+
+        //Update animator
+        if (hungerBar.gameObject.activeSelf)
+        {
+            hungerBar.gameObject.SetActive(false);
+            hungerFill.color = primaryColor;
+        }
+    }
+
+
+
+    //// Become more hungry over time \\\\
     private void Metabolise()
     {
         hungerTimer += Time.deltaTime;
         if (hungerTimer >= metabolismRate)
         {
             hungerTimer = 0f;
-            hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
-            hungerBar.value = 100 - hungerPercentage;
+            //Get more hungry
             if (hungerPercentage < 100)
                 hungerUnits += hungerGainedPerTick;
+            hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
+
+            //Update UI
+            hungerBar.value = 100 - hungerPercentage;
+
+            //Check if hungry
+            if (hungerPercentage >= wastingAtPercent)
+            {
+                BeginWasting();
+                WasteAway();
+                return;
+            }
+            if (hungerPercentage >= hungryAtPercent)
+            {
+                BecomeHungry?.Invoke();
+            }
         }
     }
 
-    //Check if hungry
-    public bool IsHungry()
-    {
-        if (hungerPercentage >= hungryAtPercent)
-            return true;
-        else return false;
-    }
 
-    //Check if wasting
-    public bool IsWasting()
+
+    //// Gain nutritional value from the food \\\\
+    public void Ingest(FoodData _fData, float _biteSize)
     {
-        if (hungerPercentage >= wastingAtPercent)
+        //Allocate Energy
+        if (_fData.nutritionalValue < _biteSize)
+            _biteSize = _fData.nutritionalValue;
+
+        _fData.nutritionalValue -= _biteSize;
+
+        if (_fData.nutritionalValue == 0)
         {
-            if (!dietList.Contains("Meat"))
-                dietList.Add("Meat");
-            return true;
+            Devour(_fData.gameObject);
+            StopEating();
         }
-        else return false;
+
+        if (hungerUnits > 0)
+            hungerUnits -= _biteSize;
+
+        GainEnergy(_biteSize);
+
+        //Check Hunger and Energy levels
+        if (hungerPercentage <= hungryAtPercent)
+        {
+            StopEating();
+            BecomeSatiated?.Invoke();
+            return;
+        }
+        if (hungerPercentage <= wastingAtPercent)
+        {
+            CeaseWasting();
+        }
     }
 
 
-    //hungerIndex > 90%, starving
+
+    //// Destroy food item and stop eating \\\\
+    private void Devour(GameObject _target)
+    {
+        if (logEating)
+            Debug.Log(this.transform.root.name + " ate " + _target.name + " from " + _target.transform.root.name);
+
+        //Destroy food
+        if (targetFData.destroyRoot)
+            Destroy(_target.transform.root.gameObject);
+        else
+            Destroy(_target);
+    }
+
+
+
+    //// Very Hungry, starving \\\\
     private void WasteAway()
     {
+        //Eat meat if desperate for food
+        if (!dietList.Contains("Meat"))
+            dietList.Add("Meat");
+
         if (hungerPercentage >= 100)
             GetComponent<Vitality>().Die();
     }
-    #endregion
+
+
+
+    //// Increase and Decrease Energy \\\\
+    public void SpendEnergy(float _amount)
+    {
+        storedEnergy -= _amount;
+
+        EnergySpent();
+    }
+    public void GainEnergy(float _amount)
+    {
+        storedEnergy += _amount;
+
+        EnergyGained();
+    }
 }

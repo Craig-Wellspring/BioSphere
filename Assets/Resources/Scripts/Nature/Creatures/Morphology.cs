@@ -11,7 +11,7 @@ public class Morphology : MonoBehaviour
 
     public bool logEvolutions = false;
     
-    CreatureData cData;
+    Metabolism metabolism;
     SeedSpawner seedSpawner;
 
     private bool carnivore = false;
@@ -21,7 +21,7 @@ public class Morphology : MonoBehaviour
 
     private void Start()
     {
-        cData = GetComponent<CreatureData>();
+        metabolism = GetComponent<Metabolism>();
         seedSpawner = transform.root.GetComponentInChildren<SeedSpawner>(true); //Includes inactive GameObjects
     }
 
@@ -29,7 +29,7 @@ public class Morphology : MonoBehaviour
 
     private void CalculateMorphology()
     {
-        if (cData.lifetimeDiet.Contains("Meat"))
+        if (metabolism.dietHistory.Contains("Meat"))
             carnivore = true;
     }
 
@@ -43,13 +43,13 @@ public class Morphology : MonoBehaviour
             return herbiMorph;
     }
 
-    public void Evolve()
+    public void Morph()
     {
         morphToForm = ChooseNewForm();
 
         //Spawn Seedgrass with excess energy
-        seedSpawner.PlantSeed(cData.energyUnits - energyReserve);
-        cData.energyUnits = energyReserve;
+        seedSpawner.PlantSeed(metabolism.storedEnergy - energyReserve);
+        metabolism.storedEnergy = energyReserve;
 
         //Activate animation that triggers SpawnForm and DespawnForm
 
@@ -66,8 +66,8 @@ public class Morphology : MonoBehaviour
 
 
         //Allocate Energy
-        creatureToSpawn.GetComponentInChildren<CreatureData>().energyUnits = cData.energyUnits;
-        cData.energyUnits = 0;
+        creatureToSpawn.GetComponentInChildren<Metabolism>().storedEnergy = metabolism.storedEnergy;
+        metabolism.storedEnergy = 0;
     }
 
     public void DespawnForm()

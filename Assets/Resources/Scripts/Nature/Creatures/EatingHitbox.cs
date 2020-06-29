@@ -10,13 +10,13 @@ public class EatingHitbox : MonoBehaviour
     //Collider hitbox;
     List<string> dietList;
 
-    Animator AIMachine;
+    Animator AIBrain;
 
     void Start()
     {
         //hitbox = GetComponent<SphereCollider>();
         dietList = GetComponentInParent<Metabolism>().dietList;
-        AIMachine = GetComponentInParent<Animator>();
+        AIBrain = GetComponentInParent<Animator>();
     }
     
 
@@ -24,13 +24,13 @@ public class EatingHitbox : MonoBehaviour
     {
         if (dietList.Contains(_col.gameObject.tag))
         {
-            Debug.Log(transform.root.gameObject.name + " hit " + _col.gameObject.name + " with EatingHitbox");
+            //Debug.Log(transform.root.gameObject.name + " hit " + _col.gameObject.name + " with EatingHitbox");
             hitEdibleFood = true;
 
             targetFood = _col.gameObject;
 
-            if (AIMachine != null)
-                AIMachine.SetTrigger("HitFood");
+            if (AIBrain != null)
+                AIBrain.SetTrigger("HitFood");
         }
     }
 
@@ -38,10 +38,12 @@ public class EatingHitbox : MonoBehaviour
     private void OnTriggerExit(Collider _col)
     {
         hitEdibleFood = false;
+        targetFood = null;
     }
 
     private void OnDisable()
     {
         hitEdibleFood = false;
+        targetFood = null;
     }
 }
