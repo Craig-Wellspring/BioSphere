@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f14194a5d222d1458b6781e3ea0ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logVelocity: 0
 --- !u!54 &8215428589143323852
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -435,6 +434,7 @@ GameObject:
   - component: {fileID: 1064385298225998275}
   - component: {fileID: 2458907395530984135}
   - component: {fileID: 1702051659486188211}
+  - component: {fileID: 6506158839891824101}
   - component: {fileID: 3365281272691911710}
   - component: {fileID: 7554491422924902376}
   - component: {fileID: 7997042391209362213}
@@ -493,7 +493,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hungerBar: {fileID: 7094860868794327919}
   hungerFill: {fileID: 1872167088438539421}
-  isEating: 0
   hungerUnits: 0
   hungerPercentage: 0
   storedEnergy: 0
@@ -565,6 +564,21 @@ MonoBehaviour:
   eggToSpawn: {fileID: 0}
   reproductionCost: 30
   logEggLaying: 1
+--- !u!114 &6506158839891824101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804245400397280491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f87a3912d9735488b0efce962fa634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castoffSeed: {fileID: 0}
+  evolutionCost: 50
+  statToEvolve: 0
 --- !u!114 &3365281272691911710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,10 +591,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6887074388407d34e867b35996c4cf67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableMorph: {fileID: 0}
   carniMorph: {fileID: 0}
   herbiMorph: {fileID: 0}
-  energyReserve: 20
-  logEvolutions: 0
+  logMorphs: 0
 --- !u!114 &7554491422924902376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  excessEnergyThreshold: 50
   runAwayDistance: 10000
   minIdleTime: 1
   maxIdleTime: 10

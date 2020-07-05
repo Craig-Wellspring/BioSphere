@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChronoControl : MonoBehaviour
 {
-    [Range(0, 100)]
-    public float timeScale = 1f;
+    [Range(0, 10)]
+    public float timeScale = 1;
     
     void OnGUI()
     {

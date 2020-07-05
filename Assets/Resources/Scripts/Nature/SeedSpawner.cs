@@ -5,10 +5,24 @@ using UnityEngine;
 public class SeedSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject newSeed;
-    [SerializeField] private bool spawnSeed = true;
+    public bool spawnSeed = true;
 
+    [Header("Debug")]
+    [SerializeField] private bool drawDebugSeed = false;
+    
     float collectedEnergy;
 
+    
+
+    private void OnValidate()
+    {
+        //Debug trigger
+        if (drawDebugSeed)
+        {
+            DrawDebug();
+            drawDebugSeed = false;
+        }
+    }
     
     private void OnApplicationQuit()
     {
@@ -21,13 +35,17 @@ public class SeedSpawner : MonoBehaviour
             CollectAndPlant();
     }
 
+    //// Collect all Energy remaining then Plant a Seed with half the Energy and return the other half to the Global Deficit \\\\
     public void CollectAndPlant()
     {
         CollectEnergy();
 
         if (collectedEnergy > 0)
         {
-            PlantSeed(collectedEnergy);
+            Servius.Server.transform.GetComponent<Panspermia>().energyDeficit += collectedEnergy * 0.5f;
+            Servius.Server.transform.GetComponent<Panspermia>().CheckForLaunch();
+
+            PlantSeed(collectedEnergy * 0.5f);
             collectedEnergy = 0;
         }
     }
@@ -39,7 +57,7 @@ public class SeedSpawner : MonoBehaviour
             if (metabolism.storedEnergy > 0)
             {
                 collectedEnergy += metabolism.storedEnergy;
-                metabolism.storedEnergy = 0;
+                metabolism.SpendEnergy(metabolism.storedEnergy);
             }
 
         FoodData fData = transform.root.GetComponentInChildren<FoodData>(true);
@@ -53,20 +71,74 @@ public class SeedSpawner : MonoBehaviour
     }
 
 
+    //// Spawn default Seed \\\\
     public void PlantSeed(float _passDownEnergy)
     {
         //Find seed planting location
-        Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - PlanetCore.Core.transform.position).normalized) * transform.root.rotation;
+        Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
         //Plant Seedgrass
-        GameObject newSeedgrass = (GameObject)Instantiate(newSeed, transform.root.position, newRot);
-        newSeedgrass.name = newSeed.name;
+        GameObject newFruit = (GameObject)Instantiate(newSeed, PointOnTerrainUnderPosition(), newRot);
+        newFruit.name = newSeed.name;
 
         //Pass on remaining energy
-        FoodData seedFData = newSeedgrass.GetComponentInChildren<FoodData>();
+        FoodData seedFData = newFruit.GetComponentInChildren<FoodData>();
         if (_passDownEnergy > seedFData.nutritionalValue)
             seedFData.energyStored = _passDownEnergy - seedFData.nutritionalValue;
         else
             seedFData.nutritionalValue = _passDownEnergy;
     }
 
+    //// Spawn custom Seed \\\\
+    public void PlantSeed(float _passDownEnergy, GameObject _customSeed)
+    {
+        //Find Seed planting location
+        Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
+        //Plant new Seed
+        GameObject newFruit = (GameObject)Instantiate(_customSeed, PointOnTerrainUnderPosition(), newRot);
+        newFruit.name = _customSeed.name;
+
+        //Pass on remaining energy
+        FoodData seedFData = newFruit.GetComponentInChildren<FoodData>();
+        if (_passDownEnergy > seedFData.nutritionalValue)
+            seedFData.energyStored = _passDownEnergy - seedFData.nutritionalValue;
+        else
+            seedFData.nutritionalValue = _passDownEnergy;
+    }
+    
+
+    public Vector3 PointOnTerrainUnderPosition()
+    {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(transform.position + (transform.position - Vector3.zero).normalized, -(transform.position - Vector3.zero).normalized, out hit, 2000, LayerMask.GetMask("Terrain")))
+        {
+            if (hit.collider.CompareTag("Ground"))
+                return hit.point;
+            else
+            {
+                Debug.Log("SeedCast Ray didn't hit [Ground]");
+                return Vector3.zero;
+            }
+        }
+        else
+        {
+            Debug.Log("SeedCast Ray didn't hit [Anything]");
+            return Vector3.zero;
+        }
+    }
+
+
+    private void DrawDebug()
+    {
+        //Find potential planting location
+        Vector3 drawFromPos = transform.position;
+        Vector3 drawSpherePoint = PointOnTerrainUnderPosition();
+
+        Debug.Log("drawFromPos: " + drawFromPos + ", drawSpherePoint: " + drawSpherePoint);
+
+        //Draw Sphere at potential planting location
+        Debug.DrawRay(drawFromPos, -(drawFromPos - Vector3.zero), Color.green, 10);
+        GameObject debugSphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), drawSpherePoint, transform.rotation);
+        debugSphere.transform.localScale *= 0.2f;
+        Destroy(debugSphere, 10);
+    }
 }

@@ -29,6 +29,7 @@ TagManager:
   - Grasshopper
   - Rabbit
   - Seedling
+  - Shrub
   layers:
   - Default
   - TransparentFX
@@ -57,8 +58,8 @@ TagManager:
   - Lunula
   - Littlerock
   - Terrain
+  - Meteor
   - SafePlace
-  - 
   - 
   - Item
   - 

@@ -4495,6 +4495,16 @@ PrefabInstance:
       propertyPath: eyesTransform
       value: 
       objectReference: {fileID: 853120598310040182}
+    - target: {fileID: 1064385298225998275, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: drawSightSphere
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064385298225998275, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: perceptionRadius
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1437818073681861711, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.size
@@ -4504,6 +4514,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dietList.Array.data[0]
       value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437818073681861711, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: hungerGainedPerTick
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1702051659486188211, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -4578,6 +4593,28 @@ PrefabInstance:
       propertyPath: predatorList.Array.data[0]
       value: Frog
       objectReference: {fileID: 0}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: seedsToPlant
+      value: 
+      objectReference: {fileID: 8257660950030490805, guid: b185d83f079f5ce49b273496b82a9751,
+        type: 3}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: castoffSeed
+      value: 
+      objectReference: {fileID: 8257660950030490805, guid: b185d83f079f5ce49b273496b82a9751,
+        type: 3}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: evolutionCost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: statToEvolve
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7094860868794327919, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_Value
@@ -4608,12 +4645,23 @@ PrefabInstance:
       propertyPath: bodyColliders.Array.data[0]
       value: 
       objectReference: {fileID: 4844040059857294191}
+    - target: {fileID: 7777804111700510589, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777804111700510589, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: currentHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8844286852851837445, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5863055667412821553, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
 --- !u!1 &6628675858065238445 stripped
 GameObject:
