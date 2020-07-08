@@ -34,10 +34,19 @@ public class Morphology : MonoBehaviour
     //// Check what Forms are eligible to Morph into \\\\
     public void CalculateMorphology()
     {
-        if (metabolism.dietHistory.Contains("Meat"))
-            availableMorph = carniMorph;
-        else if (metabolism.dietHistory.Contains("Shrub"))
-            availableMorph = herbiMorph;
+        foreach (DietData foodType in metabolism.dietHistory)
+        {
+            if (foodType.foodTag.Contains("Meat"))
+            {
+                availableMorph = carniMorph;
+                break;
+            }
+            if (foodType.foodTag.Contains("Shrub"))
+            {
+                availableMorph = herbiMorph;
+                break;
+            }
+        }
     }
 
     //// Morph into chosen available Form \\\\

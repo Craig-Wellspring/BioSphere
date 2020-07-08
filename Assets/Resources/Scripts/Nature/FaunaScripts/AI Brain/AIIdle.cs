@@ -15,8 +15,8 @@ public class AIIdle : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        minIdleTime = animator.GetComponent<AIBrainData>().minIdleTime;
-        maxIdleTime = animator.GetComponent<AIBrainData>().maxIdleTime;
+        minIdleTime = animator.GetComponent<BasicAIBrain>().minIdleTime;
+        maxIdleTime = animator.GetComponent<BasicAIBrain>().maxIdleTime;
         idleTime = Random.Range(minIdleTime, maxIdleTime);
     }
 
@@ -37,7 +37,7 @@ public class AIIdle : StateMachineBehaviour
 
     void Wander(Transform _originTransform)
     {
-        RandomPath wanderPath = RandomPath.Construct(_originTransform.position, _originTransform.GetComponentInChildren<AIBrainData>().wanderDistance);
+        RandomPath wanderPath = RandomPath.Construct(_originTransform.position, _originTransform.GetComponentInChildren<BasicAIBrain>().wanderDistance);
         wanderPath.spread = 5000;
         //seeker.StartPath(wanderPath);
     }

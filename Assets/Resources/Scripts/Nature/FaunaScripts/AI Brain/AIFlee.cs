@@ -25,7 +25,7 @@ public class AIFlee : StateMachineBehaviour
 
     void FleeFromTarget(GameObject _self, GameObject _fleeTarget)
     {
-        FleePath fleePath = FleePath.Construct(_self.transform.root.position, _fleeTarget.transform.position, _self.GetComponent<AIBrainData>().runAwayDistance);
+        FleePath fleePath = FleePath.Construct(_self.transform.root.position, _fleeTarget.transform.position, _self.GetComponent<BasicAIBrain>().runAwayDistance);
         fleePath.aimStrength = 1;
         fleePath.spread = 4000;
         _self.GetComponentInParent<Seeker>().StartPath(fleePath);

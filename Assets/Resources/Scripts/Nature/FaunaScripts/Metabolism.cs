@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
@@ -25,7 +26,7 @@ public class Metabolism : MonoBehaviour
     public float chewSpeed = 1f;
 
     [Header("Creature Diet")]
-    public List<string> dietHistory;
+    public List<DietData> dietHistory;
     [Space(15)]
     public List<string> dietList;
     public List<string> preyList;
@@ -55,14 +56,14 @@ public class Metabolism : MonoBehaviour
 
 
     //Events
-    public event System.Action EatingBegins;
-    public event System.Action EatingEnds;
-    public event System.Action NowHungry;
-    public event System.Action NowFull;
-    public event System.Action WastingBegins;
-    public event System.Action WastingEnds;
-    public event System.Action EnergySpent;
-    public event System.Action EnergyGained;
+    public event Action EatingBegins;
+    public event Action EatingEnds;
+    public event Action NowHungry;
+    public event Action NowFull;
+    public event Action WastingBegins;
+    public event Action WastingEnds;
+    public event Action EnergySpent;
+    public event Action EnergyGained;
     #endregion
 
     private void Start()
@@ -85,17 +86,14 @@ public class Metabolism : MonoBehaviour
 
         currentTargetFood = _targetFood;
         targetFData = currentTargetFood.GetComponent<FoodData>();
+        targetFData.FoodDestroyed += StopEating;
         
-        //Update animator
+        //Update UI
         if (!hungerBar.gameObject.activeSelf)
         {
             hungerBar.gameObject.SetActive(true);
             hungerFill.color = secondaryColor;
         }
-        
-        //Update diet history
-        if (!dietHistory.Contains(_targetFood.tag))
-            dietHistory.Add(_targetFood.tag);
 
         //Disable egg hatching
         if (_targetFood.tag == "Egg")
@@ -103,17 +101,17 @@ public class Metabolism : MonoBehaviour
     }
 
 
-
     //// Stop Eating \\\\
     public void StopEating()
     {
         EatingEnds();
+        targetFData.FoodDestroyed -= StopEating;
 
         currentTargetFood = null;
         targetFData = null;
         
 
-        //Update animator
+        //Update UI
         if (hungerBar.gameObject.activeSelf)
         {
             hungerBar.gameObject.SetActive(false);
@@ -174,6 +172,22 @@ public class Metabolism : MonoBehaviour
 
         GainEnergy(_biteSize);
 
+        //Update diet history        
+        bool newFood = true;
+        foreach (DietData foodType in dietHistory)
+        {
+            if (foodType.foodTag.Equals(_fData.tag))
+            {
+                newFood = false;
+                foodType.energyUnits += _biteSize;
+                break;
+            }
+        }
+        if (newFood)
+        {
+            dietHistory.Add(new DietData(_fData.tag, _biteSize));
+        }
+
         //Check Hunger and Energy levels
         if (hungerPercentage <= hungryAtPercent)
         {
@@ -229,5 +243,19 @@ public class Metabolism : MonoBehaviour
         storedEnergy += _amount;
 
         EnergyGained();
+    }
+}
+
+
+[Serializable]
+public class DietData
+{
+    [HideInInspector] public string foodTag;
+    public float energyUnits;
+
+    public DietData(string _tag, float _energy)
+    {
+        this.foodTag = _tag;
+        this.energyUnits = _energy;
     }
 }

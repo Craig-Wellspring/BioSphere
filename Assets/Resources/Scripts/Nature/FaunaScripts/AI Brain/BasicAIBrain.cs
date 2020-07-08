@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Pathfinding;
 
 [RequireComponent(typeof(Animator))]
-public class AIBrainData : VersionedMonoBehaviour
+public class BasicAIBrain : VersionedMonoBehaviour
 {
 
     #region Settings
@@ -19,9 +19,6 @@ public class AIBrainData : VersionedMonoBehaviour
 
 
     #region Internal Variables
-    //Target
-    public GameObject targetFood;
-
     //Cache
     private Vitality vitality;
     private Metabolism metabolism;

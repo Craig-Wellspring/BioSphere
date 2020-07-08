@@ -4,21 +4,19 @@ public class Meteor : MonoBehaviour
 {
     public GameObject seedObject;
     public float energyStored;
-
+    
 
     private void OnTriggerEnter(Collider other)
     {
         //When Meteor collides with the Atmosphere: Activate Trail particles and move ServerCam
-        if (other.name == "Upper Atmosphere")
+        if (other.name == "Horizon")
         {
             //Activate Trail
             transform.Find("Trail").gameObject.SetActive(true);
-            
+
             //Move camera to follow Meteor entering Atmosphere
-            Camera serviusCam = FindObjectOfType<Camera>();
-            serviusCam.transform.SetParent(transform.Find("CameraDock"), false);
-            serviusCam.transform.localPosition = Vector3.zero;
-            serviusCam.transform.localRotation = Quaternion.identity;
+            ServiusCam.Cam.transform.SetParent(transform.Find("CameraDock"), false);
+            ServiusCam.Cam.ResetTransform();
         }
     }
 
@@ -28,17 +26,26 @@ public class Meteor : MonoBehaviour
 
         if (collision.collider.tag == "Ground")
         {
+
             //Create Explosion
+            transform.Find("Impact").gameObject.SetActive(true);
 
             //Detach ServerCam
-            FindObjectOfType<Camera>().transform.SetParent(null);
+            ServiusCam.Cam.transform.SetParent(null);
 
             //Spawn Seed with Energy onboard
             PlantSeed(energyStored);
             energyStored = 0;
 
             //Despawn self
-            Destroy(gameObject);
+            GetComponent<GravityAttract>().enabled = false;
+            GetComponent<SphereCollider>().enabled = false;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+            transform.Find("Trail").GetComponent<ParticleSystem>().Stop();
+
+            transform.Find("Rock").gameObject.SetActive(false);
+            Destroy(gameObject, 30);
         }
     }
 

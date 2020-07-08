@@ -11,7 +11,6 @@ public class CensusMember : MonoBehaviour
 
     void Start()
     {
-        //string name = gameObject.name.Replace("(Clone)", "");
         CensusMaster.Census.PopulationIncrease(name);
     }
 

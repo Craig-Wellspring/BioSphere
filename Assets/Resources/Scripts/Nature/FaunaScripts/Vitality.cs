@@ -26,7 +26,7 @@ public class Vitality : MonoBehaviour
     public event System.Action DeathOccurs;
 
     //Cache
-    private AIBrainData AIData;
+    private BasicAIBrain AIData;
     private Animator AIBrain;
     private Metabolism metabolism;
     private Animator animator;
@@ -37,7 +37,7 @@ public class Vitality : MonoBehaviour
 
     void Start()
     {
-        AIData = GetComponent<AIBrainData>();
+        AIData = GetComponent<BasicAIBrain>();
         AIBrain = GetComponent<Animator>();
         metabolism = GetComponent<Metabolism>();
         animator = transform.root.GetComponent<Animator>();

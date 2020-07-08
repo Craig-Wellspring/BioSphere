@@ -1,45 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Pathfinding;
 
 public class AIMoveTowardsFood : StateMachineBehaviour
 {
     IAstarAI aiPath;
-    AIBrainData AIData;
+    //BasicAIBrain BrainData;
+    Metabolism metabolism;
     AIDestinationSetter destinationSetter;
-
-
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        aiPath = animator.GetComponentInParent<IAstarAI>();
-        AIData = animator.GetComponent<AIBrainData>();
+        aiPath = animator.transform.root.GetComponent<IAstarAI>();
+        metabolism = animator.GetComponent<Metabolism>();
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
 
-        if (AIData.targetFood == null)
-            AIData.targetFood = animator.GetComponent<VisualPerception>().closestFood;
-        if (AIData.targetFood != null)
-            if (destinationSetter.target != AIData.targetFood.transform)
-                destinationSetter.target = AIData.targetFood.transform;
+        if (metabolism.currentTargetFood == null)
+        {
+            metabolism.currentTargetFood = animator.GetComponent<VisualPerception>().closestFood;
+            destinationSetter.target = metabolism.currentTargetFood.transform;
+        }
 
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (AIData.targetFood != null)
+        if (metabolism.currentTargetFood != null)
         {
-            if (destinationSetter.target == AIData.targetFood.transform && (!aiPath.pathPending && (!aiPath.hasPath || aiPath.reachedEndOfPath)))
+            if (destinationSetter.target == metabolism.currentTargetFood.transform && (!aiPath.pathPending && (!aiPath.hasPath || aiPath.reachedEndOfPath)))
                 animator.SetBool("ProxyFood", true);
             else animator.SetBool("ProxyFood", false);
         }
-        else AIData.targetFood = animator.GetComponent<VisualPerception>().closestFood;
-    }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
+        else metabolism.currentTargetFood = animator.GetComponent<VisualPerception>().closestFood;
     }
 }

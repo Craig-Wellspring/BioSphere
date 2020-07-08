@@ -20,10 +20,8 @@ public class Panspermia : MonoBehaviour
             //Initialize ServiusCam by attaching it to the first meteor spawned
             SpawnMeteor();
 
-            Camera serviusCam = FindObjectOfType<Camera>();
-            serviusCam.transform.SetParent(FindObjectOfType<Meteor>().transform.Find("CameraDock"), false);
-            serviusCam.transform.localPosition = Vector3.zero;
-            serviusCam.transform.localRotation = Quaternion.identity;
+            ServiusCam.Cam.transform.SetParent(FindObjectOfType<Meteor>().transform.Find("CameraDock"), false);
+            ServiusCam.Cam.ResetTransform();
         }
     }
 
