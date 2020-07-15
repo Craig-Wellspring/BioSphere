@@ -84,7 +84,7 @@ public class Metabolism : MonoBehaviour
     {
         EatingBegins();
 
-        currentTargetFood = _targetFood;
+        //currentTargetFood = _targetFood;
         targetFData = currentTargetFood.GetComponent<FoodData>();
         targetFData.FoodDestroyed += StopEating;
         
@@ -105,10 +105,13 @@ public class Metabolism : MonoBehaviour
     public void StopEating()
     {
         EatingEnds();
-        targetFData.FoodDestroyed -= StopEating;
+        if (targetFData != null)
+        {
+            targetFData.FoodDestroyed -= StopEating;
+            targetFData = null;
+        }
 
         currentTargetFood = null;
-        targetFData = null;
         
 
         //Update UI

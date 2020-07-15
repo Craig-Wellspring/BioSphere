@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections.Generic;
 
-public class SpawnFruit : MonoBehaviour
+public class SpawnFruit : AdvancedMonoBehaviour
 {
     [Header("Fruit Settings")]
     [Tooltip("Chooses randomly from list")]
@@ -189,48 +189,7 @@ public class SpawnFruit : MonoBehaviour
 
         return rot;
     }
-
-    private Vector3 GravityVector(Vector3 _fromPos)
-    {
-        Vector3 gravityUp = (_fromPos - PlanetCore.Core.transform.position).normalized;
-        return -gravityUp;
-    }
-
-    private Vector3 GetRandomPointOnCol(Collider _collider)
-    {
-        return new Vector3(
-            Random.Range(_collider.bounds.min.x, _collider.bounds.max.x),
-            Random.Range(_collider.bounds.min.y, _collider.bounds.max.y),
-            Random.Range(_collider.bounds.min.z, _collider.bounds.max.z));
-    }
-
-
-    private Vector3 PointOnTerrainUnderPosition(Vector3 _fromPos)
-    {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(_fromPos, GravityVector(_fromPos), out hit, 5000, terrainLayerMask))
-        {
-            if (hit.collider.CompareTag("Ground"))
-            {
-                return hit.point;
-            }
-            else
-            {
-                if (debugSeedCastRay)
-                    Debug.Log("SeedCast Ray didn't hit [Ground]");
-                return Vector3.zero;
-            }
-        }
-        else
-        {
-            if (debugSeedCastRay)
-                Debug.Log("SeedCast Ray didn't hit [Anything]");
-            return Vector3.zero;
-        }
-    }
     
-
-
     private void DrawDebug()
     {
         //Find potential planting location

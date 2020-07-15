@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
-//using UnityEngine.UI;
-//using UnityEngine.AI;
 using System.Collections.Generic;
-//using Pathfinding;
 
-[RequireComponent(typeof(Metabolism))]
 public class Vitality : MonoBehaviour
 {
     [Header("Health")]
@@ -79,8 +75,11 @@ public class Vitality : MonoBehaviour
         corpse.SetActive(true);
 
         //Transfer Energy to Corpse
-        corpseFData.nutritionalValue += metabolism.storedEnergy;
-        metabolism.SpendEnergy(metabolism.storedEnergy);
+        if (metabolism != null)
+        {
+            corpseFData.nutritionalValue += metabolism.storedEnergy;
+            metabolism.SpendEnergy(metabolism.storedEnergy);
+        }
 
         gameObject.SetActive(false);
     }

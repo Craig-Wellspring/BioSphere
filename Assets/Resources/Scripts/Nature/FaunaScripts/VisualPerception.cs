@@ -85,6 +85,16 @@ public class VisualPerception : MonoBehaviour
             {
                 //if (hit.collider == col)
                 //{
+
+                //Register nearby Mates
+                if (col.transform.tag == selfCollider.transform.tag)
+                {
+                    nearbyMates.Add(col);
+                    continue;
+                }
+
+                if (metabolism != null)
+                {
                     //Register nearby Food
                     if (metabolism.dietList.Contains(col.transform.tag))
                     {
@@ -94,14 +104,6 @@ public class VisualPerception : MonoBehaviour
                             Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.cyan, Time.deltaTime);
                         continue;
                     }
-
-                    //Register nearby Mates
-                    if (col.transform.tag == selfCollider.transform.tag)
-                    {
-                        nearbyMates.Add(col);
-                        continue;
-                    }
-
                     //Register nearby Predators
                     Metabolism potentialPred = col.transform.root.GetComponentInChildren<Metabolism>();
                     if (potentialPred != null)
@@ -125,6 +127,8 @@ public class VisualPerception : MonoBehaviour
                             Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.magenta, Time.deltaTime);
                         continue;
                     }
+                }
+
                 //}
             }
         }

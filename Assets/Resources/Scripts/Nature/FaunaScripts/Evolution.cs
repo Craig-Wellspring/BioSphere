@@ -36,7 +36,7 @@ public class Evolution : MonoBehaviour
         metabolism = GetComponent<Metabolism>();
         vPerception = GetComponent<VisualPerception>();
         morphology = GetComponent<Morphology>();
-
+        
         metabolism.EnergyGained += SurplusCheck;
         metabolism.EnergySpent += SurplusCheck;
     }

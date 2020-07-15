@@ -116,7 +116,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
     void CeaseEating()
     {
         AIBrain.SetBool("Eating", false);
-        AIBrain.SetBool("ProxyFood", false);
+
+        //Reset destination setter
+        destinationSetter.target = null;
     }
 
     void BeginWasting()

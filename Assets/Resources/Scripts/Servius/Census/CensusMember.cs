@@ -11,12 +11,16 @@ public class CensusMember : MonoBehaviour
 
     void Start()
     {
-        CensusMaster.Census.PopulationIncrease(name);
+        CensusMaster.Census.PopulationIncrease(gameObject.name);
     }
 
     void OnDisable()
     {
         if (playMode)
-            CensusMaster.Census.PopulationDecrease(name);
+        {
+            if (gameObject.name.Contains(" (Dead)"))
+                gameObject.name.Replace(" (Dead)", "");
+            CensusMaster.Census.PopulationDecrease(gameObject.name);
+        }
     }
 }

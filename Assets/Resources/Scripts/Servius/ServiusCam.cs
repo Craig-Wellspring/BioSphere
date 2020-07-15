@@ -16,6 +16,8 @@ public class ServiusCam : MonoBehaviour
         }
     }
 
+    
+
     public void ResetTransform()
     {
         transform.localPosition = Vector3.zero;

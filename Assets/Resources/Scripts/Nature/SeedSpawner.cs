@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeedSpawner : MonoBehaviour
+public class SeedSpawner : AdvancedMonoBehaviour
 {
     [SerializeField] private GameObject newSeed;
     public bool spawnSeed = true;
@@ -42,7 +42,7 @@ public class SeedSpawner : MonoBehaviour
 
         if (collectedEnergy > 0)
         {
-            Servius.Server.transform.GetComponent<Panspermia>().energyDeficit += collectedEnergy * 0.5f;
+            Servius.Server.transform.GetComponent<Panspermia>().globalEnergyReserve += collectedEnergy * 0.5f;
             Servius.Server.transform.GetComponent<Panspermia>().CheckForLaunch();
 
             PlantSeed(collectedEnergy * 0.5f);
@@ -77,7 +77,7 @@ public class SeedSpawner : MonoBehaviour
         //Find seed planting location
         Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
         //Plant Seedgrass
-        GameObject newFruit = (GameObject)Instantiate(newSeed, PointOnTerrainUnderPosition(), newRot);
+        GameObject newFruit = (GameObject)Instantiate(newSeed, PointOnTerrainUnderPosition(transform.position), newRot);
         newFruit.name = newSeed.name;
 
         //Pass on remaining energy
@@ -94,7 +94,7 @@ public class SeedSpawner : MonoBehaviour
         //Find Seed planting location
         Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
         //Plant new Seed
-        GameObject newFruit = (GameObject)Instantiate(_customSeed, PointOnTerrainUnderPosition(), newRot);
+        GameObject newFruit = (GameObject)Instantiate(_customSeed, PointOnTerrainUnderPosition(transform.position), newRot);
         newFruit.name = _customSeed.name;
 
         //Pass on remaining energy
@@ -104,34 +104,13 @@ public class SeedSpawner : MonoBehaviour
         else
             seedFData.nutritionalValue = _passDownEnergy;
     }
-    
-
-    public Vector3 PointOnTerrainUnderPosition()
-    {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position + (transform.position - Vector3.zero).normalized, -(transform.position - Vector3.zero).normalized, out hit, 2000, LayerMask.GetMask("Terrain")))
-        {
-            if (hit.collider.CompareTag("Ground"))
-                return hit.point;
-            else
-            {
-                Debug.Log("SeedCast Ray didn't hit [Ground]");
-                return Vector3.zero;
-            }
-        }
-        else
-        {
-            Debug.Log("SeedCast Ray didn't hit [Anything]");
-            return Vector3.zero;
-        }
-    }
 
 
     private void DrawDebug()
     {
         //Find potential planting location
         Vector3 drawFromPos = transform.position;
-        Vector3 drawSpherePoint = PointOnTerrainUnderPosition();
+        Vector3 drawSpherePoint = PointOnTerrainUnderPosition(transform.position);
 
         Debug.Log("drawFromPos: " + drawFromPos + ", drawSpherePoint: " + drawSpherePoint);
 

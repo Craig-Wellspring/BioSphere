@@ -7,7 +7,7 @@ public class Panspermia : MonoBehaviour
     public GameObject meteor;
     public Transform spawnPoint;
     [Space(10)]
-    public float energyDeficit = 0;
+    public float globalEnergyReserve = 0;
     public float launchThreshold = 1000;
     [Space(10)]
     public bool spawnMeteor = false;
@@ -15,10 +15,11 @@ public class Panspermia : MonoBehaviour
 
     private void Start()
     {
-        if (energyDeficit > 0)
+        if (globalEnergyReserve > 0)
         {
             //Initialize ServiusCam by attaching it to the first meteor spawned
             SpawnMeteor();
+            FindObjectOfType<Meteor>().transform.localPosition = new Vector3(0, 0, 300);
 
             ServiusCam.Cam.transform.SetParent(FindObjectOfType<Meteor>().transform.Find("CameraDock"), false);
             ServiusCam.Cam.ResetTransform();
@@ -38,7 +39,7 @@ public class Panspermia : MonoBehaviour
     //// Launch Meteor if Energy Deficit is above Threshold \\\\
     public void CheckForLaunch()
     {
-        if (energyDeficit >= launchThreshold)
+        if (globalEnergyReserve >= launchThreshold)
             SpawnMeteor();
     }
 
@@ -51,7 +52,7 @@ public class Panspermia : MonoBehaviour
         newMeteor.name = meteor.name;
 
         //Allocate Energy
-        newMeteor.GetComponent<Meteor>().energyStored = energyDeficit;
-        energyDeficit = 0;
+        newMeteor.GetComponent<Meteor>().energyStored = globalEnergyReserve;
+        globalEnergyReserve = 0;
     }
 }

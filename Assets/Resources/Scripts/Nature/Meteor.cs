@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 
-public class Meteor : MonoBehaviour
+public class Meteor : AdvancedMonoBehaviour
 {
     public GameObject seedObject;
+    public GameObject guardian;
     public float energyStored;
     
-
     private void OnTriggerEnter(Collider other)
     {
         //When Meteor collides with the Atmosphere: Activate Trail particles and move ServerCam
-        if (other.name == "Horizon")
+        if (other.name == "Atmosphere")
         {
             //Activate Trail
             transform.Find("Trail").gameObject.SetActive(true);
 
-            //Move camera to follow Meteor entering Atmosphere
+            //Attach Camera to Meteor entering Atmosphere
             ServiusCam.Cam.transform.SetParent(transform.Find("CameraDock"), false);
             ServiusCam.Cam.ResetTransform();
         }
@@ -30,8 +30,11 @@ public class Meteor : MonoBehaviour
             //Create Explosion
             transform.Find("Impact").gameObject.SetActive(true);
 
-            //Detach ServerCam
-            ServiusCam.Cam.transform.SetParent(null);
+            //Spawn Guardian
+            guardian.transform.position = PointOnTerrainUnderPosition(transform.position);
+            guardian.SetActive(true);
+            guardian.transform.SetParent(null);
+
 
             //Spawn Seed with Energy onboard
             PlantSeed(energyStored);
@@ -43,8 +46,8 @@ public class Meteor : MonoBehaviour
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
             transform.Find("Trail").GetComponent<ParticleSystem>().Stop();
-
             transform.Find("Rock").gameObject.SetActive(false);
+
             Destroy(gameObject, 30);
         }
     }
@@ -54,24 +57,11 @@ public class Meteor : MonoBehaviour
         //Find seed planting location
         Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
         //Plant Seedgrass
-        GameObject newSeed = (GameObject)Instantiate(seedObject, PointOnTerrainUnderPosition(), newRot);
+        GameObject newSeed = (GameObject)Instantiate(seedObject, PointOnTerrainUnderPosition(transform.position), newRot);
         newSeed.name = seedObject.name;
 
         //Pass on remaining energy
         FoodData seedFData = newSeed.GetComponentInChildren<FoodData>();
         seedFData.energyStored = _passDownEnergy - seedFData.nutritionalValue;
-    }
-
-
-    public Vector3 PointOnTerrainUnderPosition()
-    {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position + (transform.position - Vector3.zero).normalized, -(transform.position - Vector3.zero).normalized, out hit, 2000, LayerMask.GetMask("Terrain")))
-        {
-            if (hit.collider.CompareTag("Ground"))
-                return hit.point;
-            else return Vector3.zero;
-        }
-        else return Vector3.zero;
     }
 }
