@@ -12,13 +12,13 @@ public class AnimatorEating : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         metabolism = animator.GetComponentInChildren<Metabolism>();
-        if (metabolism.targetFData != null)
-            chewRate = metabolism.targetFData.chewRateModifier * metabolism.chewSpeed;
+        if (metabolism.targetEData != null)
+            chewRate = metabolism.targetEData.chewRateModifier * metabolism.chewSpeed;
     }
     
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (metabolism.targetFData != null)
-            metabolism.Ingest(metabolism.targetFData, chewRate * Time.deltaTime);
+        if (metabolism.targetEData != null)
+            metabolism.Ingest(metabolism.targetEData, chewRate * Time.deltaTime);
     }
 }

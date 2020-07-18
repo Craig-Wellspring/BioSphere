@@ -11,22 +11,19 @@ public class Morphology : MonoBehaviour
     public GameObject carniMorph;
     public GameObject herbiMorph;
     
+    [Header("Debug")]
     public bool logMorphs = false;
 
 
     #region Private Variables
     //Cache
     Metabolism metabolism;
-    Evolution evo;
-    SeedSpawner seedSpawner;
     #endregion
 
 
     private void Start()
     {
         metabolism = GetComponent<Metabolism>();
-        evo = GetComponent<Evolution>();
-        seedSpawner = transform.root.GetComponentInChildren<SeedSpawner>(true); //Includes inactive GameObjects
     }
 
     
@@ -41,7 +38,7 @@ public class Morphology : MonoBehaviour
                 availableMorph = carniMorph;
                 break;
             }
-            if (foodType.foodTag.Contains("Shrub"))
+            if (foodType.foodTag.Contains("Grass"))
             {
                 availableMorph = herbiMorph;
                 break;
@@ -56,6 +53,8 @@ public class Morphology : MonoBehaviour
         SpawnForm();
         DespawnForm();
 
+
+        //Debug
         if (logMorphs)
             Debug.Log(transform.root.name + " is trying to morph into " + availableMorph.name);
     }
@@ -65,15 +64,9 @@ public class Morphology : MonoBehaviour
     //// Functions used by Animator: Create new form and destroy old form \\\\
     public void SpawnForm()
     {
+        EnergyData eData = GetComponent<EnergyData>();
         //Spawn new Creature Form
-        GameObject creatureToSpawn = Instantiate(availableMorph, transform.position, transform.rotation);
-        PlanetCore.Core.AlignWithGravity(creatureToSpawn.transform);
-        creatureToSpawn.name = availableMorph.name;
-
-
-        //Allocate Energy
-        creatureToSpawn.GetComponentInChildren<Metabolism>().GainEnergy(metabolism.storedEnergy);
-        metabolism.storedEnergy = 0;
+        GetComponent<ObjectSpawner>().SpawnObject(availableMorph, 0, false, null, eData.energyReserve, eData);
     }
     public void DespawnForm()
     {

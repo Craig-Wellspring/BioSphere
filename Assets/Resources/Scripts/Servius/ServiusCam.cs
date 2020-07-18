@@ -15,12 +15,4 @@ public class ServiusCam : MonoBehaviour
             Destroy(gameObject); //should never happen
         }
     }
-
-    
-
-    public void ResetTransform()
-    {
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-    }
 }

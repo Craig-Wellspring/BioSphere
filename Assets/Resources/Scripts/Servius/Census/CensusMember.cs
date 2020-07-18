@@ -18,8 +18,9 @@ public class CensusMember : MonoBehaviour
     {
         if (playMode)
         {
-            if (gameObject.name.Contains(" (Dead)"))
-                gameObject.name.Replace(" (Dead)", "");
+            if (gameObject.name.Contains("(Dead)"))
+                gameObject.name = gameObject.name.Replace(" (Dead)", "");
+
             CensusMaster.Census.PopulationDecrease(gameObject.name);
         }
     }

@@ -50,9 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e01b55904fd2474cb72a9e1f45998b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constrainRotation: 0
-  useGravity: 1
-  alignWithGravity: 0
 --- !u!54 &6785260389747595392
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -101,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatureToHatch: {fileID: 0}
-  canHatch: 1
 --- !u!136 &6742531837929581015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -222,9 +218,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7604624275811248784}
-  - component: {fileID: 6920605206020314414}
-  - component: {fileID: 3912581676150368829}
+  - component: {fileID: 2895320164846461939}
   - component: {fileID: 3960496962020411093}
+  - component: {fileID: 3912581676150368829}
+  - component: {fileID: 6920605206020314414}
   m_Layer: 10
   m_Name: Egg Yolk
   m_TagString: Egg
@@ -246,6 +243,47 @@ Transform:
   m_Father: {fileID: 5554193337663847160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2895320164846461939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443528573887163949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3960496962020411093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443528573887163949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawDebugSphere: 0
+--- !u!114 &3912581676150368829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443528573887163949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  nutritionalValue: 0
+  chewRateModifier: 1
+  destroyRoot: 1
 --- !u!136 &6920605206020314414
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -260,33 +298,3 @@ CapsuleCollider:
   m_Height: 0.25
   m_Direction: 1
   m_Center: {x: 0, y: 0.125, z: 0}
---- !u!114 &3912581676150368829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7443528573887163949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyStored: 0
-  nutritionalValue: 0
-  chewRateModifier: 1
-  destroyRoot: 1
---- !u!114 &3960496962020411093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7443528573887163949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newSeed: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24, type: 3}
-  spawnSeed: 1

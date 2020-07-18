@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400250}
-  - component: {fileID: 521295327963561663}
   - component: {fileID: 3297599652082431522}
   - component: {fileID: 9500000}
   - component: {fileID: 3362489841897072205}
@@ -43,20 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &521295327963561663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a185b855f7ef83448b9b78487aa81786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onStart: 1
-  onUpdate: 0
 --- !u!114 &3297599652082431522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,10 +426,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4658365877093987288}
-  - component: {fileID: 2131904891924997232}
-  - component: {fileID: 3486346588474071174}
-  - component: {fileID: 8086205142144112776}
+  - component: {fileID: 4707972342552166584}
   - component: {fileID: 2690419059625621252}
+  - component: {fileID: 2909323061587037465}
+  - component: {fileID: 3486346588474071174}
+  - component: {fileID: 2131904891924997232}
+  - component: {fileID: 8086205142144112776}
   - component: {fileID: 8816028523584167361}
   - component: {fileID: 7419024281370543850}
   - component: {fileID: 7485800211558301736}
@@ -472,7 +459,7 @@ Transform:
   m_Father: {fileID: 400250}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2131904891924997232
+--- !u!114 &4707972342552166584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -481,16 +468,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467497012653493642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  maxHealth: 5
-  currentHealth: 5
-  dead: 0
-  corpse: {fileID: 0}
-  bodyColliders:
-  - {fileID: 0}
+--- !u!114 &2690419059625621252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawDebugSphere: 0
+--- !u!114 &2909323061587037465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  nutritionalValue: 0
+  chewRateModifier: 1
+  destroyRoot: 1
 --- !u!114 &3486346588474071174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,11 +512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35916ad0225f1408a9fc805cfd19fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerBar: {fileID: 0}
-  hungerFill: {fileID: 0}
+  hungerBar: {fileID: 2610932534292125903}
+  hungerFill: {fileID: 7628775734015288365}
   hungerUnits: 0
   hungerPercentage: 0
-  storedEnergy: 0
   metabolismRate: 3
   hungerGainedPerTick: 2
   chewSpeed: 2
@@ -517,9 +525,28 @@ MonoBehaviour:
   hungryAtPercent: 10
   wastingAtPercent: 80
   maximumHungerUnits: 100
-  targetFData: {fileID: 0}
+  targetEData: {fileID: 0}
   currentTargetFood: {fileID: 0}
   logEating: 0
+--- !u!114 &2131904891924997232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 3647742207210096942}
+  maxHealth: 5
+  currentHealth: 5
+  dead: 0
+  corpse: {fileID: 7476881784630833516}
+  bodyColliders:
+  - {fileID: 0}
 --- !u!114 &8086205142144112776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,32 +564,17 @@ MonoBehaviour:
   perceptionRadius: 3
   viewAngle: 0
   drawSightSphere: 0
-  predatorSightLines: 0
-  preySightLines: 0
   foodSightLines: 0
+  preySightLines: 0
+  predatorSightLines: 0
   nearbyMates: []
   closestMate: {fileID: 0}
-  nearbyPredators: []
-  closestPredator: {fileID: 0}
-  nearbyPrey: []
-  closestPrey: {fileID: 0}
   nearbyFood: []
   closestFood: {fileID: 0}
---- !u!114 &2690419059625621252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newSeed: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24, type: 3}
-  spawnSeed: 1
-  drawDebugSeed: 0
+  nearbyPrey: []
+  closestPrey: {fileID: 0}
+  nearbyPredators: []
+  closestPredator: {fileID: 0}
 --- !u!114 &8816028523584167361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,8 +587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reproductionCost: 30
   eggToSpawn: {fileID: 0}
+  reproductionCost: 30
   logEggLaying: 1
 --- !u!114 &7419024281370543850
 MonoBehaviour:
@@ -688,7 +700,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
-  m_Center: {x: 0, y: 0.2, z: 0.4}
+  m_Center: {x: 0, y: 0.2, z: 0.2}
 --- !u!1 &3647742207210096942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,9 +1105,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8351545068497355797}
-  - component: {fileID: 3876870131049664693}
-  - component: {fileID: 4127540048741382585}
+  - component: {fileID: 8736678724299907244}
   - component: {fileID: 1835522965571032941}
+  - component: {fileID: 4127540048741382585}
+  - component: {fileID: 3876870131049664693}
   m_Layer: 13
   m_Name: Corpse
   m_TagString: Meat
@@ -1117,21 +1130,7 @@ Transform:
   m_Father: {fileID: 400250}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3876870131049664693
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7476881784630833516}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.005
-  m_Height: 0.015
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.004, z: 0}
---- !u!114 &4127540048741382585
+--- !u!114 &8736678724299907244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1140,13 +1139,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7476881784630833516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyStored: 0
-  nutritionalValue: 0
-  chewRateModifier: 1
-  destroyRoot: 1
 --- !u!114 &1835522965571032941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,3 +1156,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decayTime: 120
   destroyRoot: 1
+--- !u!114 &4127540048741382585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476881784630833516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  nutritionalValue: 0
+  chewRateModifier: 1
+  destroyRoot: 1
+--- !u!136 &3876870131049664693
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476881784630833516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.005
+  m_Height: 0.015
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.004, z: 0}

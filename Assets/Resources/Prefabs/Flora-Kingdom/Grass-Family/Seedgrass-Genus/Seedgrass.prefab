@@ -89,6 +89,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 692861899004652731, guid: 9a483fcd344f0d149bb9a8be5207ab09,
         type: 3}
+    - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
+        type: 3}
+      propertyPath: randomSpawnArea
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8613722111822456013, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
       propertyPath: m_Name
@@ -99,7 +104,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a93a4ebf089433f48b1cbbf6fcf35457, type: 3}
 --- !u!1 &8155065745073186552 stripped
 GameObject:
@@ -301,6 +307,11 @@ PrefabInstance:
       propertyPath: nextSeedPod
       value: 
       objectReference: {fileID: 8155065745073186552}
+    - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
+        type: 3}
+      propertyPath: randomSpawnArea
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8613722111822456013, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
       propertyPath: m_Name

@@ -2,9 +2,7 @@
 
 public class Meteor : AdvancedMonoBehaviour
 {
-    public GameObject seedObject;
     public GameObject guardian;
-    public float energyStored;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +14,7 @@ public class Meteor : AdvancedMonoBehaviour
 
             //Attach Camera to Meteor entering Atmosphere
             ServiusCam.Cam.transform.SetParent(transform.Find("CameraDock"), false);
-            ServiusCam.Cam.ResetTransform();
+            ResetTransform(ServiusCam.Cam.transform);
         }
     }
 
@@ -35,10 +33,8 @@ public class Meteor : AdvancedMonoBehaviour
             guardian.SetActive(true);
             guardian.transform.SetParent(null);
 
-
-            //Spawn Seed with Energy onboard
-            PlantSeed(energyStored);
-            energyStored = 0;
+            //Detach Camera
+            ServiusCam.Cam.transform.SetParent(null);
 
             //Despawn self
             GetComponent<GravityAttract>().enabled = false;
@@ -50,18 +46,5 @@ public class Meteor : AdvancedMonoBehaviour
 
             Destroy(gameObject, 30);
         }
-    }
-
-    public void PlantSeed(float _passDownEnergy)
-    {
-        //Find seed planting location
-        Quaternion newRot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
-        //Plant Seedgrass
-        GameObject newSeed = (GameObject)Instantiate(seedObject, PointOnTerrainUnderPosition(transform.position), newRot);
-        newSeed.name = seedObject.name;
-
-        //Pass on remaining energy
-        FoodData seedFData = newSeed.GetComponentInChildren<FoodData>();
-        seedFData.energyStored = _passDownEnergy - seedFData.nutritionalValue;
     }
 }

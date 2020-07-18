@@ -7,6 +7,7 @@ public class CensusMaster : MonoBehaviour
 {
     public static CensusMaster Census { get; private set; }
 
+    [Header("Overpopulation Control")]
     [Tooltip("Emergency stop for global overpopulation"), SerializeField]
     private int globalOvergrowth = 30000;
     [Tooltip("Emergency stop for overpopulation of each species"), SerializeField]
@@ -36,14 +37,14 @@ public class CensusMaster : MonoBehaviour
         }
     }
 
-    public void PopulationIncrease(string newMember)
+    public void PopulationIncrease(string _newMember)
     {
         bool found = false;
         //Search list of species
         foreach (CensusData member in listOfSpecies)
         {
             //If already on the list, add to population
-            if (member.speciesName.Equals(newMember))
+            if (member.speciesName.Equals(_newMember))
             {
 
                 member.populationSize += 1;
@@ -51,12 +52,12 @@ public class CensusMaster : MonoBehaviour
 
                 //Log
                 if (logPopulationIncrease)
-                    Debug.Log(newMember + " population increased to " + member.populationSize);
+                    Debug.Log(_newMember + " population increased to " + member.populationSize);
 
                 //Crash if population is too high
                 if (member.populationSize >= speciesOvergrowth)
                 {
-                    Debug.Log("Crash due to " + newMember + " overgrowth");
+                    Debug.Log("Crash due to " + _newMember + " overgrowth");
                     UnityEditor.EditorApplication.isPlaying = false;
                 }
                 if (totalPopulation >= globalOvergrowth)
@@ -71,29 +72,29 @@ public class CensusMaster : MonoBehaviour
         if (!found)
         {
             //If not found on the list, add to list
-            listOfSpecies.Add(new CensusData(newMember, 1));
+            listOfSpecies.Add(new CensusData(_newMember, 1));
             totalPopulation += 1;
 
             //Log
             if (logEmergences)
-                Debug.Log(newMember + " has emerged in the world.");
+                Debug.Log(_newMember + " has emerged in the world.");
         }
 
     }
 
     
-    public void PopulationDecrease(string lostMember)
+    public void PopulationDecrease(string _lostMember)
     {
         foreach(CensusData member in listOfSpecies)
         {
-            if (member.speciesName.Contains(lostMember))
+            if (member.speciesName.Contains(_lostMember))
             {
                 member.populationSize -= 1;
                 totalPopulation -= 1;
 
                 //Log
                 if (logPopulationDecrease)
-                    Debug.Log(lostMember + " population decreased to " + member.populationSize);
+                    Debug.Log(_lostMember + " population decreased to " + member.populationSize);
 
                 if (member.populationSize < 1)
                 {
@@ -101,7 +102,7 @@ public class CensusMaster : MonoBehaviour
 
                     //Log
                     if (logExtinctions)
-                        Debug.Log(lostMember + " has gone extinct.");
+                        Debug.Log(_lostMember + " has gone extinct.");
                 }
                 break;
             }

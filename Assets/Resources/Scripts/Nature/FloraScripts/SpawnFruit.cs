@@ -2,20 +2,17 @@
 using UnityEditor;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(ObjectSpawner))]
 public class SpawnFruit : AdvancedMonoBehaviour
 {
     [Header("Fruit Settings")]
     [Tooltip("Chooses randomly from list")]
     public List<GameObject> newFruit;
 
-    public enum ParentType { None, Child, Sibling };
-    public ParentType parentRelationship;
 
     public enum WhenToSpawn { OnSelfSpawn, OnHalfGrown , OnFullyGrown, OnTrigger };
     public WhenToSpawn whenToSpawn;
 
-    [Tooltip("Spawn selected Entity when remaining Energy is too low to spawn selected Fruit")]
-    public GameObject castOffEntity;
 
 
 
@@ -25,38 +22,34 @@ public class SpawnFruit : AdvancedMonoBehaviour
     public bool divideRemainingEnergy = false;
     [Tooltip("When out of Seeds, deactive this Pod and activate selected Pod")]
     public GameObject nextSeedPod;
+    [Space(10)]
+    [Tooltip("Spawn selected Entity when remaining Energy is too low to spawn selected Fruit")]
+    public GameObject castOffEntity;
+    public float castOffDistance;
 
 
     [Header("Placing Settings")]
+    [Tooltip("Scales the size of the random spawn area. 0 is not random. Will reset Transform.")]
+    public float randomSpawnArea = 0;
     public bool randomYRotation = false;
-    public bool randomSpawnPosition = false;
-    public float spawnArea = 1f;
+    public enum ParentType { None, Child, Sibling };
+    public ParentType parentRelationship;
 
 
     [Header("Triggers")]
     public bool triggerSpawn = false;
-    [SerializeField] private bool drawDebugSeed = false;
-    [SerializeField] private bool debugSeedCastRay = false;
 
 
-
-    private FoodData rootFData;
+    private ObjectSpawner spawner;
+    private EnergyData rootEData;
     private GrowthData rootGrowthData;
-    private LayerMask terrainLayerMask;
     
     
     public void Start()
     {
-        rootFData = transform.root.GetComponentInChildren<FoodData>();
+        spawner = GetComponent<ObjectSpawner>();
+        rootEData = transform.root.GetComponentInChildren<EnergyData>();
         rootGrowthData = transform.root.GetComponentInChildren<GrowthData>();
-        terrainLayerMask = LayerMask.GetMask("Terrain");
-
-        //Adjust spawn area
-        if (randomSpawnPosition)
-        {
-            transform.localScale = new Vector3(spawnArea, 1, spawnArea);
-            transform.localPosition = new Vector3(0f, 50f, 0f);
-        }
     }
 
 
@@ -66,10 +59,10 @@ public class SpawnFruit : AdvancedMonoBehaviour
         {
             //Select fruit to spawn
             GameObject fruitToSpawn = newFruit[Random.Range(0, newFruit.Count)];
-            float energyRequired = fruitToSpawn.GetComponentInChildren<FoodData>().nutritionalValue;
+            float energyRequired = fruitToSpawn.GetComponentInChildren<EnergyData>().nutritionalValue;
 
             //Check if able to spawn
-            if (rootFData.energyStored > energyRequired)
+            if (rootEData.energyReserve > energyRequired)
             {
                 if ((whenToSpawn == WhenToSpawn.OnSelfSpawn) ||
                     (whenToSpawn == WhenToSpawn.OnHalfGrown && rootGrowthData.halfGrown) ||
@@ -78,7 +71,24 @@ public class SpawnFruit : AdvancedMonoBehaviour
                 {
                     //Spawn fruit if conditions met and remove seed
                     if (Random.Range(1f, 100f) <= seedSuccessChance)
-                        CreateFruit(fruitToSpawn);
+                    {
+                        //Get Parent relationship
+                        Transform parent = null;
+                        if (parentRelationship == ParentType.Child)
+                            parent = transform;
+                        if (parentRelationship == ParentType.Sibling && transform.parent != null)
+                            parent = transform.parent;
+
+                        //Decide how much Energy to pass down
+                        float energyToGive;
+                        if (divideRemainingEnergy)
+                            energyToGive = rootEData.energyReserve / seeds;
+                        else
+                            energyToGive = fruitToSpawn.GetComponentInChildren<EnergyData>().nutritionalValue;
+
+
+                        spawner.SpawnObject(fruitToSpawn, randomSpawnArea, randomYRotation, parent, energyToGive, rootEData);
+                    }
 
                     seeds -= 1;
                     
@@ -88,8 +98,10 @@ public class SpawnFruit : AdvancedMonoBehaviour
             else
             {
                 //Spawn CastOff Entity if not enough Energy remains to spawn new Fruit
-                if (castOffEntity != null && rootFData.energyStored > 0)
-                    SpawnCastoff();
+                if (castOffEntity != null && rootEData.energyReserve > 0)
+                {
+                    spawner.SpawnObject(castOffEntity, castOffDistance, true, null, rootEData.energyReserve, rootEData);
+                }
                 seeds = 0;
             }
         }
@@ -102,105 +114,4 @@ public class SpawnFruit : AdvancedMonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
-
-    private void OnValidate()
-    {
-        //Debug trigger
-        if (drawDebugSeed)
-        {
-            DrawDebug();
-            drawDebugSeed = false;
-        }
-    }
-
-
-
-    #region Custom Functions
-
-    private void CreateFruit(GameObject _newFruit)
-    {
-
-        FoodData newFData = _newFruit.GetComponentInChildren<FoodData>();
-        Vector3 spawnPos = GetSpawnLocation();
-
-        //Get Parent relationship
-        Transform parent = null;
-        if (parentRelationship == ParentType.Child)
-            parent = transform;
-        if (parentRelationship == ParentType.Sibling && transform.parent != null)
-            parent = transform.parent;
-
-
-        //Spawn Child Fruit
-        if (spawnPos != Vector3.zero)
-        {
-            GameObject fruitToSpawn = (GameObject)Instantiate(_newFruit, spawnPos, SpawnOrientation(), parent);
-            fruitToSpawn.name = _newFruit.name;
-
-            //Random Rotation
-            if (randomYRotation)
-                fruitToSpawn.transform.RotateAround(fruitToSpawn.transform.position, fruitToSpawn.transform.up, Random.Range(1f, 360f));
-
-
-            //Allocate energy
-            float energyToGive;
-            if (divideRemainingEnergy)
-                energyToGive = rootFData.energyStored / seeds;
-            else
-                energyToGive = newFData.nutritionalValue;
-
-            rootFData.energyStored -= energyToGive;
-            fruitToSpawn.GetComponentInChildren<FoodData>().energyStored = energyToGive - newFData.nutritionalValue;
-        }
-        else
-        {
-            //Failed to find appropriate surface, recast seed
-            CreateFruit(_newFruit);
-        }
-    }
-
-    private void SpawnCastoff()
-    {
-        GameObject castOff = (GameObject)Instantiate(castOffEntity, transform.position, transform.rotation);
-        castOff.name = castOffEntity.name;
-
-        castOff.GetComponentInChildren<FoodData>().nutritionalValue += rootFData.energyStored;
-        rootFData.energyStored = 0;
-    }
-
-
-    private Vector3 GetSpawnLocation()
-    {
-        //Get desired spawn position
-        Vector3 pos = transform.root.position;
-        if (randomSpawnPosition)
-        {
-            Vector3 seedCloudPos = GetRandomPointOnCol(GetComponent<Collider>());
-            pos = PointOnTerrainUnderPosition(seedCloudPos);
-        }
-        
-        return pos;
-    }
-
-    private Quaternion SpawnOrientation()
-    {
-        //Get desired rotation
-        Quaternion rot = Quaternion.FromToRotation(transform.root.up, -GravityVector(transform.root.position)) * transform.root.rotation;
-
-        return rot;
-    }
-    
-    private void DrawDebug()
-    {
-        //Find potential planting location
-        Vector3 drawFromPos = GetRandomPointOnCol(GetComponent<Collider>());
-        Vector3 drawSpherePoint = PointOnTerrainUnderPosition(drawFromPos);
-
-        //Draw Sphere at potential planting location
-        Debug.DrawRay(drawFromPos, GravityVector(drawFromPos), Color.red, 10);
-        GameObject debugSphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), drawSpherePoint, transform.rotation);
-        debugSphere.transform.localScale *= 0.2f;
-        Destroy(debugSphere, 10);
-    }
-    #endregion
 }

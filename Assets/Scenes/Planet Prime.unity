@@ -4743,8 +4743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteor: {fileID: 6095046655658794419, guid: 9d26e26c95622854396298675d261cf3, type: 3}
   spawnPoint: {fileID: 188061061}
-  globalEnergyReserve: 0
-  launchThreshold: 1000
+  lifeEnergyPool: 1000
   spawnMeteor: 0
 --- !u!114 &2066092717
 MonoBehaviour:

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class VisualPerception : MonoBehaviour
+public class VisualPerception : AdvancedMonoBehaviour
 {
     public Collider selfCollider;
     public Transform eyesTransform;
@@ -15,22 +15,22 @@ public class VisualPerception : MonoBehaviour
     public bool drawSightSphere = false;
 
     [Header("Draw Sight Lines")]
-    public bool predatorSightLines = true;
-    public bool preySightLines = true;
     public bool foodSightLines = true;
+    public bool preySightLines = true;
+    public bool predatorSightLines = true;
 
     [Header("Currently Visible")]
     public List<Collider> nearbyMates;
     public GameObject closestMate;
     [Space(10)]
-    public List<Collider> nearbyPredators;
-    public GameObject closestPredator;
+    public List<Collider> nearbyFood;
+    public GameObject closestFood;
     [Space(10)]
     public List<Collider> nearbyPrey;
     public GameObject closestPrey;
     [Space(10)]
-    public List<Collider> nearbyFood;
-    public GameObject closestFood;
+    public List<Collider> nearbyPredators;
+    public GameObject closestPredator;
 
     #region LayerMasks
     private LayerMask creatureLayerMask;
@@ -62,12 +62,15 @@ public class VisualPerception : MonoBehaviour
         //Clear vision from last frame
         nearbyFood.Clear();
         closestFood = null;
+
         nearbyMates.Clear();
         closestMate = null;
-        nearbyPredators.Clear();
-        closestPredator = null;
+
         nearbyPrey.Clear();
         closestPrey = null;
+
+        nearbyPredators.Clear();
+        closestPredator = null;
 
 
         // Check surroundings, populate a list of everything in the area
@@ -83,9 +86,6 @@ public class VisualPerception : MonoBehaviour
             Ray sightRay = new Ray(eyesTransform.position, col.transform.position - eyesTransform.position);
             if (col.Raycast(sightRay, out hit, perceptionRadius))
             {
-                //if (hit.collider == col)
-                //{
-
                 //Register nearby Mates
                 if (col.transform.tag == selfCollider.transform.tag)
                 {
@@ -104,6 +104,17 @@ public class VisualPerception : MonoBehaviour
                             Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.cyan, Time.deltaTime);
                         continue;
                     }
+
+                    //Register nearby Prey
+                    if (metabolism.preyList.Contains(col.transform.tag))
+                    {
+                        nearbyPrey.Add(col);
+
+                        if (preySightLines)
+                            Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.magenta, Time.deltaTime);
+                        continue;
+                    }
+
                     //Register nearby Predators
                     Metabolism potentialPred = col.transform.root.GetComponentInChildren<Metabolism>();
                     if (potentialPred != null)
@@ -117,57 +128,16 @@ public class VisualPerception : MonoBehaviour
                             continue;
                         }
                     }
-
-                    //Register nearby Prey
-                    if (metabolism.preyList.Contains(col.transform.tag))
-                    {
-                        nearbyPrey.Add(col);
-
-                        if (preySightLines)
-                            Debug.DrawRay(eyesTransform.position, col.transform.position - eyesTransform.position, Color.magenta, Time.deltaTime);
-                        continue;
-                    }
                 }
-
-                //}
             }
         }
 
         //Find the closest member of each type
-        closestFood = GetClosestTarget(nearbyFood);
-        closestMate = GetClosestTarget(nearbyMates);
-        closestPredator = GetClosestTarget(nearbyPredators);
-        closestPrey = GetClosestTarget(nearbyPrey);
+        closestFood = ClosestColliderInList(nearbyFood);
+        closestMate = ClosestColliderInList(nearbyMates);
+        closestPredator = ClosestColliderInList(nearbyPredators);
+        closestPrey = ClosestColliderInList(nearbyPrey);
     }
-
-
-
-    public GameObject GetClosestTarget(List<Collider> _targets)
-    {
-        GameObject bestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
-        foreach (Collider potentialTarget in _targets)
-        {
-            if (potentialTarget != null)
-            {
-                Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
-                float dSqrToTarget = directionToTarget.sqrMagnitude;
-                if (dSqrToTarget < closestDistanceSqr && potentialTarget.gameObject != this.gameObject)
-                {
-                    closestDistanceSqr = dSqrToTarget;
-                    bestTarget = potentialTarget.gameObject;
-                }
-            }
-        }
-        return bestTarget;
-    }
-
-    public Vector3 DirFromAngle(float _angleInDegrees)
-    {
-        return new Vector3(Mathf.Sin(_angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(_angleInDegrees * Mathf.Deg2Rad));
-    }
-
 
     private void OnDrawGizmosSelected()
     {

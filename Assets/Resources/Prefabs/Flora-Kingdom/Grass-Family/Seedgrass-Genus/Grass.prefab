@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4504033965896981743}
   - component: {fileID: 7784330374298399770}
   - component: {fileID: 4953273927556451896}
+  - component: {fileID: 6651382639175601598}
+  - component: {fileID: 766094858670492952}
   - component: {fileID: 1065377328634644644}
   - component: {fileID: 5903858121702242424}
-  - component: {fileID: 766094858670492952}
-  - component: {fileID: 3402847854711864255}
   m_Layer: 11
   m_Name: Leaves
   m_TagString: Seedling
@@ -80,6 +80,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6651382639175601598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6457183713139666284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &766094858670492952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6457183713139666284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  nutritionalValue: 10
+  chewRateModifier: 1
+  destroyRoot: 1
 --- !u!114 &1065377328634644644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,36 +141,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.058, y: 0.33, z: 0.12}
   m_Center: {x: 0.003, y: 0.16, z: -0.0115}
---- !u!114 &766094858670492952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6457183713139666284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyStored: 0
-  nutritionalValue: 10
-  chewRateModifier: 1
-  destroyRoot: 1
---- !u!114 &3402847854711864255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6457183713139666284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newSeed: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24, type: 3}
-  spawnSeed: 1
 --- !u!1 &6842223849493786177
 GameObject:
   m_ObjectHideFlags: 0

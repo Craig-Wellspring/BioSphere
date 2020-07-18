@@ -22,22 +22,16 @@ public class Vitality : MonoBehaviour
     public event System.Action DeathOccurs;
 
     //Cache
-    private BasicAIBrain AIData;
-    private Animator AIBrain;
-    private Metabolism metabolism;
-    private Animator animator;
-    private FoodData corpseFData;
+    private EnergyData corpseEData;
+    private EnergyData selfEData;
     #endregion
 
 
 
     void Start()
     {
-        AIData = GetComponent<BasicAIBrain>();
-        AIBrain = GetComponent<Animator>();
-        metabolism = GetComponent<Metabolism>();
-        animator = transform.root.GetComponent<Animator>();
-        corpseFData = corpse.GetComponent<FoodData>();
+        corpseEData = corpse.GetComponent<EnergyData>();
+        selfEData = GetComponent<EnergyData>();
     }
 
     public void TakeDamage(int amount)
@@ -75,11 +69,8 @@ public class Vitality : MonoBehaviour
         corpse.SetActive(true);
 
         //Transfer Energy to Corpse
-        if (metabolism != null)
-        {
-            corpseFData.nutritionalValue += metabolism.storedEnergy;
-            metabolism.SpendEnergy(metabolism.storedEnergy);
-        }
+        corpseEData.nutritionalValue += selfEData.energyReserve;
+        selfEData.energyReserve = 0;
 
         gameObject.SetActive(false);
     }

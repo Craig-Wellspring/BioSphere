@@ -2,32 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Metabolism))]
+[RequireComponent(typeof(EnergyData))]
+[RequireComponent(typeof(ObjectSpawner))]
 public class Ovary : MonoBehaviour
 {
-    public float reproductionCost;
     public GameObject eggToSpawn;
+    public float reproductionCost;
+
+    [Header("Debug")]
     public bool logEggLaying = false;
     
-
-    //Cache
-    private Metabolism metabolism;
-
-    void Start()
-    {
-        metabolism = GetComponent<Metabolism>();
-    }
-
 
 
     //// Spawn Egg with default Baby \\\\
     public void SpawnEgg(float _energyEndowed)
     {
-        GameObject newEgg = (GameObject)Instantiate(eggToSpawn, transform.position, transform.rotation);
-        newEgg.name = eggToSpawn.name;
-
-        newEgg.GetComponentInChildren<FoodData>().nutritionalValue += _energyEndowed;
-        metabolism.SpendEnergy(_energyEndowed);
+        GetComponent<ObjectSpawner>().SpawnObject(eggToSpawn, 0, false, null, _energyEndowed, GetComponent<EnergyData>());
+        
 
         if (logEggLaying)
             Debug.Log(transform.root.name + " laid an Egg.");
@@ -36,12 +27,10 @@ public class Ovary : MonoBehaviour
     //// Spawn Egg with custom Baby \\\\
     public void SpawnEgg(float _energyEndowed, GameObject _customBaby)
     {
-        GameObject newEgg = (GameObject)Instantiate(eggToSpawn, transform.position, transform.rotation);
-        newEgg.name = eggToSpawn.name;
-        newEgg.GetComponentInChildren<HatchCreature>().creatureToHatch = _customBaby;
+        GameObject newEgg = GetComponent<ObjectSpawner>().SpawnObject(eggToSpawn, 0, false, null, _energyEndowed, GetComponent<EnergyData>());
 
-        newEgg.GetComponentInChildren<FoodData>().nutritionalValue += _energyEndowed;
-        metabolism.SpendEnergy(_energyEndowed);
+        newEgg.GetComponentInChildren<HatchCreature>().creatureToHatch = _customBaby;
+        
 
         if (logEggLaying)
             Debug.Log(transform.root.name + " laid an Egg.");

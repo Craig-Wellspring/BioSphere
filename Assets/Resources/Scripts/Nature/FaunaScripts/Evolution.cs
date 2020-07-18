@@ -16,11 +16,7 @@ public class Evolution : MonoBehaviour
 
     #region Private Variables
     //Cache
-    SeedSpawner seedSpawner;
-    Vitality vitality;
-    Metabolism metabolism;
-    VisualPerception vPerception;
-    Morphology morphology;
+    EnergyData eData;
 
     //Events
     public event System.Action EnergyAboveSurplus;
@@ -31,25 +27,21 @@ public class Evolution : MonoBehaviour
 
     private void Start()
     {
-        seedSpawner = GetComponent<SeedSpawner>();
-        vitality = GetComponent<Vitality>();
-        metabolism = GetComponent<Metabolism>();
-        vPerception = GetComponent<VisualPerception>();
-        morphology = GetComponent<Morphology>();
-        
-        metabolism.EnergyGained += SurplusCheck;
-        metabolism.EnergySpent += SurplusCheck;
+        eData = GetComponent<EnergyData>();
+
+        eData.EnergyGained += SurplusCheck;
+        eData.EnergySpent += SurplusCheck;
     }
 
     private void OnDisable()
     {
-        metabolism.EnergyGained -= SurplusCheck;
-        metabolism.EnergySpent -= SurplusCheck;
+        eData.EnergyGained -= SurplusCheck;
+        eData.EnergySpent -= SurplusCheck;
     }
     
     void SurplusCheck()
     {
-        if (metabolism.storedEnergy >= evolutionCost)
+        if (eData.energyReserve >= evolutionCost)
         {
             //Tell UI and AI there is an energy surplus
             EnergyAboveSurplus();
@@ -61,14 +53,14 @@ public class Evolution : MonoBehaviour
     public void Evolve()
     {
         //Trigger beginning events
-        EvolutionBeginning();
+        EvolutionBeginning?.Invoke();
 
         //Increase chosen stat
         IncreaseStat();
 
 
         //Check if eligible for new morph form
-        morphology.CalculateMorphology();
+        GetComponent<Morphology>().CalculateMorphology();
 
 
         //Trigger ending events
@@ -76,9 +68,7 @@ public class Evolution : MonoBehaviour
 
         //Choose Cast-off Seed
         //Expend Energy and plant Seed with the Energy spent to Evolve
-        seedSpawner.PlantSeed(evolutionCost, castoffSeed);
-        metabolism.SpendEnergy(evolutionCost);
-
+        GetComponent<ObjectSpawner>().SpawnObject(castoffSeed, 0, false, null, evolutionCost, eData);
     }
 
 
@@ -88,6 +78,7 @@ public class Evolution : MonoBehaviour
         //Max Health
         if (statToEvolve == StatToEvolve.MaxHealth)
         {
+            Vitality vitality = GetComponent<Vitality>();
             vitality.maxHealth += 1;
             vitality.currentHealth += 1;
         }
@@ -95,14 +86,14 @@ public class Evolution : MonoBehaviour
         //Metabolism Rate
         else if (statToEvolve == StatToEvolve.MetabolismSpeed)
         {
-            metabolism.metabolismRate += 0.5f;
+            GetComponent<Metabolism>().metabolismRate += 0.5f;
         }
 
 
         //Perception Radius
         else if (statToEvolve == StatToEvolve.PerceptionRadius)
         {
-            vPerception.perceptionRadius += 0.5f;
+            GetComponent<VisualPerception>().perceptionRadius += 0.5f;
         }
     }
 }
