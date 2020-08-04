@@ -1,0 +1,4832 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &18128662710689888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3144181904088326041}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae1_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3144181904088326041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18128662710689888}
+  m_LocalRotation: {x: 0.0000006556508, y: 0.00000026822084, z: -0.00000011920947,
+    w: 1}
+  m_LocalPosition: {x: -0, y: 2.9802322e-10, z: 0.0000000017881393}
+  m_LocalScale: {x: 0.99999994, y: 1.0000005, z: 1.0000005}
+  m_Children:
+  - {fileID: 995587491020670520}
+  m_Father: {fileID: 8830597819935150109}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00007591175, y: 0.000037149024, z: -0.000016454373}
+--- !u!1 &60712827522726735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3353189766919444888}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackClaw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3353189766919444888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60712827522726735}
+  m_LocalRotation: {x: -0.000002182257, y: 0.0000049813902, z: 0.0072688325, w: 0.9999736}
+  m_LocalPosition: {x: 0.002279988, y: -1.862645e-10, z: 0.0000000040233132}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 3573754339542589585}
+  m_Father: {fileID: 2388965241753832080}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0002529568, y: 0.0005700601, z: 0.8329559}
+--- !u!1 &225015053292779908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257199936849808964}
+  m_Layer: 20
+  m_Name: grasshopper_r_Tarsus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257199936849808964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225015053292779908}
+  m_LocalRotation: {x: 0.11453255, y: -0.020341882, z: -0.5596669, w: 0.82051295}
+  m_LocalPosition: {x: 0.0032675548, y: 0.000000018812715, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1172123803908426113}
+  m_Father: {fileID: 7614273087507663478}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.3072004, y: -8.620377, z: -65.08574}
+--- !u!1 &310844108448662423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3573754339542589585}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackClaw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3573754339542589585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310844108448662423}
+  m_LocalRotation: {x: 0.00000008171448, y: -0.00000014266284, z: 0.00000019371508,
+    w: 1}
+  m_LocalPosition: {x: 0.0009639555, y: 2.5145708e-10, z: 2.9802322e-10}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 3353189766919444888}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000007938983, y: -0.000016611204, z: 0.000023875333}
+--- !u!1 &320084785671271063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4463050214980677754}
+  m_Layer: 20
+  m_Name: grasshopper_r_backball_IKGoa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4463050214980677754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320084785671271063}
+  m_LocalRotation: {x: 0.4695326, y: 0.5287294, z: 0.52468973, w: -0.47400954}
+  m_LocalPosition: {x: -0, y: -1.8626451e-11, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 3384208763130215445}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.511406, y: -90.210144, z: -6.088585}
+--- !u!1 &516828025960171040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2865747253894405712}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackTibia_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2865747253894405712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516828025960171040}
+  m_LocalRotation: {x: -0.000000013802638, y: 0.00000011725117, z: 0.9949131, w: -0.10073735}
+  m_LocalPosition: {x: 0.008882499, y: 0.000000005066395, z: -0.0000000028312206}
+  m_LocalScale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+  m_Children:
+  - {fileID: 2388965241753832080}
+  m_Father: {fileID: 9125714029107948701}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000012712717, y: -0.0000036346064, z: -168.43674}
+--- !u!1 &531663848538662271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7055305394441324912}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen5_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7055305394441324912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531663848538662271}
+  m_LocalRotation: {x: -0.00010172905, y: 0.0028491602, z: 0.03414993, w: 0.99941266}
+  m_LocalPosition: {x: -0.0016172115, y: 0, z: 5.500624e-11}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1226296599934696475}
+  m_Father: {fileID: 8584095123561825377}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.022800868, y: 0.32590267, z: 3.9140065}
+--- !u!1 &544039503940889298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9007292424116760791}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackTarsus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9007292424116760791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544039503940889298}
+  m_LocalRotation: {x: -0.0024822627, y: -0.002177637, z: 0.98140776, w: 0.19190626}
+  m_LocalPosition: {x: -0.0092630405, y: 0, z: -1.4901161e-10}
+  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 0.99999994}
+  m_Children:
+  - {fileID: 4055115406920907629}
+  m_Father: {fileID: 1288480538873309865}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.19031385, y: -0.32704768, z: 157.87122}
+--- !u!1 &577014164508485397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4583151957748504786}
+  m_Layer: 20
+  m_Name: grasshopper_l_foretoe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4583151957748504786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577014164508485397}
+  m_LocalRotation: {x: -0.7071069, y: 0.0004268395, z: -0.00042682912, w: 0.7071064}
+  m_LocalPosition: {x: -0.0008280259, y: -0.00006936648, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 6068412316291903474}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.93147, y: 0.069173336, z: 0}
+--- !u!1 &797203699072113900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5916086725692118653}
+  - component: {fileID: 5419737670399268420}
+  m_Layer: 20
+  m_Name: CG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5916086725692118653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797203699072113900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2886428815200884571}
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &5419737670399268420
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797203699072113900}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.999
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
+--- !u!1 &832117054874143856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2694401163936594623}
+  m_Layer: 20
+  m_Name: grasshopper_l_toe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2694401163936594623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832117054874143856}
+  m_LocalRotation: {x: -0.7072178, y: 0.0006325003, z: -0.0008700687, w: 0.7069949}
+  m_LocalPosition: {x: -0.0009969834, y: -0.00011882144, z: 0.00000003695488}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 5967699726118110290}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.87645, y: 98.42975, z: -98.449036}
+--- !u!1 &1083777470700649331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6218939355728541009}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackFemur_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6218939355728541009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083777470700649331}
+  m_LocalRotation: {x: -0.0016496124, y: 0.05246973, z: 0.140304, w: 0.9887158}
+  m_LocalPosition: {x: 0.00037209777, y: 0.0012321931, z: -0.0027224135}
+  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+  m_Children:
+  - {fileID: 1288480538873309865}
+  m_Father: {fileID: 2697450152651503634}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -1.0305433, y: 5.929758, z: 16.099922}
+--- !u!1 &1136095349539170085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3801302942951172958}
+  m_Layer: 20
+  m_Name: grasshopper_r_FrontTibia_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3801302942951172958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136095349539170085}
+  m_LocalRotation: {x: 0.000000111773915, y: 0.00000008598524, z: 0.76346666, w: 0.64584726}
+  m_LocalPosition: {x: 0.002940385, y: 0.0000000020861626, z: -0.0000000011920929}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 293940193350899787}
+  m_Father: {fileID: 5026475813447786467}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000005982016, y: 0.000017633825, z: 117.09809}
+--- !u!1 &1228434642537320052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4839042391098418497}
+  m_Layer: 20
+  m_Name: grasshopper_r_Heel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4839042391098418497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228434642537320052}
+  m_LocalRotation: {x: -0.67579186, y: -0.20783949, z: 0.20783304, w: 0.6759538}
+  m_LocalPosition: {x: 0.00000123322, y: -0.000000085830685, z: -0.00027647018}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 6754292776573679589}
+  m_Father: {fileID: 927852039050348723}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -55.81384, y: -89.97794, z: 89.977394}
+--- !u!1 &1457938305837535865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5616820292889099256}
+  - component: {fileID: 6753122053822270255}
+  - component: {fileID: 3234711715901013173}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackFoot_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5616820292889099256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457938305837535865}
+  m_LocalRotation: {x: 0, y: 0, z: 0.04361938, w: 0.99904823}
+  m_LocalPosition: {x: 0.0027187853, y: -0.0030863546, z: 0.00048012644}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3986976378660401391}
+  m_Father: {fileID: 5369340055496993745}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.999998}
+--- !u!33 &6753122053822270255
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457938305837535865}
+  m_Mesh: {fileID: 4300010, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+--- !u!23 &3234711715901013173
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457938305837535865}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1545300226602403544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5441564658198941357}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae4_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5441564658198941357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545300226602403544}
+  m_LocalRotation: {x: -0.0000002405991, y: -0.0000000900828, z: 0.06397535, w: 0.9979515}
+  m_LocalPosition: {x: -0.0008403361, y: -8.9406965e-10, z: -0.0000000023841857}
+  m_LocalScale: {x: 0.99999946, y: 0.99999946, z: 0.9999995}
+  m_Children:
+  - {fileID: 8053865872802635492}
+  m_Father: {fileID: 1186651612135199984}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.26709163, y: 2.1160586, z: 7.2762966}
+--- !u!1 &1608820382729985469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7138985826395643577}
+  m_Layer: 20
+  m_Name: grasshopper_r_FrontClaw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7138985826395643577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608820382729985469}
+  m_LocalRotation: {x: -0.000000001553417, y: -7.869403e-10, z: 0.000000014901161,
+    w: 1}
+  m_LocalPosition: {x: 0.0008298194, y: 2.2351741e-10, z: 0.0000000023841857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4747872766512168151}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000014260878, y: 0.0000022044458, z: -9.099158e-12}
+--- !u!1 &1692572010733435357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2256564752471432108}
+  m_Layer: 20
+  m_Name: grasshopper_l_foreball_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2256564752471432108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692572010733435357}
+  m_LocalRotation: {x: -0.7071069, y: 0.0004268395, z: -0.00042682912, w: 0.7071064}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 8492458032895853498}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.93147, y: 0.069173336, z: 0}
+--- !u!1 &1710700839675396183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263005692837831816}
+  m_Layer: 20
+  m_Name: grasshopper_AbdomenEnd_ctrl002
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1263005692837831816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710700839675396183}
+  m_LocalRotation: {x: 0.7039348, y: -0.035614245, z: 0.70848817, w: -0.03538263}
+  m_LocalPosition: {x: 0, y: 0.0019367039, z: -0.0073120557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0.037266903, y: 89.63245, z: -174.24489}
+--- !u!1 &1712170268453260546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6203591529853822628}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae6_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6203591529853822628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712170268453260546}
+  m_LocalRotation: {x: 0.000019575798, y: 0.0000016188088, z: 0.024817491, w: 0.999692}
+  m_LocalPosition: {x: 0.0010742771, y: 0.0000000011920929, z: -0.0000000023841857}
+  m_LocalScale: {x: 1.0000002, y: 0.9999992, z: 0.99999946}
+  m_Children:
+  - {fileID: 3718441254129054799}
+  m_Father: {fileID: 3672764015706751853}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.092227526, y: 2.1293373, z: 2.7420819}
+--- !u!1 &1832153304098801584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7563403970198120162}
+  m_Layer: 20
+  m_Name: grasshopper_l_ball_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7563403970198120162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832153304098801584}
+  m_LocalRotation: {x: -0.7072178, y: 0.0006325003, z: -0.0008700687, w: 0.7069949}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 5973275811824903916}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.87645, y: 98.42975, z: -98.449036}
+--- !u!1 &1955132316365248133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3405228367804169217}
+  m_Layer: 20
+  m_Name: wegrasshopper_AbdomenBase_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3405228367804169217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955132316365248133}
+  m_LocalRotation: {x: 0.7085729, y: 0.002164652, z: 0.70563096, w: 0.0021739264}
+  m_LocalPosition: {x: 0, y: 0.0026110655, z: 0.00070167705}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0.0014834577, y: 90.23838, z: 179.64845}
+--- !u!1 &1968656486526052449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4563743037191092034}
+  m_Layer: 20
+  m_Name: grasshopper_r_ToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4563743037191092034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968656486526052449}
+  m_LocalRotation: {x: 0.000000087413355, y: -0.000000052933277, z: 1.455654e-11,
+    w: 1}
+  m_LocalPosition: {x: -0.0009978462, y: -0.0001936901, z: 0.000000044107438}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 1675196465141833229}
+  m_Father: {fileID: 6754292776573679589}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.000008749858, y: -0.0000075317785, z: 0.0000000020705644}
+--- !u!1 &2065171340677549982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2886428815200884571}
+  - component: {fileID: 4341687853707830768}
+  m_Layer: 20
+  m_Name: grasshopper_Body_mesh_LOD0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2886428815200884571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065171340677549982}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5916086725692118653}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!137 &4341687853707830768
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065171340677549982}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3dea68df958acd247b710400dff42443, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+  m_Bones:
+  - {fileID: 1303711369565250118}
+  - {fileID: 3144181904088326041}
+  - {fileID: 5026475813447786467}
+  - {fileID: 5675549408552073082}
+  - {fileID: 5855625099339909201}
+  - {fileID: 9125714029107948701}
+  - {fileID: 2697450152651503634}
+  - {fileID: 2865747253894405712}
+  - {fileID: 3182118721543177609}
+  - {fileID: 8279274474383154978}
+  - {fileID: 2360498832233025051}
+  - {fileID: 8584095123561825377}
+  - {fileID: 7055305394441324912}
+  - {fileID: 1226296599934696475}
+  - {fileID: 6218939355728541009}
+  - {fileID: 1780231317123940179}
+  - {fileID: 3387826392004741382}
+  - {fileID: 3353189766919444888}
+  - {fileID: 1172123803908426113}
+  - {fileID: 4747872766512168151}
+  - {fileID: 2388965241753832080}
+  - {fileID: 3801302942951172958}
+  - {fileID: 293940193350899787}
+  - {fileID: 7614273087507663478}
+  - {fileID: 257199936849808964}
+  - {fileID: 3541524818613697493}
+  - {fileID: 5048662664047702402}
+  - {fileID: 6857351135531348439}
+  - {fileID: 3672764015706751853}
+  - {fileID: 3718441254129054799}
+  - {fileID: 7423697270049985384}
+  - {fileID: 1146115561463303588}
+  - {fileID: 4906773798762624248}
+  - {fileID: 4055115406920907629}
+  - {fileID: 1288480538873309865}
+  - {fileID: 4495293040203606474}
+  - {fileID: 9007292424116760791}
+  - {fileID: 586381793598352857}
+  - {fileID: 7247917419652972115}
+  - {fileID: 3459878633944190013}
+  - {fileID: 4542881943078385718}
+  - {fileID: 6992261204161321131}
+  - {fileID: 1186651612135199984}
+  - {fileID: 8053865872802635492}
+  - {fileID: 4591039992630873367}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 5855625099339909201}
+  m_AABB:
+    m_Center: {x: -0.0005396856, y: 0.000028792536, z: -0.00000059138983}
+    m_Extent: {x: 0.011849306, y: 0.0054076165, z: 0.005820707}
+  m_DirtyAABB: 0
+--- !u!1 &2084014973051972513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1347633396456668933}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1347633396456668933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084014973051972513}
+  m_LocalRotation: {x: -2.0918378e-11, y: -0.0000000022122109, z: -4.6275867e-20,
+    w: 1}
+  m_LocalPosition: {x: 0.0009603401, y: -0.00019430164, z: 0.00000000461936}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 489991930636857947}
+  m_Father: {fileID: 2910799558181560915}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.0000000029764378, y: -0.0000003147714, z: -4.597578e-25}
+--- !u!1 &2118984833393281558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2871696806123060117}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackHeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2871696806123060117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118984833393281558}
+  m_LocalRotation: {x: -2.0918378e-11, y: -0.0000000022122109, z: -4.6275867e-20,
+    w: 1}
+  m_LocalPosition: {x: 0.0009603401, y: -0.00019430164, z: 0.00000000461936}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 8522745601023449273}
+  - {fileID: 1963805471006213674}
+  m_Father: {fileID: 2910799558181560915}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000000029764378, y: -0.0000003147714, z: -4.597578e-25}
+--- !u!1 &2214340064496199853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6085992950526101336}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae1_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6085992950526101336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214340064496199853}
+  m_LocalRotation: {x: 0.5282867, y: -0.47001338, z: -0.20314136, w: 0.6772992}
+  m_LocalPosition: {x: -0.0018649524, y: 0.0020851514, z: -0.00067969743}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999997}
+  m_Children:
+  - {fileID: 1146115561463303588}
+  m_Father: {fileID: 1303711369565250118}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 33.574905, y: -88.91934, z: -64.45373}
+--- !u!1 &2307905895391540274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172123803908426113}
+  m_Layer: 20
+  m_Name: grasshopper_r_Claw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1172123803908426113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307905895391540274}
+  m_LocalRotation: {x: 3.6789766e-11, y: 0.0000002526887, z: -0.0030538023, w: 0.99999535}
+  m_LocalPosition: {x: 0.00073225854, y: -0.0000000014156103, z: -0.000000004172325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4603158596636283878}
+  m_Father: {fileID: 257199936849808964}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000037595193, y: 0.006092956, z: -0.32871306}
+--- !u!114 &217384037686684777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987710148371484197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39151fd34c1fa8647978442df65ea51e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2514865773911974335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8187923275829930296}
+  m_Layer: 20
+  m_Name: grasshopper_r_foreheel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8187923275829930296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514865773911974335}
+  m_LocalRotation: {x: 0.70710725, y: 0.000030514611, z: 0.00003017685, w: 0.7071063}
+  m_LocalPosition: {x: -0.0011943012, y: -0.00008608488, z: 0.0000000023841857}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 6889466804823098473}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 89.98021, y: 0.0049454123, z: 0}
+--- !u!1 &2585561840087582635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1116086839657816207}
+  - component: {fileID: 7894957308670972753}
+  - component: {fileID: 3041834573943998268}
+  m_Layer: 20
+  m_Name: grasshopper_l_Foot_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1116086839657816207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585561840087582635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.004121673, y: -0.0049500377, z: 0.00027751058}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3240923677699188397}
+  m_Father: {fileID: 5369340055496993745}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7894957308670972753
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585561840087582635}
+  m_Mesh: {fileID: 4300008, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+--- !u!23 &3041834573943998268
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585561840087582635}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2599180553213192580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3216328837761020895}
+  m_Layer: 20
+  m_Name: grasshopper_r_ForeToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3216328837761020895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599180553213192580}
+  m_LocalRotation: {x: -1.8189896e-12, y: 0.00000001315845, z: 3.637979e-12, w: 1}
+  m_LocalPosition: {x: 0.0020190554, y: 0.00000017344951, z: -0.0000000011920929}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 6889466804823098473}
+  - {fileID: 4049457429191919876}
+  m_Father: {fileID: 4911383737351266976}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -2.588207e-10, y: 0.0000018722916, z: 5.1764126e-10}
+--- !u!1 &2638074748245605310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5855625099339909201}
+  m_Layer: 20
+  m_Name: grasshopper_Thorax_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5855625099339909201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638074748245605310}
+  m_LocalRotation: {x: 0.07069568, y: 0.7035637, z: 0.07069634, w: 0.703564}
+  m_LocalPosition: {x: 1.0426371e-10, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+  m_Children:
+  - {fileID: 1303711369565250118}
+  - {fileID: 1780231317123940179}
+  - {fileID: 3387826392004741382}
+  - {fileID: 3182118721543177609}
+  - {fileID: 5026475813447786467}
+  m_Father: {fileID: 6305294950163129179}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.000048665097, y: 89.99997, z: 21.097355}
+--- !u!1 &2664334419609471509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4911383737351266976}
+  m_Layer: 20
+  m_Name: grasshopper_r_ForeHeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4911383737351266976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664334419609471509}
+  m_LocalRotation: {x: -0.67248964, y: 0.2184787, z: -0.2185368, w: 0.6725076}
+  m_LocalPosition: {x: -0, y: 0, z: -0.0002579017}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 3216328837761020895}
+  m_Father: {fileID: 6364151334186461435}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -54.000046, y: 89.99517, z: -90.000114}
+--- !u!1 &2697232304564470147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5172870730851357757}
+  m_Layer: 20
+  m_Name: grasshopper_SpineBase_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5172870730851357757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697232304564470147}
+  m_LocalRotation: {x: -0.0009189247, y: 0.7071063, z: -0.0009190188, w: 0.7071062}
+  m_LocalPosition: {x: 0, y: 0.003463448, z: 0.0023852761}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0.0000100293755, y: 90.00001, z: -4.4813814}
+--- !u!1 &2757903967340942070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1303711369565250118}
+  m_Layer: 20
+  m_Name: grasshopper_Head_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1303711369565250118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757903967340942070}
+  m_LocalRotation: {x: 0.00000086214743, y: 0.00000010987047, z: 0.08092616, w: 0.99672014}
+  m_LocalPosition: {x: -0.0069645154, y: -5.9604643e-10, z: -7.4000467e-10}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5394282085484911861}
+  - {fileID: 6085992950526101336}
+  - {fileID: 8830597819935150109}
+  m_Father: {fileID: 5855625099339909201}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000108338136, y: 0.000019340529, z: 27.541147}
+--- !u!1 &2781171867803722357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853120598310040182}
+  m_Layer: 20
+  m_Name: antennae
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &853120598310040182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781171867803722357}
+  m_LocalRotation: {x: -0.02616039, y: 0.7066227, z: -0.02616039, w: 0.70662266}
+  m_LocalPosition: {x: 0, y: 0.30579314, z: -0.0135863675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2829722144824986816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 367297651052107770}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen7-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &367297651052107770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829722144824986816}
+  m_LocalRotation: {x: 0.00000023836031, y: 2.7648986e-10, z: 0.000000014901158, w: 1}
+  m_LocalPosition: {x: -0.001264472, y: -5.9604643e-10, z: -1.44355e-10}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5675549408552073082}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000026539798, y: 0.000000039341725, z: 0.0000021202588}
+--- !u!1 &2839629591874800407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5973275811824903916}
+  m_Layer: 20
+  m_Name: grasshopper_l_HeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5973275811824903916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839629591874800407}
+  m_LocalRotation: {x: -2.910383e-10, y: -0.000000027423539, z: 8.731149e-10, w: 1}
+  m_LocalPosition: {x: 0.0009971383, y: 0.00019163013, z: -0.00000006020069}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 7563403970198120162}
+  - {fileID: 6194168343422328864}
+  m_Father: {fileID: 2953506547743089138}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000041411294, y: -0.0000039020456, z: 0.00000012423388}
+--- !u!1 &2849902058513866298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5369340055496993745}
+  m_Layer: 20
+  m_Name: grasshopper_Main_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5369340055496993745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2849902058513866298}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6305294950163129179}
+  - {fileID: 490291073004364500}
+  - {fileID: 1116086839657816207}
+  - {fileID: 6655861824470668582}
+  - {fileID: 6364151334186461435}
+  - {fileID: 5616820292889099256}
+  - {fileID: 927852039050348723}
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &2934198851618270650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226296599934696475}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen6_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1226296599934696475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934198851618270650}
+  m_LocalRotation: {x: -0.00012618804, y: 0.0028480047, z: 0.068959266, w: 0.99761546}
+  m_LocalPosition: {x: -0.0013864547, y: 0.000000015497207, z: 5.122274e-11}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 5675549408552073082}
+  m_Father: {fileID: 7055305394441324912}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0369321, y: 0.32458338, z: 7.9083533}
+--- !u!1 &2988427383018849959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4617601529600432951}
+  m_Layer: 20
+  m_Name: grasshopper_Hip_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4617601529600432951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988427383018849959}
+  m_LocalRotation: {x: 0.7029375, y: 0.076674104, z: 0.7029375, w: 0.076674104}
+  m_LocalPosition: {x: 0, y: 0.0034634476, z: 0.0023852761}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 167.54994}
+--- !u!1 &3099427375750880026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6655861824470668582}
+  - component: {fileID: 1845655084463773159}
+  - component: {fileID: 7589450217032342954}
+  m_Layer: 20
+  m_Name: grasshopper_l_ForeFoot_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6655861824470668582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099427375750880026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0028773749, y: -0.009044289, z: 0.00025790304}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2203828797118732520}
+  m_Father: {fileID: 5369340055496993745}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1845655084463773159
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099427375750880026}
+  m_Mesh: {fileID: 4300002, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+--- !u!23 &7589450217032342954
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099427375750880026}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3234224161428238725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2562773426155261364}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackHeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2562773426155261364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234224161428238725}
+  m_LocalRotation: {x: 0.4965101, y: -0.503454, z: 0.507749, w: -0.49214107}
+  m_LocalPosition: {x: -0, y: -5.9604643e-10, z: -0.00048012793}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 2910799558181560915}
+  m_Father: {fileID: 490291073004364500}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.2921569, y: 89.99864, z: -90.49646}
+--- !u!1 &3318705464111336987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5312966992689498169}
+  - component: {fileID: 4844040059857294191}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen_ctrl
+  m_TagString: Grasshopper
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5312966992689498169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318705464111336987}
+  m_LocalRotation: {x: 0.707542, y: 0.043237645, z: 0.70400745, w: 0.043454926}
+  m_LocalPosition: {x: 0, y: 0.0018347859, z: -0.0024521023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0.03513025, y: 90.284775, z: 172.97108}
+--- !u!136 &4844040059857294191
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318705464111336987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.005
+  m_Height: 0.015
+  m_Direction: 0
+  m_Center: {x: 0.005, y: 0, z: 0}
+--- !u!1 &3351053148811100883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4603158596636283878}
+  m_Layer: 20
+  m_Name: grasshopper_r_Claw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4603158596636283878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3351053148811100883}
+  m_LocalRotation: {x: -9.0949487e-10, y: -0.0000000038598955, z: -0.000000029802322,
+    w: 1}
+  m_LocalPosition: {x: 0.0010037407, y: 5.9604643e-10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 1172123803908426113}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000005704334, y: 0.00000017772953, z: -0.000002120259}
+--- !u!1 &3372928208207410858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5967699726118110290}
+  m_Layer: 20
+  m_Name: grasshopper_l_ToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5967699726118110290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372928208207410858}
+  m_LocalRotation: {x: -2.910383e-10, y: -0.000000027423539, z: 8.731149e-10, w: 1}
+  m_LocalPosition: {x: 0.0009971383, y: 0.00019163013, z: -0.00000006020069}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 2694401163936594623}
+  m_Father: {fileID: 2953506547743089138}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.000000041411294, y: -0.0000039020456, z: 0.00000012423388}
+--- !u!1 &3449617716837412262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7423697270049985384}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae6_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7423697270049985384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449617716837412262}
+  m_LocalRotation: {x: -0.0000002831219, y: -0.000000074505785, z: 0.00000007450574,
+    w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000006, y: 1.0000006, z: 1.0000001}
+  m_Children:
+  - {fileID: 1299362047327012191}
+  m_Father: {fileID: 3585147107856595926}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000037701888, y: -0.0000069132557, z: -0.0000058530595}
+--- !u!1 &3524981721145344469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927852039050348723}
+  - component: {fileID: 2141449177975807332}
+  - component: {fileID: 8793114594244347521}
+  m_Layer: 20
+  m_Name: grasshopper_r_Foot_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &927852039050348723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524981721145344469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0041210013, y: -0.0049499488, z: 0.00027647018}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4839042391098418497}
+  m_Father: {fileID: 5369340055496993745}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2141449177975807332
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524981721145344469}
+  m_Mesh: {fileID: 4300006, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+--- !u!23 &8793114594244347521
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524981721145344469}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3653318723620286939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3182118721543177609}
+  m_Layer: 20
+  m_Name: grasshopper_r_Femur_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3182118721543177609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3653318723620286939}
+  m_LocalRotation: {x: 0.88328147, y: 0.20511569, z: 0.40801534, w: 0.106136635}
+  m_LocalPosition: {x: -0.0040808287, y: -0.0018882786, z: 0.0012999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7614273087507663478}
+  m_Father: {fileID: 5855625099339909201}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 5.9723067, y: 124.310196, z: 143.69946}
+--- !u!1 &3678276894759470989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3774066733026623901}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae4_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3774066733026623901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678276894759470989}
+  m_LocalRotation: {x: 0.0000021272615, y: 0.0000008232338, z: 0.06397623, w: 0.99795145}
+  m_LocalPosition: {x: 0.00084033486, y: 0.0000000023841857, z: -0.0000000011920929}
+  m_LocalScale: {x: 1.0000002, y: 0.99999934, z: 0.99999976}
+  m_Children:
+  - {fileID: 6857351135531348439}
+  m_Father: {fileID: 5048662664047702402}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.2698116, y: 2.14307, z: 7.2736726}
+--- !u!1 &3730014054257524286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780231317123940179}
+  m_Layer: 20
+  m_Name: grasshopper_l_Femur_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780231317123940179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3730014054257524286}
+  m_LocalRotation: {x: -0.20510368, y: 0.8832709, z: 0.1061588, w: -0.4080383}
+  m_LocalPosition: {x: -0.0040808283, y: -0.0018882789, z: -0.0012994384}
+  m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+  m_Children:
+  - {fileID: 3459878633944190013}
+  m_Father: {fileID: 5855625099339909201}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -5.9747596, y: -124.305916, z: -36.300545}
+--- !u!1 &3835869789447251285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7614273087507663478}
+  m_Layer: 20
+  m_Name: grasshopper_r_Tibia_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7614273087507663478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3835869789447251285}
+  m_LocalRotation: {x: 0.00000013465956, y: -0.000000335656, z: 0.72945917, w: 0.68402445}
+  m_LocalPosition: {x: 0.0026684664, y: 2.9802322e-10, z: 5.9604643e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
+  m_Children:
+  - {fileID: 257199936849808964}
+  m_Father: {fileID: 3182118721543177609}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000042288764, y: -0.000003698573, z: 105.46062}
+--- !u!1 &3879534259331991241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8279274474383154978}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen2_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8279274474383154978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879534259331991241}
+  m_LocalRotation: {x: 0.00021897756, y: -0.0020687461, z: 0.10538304, w: 0.9944295}
+  m_LocalPosition: {x: -0.0018870784, y: 0, z: 5.4814445e-11}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 2360498832233025051}
+  m_Father: {fileID: 2697450152651503634}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0499338, y: -0.23309745, z: 12.098395}
+--- !u!1 &4035514122768202699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1186651612135199984}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae3_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1186651612135199984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4035514122768202699}
+  m_LocalRotation: {x: 5.3290654e-15, y: -0.000000059604616, z: 0.000000089406925,
+    w: 1}
+  m_LocalPosition: {x: -0, y: 5.9604643e-10, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 1.0000002}
+  m_Children:
+  - {fileID: 5441564658198941357}
+  m_Father: {fileID: 4193108808426221395}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000010601119, y: -0.000004240733, z: 0.000016454442}
+--- !u!1 &4072570698071710085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1146115561463303588}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae1_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1146115561463303588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072570698071710085}
+  m_LocalRotation: {x: 0.00000051408995, y: 0.00000038742996, z: -0.00000016391292,
+    w: 1}
+  m_LocalPosition: {x: 0.0000000011920929, y: -2.9802322e-10, z: -5.9604643e-10}
+  m_LocalScale: {x: 1.0000004, y: 1.0000004, z: 1.0000006}
+  m_Children:
+  - {fileID: 7922409265298702647}
+  m_Father: {fileID: 6085992950526101336}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000054663993, y: 0.000053095988, z: -0.000014334191}
+--- !u!1 &4075021813872869730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3672764015706751853}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae5_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3672764015706751853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075021813872869730}
+  m_LocalRotation: {x: 0.0000001639126, y: -0.0000001490117, z: -0.00000029802328,
+    w: 1}
+  m_LocalPosition: {x: -0, y: -0.0000000023841857, z: 5.9604643e-10}
+  m_LocalScale: {x: 0.9999997, y: 1.0000007, z: 1.0000005}
+  m_Children:
+  - {fileID: 6203591529853822628}
+  m_Father: {fileID: 2686557335944000990}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000026548087, y: -0.00001963477, z: -0.000027608412}
+--- !u!1 &4148518919432382687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586381793598352857}
+  m_Layer: 20
+  m_Name: grasshopper_l_FrontTibia_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586381793598352857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148518919432382687}
+  m_LocalRotation: {x: 0, y: 0, z: 0.76347077, w: 0.64584243}
+  m_LocalPosition: {x: -0.002940386, y: -5.9604643e-10, z: 5.9604643e-10}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 7247917419652972115}
+  m_Father: {fileID: 3387826392004741382}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000012036239, y: -0.0000057510433, z: 117.099174}
+--- !u!1 &4164542040631421291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6844548782545830025}
+  m_Layer: 20
+  m_Name: grasshopper_l_Claw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6844548782545830025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164542040631421291}
+  m_LocalRotation: {x: -0.000000002037269, y: -0.000000012347299, z: -0.00000007823108,
+    w: 1}
+  m_LocalPosition: {x: -0.0010040404, y: 0.0000000011920929, z: 5.9604643e-10}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4906773798762624248}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000015404969, y: 0.000008837085, z: -0.000007443319}
+--- !u!1 &4251441752135016322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6479597584989399115}
+  m_Layer: 20
+  m_Name: grasshopper_r_backheel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6479597584989399115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251441752135016322}
+  m_LocalRotation: {x: 0.4695326, y: 0.5287294, z: 0.52468973, w: -0.47400954}
+  m_LocalPosition: {x: -0.0022654028, y: 0.00025746066, z: -0.000000821352}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 3384208763130215445}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -89.511406, y: -90.210144, z: -6.088585}
+--- !u!1 &4252010567410462441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3986976378660401391}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackHeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3986976378660401391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252010567410462441}
+  m_LocalRotation: {x: 0.49214858, y: 0.5077455, z: 0.5035142, w: 0.49644512}
+  m_LocalPosition: {x: -0.0000000011920929, y: -2.9802322e-10, z: -0.00048012644}
+  m_LocalScale: {x: 1.0000002, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 5950707383351050275}
+  m_Father: {fileID: 5616820292889099256}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -1.2986969, y: 90.0018, z: 89.51133}
+--- !u!1 &4428091303242431990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5973845222555339295}
+  m_Layer: 20
+  m_Name: grasshopper_l_foreheel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5973845222555339295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4428091303242431990}
+  m_LocalRotation: {x: -0.7071069, y: 0.0004268395, z: -0.00042682912, w: 0.7071064}
+  m_LocalPosition: {x: 0.0011944108, y: 0.00008453989, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 8492458032895853498}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -89.93147, y: 0.069173336, z: 0}
+--- !u!1 &4643166710149478626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293940193350899787}
+  m_Layer: 20
+  m_Name: grasshopper_r_FrontTarsus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293940193350899787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4643166710149478626}
+  m_LocalRotation: {x: 0.18112262, y: 0.019280488, z: -0.7900348, w: 0.58537847}
+  m_LocalPosition: {x: 0.002184059, y: -0.0000000011920929, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 4747872766512168151}
+  m_Father: {fileID: 3801302942951172958}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.025186, y: -1.3829824, z: -106.28489}
+--- !u!1 &4653948627440216137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2697450152651503634}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen1_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2697450152651503634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653948627440216137}
+  m_LocalRotation: {x: 0.70287037, y: -0.07728665, z: 0.70287037, w: -0.077287026}
+  m_LocalPosition: {x: 1.0426372e-10, y: -2.9802322e-10, z: 5.9604643e-10}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+  m_Children:
+  - {fileID: 8279274474383154978}
+  - {fileID: 6218939355728541009}
+  - {fileID: 9125714029107948701}
+  m_Father: {fileID: 6305294950163129179}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000029728477, y: 89.99999, z: -167.45006}
+--- !u!1 &4702924453260700934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255954438282177219}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae3_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &255954438282177219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702924453260700934}
+  m_LocalRotation: {x: 0.0000010071161, y: 0.0000002632419, z: 0.024569059, w: 0.99969816}
+  m_LocalPosition: {x: 0.0008334315, y: 8.9406965e-10, z: -0.0000000023841857}
+  m_LocalScale: {x: 1.0000001, y: 0.9999992, z: 0.99999946}
+  m_Children:
+  - {fileID: 5048662664047702402}
+  m_Father: {fileID: 3541524818613697493}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.10467141, y: 2.1310072, z: 2.8137422}
+--- !u!1 &4703829112776595654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5026475813447786467}
+  m_Layer: 20
+  m_Name: grasshopper_r_FrontFemur_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5026475813447786467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703829112776595654}
+  m_LocalRotation: {x: 0.59294957, y: -0.061428428, z: 0.7910153, w: -0.13759404}
+  m_LocalPosition: {x: -0.0053691464, y: -0.0018698835, z: 0.0010599997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3801302942951172958}
+  m_Father: {fileID: 5855625099339909201}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -3.082377, y: 57.08229, z: 175.3372}
+--- !u!1 &4832448743058898260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2914019808677191696}
+  m_Layer: 20
+  m_Name: grasshopper_r_ball_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2914019808677191696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832448743058898260}
+  m_LocalRotation: {x: 0.7070284, y: -0.000105938285, z: 0.00006464603, w: 0.70718515}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 634061852989176582}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.98021, y: -0.017166128, z: 0}
+--- !u!1 &4965326658964696539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7247917419652972115}
+  m_Layer: 20
+  m_Name: grasshopper_l_FrontTarsus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7247917419652972115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965326658964696539}
+  m_LocalRotation: {x: 0.18091969, y: 0.01964686, z: -0.79009736, w: 0.58534455}
+  m_LocalPosition: {x: -0.002184061, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 4495293040203606474}
+  m_Father: {fileID: 586381793598352857}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.0444028, y: -1.3413084, z: -106.29845}
+--- !u!1 &4989871512698571043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3459878633944190013}
+  m_Layer: 20
+  m_Name: grasshopper_l_Tibia_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3459878633944190013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4989871512698571043}
+  m_LocalRotation: {x: 0.000000041528477, y: -0.000000021066326, z: 0.7294737, w: 0.6840089}
+  m_LocalPosition: {x: -0.002668464, y: -0.0000000010430813, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+  m_Children:
+  - {fileID: 4542881943078385718}
+  m_Father: {fileID: 1780231317123940179}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000031977024, y: 0.0000013894849, z: 105.46197}
+--- !u!1 &5051742513087444955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5394282085484911861}
+  m_Layer: 20
+  m_Name: grasshopper_Head-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5394282085484911861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051742513087444955}
+  m_LocalRotation: {x: 0.00000004999885, y: -2.628751e-15, z: -0.0000000037252907,
+    w: 1}
+  m_LocalPosition: {x: -0.0024883251, y: -2.9802322e-10, z: 2.842171e-16}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1303711369565250118}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000071142404, y: -7.582592e-13, z: -3.1236754e-16}
+--- !u!1 &5062052571699568049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5675549408552073082}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen7_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5675549408552073082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062052571699568049}
+  m_LocalRotation: {x: -0.0000016195694, y: 9.6010574e-11, z: 0.008393408, w: 0.9999648}
+  m_LocalPosition: {x: -0.0019107085, y: 2.9802322e-10, z: 7.916242e-11}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 367297651052107770}
+  m_Father: {fileID: 1226296599934696475}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00018618122, y: -0.0000019205625, z: 0.96182555}
+--- !u!1 &5099913999360488235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5425915393803199294}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae5_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5425915393803199294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5099913999360488235}
+  m_LocalRotation: {x: -0.000000008505529, y: 0.000000059463318, z: 0.017718637, w: 0.99984306}
+  m_LocalPosition: {x: -0.0008587873, y: 0, z: 5.9604643e-10}
+  m_LocalScale: {x: 0.9999993, y: 0.9999995, z: 0.9999995}
+  m_Children:
+  - {fileID: 4591039992630873367}
+  m_Father: {fileID: 8053865872802635492}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.06841587, y: 2.1312764, z: 1.9582781}
+--- !u!1 &5307256100504115675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6857351135531348439}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae4_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6857351135531348439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307256100504115675}
+  m_LocalRotation: {x: 0.000000044703416, y: -0.00000019371521, z: -0.00000031292456,
+    w: 1}
+  m_LocalPosition: {x: 0.0000000011920929, y: -0.0000000011920929, z: 0.0000000023841857}
+  m_LocalScale: {x: 0.99999946, y: 1.0000001, z: 1.0000004}
+  m_Children:
+  - {fileID: 2686557335944000990}
+  m_Father: {fileID: 3774066733026623901}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000008480983, y: -0.000017514762, z: -0.00003926943}
+--- !u!1 &5333855600768144782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2388965241753832080}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackTarsus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2388965241753832080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333855600768144782}
+  m_LocalRotation: {x: -0.0024766233, y: -0.0021860253, z: 0.9814075, w: 0.19190703}
+  m_LocalPosition: {x: 0.009263047, y: 0.0000000011920929, z: 2.9802322e-10}
+  m_LocalScale: {x: 1, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 3353189766919444888}
+  m_Father: {fileID: 2865747253894405712}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.19138071, y: -0.32660004, z: 157.87112}
+--- !u!1 &5374946582466103727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6889466804823098473}
+  m_Layer: 20
+  m_Name: grasshopper_r_ForeHeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6889466804823098473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374946582466103727}
+  m_LocalRotation: {x: -4.7870163e-20, y: 0.00000001315845, z: 3.637979e-12, w: 1}
+  m_LocalPosition: {x: -0.00082473457, y: -0.00017199037, z: -5.9604643e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 672711704049634868}
+  - {fileID: 8187923275829930296}
+  m_Father: {fileID: 3216328837761020895}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -1.3622714e-17, y: 0.0000018722916, z: 5.1764126e-10}
+--- !u!1 &5620639436290215443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6364151334186461435}
+  - component: {fileID: 4172520866498663782}
+  - component: {fileID: 5304063768235699421}
+  m_Layer: 20
+  m_Name: grasshopper_l_ForeFoot_ctrl001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6364151334186461435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620639436290215443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0028736114, y: -0.009044287, z: 0.0002579017}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4911383737351266976}
+  m_Father: {fileID: 5369340055496993745}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4172520866498663782
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620639436290215443}
+  m_Mesh: {fileID: 4300004, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+--- !u!23 &5304063768235699421
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620639436290215443}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5687598434192502801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4055115406920907629}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackClaw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4055115406920907629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687598434192502801}
+  m_LocalRotation: {x: 0.0000014146626, y: -0.00024648587, z: 0.0067076106, w: 0.99997747}
+  m_LocalPosition: {x: -0.0022799817, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 6491887715395582407}
+  m_Father: {fileID: 9007292424116760791}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00035171007, y: -0.028243342, z: 0.7686399}
+--- !u!1 &5790697061797960374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9125714029107948701}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackFemur_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9125714029107948701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790697061797960374}
+  m_LocalRotation: {x: -0.0524769, y: -0.0016499293, z: 0.98871547, w: -0.14030421}
+  m_LocalPosition: {x: 0.0003720981, y: 0.0012321934, z: 0.0027199998}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 2865747253894405712}
+  m_Father: {fileID: 2697450152651503634}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 1.0306958, y: -5.9305644, z: -163.90005}
+--- !u!1 &6029704461259996856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5950707383351050275}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5950707383351050275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6029704461259996856}
+  m_LocalRotation: {x: 0.0000000147174415, y: 0.000000033973816, z: -0.0000000027939668,
+    w: 1}
+  m_LocalPosition: {x: 0.0032216408, y: 0.000027474758, z: 0.0000008136034}
+  m_LocalScale: {x: 1.0000005, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 3384208763130215445}
+  - {fileID: 7036301246199467323}
+  m_Father: {fileID: 3986976378660401391}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000002094118, y: 0.000004834071, z: -0.0000003975482}
+--- !u!1 &6068762655193279798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3240923677699188397}
+  m_Layer: 20
+  m_Name: grasshopper_l_Heel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3240923677699188397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068762655193279798}
+  m_LocalRotation: {x: 0.67620975, y: -0.2084894, z: -0.20711882, w: 0.6755549}
+  m_LocalPosition: {x: -0, y: 0, z: -0.00027751058}
+  m_LocalScale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+  m_Children:
+  - {fileID: 2953506547743089138}
+  m_Father: {fileID: 1116086839657816207}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 55.819252, y: -90.14837, z: -90.03219}
+--- !u!1 &6123797195862447509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1288480538873309865}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackTibia_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1288480538873309865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6123797195862447509}
+  m_LocalRotation: {x: 0.000000038691578, y: 0.00000000789598, z: 0.99491304, w: -0.100737475}
+  m_LocalPosition: {x: -0.008882501, y: -0.000000004172325, z: 7.45058e-10}
+  m_LocalScale: {x: 0.9999999, y: 0.9999998, z: 1}
+  m_Children:
+  - {fileID: 9007292424116760791}
+  m_Father: {fileID: 6218939355728541009}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000016723844, y: 0.000005364169, z: -168.43672}
+--- !u!1 &6190771038772006482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2686557335944000990}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae5_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2686557335944000990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6190771038772006482}
+  m_LocalRotation: {x: 0.0000063429384, y: 0.0000003359619, z: 0.01771921, w: 0.999843}
+  m_LocalPosition: {x: 0.0008587801, y: -0.0000000011920929, z: -5.9604643e-10}
+  m_LocalScale: {x: 1.0000006, y: 0.9999998, z: 0.99999976}
+  m_Children:
+  - {fileID: 3672764015706751853}
+  m_Father: {fileID: 6857351135531348439}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.06813326, y: 2.158366, z: 1.9559084}
+--- !u!1 &6269709564087653315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8788272880881799186}
+  m_Layer: 20
+  m_Name: grasshopper_l_FrontClaw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8788272880881799186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269709564087653315}
+  m_LocalRotation: {x: 3.4924608e-10, y: 0.000000024632755, z: -0.0000000037252903,
+    w: 1}
+  m_LocalPosition: {x: -0.0008309263, y: -6.705522e-10, z: 0}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4495293040203606474}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000037681644, y: 0.000009003111, z: 0.0000005300645}
+--- !u!1 &6309253963960659190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4747872766512168151}
+  m_Layer: 20
+  m_Name: grasshopper_r_FrontClaw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4747872766512168151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309253963960659190}
+  m_LocalRotation: {x: -0.00000014479953, y: -0.00004072644, z: 0.019793175, w: 0.9998041}
+  m_LocalPosition: {x: 0.0011973983, y: -9.685754e-10, z: -5.9604643e-10}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 7138985826395643577}
+  m_Father: {fileID: 293940193350899787}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00009956873, y: -0.005087353, z: 2.3313105}
+--- !u!1 &6337412999853708124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963805471006213674}
+  m_Layer: 20
+  m_Name: grasshopper_l_backheel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1963805471006213674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337412999853708124}
+  m_LocalRotation: {x: 0.47407722, y: -0.5246322, z: 0.5287328, w: 0.4695248}
+  m_LocalPosition: {x: 0.0022653483, y: -0.0002578945, z: 0.000000898987}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 2871696806123060117}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 89.50386, y: 89.84313, z: -173.86455}
+--- !u!1 &6344465687881314168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 404064566386032243}
+  m_Layer: 20
+  m_Name: grasshopper_Head_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &404064566386032243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344465687881314168}
+  m_LocalRotation: {x: -0.02616039, y: 0.7066227, z: -0.02616039, w: 0.70662266}
+  m_LocalPosition: {x: 0, y: 0.0066143433, z: 0.008596261}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0.000011164864, y: 90.00001, z: 28.174862}
+--- !u!1 &6353562638172609929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489991930636857947}
+  m_Layer: 20
+  m_Name: grasshopper_l_backtoe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &489991930636857947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353562638172609929}
+  m_LocalRotation: {x: 0.47407722, y: -0.5246322, z: 0.5287328, w: 0.4695248}
+  m_LocalPosition: {x: -0.0009594605, y: 0.00009303501, z: -0.0000003802776}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 1347633396456668933}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.50386, y: 89.84313, z: -173.86455}
+--- !u!1 &6357432880227426565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2360498832233025051}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen3_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2360498832233025051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357432880227426565}
+  m_LocalRotation: {x: -0.00013624929, y: -0.00020986995, z: -0.015870778, w: 0.99987406}
+  m_LocalPosition: {x: -0.0018449181, y: 0, z: 5.7480062e-11}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 8584095123561825377}
+  m_Father: {fileID: 8279274474383154978}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.015993103, y: -0.023797244, z: -1.8187313}
+--- !u!1 &6495062476698683308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675196465141833229}
+  m_Layer: 20
+  m_Name: grasshopper_r_toe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1675196465141833229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6495062476698683308}
+  m_LocalRotation: {x: 0.7070284, y: -0.000105938285, z: 0.00006464603, w: 0.70718515}
+  m_LocalPosition: {x: 0.0009978416, y: 0.00010866669, z: -0.000000024437904}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4563743037191092034}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.98021, y: -0.017166128, z: 0}
+--- !u!1 &6608711437227967701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4906773798762624248}
+  m_Layer: 20
+  m_Name: grasshopper_l_Claw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4906773798762624248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608711437227967701}
+  m_LocalRotation: {x: -0.0000000018251959, y: -0.000000012265621, z: 0.0030538996,
+    w: 0.99999535}
+  m_LocalPosition: {x: -0.00073225796, y: 5.2154064e-10, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 6844548782545830025}
+  m_Father: {fileID: 4542881943078385718}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000022980297, y: 0.0049455264, z: 0.37148288}
+--- !u!1 &6636453253826584692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8492458032895853498}
+  m_Layer: 20
+  m_Name: grasshopper_l_ForeHeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8492458032895853498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636453253826584692}
+  m_LocalRotation: {x: -8.731148e-11, y: -0.0000000037253467, z: -5.8207654e-11, w: 1}
+  m_LocalPosition: {x: 0.0008281487, y: 0.00017092108, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 2256564752471432108}
+  - {fileID: 5973845222555339295}
+  m_Father: {fileID: 3836307247456783818}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000000124233885, y: -0.0000005300726, z: -0.0000000082822575}
+--- !u!1 &6702095589146540690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3718441254129054799}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae6_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3718441254129054799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6702095589146540690}
+  m_LocalRotation: {x: -0.00000011920932, y: -0.00000020861627, z: -0.0000004023315,
+    w: 1}
+  m_LocalPosition: {x: -0, y: -0.000000002980232, z: 0.0000000023841857}
+  m_LocalScale: {x: 0.9999997, y: 1.0000005, z: 1.0000005}
+  m_Children:
+  - {fileID: 3843640794004006745}
+  m_Father: {fileID: 6203591529853822628}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000903368, y: -0.000019634816, z: -0.00004088215}
+--- !u!1 &6748842032011756399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3585147107856595926}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae6_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3585147107856595926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748842032011756399}
+  m_LocalRotation: {x: 0.00000015044506, y: -0.000000055888133, z: 0.024818122, w: 0.99969196}
+  m_LocalPosition: {x: -0.0010742771, y: 5.9604643e-10, z: 0.0000000023841857}
+  m_LocalScale: {x: 0.99999934, y: 0.9999995, z: 0.99999964}
+  m_Children:
+  - {fileID: 7423697270049985384}
+  m_Father: {fileID: 4591039992630873367}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.09462636, y: 2.129151, z: 2.743481}
+--- !u!1 &6806699030811687694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6305294950163129179}
+  m_Layer: 20
+  m_Name: grasshopper_COM_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6305294950163129179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806699030811687694}
+  m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433914}
+  m_LocalPosition: {x: -0, y: -0.0023852761, z: 0.0034634476}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2697450152651503634}
+  - {fileID: 5855625099339909201}
+  m_Father: {fileID: 5369340055496993745}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
+--- !u!1 &6831097768583282779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3843640794004006745}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae6-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3843640794004006745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831097768583282779}
+  m_LocalRotation: {x: -0.000000014901163, y: -0.00000002980233, z: 0.00000002980233,
+    w: 1}
+  m_LocalPosition: {x: 0.0011399937, y: -0.0000000011920929, z: 0}
+  m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3718441254129054799}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000002120077, y: 1.892373e-13, z: 0.000006360777}
+--- !u!1 &6854768118053051187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8053865872802635492}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae4_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8053865872802635492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6854768118053051187}
+  m_LocalRotation: {x: 0.00000020116559, y: -0.0000000149011345, z: 0.00000010430809,
+    w: 1}
+  m_LocalPosition: {x: -0, y: -5.9604643e-10, z: 0}
+  m_LocalScale: {x: 1.0000004, y: 1.0000005, z: 1.0000002}
+  m_Children:
+  - {fileID: 5425915393803199294}
+  m_Father: {fileID: 5441564658198941357}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000015394511, y: -0.000008480807, z: 0.000012214106}
+--- !u!1 &7002183332274154554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6068412316291903474}
+  m_Layer: 20
+  m_Name: grasshopper_l_ForeToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6068412316291903474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7002183332274154554}
+  m_LocalRotation: {x: -8.731148e-11, y: -0.0000000037253467, z: -5.8207654e-11, w: 1}
+  m_LocalPosition: {x: 0.0008281487, y: 0.00017092108, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 4583151957748504786}
+  m_Father: {fileID: 3836307247456783818}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.0000000124233885, y: -0.0000005300726, z: -0.0000000082822575}
+--- !u!1 &7035826227411936553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8830597819935150109}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae1_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8830597819935150109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035826227411936553}
+  m_LocalRotation: {x: 0.4700128, y: 0.5282868, z: 0.67729926, w: 0.20314226}
+  m_LocalPosition: {x: -0.0018649572, y: 0.0020851514, z: 0.0006800001}
+  m_LocalScale: {x: 0.99999994, y: 0.9999996, z: 0.9999999}
+  m_Children:
+  - {fileID: 3144181904088326041}
+  m_Father: {fileID: 1303711369565250118}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -33.574883, y: 88.919266, z: 115.54621}
+--- !u!1 &7136264668345132261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8522745601023449273}
+  m_Layer: 20
+  m_Name: grasshopper_l_backball_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8522745601023449273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136264668345132261}
+  m_LocalRotation: {x: 0.47407722, y: -0.5246322, z: 0.5287328, w: 0.4695248}
+  m_LocalPosition: {x: -0.000000084564086, y: -0.0000007447414, z: 0.00000034213065}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 2871696806123060117}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.50386, y: 89.84313, z: -173.86455}
+--- !u!1 &7239998965166118484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6992261204161321131}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae2_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6992261204161321131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239998965166118484}
+  m_LocalRotation: {x: 0.00000009685749, y: -0.0000001788139, z: -0.00000010430809,
+    w: 1}
+  m_LocalPosition: {x: -0.0000000011920929, y: 5.9604643e-10, z: -5.9604643e-10}
+  m_LocalScale: {x: 1.0000002, y: 1.0000004, z: 1.0000005}
+  m_Children:
+  - {fileID: 4193108808426221395}
+  m_Father: {fileID: 7922409265298702647}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000018574605, y: -0.000019634788, z: -0.000010093546}
+--- !u!1 &7268828884853703018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194470199305562413}
+  m_Layer: 20
+  m_Name: grasshopper_r_backtoe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1194470199305562413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268828884853703018}
+  m_LocalRotation: {x: 0.4695326, y: 0.5287294, z: 0.52468973, w: -0.47400954}
+  m_LocalPosition: {x: 0.0009594738, y: -0.00009284971, z: 0.00000034585594}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 7036301246199467323}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.511406, y: -90.210144, z: -6.088585}
+--- !u!1 &7328319096502485640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6754292776573679589}
+  m_Layer: 20
+  m_Name: grasshopper_r_ToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6754292776573679589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7328319096502485640}
+  m_LocalRotation: {x: 0.00000008740608, y: -0.00000006782779, z: 7.281885e-12, w: 1}
+  m_LocalPosition: {x: 0.0017252868, y: -0.00000010013595, z: -0.0000000035762786}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 634061852989176582}
+  - {fileID: 4563743037191092034}
+  m_Father: {fileID: 4839042391098418497}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000008748825, y: -0.000005963064, z: 0.0000000010352822}
+--- !u!1 &7403785707317519298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 634061852989176582}
+  m_Layer: 20
+  m_Name: grasshopper_r_HeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &634061852989176582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403785707317519298}
+  m_LocalRotation: {x: 0.000000087413355, y: -0.000000052933277, z: 1.455654e-11,
+    w: 1}
+  m_LocalPosition: {x: -0.0009978462, y: -0.0001936901, z: 0.000000044107438}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 2914019808677191696}
+  - {fileID: 8225034756275955900}
+  m_Father: {fileID: 6754292776573679589}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000008749858, y: -0.0000075317785, z: 0.0000000020705644}
+--- !u!1 &7474537896913323958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2910799558181560915}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2910799558181560915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474537896913323958}
+  m_LocalRotation: {x: -7.548807e-11, y: -0.000000002212943, z: -1.6705079e-19, w: 1}
+  m_LocalPosition: {x: -0.0032215302, y: -0.000027912964, z: -0.00000089272856}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+  m_Children:
+  - {fileID: 2871696806123060117}
+  - {fileID: 1347633396456668933}
+  m_Father: {fileID: 2562773426155261364}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000010741058, y: -0.0000003148756, z: -1.8390312e-24}
+--- !u!1 &7566434954129836439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6194168343422328864}
+  m_Layer: 20
+  m_Name: grasshopper_l_heel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6194168343422328864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566434954129836439}
+  m_LocalRotation: {x: -0.7072178, y: 0.0006325003, z: -0.0008700687, w: 0.7069949}
+  m_LocalPosition: {x: 0.00072762853, y: 0.00008221604, z: -0.000000036358834}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 5973275811824903916}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -89.87645, y: 98.42975, z: -98.449036}
+--- !u!1 &7585910628190918472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4049457429191919876}
+  m_Layer: 20
+  m_Name: grasshopper_r_ForeToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4049457429191919876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7585910628190918472}
+  m_LocalRotation: {x: -4.7870163e-20, y: 0.00000001315845, z: 3.637979e-12, w: 1}
+  m_LocalPosition: {x: -0.00082473457, y: -0.00017199037, z: -5.9604643e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 8260458589051582763}
+  m_Father: {fileID: 3216328837761020895}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -1.3622714e-17, y: 0.0000018722916, z: 5.1764126e-10}
+--- !u!1 &7724412765717153272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4193108808426221395}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae3_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4193108808426221395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724412765717153272}
+  m_LocalRotation: {x: 0.000000014530563, y: 0.00000001526277, z: 0.024568811, w: 0.99969816}
+  m_LocalPosition: {x: -0.0008334291, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 0.99999964}
+  m_Children:
+  - {fileID: 1186651612135199984}
+  m_Father: {fileID: 6992261204161321131}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.104785465, y: 2.1309824, z: 2.8137124}
+--- !u!1 &7861723790495824542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8260458589051582763}
+  m_Layer: 20
+  m_Name: grasshopper_r_foretoe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8260458589051582763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861723790495824542}
+  m_LocalRotation: {x: 0.70710725, y: 0.000030514611, z: 0.00003017685, w: 0.7071063}
+  m_LocalPosition: {x: 0.00082473934, y: 0.000091674374, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 4049457429191919876}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.98021, y: 0.0049454123, z: 0}
+--- !u!1 &7891123990546351052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8225034756275955900}
+  m_Layer: 20
+  m_Name: grasshopper_r_heel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8225034756275955900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891123990546351052}
+  m_LocalRotation: {x: 0.7070284, y: -0.000105938285, z: 0.00006464603, w: 0.70718515}
+  m_LocalPosition: {x: -0.00072745763, y: -0.0000837182, z: 0.00000001847744}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 634061852989176582}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 89.98021, y: -0.017166128, z: 0}
+--- !u!1 &7905094673939737109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3387826392004741382}
+  m_Layer: 20
+  m_Name: grasshopper_l_FrontFemur_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3387826392004741382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905094673939737109}
+  m_LocalRotation: {x: -0.06140366, y: -0.5929637, z: 0.1376019, w: 0.79100525}
+  m_LocalPosition: {x: -0.0053691464, y: -0.0018698834, z: -0.001063762}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 586381793598352857}
+  m_Father: {fileID: 5855625099339909201}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 3.0847988, y: -57.08568, z: -4.662871}
+--- !u!1 &7923108815292003437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3541524818613697493}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae2_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3541524818613697493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7923108815292003437}
+  m_LocalRotation: {x: -0.00000012665983, y: -0.000000059604627, z: -0.00000023841864,
+    w: 1}
+  m_LocalPosition: {x: 0.0000000023841857, y: -0.0000000011920929, z: -0.0000000011920929}
+  m_LocalScale: {x: 0.9999998, y: 1.0000005, z: 1.0000006}
+  m_Children:
+  - {fileID: 255954438282177219}
+  m_Father: {fileID: 995587491020670520}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00001221398, y: -0.000006360806, z: -0.000028668279}
+--- !u!1 &7933106234286680203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 672711704049634868}
+  m_Layer: 20
+  m_Name: grasshopper_r_foreball_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &672711704049634868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933106234286680203}
+  m_LocalRotation: {x: 0.70710725, y: 0.000030514611, z: 0.00003017685, w: 0.7071063}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 6889466804823098473}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.98021, y: 0.0049454123, z: 0}
+--- !u!1 &7944983831676480374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7036301246199467323}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7036301246199467323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944983831676480374}
+  m_LocalRotation: {x: 5.456986e-11, y: 0.000000004042362, z: -0.00000004330649, w: 1}
+  m_LocalPosition: {x: -0.00096032943, y: 0.00019517362, z: -0.000000006109476}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1194470199305562413}
+  m_Father: {fileID: 5950707383351050275}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.000000007764669, y: 0.0000005751802, z: -0.000006162002}
+--- !u!1 &8053518145640343067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3836307247456783818}
+  m_Layer: 20
+  m_Name: grasshopper_l_ForeToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3836307247456783818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8053518145640343067}
+  m_LocalRotation: {x: -5.8207654e-11, y: -0.0000000037253183, z: -5.8207654e-11,
+    w: 1}
+  m_LocalPosition: {x: -0.0020222473, y: 0.0000024408102, z: 5.9604643e-10}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 8492458032895853498}
+  - {fileID: 6068412316291903474}
+  m_Father: {fileID: 2203828797118732520}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000000082822575, y: -0.0000005300687, z: -0.0000000082822575}
+--- !u!1 &8122858515423230961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4495293040203606474}
+  m_Layer: 20
+  m_Name: grasshopper_l_FrontClaw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4495293040203606474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122858515423230961}
+  m_LocalRotation: {x: 0.00000025553166, y: -0.000037359354, z: 0.006822533, w: 0.99997675}
+  m_LocalPosition: {x: -0.0011973977, y: 2.2351741e-10, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 1}
+  m_Children:
+  - {fileID: 8788272880881799186}
+  m_Father: {fileID: 7247917419652972115}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00007480162, y: -0.0051124026, z: 0.84303886}
+--- !u!1 &8356799944359724720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2203828797118732520}
+  m_Layer: 20
+  m_Name: grasshopper_l_ForeHeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2203828797118732520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356799944359724720}
+  m_LocalRotation: {x: 0.6723667, y: 0.21810189, z: 0.21891387, w: 0.67263013}
+  m_LocalPosition: {x: 5.9604643e-10, y: 0, z: -0.00025790304}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3836307247456783818}
+  m_Father: {fileID: 6655861824470668582}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 54.000008, y: 89.93086, z: 90.000046}
+--- !u!1 &8479453010820573962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6491887715395582407}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackClaw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6491887715395582407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479453010820573962}
+  m_LocalRotation: {x: -0.000000002126401, y: -0.000000026090902, z: -0.000000115484,
+    w: 1}
+  m_LocalPosition: {x: -0.00096395996, y: 2.1420418e-10, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000002, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4055115406920907629}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000003025621, y: -0.0000037124262, z: -0.00001274398}
+--- !u!1 &8496106371161553423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490291073004364500}
+  - component: {fileID: 3348918743072603160}
+  - component: {fileID: 1599228911475406056}
+  m_Layer: 20
+  m_Name: grasshopper_l_BackFoot_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &490291073004364500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496106371161553423}
+  m_LocalRotation: {x: 0, y: -0, z: -0.04361939, w: 0.99904823}
+  m_LocalPosition: {x: -0.0027212012, y: -0.0030863504, z: 0.00048012793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2562773426155261364}
+  m_Father: {fileID: 5369340055496993745}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5}
+--- !u!33 &3348918743072603160
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496106371161553423}
+  m_Mesh: {fileID: 4300012, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+--- !u!23 &1599228911475406056
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496106371161553423}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8619505384120224251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4542881943078385718}
+  m_Layer: 20
+  m_Name: grasshopper_l_Tarsus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4542881943078385718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619505384120224251}
+  m_LocalRotation: {x: 0.11503692, y: -0.020708257, z: -0.55983967, w: 0.82031536}
+  m_LocalPosition: {x: -0.0032675532, y: -0.00000001642853, z: 0.0000000011920929}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 4906773798762624248}
+  m_Father: {fileID: 3459878633944190013}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.332653, y: -8.688795, z: -65.116066}
+--- !u!1 &8744393645436558256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2953506547743089138}
+  m_Layer: 20
+  m_Name: grasshopper_l_ToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2953506547743089138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8744393645436558256}
+  m_LocalRotation: {x: -5.8207675e-11, y: 0.0000000023777602, z: 3.4924597e-10, w: 1}
+  m_LocalPosition: {x: -0.001724178, y: 0.0000036633014, z: -5.9604643e-10}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 0.9999999}
+  m_Children:
+  - {fileID: 5973275811824903916}
+  - {fileID: 5967699726118110290}
+  m_Father: {fileID: 3240923677699188397}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000008282262, y: 0.000000338327, z: 0.000000049693572}
+--- !u!1 &8815354173600705452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8584095123561825377}
+  m_Layer: 20
+  m_Name: grasshopper_Abdomen4_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8584095123561825377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815354173600705452}
+  m_LocalRotation: {x: -0.00013634886, y: -0.00020979524, z: -0.042386867, w: 0.9991012}
+  m_LocalPosition: {x: -0.0014062768, y: 0, z: 4.6857167e-11}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 7055305394441324912}
+  m_Father: {fileID: 2360498832233025051}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.01662875, y: -0.023355843, z: -4.8586297}
+--- !u!1 &8926817860513345595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5918711371813942365}
+  m_Layer: 20
+  m_Name: grasshopper_Spine_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5918711371813942365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926817860513345595}
+  m_LocalRotation: {x: -0.026160343, y: 0.7066227, z: -0.026160343, w: 0.70662266}
+  m_LocalPosition: {x: 0, y: 0.0066143414, z: 0.008596262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2396180645501835474}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0.00000585314, y: 90, z: 19.280468}
+--- !u!1 &8970263702873683931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5048662664047702402}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae3_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5048662664047702402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970263702873683931}
+  m_LocalRotation: {x: -0.000000081956316, y: 0.00000001490119, z: -0.00000031292447,
+    w: 1}
+  m_LocalPosition: {x: 0.0000000023841857, y: 0, z: 5.9604643e-10}
+  m_LocalScale: {x: 0.99999976, y: 1.0000008, z: 1.0000006}
+  m_Children:
+  - {fileID: 3774066733026623901}
+  m_Father: {fileID: 255954438282177219}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000903343, y: -0.0000063608063, z: -0.00003502918}
+--- !u!1 &9014280928717806557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995587491020670520}
+  m_Layer: 20
+  m_Name: grasshopper_r_Antennae2_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995587491020670520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014280928717806557}
+  m_LocalRotation: {x: 0.00000030598625, y: -0.00000016295431, z: 0.003135026, w: 0.9999951}
+  m_LocalPosition: {x: 0.00081205246, y: 0, z: 0.0000000017881393}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 0.99999976}
+  m_Children:
+  - {fileID: 3541524818613697493}
+  m_Father: {fileID: 3144181904088326041}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.013341047, y: 2.1334913, z: 0.35900345}
+--- !u!1 &9035297978171296571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7922409265298702647}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae2_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7922409265298702647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035297978171296571}
+  m_LocalRotation: {x: -0.000000505843, y: 0.0000002549069, z: -0.003135012, w: 0.9999951}
+  m_LocalPosition: {x: -0.00081205607, y: -0.000000001490116, z: 0}
+  m_LocalScale: {x: 0.99999976, y: 0.9999997, z: 0.9999998}
+  m_Children:
+  - {fileID: 6992261204161321131}
+  m_Father: {fileID: 1146115561463303588}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.013488536, y: 2.1606243, z: -0.3589576}
+--- !u!1 &9104545632448781235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299362047327012191}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae6-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1299362047327012191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104545632448781235}
+  m_LocalRotation: {x: -0.00000004470349, y: -0.000000014901157, z: -0.000000059604638,
+    w: 1}
+  m_LocalPosition: {x: -0.0011399889, y: 0, z: 0.0000000017881393}
+  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7423697270049985384}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000063607768, y: -0.000008480964, z: -0.0000063608304}
+--- !u!1 &9116590710561108771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4591039992630873367}
+  m_Layer: 20
+  m_Name: grasshopper_l_Antennae5_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4591039992630873367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116590710561108771}
+  m_LocalRotation: {x: -0.000000052154036, y: -0.000000044703462, z: -2.331466e-15,
+    w: 1}
+  m_LocalPosition: {x: -0, y: 5.9604643e-10, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 1.0000002}
+  m_Children:
+  - {fileID: 3585147107856595926}
+  m_Father: {fileID: 5425915393803199294}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000069132257, y: -0.000008480996, z: -0.0000021201115}
+--- !u!1 &9222782682883120645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3384208763130215445}
+  m_Layer: 20
+  m_Name: grasshopper_r_BackHeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3384208763130215445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9222782682883120645}
+  m_LocalRotation: {x: 5.456986e-11, y: 0.000000004042362, z: -0.00000004330649, w: 1}
+  m_LocalPosition: {x: -0.00096032943, y: 0.00019517362, z: -0.000000006109476}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4463050214980677754}
+  - {fileID: 6479597584989399115}
+  m_Father: {fileID: 5950707383351050275}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000000007764669, y: 0.0000005751802, z: -0.000006162002}
+--- !u!1001 &2396180645501698984
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_Name
+      value: Grasshopper
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c943bdfa32010d141a142950bbcc2884, type: 2}
+    - target: {fileID: 9500000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: de6b870f6d2d97542a7fa8bd86ee6c2e, type: 3}
+    - target: {fileID: 9500000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 521295327963561663, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 521295327963561663, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: onStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 591813331498077581, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 591813331498077581, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Name
+      value: Player Module
+      objectReference: {fileID: 0}
+    - target: {fileID: 737565596758530575, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: drawGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 737565596758530575, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: startEndModifier.addPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064385298225998275, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: selfCollider
+      value: 
+      objectReference: {fileID: 4844040059857294191}
+    - target: {fileID: 1064385298225998275, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eyesTransform
+      value: 
+      objectReference: {fileID: 853120598310040182}
+    - target: {fileID: 1064385298225998275, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: drawSightSphere
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064385298225998275, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: perceptionRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437818073681861711, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437818073681861711, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.data[0]
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437818073681861711, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: hungerGainedPerTick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702051659486188211, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eggToSpawn
+      value: 
+      objectReference: {fileID: 692861899004652731, guid: 9a483fcd344f0d149bb9a8be5207ab09,
+        type: 3}
+    - target: {fileID: 1716725270378822772, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716725270378822772, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716725270378822772, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905998024304132817, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1432025590587624070}
+    - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: corpse
+      value: 
+      objectReference: {fileID: 5081126650138718916}
+    - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bodyColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 4844040059857294191}
+    - target: {fileID: 2202179383635221014, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202179383635221014, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202179383635221014, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250268784616873342, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362489841897072205, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: logVelocity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365281272691911710, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: logEvolutions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365281272691911710, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: herbiMorph
+      value: 
+      objectReference: {fileID: 2285759280214289225, guid: 03e12790c4f2801438488ee905de8b05,
+        type: 3}
+    - target: {fileID: 3365281272691911710, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: carniMorph
+      value: 
+      objectReference: {fileID: 2899459648303840798, guid: 6e45d92b269b98341b05e58dc60616e2,
+        type: 3}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: hungerBar
+      value: 
+      objectReference: {fileID: 394932295208115047}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: hungerFill
+      value: 
+      objectReference: {fileID: 5232666573974693765}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.data[0]
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897007467088990014, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: predatorList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897007467088990014, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: predatorList.Array.data[0]
+      value: Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: seedsToPlant
+      value: 
+      objectReference: {fileID: 8257660950030490805, guid: b185d83f079f5ce49b273496b82a9751,
+        type: 3}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: castoffSeed
+      value: 
+      objectReference: {fileID: 8257660950030490805, guid: b185d83f079f5ce49b273496b82a9751,
+        type: 3}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: evolutionCost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: statToEvolve
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094860868794327919, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172435783133125434, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: radius
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172435783133125434, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: height
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172435783133125434, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172435783133125434, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: alwaysDrawGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419024281370543850, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: castoffSeed
+      value: 
+      objectReference: {fileID: 8257660950030490805, guid: b185d83f079f5ce49b273496b82a9751,
+        type: 3}
+    - target: {fileID: 7433784241453390743, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.06975647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433784241453390743, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9975641
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433784241453390743, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.030000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433784241453390743, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433784241453390743, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777804111700510589, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bodyColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 4844040059857294191}
+    - target: {fileID: 7777804111700510589, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777804111700510589, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: currentHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086205142144112776, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: selfCollider
+      value: 
+      objectReference: {fileID: 4844040059857294191}
+    - target: {fileID: 8086205142144112776, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eyesTransform
+      value: 
+      objectReference: {fileID: 853120598310040182}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eggToSpawn
+      value: 
+      objectReference: {fileID: 692861899004652731, guid: 9a483fcd344f0d149bb9a8be5207ab09,
+        type: 3}
+    - target: {fileID: 8844286852851837445, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5863055667412821553, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+    - {fileID: 2456671554583304284, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+    - {fileID: 5771464199595073494, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+--- !u!4 &2396180645501835474 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2396180645501698984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5081126650138718916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7476881784630833516, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2396180645501698984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2987710148371484197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 591813331498077581, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2396180645501698984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5232666573974693765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7628775734015288365, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2396180645501698984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &394932295208115047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2610932534292125903, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2396180645501698984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1432025590587624070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3647742207210096942, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2396180645501698984}
+  m_PrefabAsset: {fileID: 0}

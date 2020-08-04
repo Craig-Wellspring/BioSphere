@@ -5,9 +5,9 @@ using UnityEngine;
 public class ObjectSpawner : AdvancedMonoBehaviour
 {
     //// Spawn Object \\\\
-    public GameObject SpawnObject(GameObject _objectToSpawn, float _randomSpawnArea, bool _randomYRotation, Transform _parent)
+    public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent)
     {
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, GetSpawnLocation(_randomSpawnArea), GravityUp(), _parent);
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, GetRandomLocation(_spawnAreaSize), GravityUp(), _parent);
         newObject.name = _objectToSpawn.name;
 
         //Random Rotation
@@ -18,9 +18,9 @@ public class ObjectSpawner : AdvancedMonoBehaviour
     }
 
     //// Spawn Object and Add Energy \\\\
-    public GameObject SpawnObject(GameObject _objectToSpawn, float _randomSpawnArea, bool _randomYRotation, Transform _parent, float _imbuedEnergy, EnergyData _sourceEData)
+    public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent, float _imbuedEnergy, EnergyData _sourceEData)
     {
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, GetSpawnLocation(_randomSpawnArea), GravityUp(), _parent);
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, GetRandomLocation(_spawnAreaSize), GravityUp(), _parent);
         newObject.name = _objectToSpawn.name;
 
         //Random Rotation
@@ -36,33 +36,33 @@ public class ObjectSpawner : AdvancedMonoBehaviour
 
         if (_sourceEData != null)
             _sourceEData.SpendEnergy(_imbuedEnergy);
-        
+
         return newObject;
     }
 
 
 
     //Get desired spawn position
-    private Vector3 GetSpawnLocation(float _randomSpawnArea)
+    private Vector3 GetRandomLocation(float _radius)
     {
-        if (_randomSpawnArea > 0)
+        if (_radius > 0)
         {
             BoxCollider spawnCloud = gameObject.AddComponent<BoxCollider>() as BoxCollider;
             spawnCloud.isTrigger = true;
             spawnCloud.transform.localPosition = new Vector3(0f, 50f, 0f);
-            spawnCloud.transform.localScale = new Vector3(_randomSpawnArea, 0.001f, _randomSpawnArea);
+            spawnCloud.transform.localScale = new Vector3(_radius, 0.001f, _radius);
 
             Vector3 seedCloudPos = GetRandomPointOnCol(spawnCloud);
             Vector3 pos = PointOnTerrainUnderPosition(seedCloudPos);
 
-            while (pos == Vector3.zero)
+            while (pos == Vector3.zero || pos == null)
             {
                 seedCloudPos = GetRandomPointOnCol(spawnCloud);
                 pos = PointOnTerrainUnderPosition(seedCloudPos);
             }
 
             Destroy(spawnCloud);
-            ResetTransform(spawnCloud.transform, true);
+            //ResetTransform(transform, true);
 
             return pos;
         }

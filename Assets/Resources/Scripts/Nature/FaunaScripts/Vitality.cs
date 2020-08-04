@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 public class Vitality : MonoBehaviour
 {
+    public bool dead = false;
+    [Space(10)]
     [Header("Health")]
     public GameObject healthBar;
     public float maxHealth;
     public float currentHealth;
-    [Space(10)]
-    public bool dead = false;
 
     [Header("Body Parts")]
     [Tooltip("GameObject that represents the Creature's corpse")]

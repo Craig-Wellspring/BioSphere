@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EnergyData))]
-[RequireComponent(typeof(ObjectSpawner))]
-public class Ovary : MonoBehaviour
+public class Ovary : ObjectSpawner
 {
+    [Space(10)]
     public GameObject eggToSpawn;
     public float reproductionCost;
 
@@ -17,7 +17,7 @@ public class Ovary : MonoBehaviour
     //// Spawn Egg with default Baby \\\\
     public void SpawnEgg(float _energyEndowed)
     {
-        GetComponent<ObjectSpawner>().SpawnObject(eggToSpawn, 0, false, null, _energyEndowed, GetComponent<EnergyData>());
+        SpawnObject(eggToSpawn, 0, false, null, _energyEndowed, GetComponent<EnergyData>());
         
 
         if (logEggLaying)
@@ -27,7 +27,7 @@ public class Ovary : MonoBehaviour
     //// Spawn Egg with custom Baby \\\\
     public void SpawnEgg(float _energyEndowed, GameObject _customBaby)
     {
-        GameObject newEgg = GetComponent<ObjectSpawner>().SpawnObject(eggToSpawn, 0, false, null, _energyEndowed, GetComponent<EnergyData>());
+        GameObject newEgg = SpawnObject(eggToSpawn, 0, false, null, _energyEndowed, GetComponent<EnergyData>());
 
         newEgg.GetComponentInChildren<HatchCreature>().creatureToHatch = _customBaby;
         

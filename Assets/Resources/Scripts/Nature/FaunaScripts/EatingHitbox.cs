@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class EatingHitbox : MonoBehaviour
 {
-    public GameObject targetFood;
-    
-    List<string> dietList;
+    public GameObject hitFood;
+
+    GameObject targetFood;
 
     void Start()
     {
-        dietList = GetComponentInParent<Metabolism>().dietList;
+        targetFood = GetComponentInParent<Metabolism>().currentTargetFood;
     }
     
 
     private void OnTriggerEnter(Collider _col)
     {
-        if (dietList.Contains(_col.gameObject.tag))
+        if (_col.gameObject == targetFood)
         {
-            targetFood = _col.gameObject;
-
-            if (GetComponentInParent<Animator>() != null)
-                GetComponentInParent<Animator>().SetTrigger("HitFood");
+            hitFood = _col.gameObject;
+            
+            transform.parent.GetComponentInChildren<Animator>()?.SetBool("ProxyFood", true);
         }
+    }
+
+    private void OnTriggerExit(Collider _col)
+    {
+        transform.parent.GetComponentInChildren<Animator>()?.SetBool("ProxyFood", false);
     }
 }

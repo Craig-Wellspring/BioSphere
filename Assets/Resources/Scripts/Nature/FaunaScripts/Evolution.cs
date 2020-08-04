@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Evolution : MonoBehaviour
+public class Evolution : ObjectSpawner
 {
     #region Settings
     [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
@@ -44,9 +42,9 @@ public class Evolution : MonoBehaviour
         if (eData.energyReserve >= evolutionCost)
         {
             //Tell UI and AI there is an energy surplus
-            EnergyAboveSurplus();
+            EnergyAboveSurplus?.Invoke();
         }
-        else EnergyBelowSurplus();
+        else EnergyBelowSurplus?.Invoke();
     }
 
 
@@ -60,7 +58,7 @@ public class Evolution : MonoBehaviour
 
 
         //Check if eligible for new morph form
-        GetComponent<Morphology>().CalculateMorphology();
+        GetComponent<Morphology>()?.CalculateMorphology();
 
 
         //Trigger ending events
@@ -68,32 +66,31 @@ public class Evolution : MonoBehaviour
 
         //Choose Cast-off Seed
         //Expend Energy and plant Seed with the Energy spent to Evolve
-        GetComponent<ObjectSpawner>().SpawnObject(castoffSeed, 0, false, null, evolutionCost, eData);
+        SpawnObject(castoffSeed, 0, false, null, evolutionCost, eData);
     }
 
 
 
     private void IncreaseStat()
     {
-        //Max Health
-        if (statToEvolve == StatToEvolve.MaxHealth)
-        {
+        switch(statToEvolve){
+
+            //Max Health
+            case StatToEvolve.MaxHealth:
             Vitality vitality = GetComponent<Vitality>();
             vitality.maxHealth += 1;
             vitality.currentHealth += 1;
-        }
+            break;
 
-        //Metabolism Rate
-        else if (statToEvolve == StatToEvolve.MetabolismSpeed)
-        {
+            //Metabolism Rate
+            case StatToEvolve.MetabolismSpeed:
             GetComponent<Metabolism>().metabolismRate += 0.5f;
-        }
+            break;
 
-
-        //Perception Radius
-        else if (statToEvolve == StatToEvolve.PerceptionRadius)
-        {
+            //Perception Radius
+            case StatToEvolve.PerceptionRadius:
             GetComponent<VisualPerception>().perceptionRadius += 0.5f;
+            break;
         }
     }
 }

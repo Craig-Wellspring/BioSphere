@@ -66,33 +66,29 @@ public class Metabolism : MonoBehaviour
     public event Action WastingEnds;
     #endregion
 
-    private void Start()
-    {
+    private void Start(){
         selfEData = GetComponent<EnergyData>();
 
         primaryColor = hungerFill.GetComponent<ColorPicker>().primaryColor;
         secondaryColor = hungerFill.GetComponent<ColorPicker>().secondaryColor;
     }
 
-    private void Update()
-    {
+    private void Update(){
         Metabolise();
     }
 
     
 
     //// Start Eating \\\\
-    public void StartEating(GameObject _targetFood)
-    {
+    public void StartEating(GameObject _targetFood){
         EatingBegins();
 
-        //currentTargetFood = _targetFood;
+        currentTargetFood = _targetFood;
         targetEData = currentTargetFood.GetComponent<EnergyData>();
         currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed += StopEating;
         
         //Update UI
-        if (!hungerBar.gameObject.activeSelf)
-        {
+        if (!hungerBar.gameObject.activeSelf){
             hungerBar.gameObject.SetActive(true);
             hungerFill.color = secondaryColor;
         }
@@ -104,11 +100,9 @@ public class Metabolism : MonoBehaviour
 
 
     //// Stop Eating \\\\
-    public void StopEating()
-    {
+    public void StopEating(){
         EatingEnds();
-        if (targetEData != null)
-        {
+        if (targetEData != null){
             currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed -= StopEating;
             targetEData = null;
         }
@@ -117,8 +111,7 @@ public class Metabolism : MonoBehaviour
         
 
         //Update UI
-        if (hungerBar.gameObject.activeSelf)
-        {
+        if (hungerBar.gameObject.activeSelf){
             hungerBar.gameObject.SetActive(false);
             hungerFill.color = primaryColor;
         }
@@ -127,11 +120,9 @@ public class Metabolism : MonoBehaviour
 
 
     //// Become more hungry over time \\\\
-    private void Metabolise()
-    {
+    private void Metabolise(){
         hungerTimer += Time.deltaTime;
-        if (hungerTimer >= metabolismRate)
-        {
+        if (hungerTimer >= metabolismRate){
             hungerTimer = 0f;
             //Get more hungry
             if (hungerPercentage < 100)
@@ -142,13 +133,11 @@ public class Metabolism : MonoBehaviour
             hungerBar.value = 100 - hungerPercentage;
 
             //Check if hungry
-            if (hungerPercentage >= hungryAtPercent)
-            {
+            if (hungerPercentage >= hungryAtPercent){
                 NowHungry?.Invoke();
 
-                if (hungerPercentage >= wastingAtPercent)
-                {
-                    WastingBegins();
+                if (hungerPercentage >= wastingAtPercent){
+                    WastingBegins?.Invoke();
                     WasteAway();
                 }
             }
@@ -158,16 +147,14 @@ public class Metabolism : MonoBehaviour
 
 
     //// Gain nutritional value from the food \\\\
-    public void Ingest(EnergyData _eData, float _biteSize)
-    {
+    public void Ingest(EnergyData _eData, float _biteSize){
         //Allocate Energy
         if (_eData.nutritionalValue < _biteSize)
             _biteSize = _eData.nutritionalValue;
 
         _eData.nutritionalValue -= _biteSize;
 
-        if (_eData.nutritionalValue == 0)
-        {
+        if (_eData.nutritionalValue == 0){
             Devour(_eData.gameObject);
             StopEating();
         }
@@ -179,38 +166,32 @@ public class Metabolism : MonoBehaviour
 
         //Update diet history        
         bool newFood = true;
-        foreach (DietData foodType in dietHistory)
-        {
-            if (foodType.foodTag.Equals(_eData.tag))
-            {
+        foreach (DietData foodType in dietHistory){
+            if (foodType.foodTag.Equals(_eData.tag)){
                 newFood = false;
                 foodType.energyUnits += _biteSize;
                 break;
             }
         }
-        if (newFood)
-        {
+        if (newFood){
             dietHistory.Add(new DietData(_eData.tag, _biteSize));
         }
 
         //Check Hunger and Energy levels
-        if (hungerPercentage <= hungryAtPercent)
-        {
+        if (hungerPercentage <= hungryAtPercent){
             StopEating();
             NowFull?.Invoke();
             return;
         }
-        if (hungerPercentage <= wastingAtPercent)
-        {
-            WastingEnds();
+        if (hungerPercentage <= wastingAtPercent){
+            WastingEnds?.Invoke();
         }
     }
 
 
 
     //// Destroy food item and stop eating \\\\
-    private void Devour(GameObject _target)
-    {
+    private void Devour(GameObject _target){
         if (logEating)
             Debug.Log(this.transform.root.name + " ate " + _target.name + " from " + _target.transform.root.name);
 
@@ -222,8 +203,7 @@ public class Metabolism : MonoBehaviour
     }
 
     //// Very Hungry, starving \\\\
-    private void WasteAway()
-    {
+    private void WasteAway(){
         //Eat meat if desperate for food
         if (!dietList.Contains("Meat"))
             dietList.Add("Meat");
@@ -240,8 +220,7 @@ public class DietData
     [HideInInspector] public string foodTag;
     public float energyUnits;
 
-    public DietData(string _tag, float _energy)
-    {
+    public DietData(string _tag, float _energy){
         this.foodTag = _tag;
         this.energyUnits = _energy;
     }

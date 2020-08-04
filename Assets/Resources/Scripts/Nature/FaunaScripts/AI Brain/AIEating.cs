@@ -4,19 +4,20 @@ public class AIEating : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        EatingHitbox hitbox = animator.GetComponentInChildren<EatingHitbox>();
+        EatingHitbox hitbox = animator.transform.root.GetComponentInChildren<EatingHitbox>();
 
-        animator.GetComponent<Metabolism>().StartEating(hitbox.targetFood);
-        hitbox.targetFood = null;
+        animator.GetComponentInParent<Metabolism>().StartEating(hitbox.hitFood);
+        hitbox.hitFood = null;
+        animator.SetBool("ProxyFood", false);
         hitbox.gameObject.SetActive(false);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //If still eating when leaving state, stop eating
-        if (animator.GetParameter(5).Equals(true))
+        if (animator.GetBool("Eating"))
         {
-            animator.GetComponent<Metabolism>().StopEating();
+            animator.GetComponentInParent<Metabolism>().StopEating();
         }
     }
 }

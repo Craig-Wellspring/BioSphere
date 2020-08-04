@@ -8,12 +8,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     #region Settings
     [Header("Flee Settings")]
-    [Tooltip("1000 ~= 1 meter")]
-    public int runAwayDistance = 10000;
+    public int runAwayDistance = 10;
     [Header("Wander Settings")]
-    public float minIdleTime = 1f;
-    public float maxIdleTime = 10f;
-    [Tooltip("1000 = 1 meter")]
     public int wanderDistance = 10;
     #endregion
 
@@ -36,17 +32,17 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     void Start()
     {
-        vitality = GetComponent<Vitality>();
-        metabolism = GetComponent<Metabolism>();
-        vPerception = GetComponent<VisualPerception>();
-        evo = GetComponent<Evolution>();
-        morphology = GetComponent<Morphology>();
+        vitality = GetComponentInParent<Vitality>();
+        metabolism = GetComponentInParent<Metabolism>();
+        vPerception = GetComponentInParent<VisualPerception>();
+        evo = GetComponentInParent<Evolution>();
+        morphology = GetComponentInParent<Morphology>();
 
         AIBrain = GetComponent<Animator>();
 
         destinationSetter = transform.root.GetComponent<AIDestinationSetter>();
         seeker = transform.root.GetComponent<Seeker>();
-        aiPath = GetComponentInParent<IAstarAI>();
+        aiPath = transform.root.GetComponent<IAstarAI>();
 
 
 

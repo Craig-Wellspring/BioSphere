@@ -37,7 +37,7 @@ public class VisualPerception : AdvancedMonoBehaviour
     private LayerMask foodLayerMask;
     private LayerMask foliageLayerMask;
     private LayerMask corpseLayerMask;
-    private int searchMasks;
+    [HideInInspector] public int searchMasks;
     #endregion
 
     private Metabolism metabolism;

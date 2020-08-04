@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Evolution))]
 public class Morphology : MonoBehaviour
 {
     [Header("Current")]
@@ -14,24 +13,12 @@ public class Morphology : MonoBehaviour
     [Header("Debug")]
     public bool logMorphs = false;
 
-
-    #region Private Variables
-    //Cache
-    Metabolism metabolism;
-    #endregion
-
-
-    private void Start()
-    {
-        metabolism = GetComponent<Metabolism>();
-    }
-
     
 
     //// Check what Forms are eligible to Morph into \\\\
     public void CalculateMorphology()
     {
-        foreach (DietData foodType in metabolism.dietHistory)
+        foreach (DietData foodType in GetComponent<Metabolism>().dietHistory)
         {
             if (foodType.foodTag.Contains("Meat"))
             {
@@ -66,7 +53,7 @@ public class Morphology : MonoBehaviour
     {
         EnergyData eData = GetComponent<EnergyData>();
         //Spawn new Creature Form
-        GetComponent<ObjectSpawner>().SpawnObject(availableMorph, 0, false, null, eData.energyReserve, eData);
+        GetComponent<Evolution>().SpawnObject(availableMorph, 0, false, null, eData.energyReserve, eData);
     }
     public void DespawnForm()
     {

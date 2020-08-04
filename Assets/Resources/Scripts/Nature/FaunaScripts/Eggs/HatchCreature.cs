@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(ObjectSpawner))]
-public class HatchCreature : MonoBehaviour
+public class HatchCreature : ObjectSpawner
 {
     public GameObject creatureToHatch;
 
@@ -9,7 +8,7 @@ public class HatchCreature : MonoBehaviour
     private void SpawnCreature()
     {
         EnergyData eggEData = GetComponentInChildren<EnergyData>();
-        GetComponentInChildren<ObjectSpawner>().SpawnObject(creatureToHatch, 0, false, null, eggEData.energyReserve + eggEData.nutritionalValue, eggEData);
+        SpawnObject(creatureToHatch, 0, false, null, eggEData.energyReserve + eggEData.nutritionalValue, eggEData);
         eggEData.nutritionalValue = 0;
     }
 

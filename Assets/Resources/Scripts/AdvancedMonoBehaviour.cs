@@ -34,9 +34,10 @@ public class AdvancedMonoBehaviour : MonoBehaviour
         return -gravityUp;
     }
 
+
+    //Get gravity aligned rotation
     public Quaternion GravityUp()
     {
-        //Get gravity aligned rotation
         Quaternion rot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
 
         return rot;
