@@ -153,6 +153,7 @@ public class Metabolism : MonoBehaviour
             _biteSize = _eData.nutritionalValue;
 
         _eData.nutritionalValue -= _biteSize;
+        selfEData.GainEnergy(_biteSize);
 
         if (_eData.nutritionalValue == 0){
             Devour(_eData.gameObject);
@@ -162,7 +163,6 @@ public class Metabolism : MonoBehaviour
         if (hungerUnits > 0)
             hungerUnits -= _biteSize;
 
-        selfEData.GainEnergy(_biteSize);
 
         //Update diet history        
         bool newFood = true;

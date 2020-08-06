@@ -91,6 +91,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
         // Register Food
         AIBrain.SetInteger("NearbyFood", vPerception.nearbyFood.Count);
+
+        // Cache distance to target
+        AIBrain.SetFloat("TargetDistance", aiPath.remainingDistance);
     }
 
 
@@ -147,15 +150,23 @@ public class BasicAIBrain : VersionedMonoBehaviour
         else
             evo.statToEvolve = Evolution.StatToEvolve.MaxHealth;
         */
+
         //Choose stat at random
         int random = Random.Range(0, 2);
 
-        if (random == 0)
-            evo.statToEvolve = Evolution.StatToEvolve.MetabolismSpeed;
-        else if (random == 1)
-            evo.statToEvolve = Evolution.StatToEvolve.PerceptionRadius;
-        else if (random == 2)
-            evo.statToEvolve = Evolution.StatToEvolve.MaxHealth;
+        switch(random){
+            case 0: 
+                evo.statToEvolve = Evolution.StatToEvolve.MetabolismSpeed;
+                break;
+
+            case 1:
+                evo.statToEvolve = Evolution.StatToEvolve.PerceptionRadius;
+                break;
+
+            case 2:
+                evo.statToEvolve = Evolution.StatToEvolve.MaxHealth;
+                break;
+        }
     }
 
     void Morphing()

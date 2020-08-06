@@ -9,7 +9,6 @@ public class PlayerModule : AdvancedMonoBehaviour
         Metabolism metabolism;
 
     private void OnEnable(){
-        aiModule = transform.root.GetComponentInChildren<BasicAIBrain>().gameObject;
         animator = transform.root.GetComponent<Animator>();
         metabolism = GetComponentInParent<Metabolism>();
 
@@ -18,6 +17,7 @@ public class PlayerModule : AdvancedMonoBehaviour
         ResetTransform(ServiusCam.Cam.transform);
 
         //Disable AI
+        aiModule = transform.root.GetComponentInChildren<BasicAIBrain>().gameObject;
         aiModule.SetActive(false);
     }
 
@@ -32,6 +32,10 @@ public class PlayerModule : AdvancedMonoBehaviour
     private void Update(){
         if (Input.GetKeyDown(KeyCode.E) && !animator.GetBool("IsEating")){
             animator.SetTrigger("Bite");
+        }
+        if (Input.GetKeyUp(KeyCode.E) && animator.GetBool("IsEating")){
+            metabolism.StopEating();
+            animator.SetBool("IsEating", false);
         }
     }
 }

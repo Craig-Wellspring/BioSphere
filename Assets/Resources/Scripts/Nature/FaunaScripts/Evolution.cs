@@ -74,23 +74,22 @@ public class Evolution : ObjectSpawner
     private void IncreaseStat()
     {
         switch(statToEvolve){
-
             //Max Health
             case StatToEvolve.MaxHealth:
-            Vitality vitality = GetComponent<Vitality>();
-            vitality.maxHealth += 1;
-            vitality.currentHealth += 1;
-            break;
+                Vitality vitality = GetComponent<Vitality>();
+                vitality.maxHealth += 1;
+                vitality.currentHealth += 1;
+                break;
 
             //Metabolism Rate
             case StatToEvolve.MetabolismSpeed:
-            GetComponent<Metabolism>().metabolismRate += 0.5f;
-            break;
+                GetComponent<Metabolism>().metabolismRate += 0.5f;
+                break;
 
             //Perception Radius
             case StatToEvolve.PerceptionRadius:
-            GetComponent<VisualPerception>().perceptionRadius += 0.5f;
-            break;
+                GetComponent<VisualPerception>().perceptionRadius += 0.5f;
+                break;
         }
     }
 }
