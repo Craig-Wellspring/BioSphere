@@ -8,6 +8,5 @@ public class AnimatorLayEgg : StateMachineBehaviour
     {
         Ovary ovary = animator.GetComponentInChildren<Ovary>();
         ovary.SpawnEgg(ovary.reproductionCost);
-
     }
 }

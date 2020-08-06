@@ -7,7 +7,7 @@ public class Evolution : ObjectSpawner
     public float evolutionCost;
     [Space(10)]
     public GameObject castoffSeed;
-    
+
     public enum StatToEvolve { MaxHealth, MetabolismSpeed, PerceptionRadius };
     public StatToEvolve statToEvolve;
     #endregion
@@ -36,7 +36,7 @@ public class Evolution : ObjectSpawner
         eData.EnergyGained -= SurplusCheck;
         eData.EnergySpent -= SurplusCheck;
     }
-    
+
     void SurplusCheck()
     {
         if (eData.energyReserve >= evolutionCost)
@@ -73,7 +73,9 @@ public class Evolution : ObjectSpawner
 
     private void IncreaseStat()
     {
-        switch(statToEvolve){
+        switch (statToEvolve)
+        {
+
             //Max Health
             case StatToEvolve.MaxHealth:
                 Vitality vitality = GetComponent<Vitality>();

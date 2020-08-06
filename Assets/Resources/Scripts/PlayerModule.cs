@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class PlayerModule : AdvancedMonoBehaviour
 {
-        GameObject aiModule;
-        Animator animator;
-        Metabolism metabolism;
+    GameObject aiModule;
 
-    private void OnEnable(){
-        animator = transform.root.GetComponent<Animator>();
-        metabolism = GetComponentInParent<Metabolism>();
-
+    private void OnEnable()
+    {
         //Attach Camera
         ServiusCam.Cam.transform.SetParent(transform.Find("CameraDock"), false);
         ResetTransform(ServiusCam.Cam.transform);
@@ -27,15 +23,5 @@ public class PlayerModule : AdvancedMonoBehaviour
 
         //Enable AI
         aiModule.SetActive(true);
-    }
-
-    private void Update(){
-        if (Input.GetKeyDown(KeyCode.E) && !animator.GetBool("IsEating")){
-            animator.SetTrigger("Bite");
-        }
-        if (Input.GetKeyUp(KeyCode.E) && animator.GetBool("IsEating")){
-            metabolism.StopEating();
-            animator.SetBool("IsEating", false);
-        }
     }
 }

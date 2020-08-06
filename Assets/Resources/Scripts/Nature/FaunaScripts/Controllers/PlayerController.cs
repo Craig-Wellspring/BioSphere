@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 verticalLookClamp = new Vector2(-60, 60);
 
     Transform mainCam;
+    Animator animator;
+    Metabolism metabolism;
     float verticalLookRotation;
 
     Vector3 moveAmount;
@@ -15,9 +17,17 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         mainCam = GetComponentInChildren<Camera>().transform;
+        animator = transform.root.GetComponent<Animator>();
+        metabolism = GetComponentInParent<Metabolism>();
     }
 
     void Update()
+    {
+        MouseInput();
+        KeyboardInput();
+    }
+
+    private void MouseInput()
     {
         transform.root.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity.x);
         verticalLookRotation += Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity.y;
@@ -25,8 +35,27 @@ public class PlayerController : MonoBehaviour
         mainCam.localEulerAngles = Vector3.left * verticalLookRotation;
     }
 
-    private void FixedUpdate()
+    private void KeyboardInput()
     {
-        
+        // Eat
+        if (Input.GetKeyDown(KeyCode.E) && !animator.GetBool("IsEating"))
+        {
+            animator.SetTrigger("Bite");
+        }
+        if (Input.GetKeyUp(KeyCode.E) && animator.GetBool("IsEating"))
+        {
+            metabolism.StopEating();
+            animator.SetBool("IsEating", false);
+        }
+
+        // Sing
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            animator.SetBool("IsSinging", true);
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            animator.SetBool("IsSinging", false);
+        }
     }
 }

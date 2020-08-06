@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AnimatorEvolve : StateMachineBehaviour
 {
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
         animator.GetComponentInChildren<Evolution>().Evolve();
     }
 }

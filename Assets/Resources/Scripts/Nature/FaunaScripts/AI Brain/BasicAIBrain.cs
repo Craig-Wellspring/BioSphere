@@ -28,7 +28,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
     private Seeker seeker;
     IAstarAI aiPath;
     #endregion
-    
+
 
     void Start()
     {
@@ -154,8 +154,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
         //Choose stat at random
         int random = Random.Range(0, 2);
 
-        switch(random){
-            case 0: 
+        switch (random)
+        {
+            case 0:
                 evo.statToEvolve = Evolution.StatToEvolve.MetabolismSpeed;
                 break;
 
@@ -180,7 +181,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     }
 
-    
+
     public void ClearPathing()
     {
         destinationSetter.target = null;
