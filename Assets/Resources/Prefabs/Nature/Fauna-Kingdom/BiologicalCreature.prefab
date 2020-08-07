@@ -456,7 +456,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3737180989735282796}
   - {fileID: 7739786857982873997}
   - {fileID: 2114154110356943304}
   m_Father: {fileID: 400250}
@@ -506,15 +505,15 @@ MonoBehaviour:
   hungerFill: {fileID: 7628775734015288365}
   hungerUnits: 0
   hungerPercentage: 0
+  hungryAtPercent: 10
+  wastingAtPercent: 80
+  maximumHungerUnits: 100
   metabolismRate: 3
   hungerGainedPerTick: 2
   chewSpeed: 2
   dietHistory: []
   dietList: []
   preyList: []
-  hungryAtPercent: 10
-  wastingAtPercent: 80
-  maximumHungerUnits: 100
   targetEData: {fileID: 0}
   currentTargetFood: {fileID: 0}
   logEating: 0
@@ -648,64 +647,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &1905998024304132817
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3737180989735282796}
-  - component: {fileID: 2828313447536059530}
-  - component: {fileID: 2608532228153460676}
-  m_Layer: 9
-  m_Name: Eating Hitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3737180989735282796
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905998024304132817}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4658365877093987288}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2828313447536059530
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905998024304132817}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0.2, z: 0.2}
---- !u!114 &2608532228153460676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905998024304132817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c473218a3530dc41b225308bafeb78f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitFood: {fileID: 0}
 --- !u!1 &3647742207210096942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1188,7 @@ PrefabInstance:
     - target: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
         type: 3}
@@ -1322,7 +1263,7 @@ PrefabInstance:
     - target: {fileID: 1373994490893081024, guid: 0ae00578b1a39494ba59a108e6737401,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1373994490893081024, guid: 0ae00578b1a39494ba59a108e6737401,
         type: 3}

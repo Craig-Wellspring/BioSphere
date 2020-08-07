@@ -20,12 +20,12 @@ public class Morphology : MonoBehaviour
     {
         foreach (DietData foodType in GetComponent<Metabolism>().dietHistory)
         {
-            if (foodType.foodTag.Contains("Meat"))
+            if (foodType.foodTag.Contains("Meat") && foodType.energyUnits > 10)
             {
                 availableMorph = carniMorph;
                 break;
             }
-            if (foodType.foodTag.Contains("Grass"))
+            if (foodType.foodTag.Contains("Grass") && foodType.energyUnits > 50)
             {
                 availableMorph = herbiMorph;
                 break;
@@ -58,6 +58,6 @@ public class Morphology : MonoBehaviour
     public void DespawnForm()
     {
         //Despawn old Creature Form
-        Destroy(transform.root);
+        Destroy(transform.root.gameObject);
     }
 }

@@ -16,6 +16,14 @@ public class Metabolism : MonoBehaviour
     [Tooltip("How Hungry the Creature currently feels")]
     public float hungerUnits = 0f;
     public float hungerPercentage = 0f;
+    
+    [Header("Hunger Index Settings")]
+    [Tooltip("Hunger Percentage to become Hungry"), SerializeField]
+    float hungryAtPercent = 10f;
+    [Tooltip("Hunger Percentage to begin Wasting"), SerializeField]
+    float wastingAtPercent = 90f;
+    [Tooltip("Die when hunger level maximum reached"), SerializeField]
+    float maximumHungerUnits = 100f;
 
     [Header("Metabolism Settings")]
     [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
@@ -31,14 +39,6 @@ public class Metabolism : MonoBehaviour
     public List<string> dietList;
     public List<string> preyList;
 
-
-    [Header("Hunger Index Settings")]
-    [Tooltip("Hunger Percentage to become Hungry"), SerializeField]
-    float hungryAtPercent = 10f;
-    [Tooltip("Hunger Percentage to begin Wasting"), SerializeField]
-    float wastingAtPercent = 90f;
-    [Tooltip("Die when hunger level maximum reached"), SerializeField]
-    float maximumHungerUnits = 100f;
 
     [Header("Debug")]
     public EnergyData targetEData;
@@ -107,6 +107,7 @@ public class Metabolism : MonoBehaviour
     public void StopEating()
     {
         EatingEnds();
+
         if (targetEData != null)
         {
             currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed -= StopEating;

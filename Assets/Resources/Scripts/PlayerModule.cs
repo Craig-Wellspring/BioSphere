@@ -19,7 +19,7 @@ public class PlayerModule : AdvancedMonoBehaviour
 
     private void OnDisable(){
         //Detach Camera
-        ServiusCam.Cam.transform.SetParent(null);
+        ServiusCam.Cam.transform.SetParent(FindObjectOfType<CamPoint>().transform);
 
         //Enable AI
         aiModule.SetActive(true);

@@ -7,8 +7,11 @@ public class AIIdle : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        RandomPath wanderPath = RandomPath.Construct(animator.rootPosition, animator.GetComponent<BasicAIBrain>().wanderDistance * 1000);
-        wanderPath.spread = 5000;
-        animator.transform.root.GetComponent<Seeker>().StartPath(wanderPath);
+        animator.transform.root.GetComponent<Animator>().SetBool("IsSinging", true);
+    }
+
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.transform.root.GetComponent<Animator>().SetBool("IsSinging", false);
     }
 }

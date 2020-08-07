@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class MeteorGuardian : ObjectSpawner
+public class LifeGuardian : ObjectSpawner
 {
     [Space(10)]
     public GameObject seedToPlant;
@@ -13,6 +13,7 @@ public class MeteorGuardian : ObjectSpawner
     public int plantingArea = 2;
     [Range(1, 100)]
     public int roamingArea = 30;
+    public int pathingSpread = 5000;
 
     [Space(10)]
     [SerializeField] bool manualPlantSeed = false;

@@ -60,6 +60,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
         evo.EvolutionBeginning += Evolving;
         evo.EvolutionFinishing += Morphing;
 
+        vitality.DeathOccurs += Dying;
+
     }
 
     private void OnDisable()
@@ -75,6 +77,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
         evo.EnergyBelowSurplus -= EnergyBelowSurplus;
         evo.EvolutionBeginning -= Evolving;
         evo.EvolutionFinishing -= Morphing;
+
+        vitality.DeathOccurs -= Dying;
     }
 
 
@@ -116,8 +120,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
     {
         AIBrain.SetBool("Eating", false);
 
-        //Reset destination setter
-        destinationSetter.target = null;
+        //Reset pathing
+        ClearPathing();
     }
 
     void BeginWasting()
@@ -174,13 +178,14 @@ public class BasicAIBrain : VersionedMonoBehaviour
     {
         //Morph if possible
         if (morphology.availableMorph != null)
-        {
-            AIBrain.SetBool("MorphAvailable", true);
-        }
-        else AIBrain.SetBool("MorphAvailable", false);
-
+            AIBrain.SetTrigger("TriggerMorph");
     }
 
+
+    void Dying()
+    {
+        ClearPathing();
+    }
 
     public void ClearPathing()
     {

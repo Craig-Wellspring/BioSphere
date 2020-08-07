@@ -4724,7 +4724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36d1458f62f50f4db7ea2ac693d6807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeEnergyPool: 2000
+  lifeEnergyPool: 8000
   meteor: {fileID: 6095046655658794419, guid: 9d26e26c95622854396298675d261cf3, type: 3}
   spawnPoint: {fileID: 188061061}
   spawnMeteor: 0

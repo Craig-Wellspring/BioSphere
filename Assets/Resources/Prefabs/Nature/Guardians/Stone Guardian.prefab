@@ -438,7 +438,7 @@ Transform:
   m_GameObject: {fileID: 1143994648043632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7284380205839659766}
   - {fileID: 4709074963190049302}
@@ -556,7 +556,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 2
   gravity: {x: 0, y: -10, z: 0}
   groundMask:
     serializedVersion: 2
@@ -2940,16 +2940,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3598128593976282276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f9f292af3db92544ae1e872ef1a769b, type: 3}
+  m_Script: {fileID: 11500000, guid: 924ed792011022c44a26ce739e6061c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   drawDebugSphere: 0
   seedToPlant: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
     type: 3}
-  energyPlanted: 100
+  energyPlanted: 500
   minimumGlobalEnergy: 100
   plantingArea: 2
   roamingArea: 30
+  pathingSpread: 10000
   manualPlantSeed: 0
 --- !u!114 &4045510176442295646
 MonoBehaviour:
