@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        mainCam = GetComponentInChildren<Camera>().transform;
+        mainCam = GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().transform;
         animator = transform.root.GetComponent<Animator>();
         metabolism = GetComponentInParent<Metabolism>();
     }

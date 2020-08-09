@@ -8,26 +8,20 @@ public class AIFlee : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<Metabolism>().StopEating();
+        animator.GetComponentInParent<Metabolism>().StopEating();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        FleeFromTarget(animator.gameObject, animator.GetComponent<VisualPerception>().closestPredator);
+        FleeFromTarget(animator.transform.root, animator.GetComponentInParent<VisualPerception>().closestPredator.transform);
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    void FleeFromTarget(GameObject _self, GameObject _fleeTarget)
+    void FleeFromTarget(Transform _self, Transform _fleeTarget)
     {
-        FleePath fleePath = FleePath.Construct(_self.transform.root.position, _fleeTarget.transform.position, _self.GetComponent<BasicAIBrain>().runAwayDistance);
+        FleePath fleePath = FleePath.Construct(_self.position, _fleeTarget.position, _self.GetComponentInChildren<BasicAIBrain>().runAwayDistance);
         fleePath.aimStrength = 1;
         fleePath.spread = 4000;
-        _self.GetComponentInParent<Seeker>().StartPath(fleePath);
+        _self.GetComponent<Seeker>().StartPath(fleePath);
     }
 }

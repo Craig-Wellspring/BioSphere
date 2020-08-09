@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class AdvancedMonoBehaviour : MonoBehaviour
 {
@@ -27,6 +28,23 @@ public class AdvancedMonoBehaviour : MonoBehaviour
         if (_resetScale)
             _transform.localScale = Vector3.one;
     }
+
+    /*public void LerpToPos(Transform _transform, Vector3 _toPos, float _duration)
+    {
+        StartCoroutine(LerpToPosition(_transform, _toPos, _duration));
+    }
+    IEnumerator LerpToPosition(Transform _transform, Vector3 _toPos, float _duration)
+    {
+        float time = 0;
+
+        while (time < _duration)
+        {
+            _transform.position = Vector3.Lerp(_transform.position, _toPos, time / _duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        _transform.position = _toPos;
+    }*/
 
     public Vector3 GravityVector(Vector3 _fromPos)
     {

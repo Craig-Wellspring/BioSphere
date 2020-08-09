@@ -13,8 +13,8 @@ public class Meteor : AdvancedMonoBehaviour
             transform.Find("Trail").gameObject.SetActive(true);
 
             //Attach Camera to Meteor entering Atmosphere
-            ServiusCam.Cam.transform.SetParent(transform.Find("CameraDock"), false);
-            ResetTransform(ServiusCam.Cam.transform);
+            //PlayerSoul.Cam.transform.SetParent(transform.Find("CameraDock"), false);
+            //ResetTransform(PlayerSoul.Cam.transform);
         }
     }
 
@@ -30,14 +30,9 @@ public class Meteor : AdvancedMonoBehaviour
 
             //Spawn Guardian
             guardian.transform.position = PointOnTerrainUnderPosition(transform.position);
-            guardian.SetActive(true);
-            
-            //Detach Camera
-            //ServiusCam.Cam.transform.SetParent(null);
-            ServiusCam.Cam.transform.SetParent(guardian.transform.Find("CameraDock"));
-
-            //Detach Guardian
             guardian.transform.SetParent(null);
+            guardian.SetActive(true);
+            PlayerSoul.Cam.currentTarget = guardian.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
 
 
             //Despawn self

@@ -20,9 +20,6 @@ public class GlobalLifeSource : AdvancedMonoBehaviour
             //Initialize ServiusCam by attaching it to the first meteor spawned
             SpawnMeteor();
             FindObjectOfType<Meteor>().transform.localPosition = new Vector3(100, 100, 300);
-
-            ServiusCam.Cam.transform.SetParent(FindObjectOfType<Meteor>().transform.Find("CameraDock"), false);
-            ResetTransform(ServiusCam.Cam.transform);
         }
     }
 
@@ -30,8 +27,8 @@ public class GlobalLifeSource : AdvancedMonoBehaviour
     public void SpawnMeteor()
     {
         //Create Meteor
-        GameObject newMeteor = Instantiate(meteor, spawnPoint.position, transform.rotation);
-        newMeteor.name = meteor.name;
+        GameObject _newMeteor = Instantiate(meteor, spawnPoint.position, transform.rotation);
+        _newMeteor.name = meteor.name;
     }
 
     //// Manual Launch Button \\\\

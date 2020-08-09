@@ -20,7 +20,24 @@ public class LifeGuardian : ObjectSpawner
 
     Animator guardianBrain;
     AIPath pathing;
+    private bool playMode = true;
+    private void OnApplicationQuit()
+    {
+        playMode = false;
+    }
 
+    private void OnEnable()
+    {
+        PlayerSoul.Cam.lifeGuardian = transform.root.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
+    }
+
+    private void OnDisable()
+    {
+        if (playMode)
+        {
+            PlayerSoul.Cam.lifeGuardian = null;
+        }
+    }
 
     private void Start()
     {
