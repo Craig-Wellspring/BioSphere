@@ -5,12 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(EnergyData))]
 public class Ovary : ObjectSpawner
 {
-    [Space(10)]
+    public bool logEggLaying = false;
+    [Header("Settings")]
     public GameObject eggToSpawn;
     public float reproductionCost;
-
-    [Header("Debug")]
-    public bool logEggLaying = false;
     
 
 

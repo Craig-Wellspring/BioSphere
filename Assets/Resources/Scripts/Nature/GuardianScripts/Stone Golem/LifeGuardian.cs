@@ -7,7 +7,7 @@ public class LifeGuardian : ObjectSpawner
 {
     [Space(10)]
     public GameObject seedToPlant;
-    public float energyPlanted;
+    public float maxEnergyPlanted = 500f;
     public float minimumGlobalEnergy;
     [Range(1, 100)]
     public int plantingArea = 2;
@@ -47,7 +47,7 @@ public class LifeGuardian : ObjectSpawner
         //Spawn new Guardian if destroyed
         GetComponent<OnDestroyEvent>().BeingDestroyed += Servius.Server.GetComponent<GlobalLifeSource>().SpawnMeteor;
     }
-    
+
     private void Update()
     {
         guardianBrain.SetFloat("DestinationDistance", pathing.remainingDistance);
@@ -57,10 +57,11 @@ public class LifeGuardian : ObjectSpawner
     //Plant Seedgrass
     public void PlantSeed()
     {
-        if (Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool > energyPlanted + minimumGlobalEnergy)
+        float _energyToPlant = (Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool > maxEnergyPlanted + minimumGlobalEnergy) ? maxEnergyPlanted : Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool - minimumGlobalEnergy;
+        if (_energyToPlant > 0)
         {
-            SpawnObject(seedToPlant, plantingArea, true, null, energyPlanted, null);
-            Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool -= energyPlanted;
+            SpawnObject(seedToPlant, plantingArea, true, null, _energyToPlant, null);
+            Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool -= _energyToPlant;
         }
     }
 

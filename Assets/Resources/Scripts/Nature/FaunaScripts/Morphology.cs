@@ -3,17 +3,30 @@
 [RequireComponent(typeof(Evolution))]
 public class Morphology : MonoBehaviour
 {
+    [Header("Debug")]
+    public bool logMorphs = false;
+    
     [Header("Current")]
     public GameObject availableMorph = null;
 
     [Header("Settings")]
     public GameObject carniMorph;
     public GameObject herbiMorph;
-    
-    [Header("Debug")]
-    public bool logMorphs = false;
 
-    
+
+    private Evolution evolution;
+
+    private void Start()
+    {
+        evolution = GetComponent<Evolution>();
+
+        evolution.EvolutionFinishing += CalculateMorphology;
+    }
+    private void OnDisable()
+    {
+        evolution.EvolutionFinishing -= CalculateMorphology;
+    }
+
 
     //// Check what Forms are eligible to Morph into \\\\
     public void CalculateMorphology()
@@ -31,29 +44,39 @@ public class Morphology : MonoBehaviour
                 break;
             }
         }
+
+        TryTriggerMorph();
     }
 
-    //// Morph into chosen available Form \\\\
-    public void Morph()
+    void TryTriggerMorph()
+    {
+        if (availableMorph != null)
+        {
+            transform.root.GetComponent<BioCreatureAnimData>().TriggerMorph();
+        }
+    }
+
+    //// Morph into available Form \\\\
+    public void TransMorph(GameObject _newForm)
     {
         //****Activate animation that triggers SpawnForm and DespawnForm****
-        SpawnForm();
+        SpawnForm(_newForm);
         DespawnForm();
 
 
         //Debug
         if (logMorphs)
-            Debug.Log(transform.root.name + " is trying to morph into " + availableMorph.name);
+            Debug.Log(transform.root.name + " is trying to morph into " + _newForm.name);
     }
 
 
 
     //// Functions used by Animator: Create new form and destroy old form \\\\
-    public void SpawnForm()
+    public void SpawnForm(GameObject _newForm)
     {
         EnergyData eData = GetComponent<EnergyData>();
         //Spawn new Creature Form
-        GetComponent<Evolution>().SpawnObject(availableMorph, 0, false, null, eData.energyReserve, eData);
+        GetComponent<Evolution>().SpawnObject(_newForm, 0, false, null, eData.energyReserve, eData);
     }
     public void DespawnForm()
     {

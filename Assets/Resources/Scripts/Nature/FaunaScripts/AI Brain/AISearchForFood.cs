@@ -6,22 +6,33 @@ using Pathfinding;
 public class AISearchForFood : StateMachineBehaviour
 {
     int jauntLength = 10;
+    Seeker seeker;
+    AIDestinationSetter destinationSetter;
+    Metabolism metabolism;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Seeker seeker = animator.transform.root.GetComponent<Seeker>();
-        LevyWander(animator.rootPosition, jauntLength, seeker);
+        seeker = animator.transform.root.GetComponent<Seeker>();
+        destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
+        metabolism = animator.GetComponentInParent<Metabolism>();
 
-        RandomPath levyPath = RandomPath.Construct(animator.rootPosition, jauntLength * 1000);
-        levyPath.spread = 1000;
-        seeker.StartPath(levyPath);
+        FindRandomPath(animator.rootPosition, jauntLength);
     }
 
 
-    void LevyWander(Vector3 _originPos, int _jauntLength, Seeker _seeker)
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        RandomPath levyPath = RandomPath.Construct(_originPos, _jauntLength * 1000);
+        if (!destinationSetter.target)
+            destinationSetter.target = null;
+
+        if (!metabolism.currentTargetFood)
+            metabolism.currentTargetFood = null;
+    }
+
+    void FindRandomPath(Vector3 _fromPos, int _jauntLength)
+    {
+        RandomPath levyPath = RandomPath.Construct(_fromPos, _jauntLength * 1000);
         levyPath.spread = 1000;
-        _seeker.StartPath(levyPath);
+        seeker.StartPath(levyPath);
     }
 }

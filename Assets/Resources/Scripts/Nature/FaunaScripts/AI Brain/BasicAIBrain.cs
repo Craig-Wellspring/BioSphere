@@ -16,22 +16,24 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     #region Internal Variables
     //Cache
-    private Vitality vitality;
-    private Metabolism metabolism;
-    private VisualPerception vPerception;
-    private Evolution evo;
-    private Morphology morphology;
+    EnergyData eData;
+    Vitality vitality;
+    Metabolism metabolism;
+    VisualPerception vPerception;
+    Evolution evo;
+    Morphology morphology;
 
-    private Animator AIBrain;
+    Animator AIBrain;
 
-    private AIDestinationSetter destinationSetter;
-    private Seeker seeker;
+    AIDestinationSetter destinationSetter;
+    Seeker seeker;
     IAstarAI aiPath;
     #endregion
 
 
     void Start()
     {
+        eData = GetComponentInParent<EnergyData>();
         vitality = GetComponentInParent<Vitality>();
         metabolism = GetComponentInParent<Metabolism>();
         vPerception = GetComponentInParent<VisualPerception>();
@@ -48,17 +50,16 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
 
 
-        metabolism.NowHungry += BecomeHungry;
-        metabolism.NowFull += BecomeSatiated;
+        metabolism.NowHungry += SetHungry;
+        metabolism.NowFull += SetSatiated;
         metabolism.EatingBegins += BeginEating;
         metabolism.EatingEnds += CeaseEating;
         metabolism.WastingBegins += BeginWasting;
         metabolism.WastingEnds += CeaseWasting;
 
-        evo.EnergyAboveSurplus += EnergyAboveSurplus;
-        evo.EnergyBelowSurplus += EnergyBelowSurplus;
+        eData.EnergyAboveSurplus += EnergyAboveSurplus;
+        eData.EnergyBelowSurplus += EnergyBelowSurplus;
         evo.EvolutionBeginning += Evolving;
-        evo.EvolutionFinishing += Morphing;
 
         vitality.DeathOccurs += Dying;
 
@@ -66,17 +67,16 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     private void OnDisable()
     {
-        metabolism.NowHungry -= BecomeHungry;
-        metabolism.NowFull -= BecomeSatiated;
+        metabolism.NowHungry -= SetHungry;
+        metabolism.NowFull -= SetSatiated;
         metabolism.EatingBegins -= BeginEating;
         metabolism.EatingEnds -= CeaseEating;
         metabolism.WastingBegins -= BeginWasting;
         metabolism.WastingEnds -= CeaseWasting;
 
-        evo.EnergyAboveSurplus -= EnergyAboveSurplus;
-        evo.EnergyBelowSurplus -= EnergyBelowSurplus;
+        eData.EnergyAboveSurplus -= EnergyAboveSurplus;
+        eData.EnergyBelowSurplus -= EnergyBelowSurplus;
         evo.EvolutionBeginning -= Evolving;
-        evo.EvolutionFinishing -= Morphing;
 
         vitality.DeathOccurs -= Dying;
     }
@@ -103,11 +103,11 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
 
 
-    void BecomeHungry()
+    void SetHungry()
     {
         AIBrain.SetBool("Hungry", true);
     }
-    void BecomeSatiated()
+    void SetSatiated()
     {
         AIBrain.SetBool("Hungry", false);
     }
@@ -156,35 +156,28 @@ public class BasicAIBrain : VersionedMonoBehaviour
         */
 
         //Choose stat at random
-        int random = Random.Range(0, 2);
+        int random = Random.Range(1, 3);
 
         switch (random)
         {
-            case 0:
+            case 1:
                 evo.statToEvolve = Evolution.StatToEvolve.MetabolismSpeed;
                 break;
 
-            case 1:
+            case 2:
                 evo.statToEvolve = Evolution.StatToEvolve.PerceptionRadius;
                 break;
 
-            case 2:
+            case 3:
                 evo.statToEvolve = Evolution.StatToEvolve.MaxHealth;
                 break;
         }
     }
 
-    void Morphing()
-    {
-        //Morph if possible
-        if (morphology.availableMorph != null)
-            AIBrain.SetTrigger("TriggerMorph");
-    }
-
-
     void Dying()
     {
         ClearPathing();
+        gameObject.SetActive(false);
     }
 
     public void ClearPathing()

@@ -6,14 +6,23 @@ public class AdvancedMonoBehaviour : MonoBehaviour
 {
     public Vector3 PointOnTerrainUnderPosition(Vector3 _position)
     {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(_position + (_position - Vector3.zero).normalized, -(_position - Vector3.zero).normalized, out hit, 2000, LayerMask.GetMask("Terrain")))
+        if (Physics.Raycast(_position + _position.normalized, -_position.normalized, out RaycastHit hit, 2000, LayerMask.GetMask("Terrain")))
         {
             if (hit.collider.CompareTag("Ground"))
                 return hit.point;
             else return Vector3.zero;
         }
         else return Vector3.zero;
+    }
+    public GameObject TerrainUnderPosition(Vector3 _position)
+    {
+        if (Physics.Raycast(_position + _position.normalized, -_position.normalized, out RaycastHit hit, 2000, LayerMask.GetMask("Terrain")))
+        {
+            if (hit.collider.CompareTag("Ground"))
+                return hit.transform.gameObject;
+            else return null;
+        }
+        else return null;
     }
 
     public void ResetTransform(Transform _transform)
@@ -48,13 +57,13 @@ public class AdvancedMonoBehaviour : MonoBehaviour
 
     public Vector3 GravityVector(Vector3 _fromPos)
     {
-        Vector3 gravityUp = (_fromPos - PlanetCore.Core.transform.position).normalized;
+        Vector3 gravityUp = (_fromPos - Vector3.zero).normalized;
         return -gravityUp;
     }
 
 
     //Get gravity aligned rotation
-    public Quaternion GravityUp()
+    public Quaternion GravityUpRotation()
     {
         Quaternion rot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
 
@@ -69,7 +78,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
             Random.Range(_collider.bounds.min.z, _collider.bounds.max.z));
     }
 
-    public GameObject ClosestColliderInList(List<Collider> _colliderList)
+    public GameObject ClosestObjInColliderList(List<Collider> _colliderList, bool _returnRoot)
     {
         GameObject closest = null;
         float closestDistanceSqr = Mathf.Infinity;
@@ -82,7 +91,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
                 if (dSqrToTarget < closestDistanceSqr && collider.gameObject != this.gameObject)
                 {
                     closestDistanceSqr = dSqrToTarget;
-                    closest = collider.gameObject;
+                    closest = _returnRoot ? collider.transform.root.gameObject : collider.gameObject;
                 }
             }
         }

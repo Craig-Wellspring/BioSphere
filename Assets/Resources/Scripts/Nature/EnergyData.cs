@@ -15,12 +15,19 @@ public class EnergyData : MonoBehaviour
     [Tooltip("Destroy the root parent entity when eaten")]
     public bool destroyRoot = true;
     #endregion
+
+    // Cache
+    Evolution evolution;
+    Ovary ovary;
     
 
     //// Return Energy to Global Energy Reserve when Destroyed \\\\
     private void Start()
     {
         GetComponent<OnDestroyEvent>().BeingDestroyed += ReturnEnergyToReserve;
+
+        evolution = GetComponent<Evolution>();
+        ovary = GetComponent<Ovary>();
     }
 
     private void ReturnEnergyToReserve()
@@ -36,19 +43,34 @@ public class EnergyData : MonoBehaviour
 
 
     //// Increase and Decrease Energy Reserve Pool \\\\
-    public event Action EnergySpent;
-    public event Action EnergyGained;
+    //public event Action EnergySpent;
+    //public event Action EnergyGained;
 
     public void SpendEnergy(float _amount)
     {
         energyReserve -= _amount;
 
-        EnergySpent?.Invoke();
+        SurplusCheck();
+        //EnergySpent?.Invoke();
     }
     public void GainEnergy(float _amount)
     {
         energyReserve += _amount;
 
-        EnergyGained?.Invoke();
+        SurplusCheck();
+        //EnergyGained?.Invoke();
+    }
+    
+
+    public event System.Action EnergyAboveSurplus;
+    public event System.Action EnergyBelowSurplus;
+    void SurplusCheck()
+    {
+        if (evolution?.evolutionCost <= energyReserve && ovary?.reproductionCost <= energyReserve)
+        {
+            //Tell UI and AI there is an energy surplus
+            EnergyAboveSurplus?.Invoke();
+        }
+        else EnergyBelowSurplus?.Invoke();
     }
 }

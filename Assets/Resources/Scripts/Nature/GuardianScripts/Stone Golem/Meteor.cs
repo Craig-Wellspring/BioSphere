@@ -11,10 +11,6 @@ public class Meteor : AdvancedMonoBehaviour
         {
             //Activate Trail
             transform.Find("Trail").gameObject.SetActive(true);
-
-            //Attach Camera to Meteor entering Atmosphere
-            //PlayerSoul.Cam.transform.SetParent(transform.Find("CameraDock"), false);
-            //ResetTransform(PlayerSoul.Cam.transform);
         }
     }
 
@@ -24,7 +20,6 @@ public class Meteor : AdvancedMonoBehaviour
 
         if (collision.collider.tag == "Ground")
         {
-
             //Create Explosion
             transform.Find("Impact").gameObject.SetActive(true);
 
@@ -33,7 +28,7 @@ public class Meteor : AdvancedMonoBehaviour
             guardian.transform.SetParent(null);
             guardian.SetActive(true);
             PlayerSoul.Cam.currentTarget = guardian.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
-
+            
 
             //Despawn self
             GetComponent<GravityAttract>().enabled = false;
@@ -42,8 +37,11 @@ public class Meteor : AdvancedMonoBehaviour
 
             transform.Find("Trail").GetComponent<ParticleSystem>().Stop();
             transform.Find("Rock").gameObject.SetActive(false);
-
+            
             Destroy(gameObject, 30);
+
+            //Deactivate Camera
+            GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().enabled = false;
         }
     }
 }

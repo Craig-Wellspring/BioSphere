@@ -6,23 +6,27 @@ using Pathfinding;
 public class AIChase : StateMachineBehaviour
 {
     AIDestinationSetter destinationSetter;
+    VisualPerception vPerception;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
+        vPerception = animator.GetComponentInParent<VisualPerception>();
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (destinationSetter.target != animator.GetComponent<VisualPerception>().closestPrey.transform)
-            destinationSetter.target = animator.GetComponent<VisualPerception>().closestPrey.transform;
-    }
+        if (vPerception.closestPrey && vPerception.closestPrey.transform != destinationSetter.target)
+            destinationSetter.target = vPerception.closestPrey.transform;
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+        if (!destinationSetter.target)
+            destinationSetter.target = null;
+    }
+    
+
+    override public void OnStateExit(Animator animator1, AnimatorStateInfo stateInfo1, int layerIndex)
+    {
+        destinationSetter.target = null;
+    }
 }

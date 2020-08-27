@@ -3,13 +3,16 @@
 public class Evolution : ObjectSpawner
 {
     #region Settings
-    [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
-    public float evolutionCost;
-    [Space(10)]
-    public GameObject castoffSeed;
+    public bool logEvolution = false;
 
     public enum StatToEvolve { MaxHealth, MetabolismSpeed, PerceptionRadius };
+    [Space(15)]
     public StatToEvolve statToEvolve;
+
+    [Header("Settings")]
+    public GameObject castoffSeed;
+    [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
+    public float evolutionCost;
     #endregion
 
     #region Private Variables
@@ -17,34 +20,13 @@ public class Evolution : ObjectSpawner
     EnergyData eData;
 
     //Events
-    public event System.Action EnergyAboveSurplus;
-    public event System.Action EnergyBelowSurplus;
     public event System.Action EvolutionBeginning;
     public event System.Action EvolutionFinishing;
     #endregion
 
-    private void Start()
+    void Start()
     {
         eData = GetComponent<EnergyData>();
-
-        eData.EnergyGained += SurplusCheck;
-        eData.EnergySpent += SurplusCheck;
-    }
-
-    private void OnDisable()
-    {
-        eData.EnergyGained -= SurplusCheck;
-        eData.EnergySpent -= SurplusCheck;
-    }
-
-    void SurplusCheck()
-    {
-        if (eData.energyReserve >= evolutionCost)
-        {
-            //Tell UI and AI there is an energy surplus
-            EnergyAboveSurplus?.Invoke();
-        }
-        else EnergyBelowSurplus?.Invoke();
     }
 
 
@@ -56,17 +38,18 @@ public class Evolution : ObjectSpawner
         //Increase chosen stat
         IncreaseStat();
 
-
-        //Check if eligible for new morph form
-        GetComponent<Morphology>()?.CalculateMorphology();
-
-
         //Trigger ending events
         EvolutionFinishing?.Invoke();
 
+        if (logEvolution)
+            Debug.Log(transform.root.name + " evolved and increased its " + statToEvolve);
+    }
+
+    public void CastOffSeed()
+    {
         //Choose Cast-off Seed
         //Expend Energy and plant Seed with the Energy spent to Evolve
-        SpawnObject(castoffSeed, 0, false, null, evolutionCost, eData);
+        SpawnObject(castoffSeed, 2, false, null, evolutionCost, eData);
     }
 
 
@@ -78,9 +61,9 @@ public class Evolution : ObjectSpawner
 
             //Max Health
             case StatToEvolve.MaxHealth:
-                Vitality vitality = GetComponent<Vitality>();
-                vitality.maxHealth += 1;
-                vitality.currentHealth += 1;
+                GetComponent<Vitality>().maxHealth += 1;
+                GetComponent<Vitality>().currentHealth += 1;
+                transform.root.localScale += new Vector3(0.1f, 0.1f, 0.1f);
                 break;
 
             //Metabolism Rate

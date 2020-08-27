@@ -5,16 +5,25 @@ using Pathfinding;
 
 public class AIFlee : StateMachineBehaviour
 {
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    VisualPerception visualPerception;
+    Seeker seeker;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponentInParent<Metabolism>().StopEating();
-    }
+        visualPerception = animator.transform.root.GetComponentInChildren<VisualPerception>();
+        seeker = animator.transform.root.GetComponent<Seeker>();
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        animator.GetComponentInParent<Metabolism>().StopEating();
+
+        if (visualPerception.closestPredator != null)
+            FleeFromTarget(animator.transform.root, visualPerception.closestPredator.transform);
+
+        animator.SetBool("Fleeing", true);
+    }
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        FleeFromTarget(animator.transform.root, animator.GetComponentInParent<VisualPerception>().closestPredator.transform);
+        if (!visualPerception.closestPredator)
+            animator.SetBool("Fleeing", false);
     }
 
     void FleeFromTarget(Transform _self, Transform _fleeTarget)
@@ -22,6 +31,6 @@ public class AIFlee : StateMachineBehaviour
         FleePath fleePath = FleePath.Construct(_self.position, _fleeTarget.position, _self.GetComponentInChildren<BasicAIBrain>().runAwayDistance);
         fleePath.aimStrength = 1;
         fleePath.spread = 4000;
-        _self.GetComponent<Seeker>().StartPath(fleePath);
+        seeker.StartPath(fleePath);
     }
 }

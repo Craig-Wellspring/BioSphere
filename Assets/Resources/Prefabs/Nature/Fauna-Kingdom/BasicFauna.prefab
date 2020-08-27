@@ -263,7 +263,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1.4999907}
   m_SizeDelta: {x: -24, y: -21}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -429,15 +429,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4658365877093987288}
   - component: {fileID: 4707972342552166584}
+  - component: {fileID: 2748659348047256063}
   - component: {fileID: 2909323061587037465}
   - component: {fileID: 3486346588474071174}
-  - component: {fileID: 2131904891924997232}
   - component: {fileID: 8086205142144112776}
+  - component: {fileID: 2131904891924997232}
   - component: {fileID: 8816028523584167361}
   - component: {fileID: 7419024281370543850}
   - component: {fileID: 7485800211558301736}
-  - component: {fileID: 2456671554583304284}
-  - component: {fileID: 5771464199595073494}
   m_Layer: 0
   m_Name: Vitals
   m_TagString: Untagged
@@ -456,8 +455,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7739786857982873997}
   - {fileID: 2114154110356943304}
+  - {fileID: 7739786857982873997}
   m_Father: {fileID: 400250}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -473,6 +472,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2748659348047256063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c9d9220b1ce844993caafeb0fc351a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyColliders: []
+  corpse: {fileID: 7476881784630833516}
 --- !u!114 &2909323061587037465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,22 +514,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35916ad0225f1408a9fc805cfd19fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerBar: {fileID: 2610932534292125903}
-  hungerFill: {fileID: 7628775734015288365}
+  logEating: 0
+  drawBiteSphere: 0
+  targetEData: {fileID: 0}
+  currentTargetFood: {fileID: 0}
   hungerUnits: 0
   hungerPercentage: 0
   hungryAtPercent: 10
   wastingAtPercent: 80
   maximumHungerUnits: 100
+  hungryMeatEater: 1
   metabolismRate: 3
   hungerGainedPerTick: 2
+  mouth: {fileID: 0}
+  biteSize: 0.4
   chewSpeed: 2
   dietHistory: []
   dietList: []
   preyList: []
-  targetEData: {fileID: 0}
-  currentTargetFood: {fileID: 0}
-  logEating: 0
+--- !u!114 &8086205142144112776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd658446b8b90646adc2b0190a9f444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawSightSphere: 0
+  foodSightLines: 0
+  preySightLines: 0
+  predatorSightLines: 0
+  eyesTransform: {fileID: 0}
+  perceptionRadius: 3
+  nearbyMates: []
+  closestMate: {fileID: 0}
+  nearbyFood: []
+  closestFood: {fileID: 0}
+  nearbyPrey: []
+  closestPrey: {fileID: 0}
+  nearbyPredators: []
+  closestPredator: {fileID: 0}
+  searchMasks: 0
 --- !u!114 &2131904891924997232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,41 +572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dead: 0
-  healthBar: {fileID: 3647742207210096942}
-  maxHealth: 5
   currentHealth: 5
-  corpse: {fileID: 7476881784630833516}
-  bodyColliders:
-  - {fileID: 0}
---- !u!114 &8086205142144112776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd658446b8b90646adc2b0190a9f444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selfCollider: {fileID: 0}
-  eyesTransform: {fileID: 0}
-  perceptionRadius: 3
-  viewAngle: 0
-  drawSightSphere: 0
-  foodSightLines: 0
-  preySightLines: 0
-  predatorSightLines: 0
-  nearbyMates: []
-  closestMate: {fileID: 0}
-  nearbyFood: []
-  closestFood: {fileID: 0}
-  nearbyPrey: []
-  closestPrey: {fileID: 0}
-  nearbyPredators: []
-  closestPredator: {fileID: 0}
-  searchMasks: 0
+  maxHealth: 5
 --- !u!114 &8816028523584167361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,9 +587,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawDebugSphere: 0
+  logEggLaying: 1
   eggToSpawn: {fileID: 0}
   reproductionCost: 30
-  logEggLaying: 1
 --- !u!114 &7419024281370543850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,9 +603,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawDebugSphere: 0
-  evolutionCost: 50
-  castoffSeed: {fileID: 0}
+  logEvolution: 0
   statToEvolve: 0
+  castoffSeed: {fileID: 0}
+  evolutionCost: 50
 --- !u!114 &7485800211558301736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,44 +619,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6887074388407d34e867b35996c4cf67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logMorphs: 0
   availableMorph: {fileID: 0}
   carniMorph: {fileID: 0}
   herbiMorph: {fileID: 0}
-  logMorphs: 0
---- !u!114 &2456671554583304284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc93bcf1fb951b409ba24796c948038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  runAwayDistance: 10
-  wanderDistance: 10
---- !u!95 &5771464199595073494
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7076e47debea1a4429c6f00d88ddc7ee, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3647742207210096942
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8357954067529338423
 RectTransform:
   m_ObjectHideFlags: 0
@@ -768,7 +744,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1.5}
   m_SizeDelta: {x: -23.999996, y: -21}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -901,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &109414602901769474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1188,7 +1164,7 @@ PrefabInstance:
     - target: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
         type: 3}
@@ -1263,7 +1239,7 @@ PrefabInstance:
     - target: {fileID: 1373994490893081024, guid: 0ae00578b1a39494ba59a108e6737401,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1373994490893081024, guid: 0ae00578b1a39494ba59a108e6737401,
         type: 3}

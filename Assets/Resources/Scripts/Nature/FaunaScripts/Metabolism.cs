@@ -9,8 +9,12 @@ public class Metabolism : MonoBehaviour
 {
     #region Settings
 
-    [SerializeField] private Slider hungerBar;
-    [SerializeField] private Image hungerFill;
+    [Header("Debug")]
+    [SerializeField] private bool logEating = false;
+    [SerializeField] bool drawBiteSphere = false;
+    public EnergyData targetEData;
+    public GameObject currentTargetFood = null;
+
 
     [Header("Current Hunger")]
     [Tooltip("How Hungry the Creature currently feels")]
@@ -24,12 +28,16 @@ public class Metabolism : MonoBehaviour
     float wastingAtPercent = 90f;
     [Tooltip("Die when hunger level maximum reached"), SerializeField]
     float maximumHungerUnits = 100f;
+    [Tooltip("Start eating meat when very hungry"), SerializeField]
+    bool hungryMeatEater = true;
 
     [Header("Metabolism Settings")]
     [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
     public float metabolismRate = 3f;
     [Tooltip("Units of Hunger gained per tick"), SerializeField]
     float hungerGainedPerTick = 3f;
+    public Transform mouth;
+    public float biteSize = 0.4f;
     [Tooltip("How quickly this creature consumes food. 1 is default.")]
     public float chewSpeed = 1f;
 
@@ -40,21 +48,20 @@ public class Metabolism : MonoBehaviour
     public List<string> preyList;
 
 
-    [Header("Debug")]
-    public EnergyData targetEData;
-    public GameObject currentTargetFood = null;
-    [SerializeField] private bool logEating = false;
     #endregion
 
 
     #region Internal Variables
     //Cache
     float hungerTimer = 0f;
+    Slider hungerBar;
+    Image hungerFill;
 
-    private EnergyData selfEData;
+    EnergyData selfEData;
+    Vitality vitality;
 
-    private Color primaryColor;
-    private Color secondaryColor;
+    Color primaryColor;
+    Color secondaryColor;
 
 
     //Events
@@ -69,14 +76,48 @@ public class Metabolism : MonoBehaviour
     private void Start()
     {
         selfEData = GetComponent<EnergyData>();
+        vitality = GetComponent<Vitality>();
 
+        // Initialize UI
+        hungerBar = transform.root.Find("Canvas").Find("Hunger Bar").GetComponent<Slider>();
+        hungerFill = hungerBar.transform.Find("Hunger Fill").GetComponent<Image>();
         primaryColor = hungerFill.GetComponent<ColorPicker>().primaryColor;
         secondaryColor = hungerFill.GetComponent<ColorPicker>().secondaryColor;
+        hungerBar.gameObject.SetActive(false);
     }
 
     private void Update()
     {
         Metabolise();
+    }
+
+    //// Become more hungry over time \\\\
+    private void Metabolise()
+    {
+        hungerTimer += Time.deltaTime;
+        if (hungerTimer >= metabolismRate)
+        {
+            hungerTimer = 0f;
+            //Get more hungry
+            if (hungerPercentage < 100)
+                hungerUnits += hungerGainedPerTick;
+            hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
+
+            //Update UI
+            hungerBar.value = 100 - hungerPercentage;
+
+            //Check if hungry
+            if (hungerPercentage >= hungryAtPercent)
+            {
+                NowHungry?.Invoke();
+
+                if (hungerPercentage >= wastingAtPercent)
+                {
+                    WastingBegins?.Invoke();
+                    WasteAway();
+                }
+            }
+        }
     }
 
 
@@ -106,7 +147,7 @@ public class Metabolism : MonoBehaviour
     //// Stop Eating \\\\
     public void StopEating()
     {
-        EatingEnds();
+        EatingEnds?.Invoke();
 
         if (targetEData != null)
         {
@@ -118,41 +159,10 @@ public class Metabolism : MonoBehaviour
 
 
         //Update UI
-        if (hungerBar.gameObject.activeSelf)
+        if (hungerBar)
         {
-            hungerBar.gameObject.SetActive(false);
             hungerFill.color = primaryColor;
-        }
-    }
-
-
-
-    //// Become more hungry over time \\\\
-    private void Metabolise()
-    {
-        hungerTimer += Time.deltaTime;
-        if (hungerTimer >= metabolismRate)
-        {
-            hungerTimer = 0f;
-            //Get more hungry
-            if (hungerPercentage < 100)
-                hungerUnits += hungerGainedPerTick;
-            hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
-
-            //Update UI
-            hungerBar.value = 100 - hungerPercentage;
-
-            //Check if hungry
-            if (hungerPercentage >= hungryAtPercent)
-            {
-                NowHungry?.Invoke();
-
-                if (hungerPercentage >= wastingAtPercent)
-                {
-                    WastingBegins?.Invoke();
-                    WasteAway();
-                }
-            }
+            hungerBar.gameObject.SetActive(false);
         }
     }
 
@@ -226,11 +236,21 @@ public class Metabolism : MonoBehaviour
     private void WasteAway()
     {
         //Eat meat if desperate for food
-        if (!dietList.Contains("Meat"))
+        if (!dietList.Contains("Meat") && hungryMeatEater)
             dietList.Add("Meat");
 
-        if (hungerPercentage >= 100)
-            GetComponent<Vitality>().Die();
+        if (!vitality.dead && hungerPercentage >= 100)
+            vitality.Die();
+    }
+
+    //// Draw Debug BiteSphere \\\\
+    private void OnDrawGizmosSelected()
+    {
+        if (drawBiteSphere)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(mouth.position + (transform.forward * biteSize / 2), biteSize);
+        }
     }
 }
 

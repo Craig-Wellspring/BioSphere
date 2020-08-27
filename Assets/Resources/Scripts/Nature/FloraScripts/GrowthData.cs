@@ -2,6 +2,11 @@
 
 public class GrowthData : MonoBehaviour
 {
+    [Header("Settings")]
+    public float growthSpeed = 5;
+    [Tooltip("Shade local terrain green when Half Grown"),SerializeField] 
+    bool colorizeTerrain = true;
+
     [Header("Half Grown")]
     public bool halfGrown = false;
     [Tooltip("Change the Tag of Root transform to this string when Half Grown"), SerializeField]
@@ -25,6 +30,8 @@ public class GrowthData : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        anim.SetFloat("GrowthSpeed", growthSpeed);
     }
 
 
@@ -43,6 +50,9 @@ public class GrowthData : MonoBehaviour
 
         if (gainIndependenceHG)
             transform.SetParent(null);
+
+        if (colorizeTerrain)
+            GetComponent<TerrainColorizer>().enabled = true;
     }
 
     void FullyGrown()

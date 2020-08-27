@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class PlayerModule : AdvancedMonoBehaviour
 {
     public bool isControlled = false;
     GameObject aiModule;
+    Animator baseAnim;
+    Vitality vitality;
+    Cinemachine.CinemachineVirtualCamera vCam;
 
     private bool playMode = true;
     private void OnApplicationQuit()
@@ -15,10 +19,17 @@ public class PlayerModule : AdvancedMonoBehaviour
 
     private void OnEnable()
     {
-        //Register
-        PlayerSoul.Cam.soullessCreatures.Add(GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
-
+        //Cache
         aiModule = transform.root.GetComponentInChildren<BasicAIBrain>().gameObject;
+        baseAnim = transform.root.GetComponent<Animator>();
+        vitality = GetComponentInParent<Vitality>();
+        vCam = GetComponent<Cinemachine.CinemachineVirtualCamera>();
+
+
+        //Register
+        vitality.DeathOccurs += Death;
+
+        PlayerSoul.Cam.soullessCreatures.Add(vCam);
     }
 
     private void OnDisable()
@@ -26,27 +37,40 @@ public class PlayerModule : AdvancedMonoBehaviour
         if (playMode)
         {
             //Move Camera back to Guardian
-            if (PlayerSoul.Cam.currentTarget == GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>())
+            if (PlayerSoul.Cam.currentTarget == vCam)
             {
                 PlayerSoul.Cam.currentTarget = PlayerSoul.Cam.lifeGuardian;
                 PlayerSoul.Cam.currentTarget.enabled = true;
             }
 
             //Unregister
-            PlayerSoul.Cam.soullessCreatures.Remove(GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
+            vitality.DeathOccurs -= Death;
+
+            PlayerSoul.Cam.soullessCreatures.Remove(vCam);
         }
+    }
+
+    void Death()
+    {
+        gameObject.SetActive(false);
     }
 
     public void TakeControl()
     {
-        isControlled = true;
-
         //Enable Controller
+        isControlled = true;
         GetComponent<PlayerController>().enabled = true;
 
         //Disable AI
-        aiModule.gameObject.SetActive(false);
+        transform.root.GetComponent<AIDestinationSetter>().target = null;
 
+        if (baseAnim.GetBool("IsSinging"))
+            baseAnim.SetBool("IsSinging", false);
+        if (baseAnim.GetBool("IsEating"))
+            GetComponentInParent<Metabolism>().StopEating();
+
+
+        aiModule.gameObject.SetActive(false);
     }
 
     public void ReleaseControl()

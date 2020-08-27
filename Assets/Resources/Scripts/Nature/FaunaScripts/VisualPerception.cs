@@ -5,19 +5,17 @@ using System.Linq;
 
 public class VisualPerception : AdvancedMonoBehaviour
 {
-    public Collider selfCollider;
-    public Transform eyesTransform;
-
-    [Header("Sight Range Settings")]
-    public float perceptionRadius = 10f;
-    public float viewAngle;
-    [Space(10)]
+    [Header("Debug")]
     public bool drawSightSphere = false;
-
-    [Header("Draw Sight Lines")]
+    [Space(10)]
     public bool foodSightLines = true;
     public bool preySightLines = true;
     public bool predatorSightLines = true;
+
+    [Header("Sight Range Settings")]
+    public Transform eyesTransform;
+    public float perceptionRadius = 10f;
+    //public float viewAngle;
 
     [Header("Currently Visible")]
     public List<Collider> nearbyMates;
@@ -40,7 +38,8 @@ public class VisualPerception : AdvancedMonoBehaviour
     [HideInInspector] public int searchMasks;
     #endregion
 
-    private Metabolism metabolism;
+    Metabolism metabolism;
+    Collider selfCollider;
 
 
     void Start()
@@ -53,6 +52,7 @@ public class VisualPerception : AdvancedMonoBehaviour
         searchMasks = creatureLayerMask + foodLayerMask + foliageLayerMask + corpseLayerMask;
 
         metabolism = GetComponent<Metabolism>();
+        selfCollider = GetComponent<CreatureData>().bodyColliders[0];
     }
 
 
@@ -133,10 +133,10 @@ public class VisualPerception : AdvancedMonoBehaviour
         }
 
         //Find the closest member of each type
-        closestFood = ClosestColliderInList(nearbyFood);
-        closestMate = ClosestColliderInList(nearbyMates);
-        closestPredator = ClosestColliderInList(nearbyPredators);
-        closestPrey = ClosestColliderInList(nearbyPrey);
+        closestFood = ClosestObjInColliderList(nearbyFood, false);
+        closestMate = ClosestObjInColliderList(nearbyMates, true);
+        closestPredator = ClosestObjInColliderList(nearbyPredators, true);
+        closestPrey = ClosestObjInColliderList(nearbyPrey, true);
     }
 
     private void OnDrawGizmosSelected()

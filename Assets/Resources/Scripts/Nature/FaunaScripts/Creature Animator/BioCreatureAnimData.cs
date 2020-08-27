@@ -8,7 +8,8 @@ public class BioCreatureAnimData : MonoBehaviour
     Vitality vitality;
     Rigidbody rBody;
 
-    void Start(){
+    void Start()
+    {
         anim = GetComponent<Animator>();
         metabolism = GetComponentInChildren<Metabolism>();
         vitality = GetComponentInChildren<Vitality>();
@@ -22,26 +23,37 @@ public class BioCreatureAnimData : MonoBehaviour
         vitality.DeathOccurs += Death;
     }
 
-    private void OnDisable(){
+    private void OnDisable()
+    {
         metabolism.EatingBegins -= BeginEating;
         metabolism.EatingEnds -= CeaseEating;
 
         vitality.DeathOccurs -= Death;
     }
 
-    void Update(){
+    void Update()
+    {
         anim.SetFloat("Speed", rBody.velocity.magnitude);
     }
-    
 
-    void BeginEating(){
+
+
+    void BeginEating()
+    {
         anim.SetBool("IsEating", true);
     }
-    void CeaseEating(){
+    void CeaseEating()
+    {
         anim.SetBool("IsEating", false);
     }
 
-    void Death(){
+    public void TriggerMorph()
+    {
+        anim.SetTrigger("Morph");
+    }
+
+    void Death()
+    {
         anim.SetTrigger("Die");
     }
 }

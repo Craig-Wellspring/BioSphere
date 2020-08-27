@@ -7,8 +7,10 @@ public class ObjectSpawner : AdvancedMonoBehaviour
     //// Spawn Object \\\\
     public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent)
     {
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, GetRandomLocation(_spawnAreaSize), GravityUp(), _parent);
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, FindGroundPos(_spawnAreaSize), GravityUpRotation(), _parent);
         newObject.name = _objectToSpawn.name;
+
+        //ResetTransform(transform, true);
 
         //Random Rotation
         if (_randomYRotation)
@@ -20,8 +22,10 @@ public class ObjectSpawner : AdvancedMonoBehaviour
     //// Spawn Object and Add Energy \\\\
     public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent, float _imbuedEnergy, EnergyData _sourceEData)
     {
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, GetRandomLocation(_spawnAreaSize), GravityUp(), _parent);
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, FindGroundPos(_spawnAreaSize), GravityUpRotation(), _parent);
         newObject.name = _objectToSpawn.name;
+
+        //ResetTransform(transform, true);
 
         //Random Rotation
         if (_randomYRotation)
@@ -34,8 +38,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         else
             newObjectEData.nutritionalValue = _imbuedEnergy;
 
-        if (_sourceEData != null)
-            _sourceEData.SpendEnergy(_imbuedEnergy);
+        _sourceEData?.SpendEnergy(_imbuedEnergy);
 
         return newObject;
     }
@@ -43,7 +46,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
 
 
     //Get desired spawn position
-    private Vector3 GetRandomLocation(float _radius)
+    private Vector3 FindGroundPos(float _radius)
     {
         if (_radius > 0)
         {
@@ -62,7 +65,6 @@ public class ObjectSpawner : AdvancedMonoBehaviour
             }
 
             Destroy(spawnCloud);
-            //ResetTransform(transform, true);
 
             return pos;
         }
@@ -74,6 +76,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
 
 
     //// Debug \\\\
+    [Header("Debug")]
     [SerializeField] private bool drawDebugSphere = false;
 
     private void OnValidate()

@@ -6,21 +6,17 @@ public class GlobalLifeSource : AdvancedMonoBehaviour
 {
     public float lifeEnergyPool = 0;
     [Space(10)]
-    [Header("Manual")]
     public GameObject meteor;
     public Transform spawnPoint;
     [Space(10)]
+    [Header("Manual")]
     public bool spawnMeteor = false;
 
 
     private void Start()
     {
-        if (lifeEnergyPool > 0)
-        {
-            //Initialize ServiusCam by attaching it to the first meteor spawned
-            SpawnMeteor();
-            FindObjectOfType<Meteor>().transform.localPosition = new Vector3(100, 100, 300);
-        }
+        SpawnMeteor();
+        FindObjectOfType<Meteor>().transform.localPosition = new Vector3(100, 100, 300);
     }
 
     //// Spawn new Meteor from Spawnpoint \\\\
