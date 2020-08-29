@@ -15,6 +15,10 @@ public class TerrainColorizer : AdvancedMonoBehaviour
     int vert1Index;
     int vert2Index;
     int vert3Index;
+    
+    Color vert1ColorChange;
+    Color vert2ColorChange;
+    Color vert3ColorChange;
 
     void OnEnable()
     {
@@ -33,9 +37,17 @@ public class TerrainColorizer : AdvancedMonoBehaviour
                 vert3Index = localTerrainColor.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 2];
 
                 // Color vertexes
-                localTerrainColor.colorArray[vert1Index] = Color.Lerp(localTerrainColor.colorArray[vert1Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
-                localTerrainColor.colorArray[vert2Index] = Color.Lerp(localTerrainColor.colorArray[vert2Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
-                localTerrainColor.colorArray[vert3Index] = Color.Lerp(localTerrainColor.colorArray[vert3Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
+                Color newColor1 = Color.Lerp(localTerrainColor.colorArray[vert1Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
+                vert1ColorChange = newColor1 - localTerrainColor.colorArray[vert1Index];
+                localTerrainColor.colorArray[vert1Index] = newColor1;
+
+                Color newColor2 = Color.Lerp(localTerrainColor.colorArray[vert2Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
+                vert2ColorChange = newColor2 - localTerrainColor.colorArray[vert2Index];
+                localTerrainColor.colorArray[vert2Index] = newColor2;
+
+                Color newColor3 = Color.Lerp(localTerrainColor.colorArray[vert3Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
+                vert3ColorChange = newColor3 - localTerrainColor.colorArray[vert3Index];
+                localTerrainColor.colorArray[vert3Index] = newColor3;
                 
                 // Update terrain coloration
                 localTerrainColor.RefreshTerrainColor();
@@ -46,9 +58,9 @@ public class TerrainColorizer : AdvancedMonoBehaviour
     void OnDisable()
     {
         // Color vertexes
-        localTerrainColor.colorArray[vert1Index] = Color.Lerp(localTerrainColor.colorArray[vert1Index], localTerrainColor.terrainGradient.Evaluate(0), colorIncrement * 2);
-        localTerrainColor.colorArray[vert2Index] = Color.Lerp(localTerrainColor.colorArray[vert2Index], localTerrainColor.terrainGradient.Evaluate(0), colorIncrement * 2);
-        localTerrainColor.colorArray[vert3Index] = Color.Lerp(localTerrainColor.colorArray[vert3Index], localTerrainColor.terrainGradient.Evaluate(0), colorIncrement * 2);
+        localTerrainColor.colorArray[vert1Index] = localTerrainColor.colorArray[vert1Index] - vert1ColorChange;
+        localTerrainColor.colorArray[vert2Index] = localTerrainColor.colorArray[vert2Index] - vert2ColorChange;
+        localTerrainColor.colorArray[vert3Index] = localTerrainColor.colorArray[vert3Index] - vert3ColorChange;
 
         // Update terrain coloration
         localTerrainColor.RefreshTerrainColor();
