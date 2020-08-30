@@ -1572,7 +1572,7 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1613,6 +1613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: drawBiteSphere
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.data[2]
+      value: Mushroom
       objectReference: {fileID: 0}
     - target: {fileID: 4575123311430768913, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}

@@ -24,8 +24,7 @@ public class GravityOrient : MonoBehaviour
 
     public void Orient()
     {
-        Vector3 gravityUp = (transform.position - Vector3.zero).normalized;
-        Quaternion newRot = Quaternion.FromToRotation(transform.up, gravityUp) * transform.rotation;
+        Quaternion newRot = Quaternion.FromToRotation(transform.up, transform.position) * transform.rotation;
 
         transform.rotation = newRot;
     }

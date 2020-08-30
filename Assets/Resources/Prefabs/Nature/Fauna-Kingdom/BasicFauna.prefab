@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 3395481251386001511}
   - component: {fileID: 7176181105287769093}
   m_Layer: 20
-  m_Name: BiologicalCreature
+  m_Name: BasicFauna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawDebugSphere: 0
-  logEggLaying: 1
+  logEggLaying: 0
   eggToSpawn: {fileID: 0}
   reproductionCost: 30
 --- !u!114 &7419024281370543850
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawDebugSphere: 0
-  logEvolution: 0
+  logEvolution: 1
   statToEvolve: 0
   castoffSeed: {fileID: 0}
   evolutionCost: 50

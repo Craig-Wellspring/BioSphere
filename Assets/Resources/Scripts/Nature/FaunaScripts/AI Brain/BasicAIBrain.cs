@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using Pathfinding;
 
 [RequireComponent(typeof(Animator))]
@@ -23,11 +22,11 @@ public class BasicAIBrain : VersionedMonoBehaviour
     Evolution evo;
     Morphology morphology;
 
-    Animator AIBrain;
+    [HideInInspector] public Animator AIBrain;
 
     AIDestinationSetter destinationSetter;
     Seeker seeker;
-    IAstarAI aiPath;
+    [HideInInspector] public IAstarAI aiPath;
     #endregion
 
 
@@ -155,8 +154,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
             evo.statToEvolve = Evolution.StatToEvolve.MaxHealth;
         */
 
-        //Choose stat at random
-        int random = Random.Range(1, 3);
+        //Choose stat at random, Random.Max is exclusive
+        int random = Random.Range(1, 4);
 
         switch (random)
         {

@@ -7,10 +7,8 @@ public class TerrainColorizer : AdvancedMonoBehaviour
     // Settings
     [SerializeField] float colorIncrement = 1;
 
-
     // Private variables
     TerrainColor localTerrainColor;
-    RaycastHit groundRayHit;
 
     int vert1Index;
     int vert2Index;
@@ -27,7 +25,7 @@ public class TerrainColorizer : AdvancedMonoBehaviour
 
 
         // Color terrain a little more green on spawn
-        if (Physics.Raycast(transform.root.position + transform.root.position.normalized, -transform.root.position.normalized, out groundRayHit, 200, LayerMask.GetMask("Terrain")))
+        if (Physics.Raycast(transform.root.position + transform.root.position.normalized, -transform.root.position.normalized, out RaycastHit groundRayHit, 200, LayerMask.GetMask("Terrain")))
         {
             if (groundRayHit.collider.CompareTag("Ground"))
             {

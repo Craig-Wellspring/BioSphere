@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using Pathfinding;
 
 [RequireComponent(typeof(CreatureData))]
 public class Vitality : MonoBehaviour
@@ -21,7 +23,7 @@ public class Vitality : MonoBehaviour
     CreatureData cData;
     EnergyData corpseEData;
     EnergyData selfEData;
-    GameObject healthBar;
+    Slider healthBar;
     #endregion
 
 
@@ -32,19 +34,33 @@ public class Vitality : MonoBehaviour
         corpseEData = cData.corpse.GetComponent<EnergyData>();
         selfEData = GetComponent<EnergyData>();
 
-        healthBar = transform.root.Find("Canvas").Find("Health Bar").gameObject;
-        healthBar.SetActive(false);
+        healthBar = transform.root.Find("Canvas").Find("Health Bar").GetComponent<Slider>();
+        healthBar.maxValue = maxHealth;
+        healthBar.value = healthBar.maxValue;
+        healthBar.gameObject.SetActive(false);
     }
 
-    public void TakeDamage(int amount)
+    public void IncreaseMaxHealth(int _amount)
+    {
+        currentHealth += _amount;
+        maxHealth += _amount;
+        healthBar.maxValue = maxHealth;
+        healthBar.value = currentHealth;
+
+        transform.root.localScale += new Vector3(_amount / 10, _amount / 10, _amount / 10);
+    }
+
+    public void TakeDamage(int _amount)
     {
         if (!dead)
         {
             DamageTaken?.Invoke();
 
-            if (!healthBar.activeSelf)
-                healthBar.SetActive(true);
-            currentHealth -= amount;
+            if (!healthBar.gameObject.activeSelf)
+                healthBar.gameObject.SetActive(true);
+
+            healthBar.value -= _amount;    
+            currentHealth -= _amount;
 
 
             if (currentHealth <= 0)
@@ -63,9 +79,12 @@ public class Vitality : MonoBehaviour
         if (GetComponent<VisualPerception>())
             GetComponent<VisualPerception>().enabled = false;
 
+        if (transform.root.GetComponent<AIPath>())
+            transform.root.GetComponent<AIPath>().enabled = false;
+
         //Update Animator
-        if (healthBar.activeSelf)
-            healthBar.SetActive(false);
+        if (healthBar.gameObject.activeSelf)
+            healthBar.gameObject.SetActive(false);
 
 
         //Deactivate Body and Activate Corpse

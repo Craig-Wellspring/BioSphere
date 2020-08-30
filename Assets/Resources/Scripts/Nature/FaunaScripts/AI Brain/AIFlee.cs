@@ -30,7 +30,7 @@ public class AIFlee : StateMachineBehaviour
     {
         FleePath fleePath = FleePath.Construct(_self.position, _fleeTarget.position, _self.GetComponentInChildren<BasicAIBrain>().runAwayDistance);
         fleePath.aimStrength = 1;
-        fleePath.spread = 4000;
+        fleePath.spread = 0;
         seeker.StartPath(fleePath);
     }
 }

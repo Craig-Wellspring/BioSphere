@@ -7,11 +7,13 @@ public class AIChase : StateMachineBehaviour
 {
     AIDestinationSetter destinationSetter;
     VisualPerception vPerception;
+    PredatorBrainModule predatorBrain;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
         vPerception = animator.GetComponentInParent<VisualPerception>();
+        predatorBrain = animator.GetComponent<PredatorBrainModule>();
     }
 
 
@@ -22,10 +24,14 @@ public class AIChase : StateMachineBehaviour
 
         if (!destinationSetter.target)
             destinationSetter.target = null;
-    }
-    
 
-    override public void OnStateExit(Animator animator1, AnimatorStateInfo stateInfo1, int layerIndex)
+        if (animator.GetFloat("TargetDistance") - predatorBrain.attackDistance <= 0)
+            animator.SetBool("TargetInAttackRange", true);
+        else animator.SetBool("TargetInAttackRange", false);
+    }
+
+
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         destinationSetter.target = null;
     }

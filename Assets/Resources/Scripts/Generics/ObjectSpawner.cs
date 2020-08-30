@@ -65,6 +65,10 @@ public class ObjectSpawner : AdvancedMonoBehaviour
             }
 
             Destroy(spawnCloud);
+            //spawnCloud.transform.localPosition = Vector3.zero;
+            //spawnCloud.transform.localScale = Vector3.one;
+            //ResetTransform(transform, true);
+            //StartCoroutine(ResetTransform());
 
             return pos;
         }
@@ -72,6 +76,12 @@ public class ObjectSpawner : AdvancedMonoBehaviour
             return PointOnTerrainUnderPosition(transform.position);
     }
 
+
+    IEnumerator ResetTransform()
+    {
+        yield return 0;
+        ResetTransform(transform, true);
+    }
 
 
 

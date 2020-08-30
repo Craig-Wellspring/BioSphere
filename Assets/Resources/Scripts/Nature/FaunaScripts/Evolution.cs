@@ -61,9 +61,7 @@ public class Evolution : ObjectSpawner
 
             //Max Health
             case StatToEvolve.MaxHealth:
-                GetComponent<Vitality>().maxHealth += 1;
-                GetComponent<Vitality>().currentHealth += 1;
-                transform.root.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+                GetComponent<Vitality>().IncreaseMaxHealth(1);
                 break;
 
             //Metabolism Rate
