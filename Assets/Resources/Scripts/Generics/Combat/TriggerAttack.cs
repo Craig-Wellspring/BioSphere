@@ -7,11 +7,11 @@ public class TriggerAttack : MonoBehaviour
     public bool isActive = true;
 
     [Header("Debug")]
-    [SerializeField] bool logAttacks = false;
+    [SerializeField] private bool logAttacks = false;
 
 
     [Header("Settings")]
-    [SerializeField] int attackDamage = 1;
+    [SerializeField] private int attackDamage = 1;
 
     
     void OnTriggerEnter(Collider collider)

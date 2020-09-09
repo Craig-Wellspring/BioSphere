@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 6651382639175601598}
   - component: {fileID: 766094858670492952}
   - component: {fileID: 1065377328634644644}
-  - component: {fileID: 8929178427029252989}
   - component: {fileID: 5903858121702242424}
   m_Layer: 11
   m_Name: Leaves
@@ -203,28 +202,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthSpeed: 5
-  colorizeTerrain: 1
   halfGrown: 0
   halfGrownTag: Grass
   activateObjectHG: {fileID: 0}
   gainIndependenceHG: 0
+  addTerrainColor: 0.3
   fullyGrown: 0
   fullyGrownTag: 
   activateObjectFG: {fileID: 0}
   gainIndependenceFG: 0
---- !u!114 &8929178427029252989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6457183713139666284}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b040c1067e5a040b873785055895ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorIncrement: 0.25
 --- !u!65 &5903858121702242424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -248,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6842223849494278757}
   - component: {fileID: 694792480652514699}
-  - component: {fileID: 6943134564227153067}
+  - component: {fileID: 6778790549203275933}
   m_Layer: 11
   m_Name: BasicFlora
   m_TagString: Untagged
@@ -283,20 +269,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6943134564227153067
+--- !u!114 &6778790549203275933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6842223849493786181}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a185b855f7ef83448b9b78487aa81786, type: 3}
+  m_Script: {fileID: 11500000, guid: 95bd1c0150f62434e8bc687da432821c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onStart: 1
+  onStart: 0
   onUpdate: 0
+  rotationSpeed: 50
+  orientTarget: 0
 --- !u!1 &6842223849493786183
 GameObject:
   m_ObjectHideFlags: 0

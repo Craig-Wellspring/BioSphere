@@ -30,13 +30,9 @@ public class VisualPerception : AdvancedMonoBehaviour
     public List<Collider> nearbyPredators;
     public GameObject closestPredator;
 
-    #region LayerMasks
-    private LayerMask creatureLayerMask;
-    private LayerMask foodLayerMask;
-    private LayerMask foliageLayerMask;
-    private LayerMask corpseLayerMask;
+
+    // Private variables
     [HideInInspector] public int searchMasks;
-    #endregion
 
     Metabolism metabolism;
     Collider selfCollider;
@@ -44,12 +40,7 @@ public class VisualPerception : AdvancedMonoBehaviour
 
     void Start()
     {
-        creatureLayerMask = LayerMask.GetMask("Fauna");
-        foodLayerMask = LayerMask.GetMask("FoodItem");
-        foliageLayerMask = LayerMask.GetMask("Foliage");
-        corpseLayerMask = LayerMask.GetMask("Corpse");
-
-        searchMasks = creatureLayerMask + foodLayerMask + foliageLayerMask + corpseLayerMask;
+        searchMasks = LayerMask.GetMask("Fauna", "FoodItem", "Foliage", "Corpse");
 
         metabolism = GetComponent<Metabolism>();
         selfCollider = GetComponent<CreatureData>().bodyColliders[0];

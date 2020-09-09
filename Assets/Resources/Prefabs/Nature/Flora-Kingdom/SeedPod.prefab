@@ -43,14 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b7d1cb72d673c41a3f108b0e8704cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawDebugSphere: 0
   newFruit:
   - {fileID: 0}
-  whenToSpawn: 1
+  whenToSpawn: 0
+  objectToActivate: {fileID: 0}
+  selfDestruct: 1
   seeds: 1
   seedSuccessChance: 100
   divideRemainingEnergy: 0
-  nextSeedPod: {fileID: 0}
   castOffEntity: {fileID: 0}
   castOffDistance: 2
   randomSpawnArea: 0

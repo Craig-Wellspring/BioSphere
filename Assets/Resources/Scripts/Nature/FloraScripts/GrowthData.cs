@@ -4,22 +4,22 @@ public class GrowthData : MonoBehaviour
 {
     [Header("Settings")]
     public float growthSpeed = 5;
-    [Tooltip("Shade local terrain green when Half Grown"),SerializeField] 
-    bool colorizeTerrain = true;
 
     [Header("Half Grown")]
     public bool halfGrown = false;
     [Tooltip("Change the Tag of Root transform to this string when Half Grown"), SerializeField]
-    private string halfGrownTag;
+    string halfGrownTag;
     public GameObject activateObjectHG;
     [Tooltip("Detach from Parent when Half Grown")]
     public bool gainIndependenceHG = false;
+    [Tooltip("Shade local terrain green by increment when Half Grown"),SerializeField] 
+    float addTerrainColor = 0;
 
 
     [Header("Fully Grown")]
     public bool fullyGrown = false;
     [Tooltip("Change the Tag of Root transform to this string when Fully Grown"), SerializeField]
-    private string fullyGrownTag;
+    string fullyGrownTag;
     public GameObject activateObjectFG;
     [Tooltip("Detach from Parent when FullyGrown")]
     public bool gainIndependenceFG = false;
@@ -27,7 +27,7 @@ public class GrowthData : MonoBehaviour
 
     private Animator anim;
 
-    private void Start()
+    void Start()
     {
         anim = GetComponent<Animator>();
 
@@ -49,10 +49,13 @@ public class GrowthData : MonoBehaviour
             activateObjectHG.SetActive(true);
 
         if (gainIndependenceHG)
-            transform.SetParent(null);
+            GainIndependence();
 
-        if (colorizeTerrain)
-            GetComponent<TerrainColorizer>().enabled = true;
+        if (addTerrainColor > 0)
+        {
+            gameObject.AddComponent<TerrainColorizer>();
+            GetComponent<TerrainColorizer>().ColorizeTerrain(addTerrainColor);
+        }
     }
 
     void FullyGrown()
@@ -68,6 +71,15 @@ public class GrowthData : MonoBehaviour
             activateObjectFG.SetActive(true);
 
         if (gainIndependenceFG)
-            transform.SetParent(null);
+            GainIndependence();
+    }
+
+    void GainIndependence()
+    {
+        transform.SetParent(null);
+
+        GravityAttract gBody = GetComponent<GravityAttract>();
+        if (gBody)
+            gBody.enabled = true;
     }
 }

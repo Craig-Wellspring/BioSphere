@@ -13,12 +13,20 @@ public class GenericRotateAround : MonoBehaviour
 
     private void OnGUI()
     {
-        if (circuitAxis == CircuitAxis.X)
-            _circuitAxis = Vector3.right;
-        if (circuitAxis == CircuitAxis.Y)
-            _circuitAxis = Vector3.up;
-        if (circuitAxis == CircuitAxis.Z)
-            _circuitAxis = Vector3.forward;
+        switch (circuitAxis)
+        {
+            case (CircuitAxis.X):
+                _circuitAxis = Vector3.right;
+                break;
+
+            case (CircuitAxis.Y):
+                _circuitAxis = Vector3.up;
+                break;
+
+            case (CircuitAxis.Z):
+                _circuitAxis = Vector3.forward;
+                break;
+        }
     }
 
     void Update()

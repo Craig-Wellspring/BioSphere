@@ -8,47 +8,43 @@ public class LifeGuardian : ObjectSpawner
     [Space(10)]
     public GameObject seedToPlant;
     public float maxEnergyPlanted = 500f;
-    public float minimumGlobalEnergy;
     [Range(1, 100)]
     public int plantingArea = 2;
     [Range(1, 100)]
     public int roamingArea = 30;
     public int pathingSpread = 5000;
 
-    [Space(10)]
-    [SerializeField] bool manualPlantSeed = false;
-
     Animator guardianBrain;
     AIPath pathing;
-    private bool playMode = true;
-    private void OnApplicationQuit()
+    GlobalLifeSource lifeSource;
+
+    bool playMode = true;
+    void OnApplicationQuit()
     {
         playMode = false;
     }
-
-    private void OnEnable()
+    void OnDisable()
+    {
+        if (playMode)
+            PlayerSoul.Cam.lifeGuardian = null;
+    }
+    void OnEnable()
     {
         PlayerSoul.Cam.lifeGuardian = transform.root.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
     }
 
-    private void OnDisable()
-    {
-        if (playMode)
-        {
-            PlayerSoul.Cam.lifeGuardian = null;
-        }
-    }
 
-    private void Start()
+    void Start()
     {
         guardianBrain = GetComponent<Animator>();
         pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
+        lifeSource = Servius.Server.GetComponent<GlobalLifeSource>();
 
         //Spawn new Guardian if destroyed
-        GetComponent<OnDestroyEvent>().BeingDestroyed += Servius.Server.GetComponent<GlobalLifeSource>().SpawnMeteor;
+        GetComponent<OnDestroyEvent>().BeingDestroyed += lifeSource.SpawnMeteor;
     }
 
-    private void Update()
+    void Update()
     {
         guardianBrain.SetFloat("DestinationDistance", pathing.remainingDistance);
     }
@@ -57,21 +53,11 @@ public class LifeGuardian : ObjectSpawner
     //Plant Seedgrass
     public void PlantSeed()
     {
-        float _energyToPlant = (Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool > maxEnergyPlanted + minimumGlobalEnergy) ? maxEnergyPlanted : Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool - minimumGlobalEnergy;
+        float _energyToPlant = (lifeSource.lifeEnergyPool > maxEnergyPlanted + lifeSource.minimumEnergyReserve) ? maxEnergyPlanted : lifeSource.lifeEnergyPool - lifeSource.minimumEnergyReserve;
         if (_energyToPlant > 0)
         {
             SpawnObject(seedToPlant, plantingArea, true, null, _energyToPlant, null);
-            Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool -= _energyToPlant;
-        }
-    }
-
-    //Manually plant a seed
-    private void OnValidate()
-    {
-        if (manualPlantSeed)
-        {
-            PlantSeed();
-            manualPlantSeed = false;
+            lifeSource.lifeEnergyPool -= _energyToPlant;
         }
     }
 }

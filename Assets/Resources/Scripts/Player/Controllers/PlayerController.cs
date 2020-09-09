@@ -97,6 +97,6 @@ public class PlayerController : AdvancedMonoBehaviour
     private void Jump()
     {
         animator.SetTrigger("Jump");
-        transform.root.GetComponent<Rigidbody>().AddForce(GravityVector(transform.root.position) * jumpPower);
+        transform.root.GetComponent<Rigidbody>().AddForce(-GravityVector(transform.root.position) * jumpPower);
     }
 }

@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class GlobalLifeSource : AdvancedMonoBehaviour
 {
+    [SerializeField] private bool initialize = true;
+    [Space(15)]
     public float lifeEnergyPool = 0;
+    public float minimumEnergyReserve;
     [Space(10)]
     public GameObject meteor;
-    public Transform spawnPoint;
-    [Space(10)]
-    [Header("Manual")]
-    public bool spawnMeteor = false;
+    [SerializeField] private Transform spawnPoint;
 
 
-    private void Start()
+    void Start()
     {
-        SpawnMeteor();
-        FindObjectOfType<Meteor>().transform.localPosition = new Vector3(100, 100, 300);
+        if (initialize)
+        {
+            SpawnMeteor();
+            FindObjectOfType<Meteor>().transform.localPosition = new Vector3(100, 100, 300);
+        }
     }
 
     //// Spawn new Meteor from Spawnpoint \\\\
@@ -25,15 +28,8 @@ public class GlobalLifeSource : AdvancedMonoBehaviour
         //Create Meteor
         GameObject _newMeteor = Instantiate(meteor, spawnPoint.position, transform.rotation);
         _newMeteor.name = meteor.name;
-    }
 
-    //// Manual Launch Button \\\\
-    private void OnValidate()
-    {
-        if (spawnMeteor)
-        {
-            SpawnMeteor();
-            spawnMeteor = false;
-        }
+        _newMeteor.GetComponent<Meteor>().guardian.GetComponentInChildren<EnergyData>().energyReserve += minimumEnergyReserve;
+        lifeEnergyPool -= minimumEnergyReserve;
     }
 }

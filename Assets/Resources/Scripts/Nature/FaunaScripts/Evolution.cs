@@ -13,6 +13,7 @@ public class Evolution : ObjectSpawner
     public GameObject castoffSeed;
     [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
     public float evolutionCost;
+    [SerializeField] float hungerIncreasePerEvo = 0.3f;
     #endregion
 
     #region Private Variables
@@ -37,6 +38,7 @@ public class Evolution : ObjectSpawner
 
         //Increase chosen stat
         IncreaseStat();
+        GetComponent<Metabolism>().hungerGainedPerTick += hungerIncreasePerEvo;
 
         //Trigger ending events
         EvolutionFinishing?.Invoke();

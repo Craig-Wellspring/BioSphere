@@ -92,7 +92,7 @@ PrefabInstance:
     - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
       propertyPath: randomSpawnArea
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8613722111822456013, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
@@ -120,6 +120,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1065377328634644644, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: activateObjectHG
+      value: 
+      objectReference: {fileID: 5507297196104948159}
+    - target: {fileID: 1065377328634644644, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: activateObjectFG
+      value: 
+      objectReference: {fileID: 8155065745073186552}
     - target: {fileID: 3402847854711864255, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: newSeed
@@ -211,6 +221,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6943134564227153067, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8929178427029252989, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: colorIncrement
@@ -288,11 +303,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
-      propertyPath: whenToSpawn
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
-        type: 3}
       propertyPath: seeds
       value: 15
       objectReference: {fileID: 0}
@@ -315,7 +325,7 @@ PrefabInstance:
     - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
       propertyPath: randomSpawnArea
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8613722111822456013, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
@@ -325,7 +335,13 @@ PrefabInstance:
     - target: {fileID: 8613722111822456013, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a93a4ebf089433f48b1cbbf6fcf35457, type: 3}
+--- !u!1 &5507297196104948159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8613722111822456013, guid: a93a4ebf089433f48b1cbbf6fcf35457,
+    type: 3}
+  m_PrefabInstance: {fileID: 4316646373128535410}
+  m_PrefabAsset: {fileID: 0}

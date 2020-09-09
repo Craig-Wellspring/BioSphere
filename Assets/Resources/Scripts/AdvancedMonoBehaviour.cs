@@ -4,26 +4,71 @@ using UnityEngine;
 
 public class AdvancedMonoBehaviour : MonoBehaviour
 {
-    public Vector3 PointOnTerrainUnderPosition(Vector3 _position)
+    // Find a random position on the terrain in a radius around origin transform
+    protected Vector3 RandomGroundPos(Transform _origin, float _radius)
     {
-        if (Physics.Raycast(_position + _position.normalized, -_position.normalized, out RaycastHit hit, 2000, LayerMask.GetMask("Terrain")))
+        Vector3 newPoint = PointOnTerrainUnderPosition(RandomLocalPos(_origin, _radius));
+        //while (newPoint == null || newPoint == Vector3.zero)
+        //    newPoint = PointOnTerrainUnderPosition(RandomLocalPos(_origin, _radius));
+            
+        return newPoint;
+    }
+
+
+    // Find a position in a random radius on a plane 5 units above the origin transform
+    protected Vector3 RandomLocalPos(Transform _origin, float _radius)
+    {
+        if (_radius > 0)
+        {
+            Vector3 newPos = _origin.position + (_origin.up * 5) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
+            return newPos;
+        }
+        else return _origin.position + (_origin.up * 5);
+    }
+
+    // Find a position on the Terrain directly beneath the position
+    protected Vector3 PointOnTerrainUnderPosition(Vector3 _position)
+    {   
+        if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 200, LayerMask.GetMask("Geosphere")))
         {
             if (hit.collider.CompareTag("Ground"))
                 return hit.point;
-            else return Vector3.zero;
+            else
+            {
+                Debug.LogError("PointOnTerrainUnderPosition Raycast hit something not tagged as Ground.");
+                return Vector3.zero;
+            }
         }
-        else return Vector3.zero;
+        else
+        {
+            Debug.LogError("PointOnTerrainUnderPosition Raycast hit nothing.");
+            return Vector3.zero;
+        }
     }
-    public GameObject TerrainUnderPosition(Vector3 _position)
+    
+
+    // Find the Terrain object directly beneath the position
+    protected GameObject TerrainUnderPosition(Vector3 _position)
     {
-        if (Physics.Raycast(_position + _position.normalized, -_position.normalized, out RaycastHit hit, 2000, LayerMask.GetMask("Terrain")))
+        if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 200, LayerMask.GetMask("Geosphere")))
         {
             if (hit.collider.CompareTag("Ground"))
                 return hit.transform.gameObject;
-            else return null;
+            else
+            {
+                Debug.LogError("TerrainUnderPosition Raycast hit something not tagged as Ground.");
+                return null;
+            }
         }
-        else return null;
+        else
+        {
+            Debug.LogError("TerrainUnderPosition Raycast hit nothing.");
+            return null;
+        }
     }
+
+
+
 
     public void ResetTransform(Transform _transform)
     {
@@ -55,22 +100,22 @@ public class AdvancedMonoBehaviour : MonoBehaviour
         _transform.position = _toPos;
     }*/
 
-    public Vector3 GravityVector(Vector3 _fromPos)
+    protected Vector3 GravityVector(Vector3 _fromPos)
     {
-        Vector3 gravityUp = (_fromPos - Vector3.zero).normalized;
-        return -gravityUp;
+        Vector3 gravityVector = (Vector3.zero - _fromPos).normalized;
+        return gravityVector;
     }
 
 
     //Get gravity aligned rotation
-    public Quaternion GravityUpRotation()
+    protected Quaternion GravityOrientedRotation()
     {
-        Quaternion rot = Quaternion.FromToRotation(transform.root.up, (transform.root.position - Vector3.zero).normalized) * transform.root.rotation;
+        Quaternion targetRotation = Quaternion.FromToRotation(transform.up, -GravityVector(transform.position)) * transform.rotation;
 
-        return rot;
+        return targetRotation;
     }
 
-    public Vector3 GetRandomPointOnCol(Collider _collider)
+    protected Vector3 RandomPointOnCol(Collider _collider)
     {
         return new Vector3(
             Random.Range(_collider.bounds.min.x, _collider.bounds.max.x),
@@ -78,7 +123,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
             Random.Range(_collider.bounds.min.z, _collider.bounds.max.z));
     }
 
-    public GameObject ClosestObjInColliderList(List<Collider> _colliderList, bool _returnRoot)
+    protected GameObject ClosestObjInColliderList(List<Collider> _colliderList, bool _returnRoot)
     {
         GameObject closest = null;
         float closestDistanceSqr = Mathf.Infinity;
@@ -98,7 +143,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
         return closest;
     }
 
-    public Vector3 DirFromAngle(float _angleInDegrees)
+    protected Vector3 DirFromAngle(float _angleInDegrees)
     {
         return new Vector3(Mathf.Sin(_angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(_angleInDegrees * Mathf.Deg2Rad));
     }

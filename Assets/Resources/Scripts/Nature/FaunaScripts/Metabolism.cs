@@ -11,7 +11,7 @@ public class Metabolism : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool logEating = false;
-    [SerializeField] bool drawBiteSphere = false;
+    [SerializeField] private bool drawBiteSphere = false;
     public EnergyData targetEData;
     public GameObject currentTargetFood = null;
 
@@ -23,19 +23,19 @@ public class Metabolism : MonoBehaviour
     
     [Header("Hunger Index Settings")]
     [Tooltip("Hunger Percentage to become Hungry"), SerializeField]
-    float hungryAtPercent = 10f;
+    private float hungryAtPercent = 10f;
     [Tooltip("Hunger Percentage to begin Wasting"), SerializeField]
-    float wastingAtPercent = 90f;
+    private float wastingAtPercent = 90f;
     [Tooltip("Die when hunger level maximum reached"), SerializeField]
-    float maximumHungerUnits = 100f;
+    private float maximumHungerUnits = 100f;
     [Tooltip("Start eating meat when very hungry"), SerializeField]
-    bool hungryMeatEater = true;
+    private bool hungryMeatEater = true;
 
     [Header("Metabolism Settings")]
     [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
     public float metabolismRate = 3f;
     [Tooltip("Units of Hunger gained per tick"), SerializeField]
-    float hungerGainedPerTick = 3f;
+    public float hungerGainedPerTick = 3f;
     public Transform mouth;
     public float biteSize = 0.4f;
     [Tooltip("How quickly this creature consumes food. 1 is default.")]

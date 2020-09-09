@@ -4,26 +4,44 @@ using UnityEngine;
 
 public class CloudSpawner : AdvancedMonoBehaviour
 {
-    public List<GameObject> clouds;
-    public int numberOfClouds = 100;
+    // Singleton
+    public static CloudSpawner Spawner { get; private set; }
+    void Awake()
+    {
+        if (Spawner == null)
+            Spawner = this;
+        else
+            Destroy(gameObject);
+    }
 
+
+    // Settings
+    public int numberOfClouds = 100;
+    [Header("Settings")]
+    [SerializeField] private Vector2 cloudSizeMinXMaxY;
+    [SerializeField] private List<GameObject> cloudTypes;
+
+
+
+
+    // Spawn initial clouds
     void Start()
     {
         for(int i = 0; i < numberOfClouds; i++)
-        {
-            Vector3 spawnPos = Random.onUnitSphere * Random.Range(145, 160);
-            SpawnCloud(spawnPos);            
-        }
+            SpawnCloud(false);   
     }
 
-    private void SpawnCloud(Vector3 _spawnPos)
+
+    public void SpawnCloud(bool _increaseCount)
     {
-        //Quaternion newRot = Quaternion.FromToRotation(transform.up, GravityUp().eulerAngles) * transform.rotation;
-        GameObject newCloud = Instantiate(clouds[Random.Range(0,clouds.Count)], _spawnPos, transform.rotation, transform);
+        Vector3 spawnPos = Random.onUnitSphere * Random.Range(145, 160);
+
+        GameObject newCloud = Instantiate(cloudTypes[Random.Range(0,cloudTypes.Count)], spawnPos, Quaternion.identity, transform);
         newCloud.name = "Cloud";
-        PlanetCore.Core.AlignWithGravity(newCloud.transform);
-        //newCloud.transform.LookAt(PlanetCore.Core.transform, GravityUp().eulerAngles);
-        //newCloud.transform.Rotate(-90,90,0);
-        newCloud.transform.localScale = new Vector3(Random.Range(0.9f, 2.5f), Random.Range(0.9f, 2.5f), Random.Range(0.9f, 2.5f));
+        newCloud.transform.rotation = Quaternion.FromToRotation(newCloud.transform.up, -GravityVector(newCloud.transform.position)) * newCloud.transform.rotation;
+        newCloud.transform.localScale = new Vector3(Random.Range(cloudSizeMinXMaxY.x, cloudSizeMinXMaxY.y), Random.Range(cloudSizeMinXMaxY.x, cloudSizeMinXMaxY.y), Random.Range(cloudSizeMinXMaxY.x, cloudSizeMinXMaxY.y));
+
+        if (_increaseCount)
+            numberOfClouds += 1;
     }
 }

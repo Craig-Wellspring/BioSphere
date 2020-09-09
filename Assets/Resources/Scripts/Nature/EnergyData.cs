@@ -66,7 +66,7 @@ public class EnergyData : MonoBehaviour
     public event System.Action EnergyBelowSurplus;
     void SurplusCheck()
     {
-        if (evolution?.evolutionCost <= energyReserve && ovary?.reproductionCost <= energyReserve)
+        if (evolution?.evolutionCost <= energyReserve)
         {
             //Tell UI and AI there is an energy surplus
             EnergyAboveSurplus?.Invoke();

@@ -7,11 +7,11 @@ public class ColliderAttack : MonoBehaviour
     public bool isActive = false;
     
     [Header("Debug")]
-    [SerializeField] bool logAttacks = false;
+    [SerializeField] private bool logAttacks = false;
 
 
     [Header("Settings")]
-    [SerializeField] int attackDamage = 1;
+    [SerializeField] private int attackDamage = 1;
 
 
     void OnCollisionEnter(Collision _collision)

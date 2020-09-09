@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class TerrainColorizer : AdvancedMonoBehaviour
 {
-    // Settings
-    [SerializeField] float colorIncrement = 1;
-
-    // Private variables
     TerrainColor localTerrainColor;
 
     int vert1Index;
     int vert2Index;
     int vert3Index;
-    
+
     Color vert1ColorChange;
     Color vert2ColorChange;
     Color vert3ColorChange;
@@ -21,11 +17,14 @@ public class TerrainColorizer : AdvancedMonoBehaviour
     void OnEnable()
     {
         // Cache local terrain
-        localTerrainColor = TerrainUnderPosition(transform.position).GetComponent<TerrainColor>();
+        localTerrainColor = TerrainUnderPosition(transform.root.position + transform.root.up).GetComponent<TerrainColor>();
+    }
 
 
+    public void ColorizeTerrain(float _increment)
+    {
         // Color terrain a little more green on spawn
-        if (Physics.Raycast(transform.root.position + transform.root.position.normalized, -transform.root.position.normalized, out RaycastHit groundRayHit, 200, LayerMask.GetMask("Terrain")))
+        if (Physics.Raycast(transform.root.position + transform.root.up, GravityVector(transform.root.position), out RaycastHit groundRayHit, 5, LayerMask.GetMask("Geosphere")))
         {
             if (groundRayHit.collider.CompareTag("Ground"))
             {
@@ -35,24 +34,32 @@ public class TerrainColorizer : AdvancedMonoBehaviour
                 vert3Index = localTerrainColor.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 2];
 
                 // Color vertexes
-                Color newColor1 = Color.Lerp(localTerrainColor.colorArray[vert1Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
+                Color newColor1 = Color.Lerp(localTerrainColor.colorArray[vert1Index], localTerrainColor.terrainGradient.Evaluate(1), _increment);
                 vert1ColorChange = newColor1 - localTerrainColor.colorArray[vert1Index];
                 localTerrainColor.colorArray[vert1Index] = newColor1;
 
-                Color newColor2 = Color.Lerp(localTerrainColor.colorArray[vert2Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
+                Color newColor2 = Color.Lerp(localTerrainColor.colorArray[vert2Index], localTerrainColor.terrainGradient.Evaluate(1), _increment);
                 vert2ColorChange = newColor2 - localTerrainColor.colorArray[vert2Index];
                 localTerrainColor.colorArray[vert2Index] = newColor2;
 
-                Color newColor3 = Color.Lerp(localTerrainColor.colorArray[vert3Index], localTerrainColor.terrainGradient.Evaluate(1), colorIncrement);
+                Color newColor3 = Color.Lerp(localTerrainColor.colorArray[vert3Index], localTerrainColor.terrainGradient.Evaluate(1), _increment);
                 vert3ColorChange = newColor3 - localTerrainColor.colorArray[vert3Index];
                 localTerrainColor.colorArray[vert3Index] = newColor3;
-                
+
                 // Update terrain coloration
                 localTerrainColor.RefreshTerrainColor();
             }
+            else
+            {
+                Debug.LogError("Colorizer Raycast hit something not tagged as Ground.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Colorizer Raycast hit nothing.");
         }
     }
-    
+
     void OnDisable()
     {
         // Color vertexes

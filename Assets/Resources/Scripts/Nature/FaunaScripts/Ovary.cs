@@ -8,7 +8,6 @@ public class Ovary : ObjectSpawner
     public bool logEggLaying = false;
     [Header("Settings")]
     public GameObject eggToSpawn;
-    public float reproductionCost;
     
 
 

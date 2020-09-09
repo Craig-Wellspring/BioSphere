@@ -6,18 +6,26 @@ public class GenericRotate : MonoBehaviour
 {
     public enum RotationAxis { X, Y, Z };
     public RotationAxis rotationAxis;
-    private Vector3 _rotationAxis;
+    Vector3 _rotationAxis;
 
-    public float rotationSpeed;
+    [SerializeField] float rotationSpeed;
 
-    private void OnGUI()
+    void OnGUI()
     {
-        if (rotationAxis == RotationAxis.X)
-            _rotationAxis = Vector3.right;
-        if (rotationAxis == RotationAxis.Y)
-            _rotationAxis = Vector3.up;
-        if (rotationAxis == RotationAxis.Z)
-            _rotationAxis = Vector3.forward;
+        switch (rotationAxis)
+        {
+            case (RotationAxis.X):
+                _rotationAxis = Vector3.right;
+                break;
+
+            case (RotationAxis.Y):
+                _rotationAxis = Vector3.up;
+                break;
+
+            case (RotationAxis.Z):
+                _rotationAxis = Vector3.forward;
+                break;
+        }
     }
 
     void Update()

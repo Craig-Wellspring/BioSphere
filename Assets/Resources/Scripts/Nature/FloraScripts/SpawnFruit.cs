@@ -5,45 +5,54 @@ using System.Collections.Generic;
 public class SpawnFruit : ObjectSpawner
 {
     [Header("Fruit Settings")]
+
     [Tooltip("Chooses randomly from list")]
-    public List<GameObject> newFruit;
-    
-    public enum WhenToSpawn { OnSelfSpawn, OnHalfGrown , OnFullyGrown, OnTrigger };
+    [SerializeField] List<GameObject> newFruit;
+
+    public enum WhenToSpawn { OnSelfSpawn, OnHalfGrown, OnFullyGrown, OnTrigger };
     public WhenToSpawn whenToSpawn;
 
-    [Space(10)]
-    [Tooltip("When out of Seeds, deactive this Pod and activate selected Pod")]
-    public GameObject nextSeedPod;
 
+
+    [Header("Placing Settings")]
+    [SerializeField] ParentType parentRelationship;
+    enum ParentType { None, Child, Sibling };
+    [SerializeField] bool spawnOnSurface = false;
+    [Space(10)]
+    [Tooltip("Scales the size of the random spawn area. 0 is not random. Will reset Transform.")]
+    [SerializeField] float randomSpawnArea = 0;
+    [SerializeField] bool randomYRotation = false;
 
 
 
     [Header("Seed Settings")]
     public int seeds = 1;
-    public float seedSuccessChance = 100;
-    public bool divideRemainingEnergy = false;
-    [Space(10)]
+    [SerializeField] float seedSuccessChance = 100;
+    [SerializeField] EnergyDistribution energyDistribution;
+    enum EnergyDistribution { Minimum, Maximum, DivideRemaining };
+
+
+
+    [Header("Exhaustion Settings")]
+
     [Tooltip("Spawn selected Entity when remaining Energy is too low to spawn selected Fruit")]
-    public GameObject castOffEntity;
-    public float castOffDistance;
+    [SerializeField] GameObject castOffEntity;
+    [SerializeField] float castOffDistance;
+    [Space(10)]
+    [Tooltip("When out of Seeds, destroy this Object and activate indicated Object")]
+    [SerializeField] bool returnLeftoverEnergy = true;
+    [SerializeField] GameObject objectToActivate;
+    [SerializeField] bool selfDestruct = false;
 
-
-    [Header("Placing Settings")]
-    [Tooltip("Scales the size of the random spawn area. 0 is not random. Will reset Transform.")]
-    public float randomSpawnArea = 0;
-    public bool randomYRotation = false;
-    public enum ParentType { None, Child, Sibling };
-    public ParentType parentRelationship;
 
 
     [Header("Triggers")]
     public bool triggerSpawn = false;
 
-    
-    private EnergyData rootEData;
-    private GrowthData rootGrowthData;
-    
-    
+
+    EnergyData rootEData;
+    GrowthData rootGrowthData;
+
     public void Start()
     {
         rootEData = transform.root.GetComponentInChildren<EnergyData>();
@@ -55,11 +64,11 @@ public class SpawnFruit : ObjectSpawner
     {
         if (seeds > 0 && newFruit.Count > 0)
         {
-            //Select fruit to spawn
+            // Select fruit to spawn
             GameObject fruitToSpawn = newFruit[Random.Range(0, newFruit.Count)];
             float energyRequired = fruitToSpawn.GetComponentInChildren<EnergyData>().nutritionalValue;
 
-            //Check if able to spawn
+            // Check if able to spawn
             if (rootEData.energyReserve > energyRequired)
             {
                 if ((whenToSpawn == WhenToSpawn.OnSelfSpawn) ||
@@ -67,7 +76,7 @@ public class SpawnFruit : ObjectSpawner
                     (whenToSpawn == WhenToSpawn.OnFullyGrown && rootGrowthData.fullyGrown) ||
                     (whenToSpawn == WhenToSpawn.OnTrigger && triggerSpawn))
                 {
-                    //Spawn fruit if conditions are met and remove seed
+                    // Spawn fruit if conditions are met and remove seed
                     if (Random.Range(1f, 100f) <= seedSuccessChance)
                     {
                         //Get Parent relationship
@@ -77,40 +86,70 @@ public class SpawnFruit : ObjectSpawner
                         if (parentRelationship == ParentType.Sibling && transform.parent != null)
                             parent = transform.parent;
 
-                        //Decide how much Energy to pass down
-                        float energyToGive;
-                        if (divideRemainingEnergy)
-                            energyToGive = rootEData.energyReserve / seeds;
-                        else
-                            energyToGive = fruitToSpawn.GetComponentInChildren<EnergyData>().nutritionalValue;
+                        // Decide how much Energy to pass down
+                        float energyToGive = 0;
+                        switch (energyDistribution)
+                        {
+                            case (EnergyDistribution.Minimum):
+                                energyToGive = fruitToSpawn.GetComponentInChildren<EnergyData>().nutritionalValue;
+                                break;
+
+                            case (EnergyDistribution.Maximum):
+                                energyToGive = rootEData.energyReserve;
+                                break;
+
+                            case (EnergyDistribution.DivideRemaining):
+                                energyToGive = rootEData.energyReserve / seeds;
+                                break;
+                        }
+
+                        // Spawn Fruit
+                        GameObject _spawnedFruit = SpawnObject(fruitToSpawn, randomSpawnArea, randomYRotation, parent, energyToGive, rootEData);
 
 
-                        SpawnObject(fruitToSpawn, randomSpawnArea, randomYRotation, parent, energyToGive, rootEData);
+                        // Find random position on spawning surface
+                        if (spawnOnSurface)
+                        {
+                            Mesh objectMesh = transform.GetComponentInChildren<MeshFilter>().mesh;
+                            int randomVertIndex = Random.Range(0, objectMesh.vertices.Length);
+                            Vector3 spawnPoint = transform.TransformPoint(objectMesh.vertices[randomVertIndex]);
+                            _spawnedFruit.transform.position = spawnPoint;
+
+                            _spawnedFruit.transform.rotation = Quaternion.FromToRotation(_spawnedFruit.transform.up, (transform.root.GetComponentInChildren<MeshRenderer>().bounds.center - _spawnedFruit.transform.position).normalized) * _spawnedFruit.transform.rotation;
+                        }
                     }
 
                     seeds -= 1;
-                    
+
                     triggerSpawn = false;
                 }
             }
-            else
+            else  // If not enough Energy to spawn new Fruit
             {
-                //Spawn CastOff Entity if not enough Energy remains to spawn new Fruit
+                // Spawn CastOff Entity
                 if (castOffEntity != null && rootEData.energyReserve > 0)
-                {
                     SpawnObject(castOffEntity, castOffDistance, true, null, rootEData.energyReserve, rootEData);
-                }
+
+                // Clear remaining seeds
                 seeds = 0;
             }
         }
-        else
+        else  // If no seeds remain
         {
-            //Deactivate self and Activate next SeedPod if no seeds remain
-            if (nextSeedPod != null)
-                nextSeedPod.SetActive(true);
+            // Return leftover Energy to Source
+            if (returnLeftoverEnergy)
+            {
+                Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += rootEData.energyReserve;
+                rootEData.energyReserve = 0;
+            }
 
-            //this.gameObject.SetActive(false);
-            Destroy(this.gameObject);
+            // Activate next Object
+            if (objectToActivate != null)
+                objectToActivate.SetActive(true);
+
+            // Destroy self
+            if (selfDestruct)
+                Destroy(this.gameObject);
         }
     }
 }

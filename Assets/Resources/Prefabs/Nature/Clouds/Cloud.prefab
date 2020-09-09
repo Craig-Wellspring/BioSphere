@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5450663792481037791}
+  - component: {fileID: 1136813305122726412}
   - component: {fileID: 5450663792480235007}
   - component: {fileID: 5450663792479268671}
-  - component: {fileID: 1402535547880391810}
   m_Layer: 0
   m_Name: Cloud
   m_TagString: Untagged
@@ -33,6 +33,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1136813305122726412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450663792481268223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ff4b69647402c44a9763d1b38cd11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &5450663792480235007
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -82,17 +94,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1402535547880391810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5450663792481268223}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a185b855f7ef83448b9b78487aa81786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onStart: 1
-  onUpdate: 0

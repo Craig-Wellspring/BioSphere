@@ -24,7 +24,7 @@ public class Meteor : AdvancedMonoBehaviour
             transform.Find("Impact").gameObject.SetActive(true);
 
             //Spawn Guardian
-            guardian.transform.position = PointOnTerrainUnderPosition(transform.position);
+            guardian.transform.position = PointOnTerrainUnderPosition(RandomLocalPos(transform, 0));
             guardian.transform.SetParent(null);
             guardian.SetActive(true);
             PlayerSoul.Cam.currentTarget = guardian.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();

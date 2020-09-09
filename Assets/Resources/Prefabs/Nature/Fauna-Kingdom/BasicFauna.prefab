@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawDebugSphere: 0
-  logEvolution: 1
+  logEvolution: 0
   statToEvolve: 0
   castoffSeed: {fileID: 0}
   evolutionCost: 50

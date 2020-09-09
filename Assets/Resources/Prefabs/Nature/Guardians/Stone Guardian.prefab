@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 6026207855842203138}
   - component: {fileID: 2935653473688198868}
   - component: {fileID: 319815590612455067}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Stone Guardian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 4611249174480594}
   - component: {fileID: 174527264352855406}
   - component: {fileID: 8471581281785533877}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,7 +1022,7 @@ CapsuleCollider:
   m_Radius: 0.22
   m_Height: 1
   m_Direction: 2
-  m_Center: {x: 0, y: -0.1, z: 0.2}
+  m_Center: {x: 0, y: -0.09, z: 0.2}
 --- !u!114 &8471581281785533877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,7 +2763,7 @@ GameObject:
   - component: {fileID: 4038079539141822}
   - component: {fileID: 8718412028701211624}
   - component: {fileID: 3820314653732962695}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2798,7 +2798,7 @@ CapsuleCollider:
   m_Radius: 0.22
   m_Height: 1
   m_Direction: 2
-  m_Center: {x: 0, y: -0.1, z: 0.2}
+  m_Center: {x: 0, y: -0.09, z: 0.2}
 --- !u!114 &3820314653732962695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,6 +2997,7 @@ GameObject:
   - component: {fileID: 7284380205839659766}
   - component: {fileID: 8744717457755611509}
   - component: {fileID: 944790874613841003}
+  - component: {fileID: 795093523122109987}
   - component: {fileID: 2902626016777537775}
   - component: {fileID: 4045510176442295646}
   - component: {fileID: 5427516257143833578}
@@ -3050,7 +3051,25 @@ MonoBehaviour:
   - {fileID: 502926610489341151}
   - {fileID: 7271994665300224384}
   - {fileID: 6420398833587655167}
+  - {fileID: 174527264352855406}
+  - {fileID: 8718412028701211624}
   corpse: {fileID: 6159907349568020335}
+--- !u!114 &795093523122109987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598128593976282276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  nutritionalValue: 0
+  chewRateModifier: 1
+  destroyRoot: 1
 --- !u!114 &2902626016777537775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,11 +3082,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924ed792011022c44a26ce739e6061c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawDebugSphere: 0
   seedToPlant: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
     type: 3}
   maxEnergyPlanted: 1500
-  minimumGlobalEnergy: 100
   plantingArea: 10
   roamingArea: 30
   pathingSpread: 10000
@@ -3279,6 +3296,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4709074963190049302}
   - component: {fileID: 536548001416101558}
+  - component: {fileID: 1089161892104362031}
+  - component: {fileID: 3416344473392738778}
   m_Layer: 13
   m_Name: Corpse
   m_TagString: Creature
@@ -3314,6 +3333,34 @@ CapsuleCollider:
   m_Height: 0.015
   m_Direction: 2
   m_Center: {x: 0, y: 0.004, z: 0}
+--- !u!114 &1089161892104362031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159907349568020335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3416344473392738778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159907349568020335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  nutritionalValue: 0
+  chewRateModifier: 1
+  destroyRoot: 1
 --- !u!1 &7094862779258184174
 GameObject:
   m_ObjectHideFlags: 0

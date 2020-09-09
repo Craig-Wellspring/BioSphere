@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4648f57e0d9d668419f4fc4b0b6f1e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleRadius: 3
+  drawDebugSphere: 0
   creatureToHatch: {fileID: 0}
 --- !u!136 &6742531837929581015
 CapsuleCollider:
@@ -135,6 +137,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -159,6 +162,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4452051350941145613
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834156339536324638}
   - component: {fileID: 2883027486007876832}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: White Egg
   m_TagString: Egg
   m_Icon: {fileID: 0}
@@ -267,6 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794205bc76849324ba13106a61f7d94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleRadius: 3
   drawDebugSphere: 0
 --- !u!114 &3912581676150368829
 MonoBehaviour:

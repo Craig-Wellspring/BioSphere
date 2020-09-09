@@ -30,6 +30,7 @@ TagManager:
   - Rabbit
   - Seedling
   - Shrub
+  - Berry
   layers:
   - Default
   - TransparentFX
@@ -54,10 +55,10 @@ TagManager:
   - Fauna
   - PlanetCore
   - Atmosphere
-  - Solaris
-  - Lunula
-  - Littlerock
-  - Terrain
+  - Pyrosphere
+  - Lithosphere
+  - Cryosphere
+  - Geosphere
   - Meteor
   - SafePlace
   - 

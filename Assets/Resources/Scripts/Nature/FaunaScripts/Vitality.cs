@@ -49,6 +49,15 @@ public class Vitality : MonoBehaviour
 
         transform.root.localScale += new Vector3(_amount / 10, _amount / 10, _amount / 10);
     }
+    public void DecreaseMaxHealth(int _amount)
+    {
+        currentHealth -= _amount;
+        maxHealth -= _amount;
+        healthBar.maxValue = maxHealth;
+        healthBar.value = currentHealth;
+
+        transform.root.localScale -= new Vector3(_amount / 10, _amount / 10, _amount / 10);
+    }
 
     public void TakeDamage(int _amount)
     {
@@ -79,8 +88,8 @@ public class Vitality : MonoBehaviour
         if (GetComponent<VisualPerception>())
             GetComponent<VisualPerception>().enabled = false;
 
-        if (transform.root.GetComponent<AIPath>())
-            transform.root.GetComponent<AIPath>().enabled = false;
+        if (transform.root.GetComponent<AIPathAlignedToSurface>())
+            transform.root.GetComponent<AIPathAlignedToSurface>().enabled = false;
 
         //Update Animator
         if (healthBar.gameObject.activeSelf)

@@ -1,38 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlanetCore : MonoBehaviour
 {
     public static PlanetCore Core { get; private set; }
-
-    private void Awake()
+    void Awake()
     {
         if (Core == null)
-        {
             Core = this;
-        }
         else
-        {
             Destroy(gameObject); //should never happen
-        }
     }
 
 
     public float gravity = -10f;
+    public float alignSpeed = 50f;
 
     public void Attract(Transform body)
     {
-        Vector3 gravityUp = (body.position - transform.position).normalized;
+        Vector3 gravityUp = (transform.position - body.position).normalized;
 
-        body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity);
+        body.GetComponent<Rigidbody>().AddForce(-gravityUp * gravity);
     }
 
     public void AlignWithGravity(Transform _body)
     {
-        Vector3 gravityUp = (_body.position - transform.position).normalized;
+        Vector3 gravityUp = (transform.position - _body.position).normalized;
 
-        Quaternion targetRotation = Quaternion.FromToRotation(_body.up, gravityUp) * _body.rotation;
-        _body.rotation = Quaternion.Slerp(_body.rotation, targetRotation, 50 * Time.deltaTime);
+        Quaternion targetRotation = Quaternion.FromToRotation(_body.up, -gravityUp) * _body.rotation;
+        _body.rotation = Quaternion.Slerp(_body.rotation, targetRotation, alignSpeed * Time.deltaTime);
     }
 }

@@ -20,13 +20,11 @@ public class BasicAIBrain : VersionedMonoBehaviour
     Metabolism metabolism;
     VisualPerception vPerception;
     Evolution evo;
-    Morphology morphology;
+    //Morphology morphology;
+    CreatureData cData;
 
-    [HideInInspector] public Animator AIBrain;
-
-    AIDestinationSetter destinationSetter;
-    Seeker seeker;
-    [HideInInspector] public IAstarAI aiPath;
+    [HideInInspector] public Animator aiBrain;
+    [HideInInspector] public AIPath aiPath;
     #endregion
 
 
@@ -37,13 +35,11 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism = GetComponentInParent<Metabolism>();
         vPerception = GetComponentInParent<VisualPerception>();
         evo = GetComponentInParent<Evolution>();
-        morphology = GetComponentInParent<Morphology>();
+        //morphology = GetComponentInParent<Morphology>();
+        cData = GetComponentInParent<CreatureData>();
 
-        AIBrain = GetComponent<Animator>();
-
-        destinationSetter = transform.root.GetComponent<AIDestinationSetter>();
-        seeker = transform.root.GetComponent<Seeker>();
-        aiPath = transform.root.GetComponent<IAstarAI>();
+        aiBrain = GetComponent<Animator>();
+        aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
 
 
 
@@ -84,19 +80,16 @@ public class BasicAIBrain : VersionedMonoBehaviour
     void Update()
     {
         // Register Mates
-        AIBrain.SetInteger("NearbyMates", vPerception.nearbyMates.Count);
+        aiBrain.SetInteger("NearbyMates", vPerception.nearbyMates.Count);
 
         // Register Predators
-        AIBrain.SetInteger("NearbyPredators", vPerception.nearbyPredators.Count);
-
-        // Register Prey
-        AIBrain.SetInteger("NearbyPrey", vPerception.nearbyPrey.Count);
+        aiBrain.SetInteger("NearbyPredators", vPerception.nearbyPredators.Count);
 
         // Register Food
-        AIBrain.SetInteger("NearbyFood", vPerception.nearbyFood.Count);
+        aiBrain.SetInteger("NearbyFood", vPerception.nearbyFood.Count);
 
         // Cache distance to target
-        AIBrain.SetFloat("TargetDistance", aiPath.remainingDistance);
+        aiBrain.SetFloat("TargetDistance", aiPath.remainingDistance);
     }
 
 
@@ -104,42 +97,42 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     void SetHungry()
     {
-        AIBrain.SetBool("Hungry", true);
+        aiBrain.SetBool("Hungry", true);
     }
     void SetSatiated()
     {
-        AIBrain.SetBool("Hungry", false);
+        aiBrain.SetBool("Hungry", false);
     }
 
     void BeginEating()
     {
-        AIBrain.SetBool("Eating", true);
+        aiBrain.SetBool("Eating", true);
     }
     void CeaseEating()
     {
-        AIBrain.SetBool("Eating", false);
+        aiBrain.SetBool("Eating", false);
 
         //Reset pathing
-        ClearPathing();
+        cData.ClearPathing();
     }
 
     void BeginWasting()
     {
-        AIBrain.SetBool("Wasting", true);
+        aiBrain.SetBool("Wasting", true);
     }
     void CeaseWasting()
     {
-        AIBrain.SetBool("Wasting", false);
+        aiBrain.SetBool("Wasting", false);
     }
 
 
     void EnergyAboveSurplus()
     {
-        AIBrain.SetBool("EnergySurplus", true);
+        aiBrain.SetBool("EnergySurplus", true);
     }
     void EnergyBelowSurplus()
     {
-        AIBrain.SetBool("EnergySurplus", false);
+        aiBrain.SetBool("EnergySurplus", false);
     }
 
     void Evolving()
@@ -175,21 +168,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     void Dying()
     {
-        ClearPathing();
+        cData.ClearPathing();
         gameObject.SetActive(false);
     }
-
-    public void ClearPathing()
-    {
-        destinationSetter.target = null;
-        aiPath.SetPath(null);
-        aiPath.destination = Vector3.positiveInfinity;
-        seeker.CancelCurrentPathRequest();
-    }
-
-    /*void StopEverything()
-    {
-        metabolism.StopEating();
-        //ClearPathing();
-    }*/
 }
