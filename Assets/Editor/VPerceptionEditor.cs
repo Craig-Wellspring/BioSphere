@@ -6,12 +6,12 @@ using UnityEditor;
 [CustomEditor(typeof(VisualPerception))]
 public class VPerceptionEditor : Editor
 {
-    private void OnSceneGUI()
+    void OnSceneGUI()
     {
 
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         VisualPerception vPerception = (VisualPerception)target;
         Gizmos.color = Color.white;

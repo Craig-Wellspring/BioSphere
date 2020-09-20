@@ -221,36 +221,6 @@ Transform:
   m_Father: {fileID: 2709940463522897683}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.012701303, y: 0.0024305712, z: 98.24746}
---- !u!1 &2709940463522726671
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2709940463522897711}
-  m_Layer: 0
-  m_Name: Root
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2709940463522897711
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2709940463522726671}
-  m_LocalRotation: {x: -0.5000004, y: 0.5000003, z: 0.49999973, w: -0.49999958}
-  m_LocalPosition: {x: -0.23739046, y: 0.1543331, z: -0.00057512947}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2285759280214587305}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &2709940463522726675
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +583,7 @@ GameObject:
   - component: {fileID: 2709940463522897781}
   - component: {fileID: 2709940463517453835}
   m_Layer: 0
-  m_Name: RabbitPolyArt
+  m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,7 +718,7 @@ Transform:
   - {fileID: 2709940463522897781}
   - {fileID: 2709940463522897683}
   m_Father: {fileID: 2285759280214587305}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -85.71622, y: -0.00009143934, z: 90.00004}
 --- !u!1 &2709940463522726745
 GameObject:
@@ -1572,7 +1542,7 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1618,6 +1588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dietList.Array.data[2]
       value: Mushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.data[3]
+      value: Berry
       objectReference: {fileID: 0}
     - target: {fileID: 4575123311430768913, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1717,25 +1692,61 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
-      propertyPath: eggToSpawn
-      value: 
-      objectReference: {fileID: 4252500731758696718, guid: 48d426ece131b37408b89b150262722f,
-        type: 3}
-    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
       propertyPath: reproductionCost
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: castoffSeed
+      value: 
+      objectReference: {fileID: 1345774665612259657, guid: dc3ac9f11affff348a9a22a3f321d2d7,
+        type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.g
+      value: 0.3556996
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.b
+      value: 0.19824672
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggSize
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: incubationSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: offspringCreature
+      value: 
+      objectReference: {fileID: 2285759280214289225, guid: 03e12790c4f2801438488ee905de8b05,
+        type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: offspringSeed
+      value: 
+      objectReference: {fileID: 1345774665612259657, guid: dc3ac9f11affff348a9a22a3f321d2d7,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 2456671554583304284, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
     - {fileID: 5771464199595073494, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
---- !u!4 &8875023585256384105 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7247082459883604666, guid: c5bf24098b61bba4bb0da85b9f252476,
-    type: 3}
-  m_PrefabInstance: {fileID: 2285759280214191315}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &211209596280888603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
@@ -1745,6 +1756,12 @@ Transform:
 --- !u!4 &2285759280214587305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2285759280214191315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8875023585256384105 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7247082459883604666, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2285759280214191315}
   m_PrefabAsset: {fileID: 0}

@@ -6,13 +6,18 @@ using Pathfinding;
 [RequireComponent(typeof(CreatureData))]
 public class Vitality : MonoBehaviour
 {
+    [Header("State")]
+    public float currentHealth;
+
+
+    [Header("Settings")]
+    public float maxHealth;
+
+
     [Header("Debug")]
     public bool dead = false;
 
-    [Header("State")]
-    public float currentHealth;
-    [Header("Settings")]
-    public float maxHealth;
+
 
     #region Private Variables
     //Events

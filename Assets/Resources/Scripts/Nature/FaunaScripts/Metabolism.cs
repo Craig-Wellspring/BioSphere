@@ -7,46 +7,46 @@ using UnityEngine.UI;
 [RequireComponent(typeof(EnergyData))]
 public class Metabolism : MonoBehaviour
 {
-    #region Settings
-
-    [Header("Debug")]
-    [SerializeField] private bool logEating = false;
-    [SerializeField] private bool drawBiteSphere = false;
-    public EnergyData targetEData;
-    public GameObject currentTargetFood = null;
-
-
     [Header("Current Hunger")]
     [Tooltip("How Hungry the Creature currently feels")]
     public float hungerUnits = 0f;
     public float hungerPercentage = 0f;
-    
+    [Space(10)]
+    public List<DietData> dietHistory;
+
+    #region Settings
     [Header("Hunger Index Settings")]
     [Tooltip("Hunger Percentage to become Hungry"), SerializeField]
-    private float hungryAtPercent = 10f;
+    float hungryAtPercent = 10f;
     [Tooltip("Hunger Percentage to begin Wasting"), SerializeField]
-    private float wastingAtPercent = 90f;
+    float wastingAtPercent = 90f;
     [Tooltip("Die when hunger level maximum reached"), SerializeField]
-    private float maximumHungerUnits = 100f;
+    float maximumHungerUnits = 100f;
     [Tooltip("Start eating meat when very hungry"), SerializeField]
-    private bool hungryMeatEater = true;
+    bool hungryMeatEater = true;
+
+
+    [Header("Creature Diet")]
+    public List<string> dietList;
+    public List<string> preyList;
+
 
     [Header("Metabolism Settings")]
     [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
     public float metabolismRate = 3f;
-    [Tooltip("Units of Hunger gained per tick"), SerializeField]
+    [Tooltip("Units of Hunger gained per tick")]
     public float hungerGainedPerTick = 3f;
     public Transform mouth;
     public float biteSize = 0.4f;
     [Tooltip("How quickly this creature consumes food. 1 is default.")]
     public float chewSpeed = 1f;
 
-    [Header("Creature Diet")]
-    public List<DietData> dietHistory;
-    [Space(15)]
-    public List<string> dietList;
-    public List<string> preyList;
 
+    [Header("Debug")]
+    [SerializeField] bool logEating = false;
+    [SerializeField] bool drawBiteSphere = false;
+    public EnergyData targetEData;
+    public GameObject currentTargetFood = null;
 
     #endregion
 
@@ -71,6 +71,7 @@ public class Metabolism : MonoBehaviour
     public event Action NowFull;
     public event Action WastingBegins;
     public event Action WastingEnds;
+
     #endregion
 
     private void Start()
@@ -131,6 +132,10 @@ public class Metabolism : MonoBehaviour
         targetEData = currentTargetFood.GetComponent<EnergyData>();
         currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed += StopEating;
 
+        if (!targetEData)
+            StopEating();
+
+
         //Update UI
         if (!hungerBar.gameObject.activeSelf)
         {
@@ -171,24 +176,25 @@ public class Metabolism : MonoBehaviour
     //// Gain nutritional value from the food \\\\
     public void Ingest(EnergyData _eData, float _biteSize)
     {
-        //Allocate Energy
+        // Allocate Energy
         if (_eData.nutritionalValue < _biteSize)
             _biteSize = _eData.nutritionalValue;
 
         _eData.nutritionalValue -= _biteSize;
         selfEData.GainEnergy(_biteSize);
 
+        if (hungerUnits > 0)
+            hungerUnits -= _biteSize;
+
+
+        // Destroy Food if no energy remains
         if (_eData.nutritionalValue == 0)
         {
             Devour(_eData.gameObject);
             StopEating();
         }
 
-        if (hungerUnits > 0)
-            hungerUnits -= _biteSize;
-
-
-        //Update diet history        
+        // Update diet history        
         bool newFood = true;
         foreach (DietData foodType in dietHistory)
         {
@@ -200,11 +206,10 @@ public class Metabolism : MonoBehaviour
             }
         }
         if (newFood)
-        {
             dietHistory.Add(new DietData(_eData.tag, _biteSize));
-        }
+            
 
-        //Check Hunger and Energy levels
+        // Check Hunger and Energy levels
         if (hungerPercentage <= hungryAtPercent)
         {
             StopEating();
@@ -225,7 +230,7 @@ public class Metabolism : MonoBehaviour
         if (logEating)
             Debug.Log(this.transform.root.name + " ate " + _target.name + " from " + _target.transform.root.name);
 
-        //Destroy food
+        // Destroy food
         if (targetEData.destroyRoot)
             Destroy(_target.transform.root.gameObject);
         else

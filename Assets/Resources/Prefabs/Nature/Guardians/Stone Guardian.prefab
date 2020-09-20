@@ -546,10 +546,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 67108864
-  endReachedDistance: 0.3
+  endReachedDistance: 3.25
   whenCloseToDestination: 0
   rvoDensityBehavior:
-    enabled: 0
+    enabled: 1
     densityThreshold: 0.5
     returnAfterBeingPushedAway: 0
     progressAverage: 0
@@ -560,7 +560,7 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 6
   pickNextWaypointDist: 2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 0
@@ -3088,7 +3088,6 @@ MonoBehaviour:
   plantingArea: 10
   roamingArea: 30
   pathingSpread: 10000
-  manualPlantSeed: 0
 --- !u!114 &4045510176442295646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3101,9 +3100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dead: 0
   currentHealth: 100
   maxHealth: 100
+  dead: 0
 --- !u!95 &5427516257143833578
 Animator:
   serializedVersion: 3

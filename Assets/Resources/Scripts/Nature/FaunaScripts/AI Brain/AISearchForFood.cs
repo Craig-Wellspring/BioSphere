@@ -6,6 +6,7 @@ using Pathfinding;
 public class AISearchForFood : StateMachineBehaviour
 {
     int jauntLength = 10;
+
     Seeker seeker;
     AIDestinationSetter destinationSetter;
     Metabolism metabolism;
@@ -15,6 +16,7 @@ public class AISearchForFood : StateMachineBehaviour
         seeker = animator.transform.root.GetComponent<Seeker>();
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
         metabolism = animator.GetComponentInParent<Metabolism>();
+
 
         FindRandomPath(animator.rootPosition, jauntLength);
     }
@@ -33,6 +35,7 @@ public class AISearchForFood : StateMachineBehaviour
     {
         RandomPath levyPath = RandomPath.Construct(_fromPos, _jauntLength * 1000);
         levyPath.spread = 1000;
+        seeker.CancelCurrentPathRequest();
         seeker.StartPath(levyPath);
     }
 }

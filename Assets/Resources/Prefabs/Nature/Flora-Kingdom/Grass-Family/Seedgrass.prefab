@@ -327,6 +327,11 @@ PrefabInstance:
       propertyPath: randomSpawnArea
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
+        type: 3}
+      propertyPath: energyDistribution
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8613722111822456013, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}
       propertyPath: m_Name

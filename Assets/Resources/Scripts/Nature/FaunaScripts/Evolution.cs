@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
 
-public class Evolution : ObjectSpawner
+public class Evolution : MonoBehaviour
 {
-    #region Settings
-    public bool logEvolution = false;
-
+    #region Stats
+    [Header("Current")]
+    public int currentLevel = 1;
     public enum StatToEvolve { MaxHealth, MetabolismSpeed, PerceptionRadius };
-    [Space(15)]
     public StatToEvolve statToEvolve;
+    #endregion
 
+    #region Settings
     [Header("Settings")]
-    public GameObject castoffSeed;
     [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
     public float evolutionCost;
     [SerializeField] float hungerIncreasePerEvo = 0.3f;
+
+    
+    [Header("Debug"), SerializeField]
+    bool logEvolution = false;
     #endregion
 
     #region Private Variables
@@ -23,6 +27,7 @@ public class Evolution : ObjectSpawner
     //Events
     public event System.Action EvolutionBeginning;
     public event System.Action EvolutionFinishing;
+
     #endregion
 
     void Start()
@@ -33,30 +38,27 @@ public class Evolution : ObjectSpawner
 
     public void Evolve()
     {
-        //Trigger beginning events
+        // Trigger beginning events
         EvolutionBeginning?.Invoke();
 
-        //Increase chosen stat
+        // Increase chosen stat
         IncreaseStat();
+
+        // Level up
+        IncreaseLevel();
+    
         GetComponent<Metabolism>().hungerGainedPerTick += hungerIncreasePerEvo;
 
         //Trigger ending events
         EvolutionFinishing?.Invoke();
 
         if (logEvolution)
-            Debug.Log(transform.root.name + " evolved and increased its " + statToEvolve);
-    }
-
-    public void CastOffSeed()
-    {
-        //Choose Cast-off Seed
-        //Expend Energy and plant Seed with the Energy spent to Evolve
-        SpawnObject(castoffSeed, 2, false, null, evolutionCost, eData);
+            Debug.Log(transform.root.name + " evolved to level " + currentLevel + " and increased its " + statToEvolve);
     }
 
 
 
-    private void IncreaseStat()
+    void IncreaseStat()
     {
         switch (statToEvolve)
         {
@@ -76,5 +78,10 @@ public class Evolution : ObjectSpawner
                 GetComponent<VisualPerception>().perceptionRadius += 0.5f;
                 break;
         }
+    }
+
+    void IncreaseLevel()
+    {
+        currentLevel += 1;
     }
 }

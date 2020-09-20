@@ -3,26 +3,30 @@
 [RequireComponent(typeof(Evolution))]
 public class Morphology : MonoBehaviour
 {
-    [Header("Debug")]
-    public bool logMorphs = false;
-    
     [Header("Current")]
     public GameObject availableMorph = null;
+
 
     [Header("Settings")]
     public GameObject carniMorph;
     public GameObject herbiMorph;
 
 
-    private Evolution evolution;
+    [Header("Debug"), SerializeField]
+    bool logMorphs = false;
 
-    private void Start()
+
+
+    // Cache
+    Evolution evolution;
+
+    void Start()
     {
         evolution = GetComponent<Evolution>();
 
         evolution.EvolutionFinishing += CalculateMorphology;
     }
-    private void OnDisable()
+    void OnDisable()
     {
         evolution.EvolutionFinishing -= CalculateMorphology;
     }
@@ -76,7 +80,7 @@ public class Morphology : MonoBehaviour
     {
         EnergyData eData = GetComponent<EnergyData>();
         //Spawn new Creature Form
-        GetComponent<Evolution>().SpawnObject(_newForm, 0, false, null, eData.energyReserve, eData);
+        GetComponent<Ovary>().SpawnObject(_newForm, 0, false, null, eData.energyReserve, eData);
     }
     public void DespawnForm()
     {

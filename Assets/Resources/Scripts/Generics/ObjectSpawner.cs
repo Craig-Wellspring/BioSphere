@@ -12,7 +12,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _spawnAreaSize), GravityOrientedRotation(), _parent);
         newObject.name = _objectToSpawn.name;
 
-        //Random Rotation
+        // Random Rotation
         if (_randomYRotation)
             newObject.transform.RotateAround(newObject.transform.position, newObject.transform.up, Random.Range(1f, 360f));
 
@@ -25,12 +25,12 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _spawnAreaSize), GravityOrientedRotation(), _parent);
         newObject.name = _objectToSpawn.name;
 
-        //Random Rotation
+        // Random Rotation
         if (_randomYRotation)
             newObject.transform.RotateAround(newObject.transform.position, newObject.transform.up, Random.Range(1f, 360f));
 
-        //Imbue energy
-        EnergyData newObjectEData = newObject.GetComponentInChildren<EnergyData>();
+        // Imbue energy
+        EnergyData newObjectEData = newObject.GetComponentInChildren<EnergyData>(true);
         if (_imbuedEnergy > newObjectEData.nutritionalValue)
             newObjectEData.energyReserve = _imbuedEnergy - newObjectEData.nutritionalValue;
         else

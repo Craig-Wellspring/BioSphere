@@ -5,17 +5,11 @@ using System.Linq;
 
 public class VisualPerception : AdvancedMonoBehaviour
 {
-    [Header("Debug")]
-    public bool drawSightSphere = false;
-    [Space(10)]
-    public bool foodSightLines = true;
-    public bool preySightLines = true;
-    public bool predatorSightLines = true;
-
     [Header("Sight Range Settings")]
-    public Transform eyesTransform;
+    [SerializeField] Transform eyesTransform;
     public float perceptionRadius = 10f;
     //public float viewAngle;
+
 
     [Header("Currently Visible")]
     public List<Collider> nearbyMates;
@@ -29,6 +23,15 @@ public class VisualPerception : AdvancedMonoBehaviour
     [Space(10)]
     public List<Collider> nearbyPredators;
     public GameObject closestPredator;
+
+    
+    [Header("Debug")]
+    [SerializeField] bool drawSightSphere = false;
+    [Space(15)]
+    [SerializeField] bool foodSightLines = true;
+    [SerializeField] bool preySightLines = true;
+    [SerializeField] bool predatorSightLines = true;
+
 
 
     // Private variables

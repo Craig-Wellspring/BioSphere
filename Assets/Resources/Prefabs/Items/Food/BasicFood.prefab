@@ -154,4 +154,4 @@ MonoBehaviour:
   energyReserve: 0
   nutritionalValue: 0
   chewRateModifier: 2
-  destroyRoot: 1
+  destroyRoot: 0

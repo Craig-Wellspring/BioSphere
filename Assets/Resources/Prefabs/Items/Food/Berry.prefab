@@ -79,6 +79,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: bd48f79c5eff79d4b835d86850cc2698, type: 2}
+    - target: {fileID: 3529067329290632428, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
+        type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529067329290632428, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3545046565803442652, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: nutritionalValue

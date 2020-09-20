@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    [SerializeField] bool active;
+    [SerializeField] bool active = true;
 
     void OnTriggerEnter(Collider collider)
     {

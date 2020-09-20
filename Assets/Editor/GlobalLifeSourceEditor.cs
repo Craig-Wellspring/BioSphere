@@ -10,7 +10,6 @@ public class GlobalLifeSourceEditor : Editor
         EditorGUILayout.Space(10);
         
         GlobalLifeSource lifeSource = (GlobalLifeSource)target;
-
         if (GUILayout.Button("Spawn Meteor"))
             lifeSource.SpawnMeteor();
 

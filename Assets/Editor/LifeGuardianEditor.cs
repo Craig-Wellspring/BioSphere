@@ -7,10 +7,15 @@ public class LifeGuardianEditor : Editor
     public override void OnInspectorGUI()
     {
         LifeGuardian lifeGuardian = (LifeGuardian)target;
+
         if (GUILayout.Button("Plant Seed"))
             lifeGuardian.PlantSeed();
             
         EditorGUILayout.Space(10);
         DrawDefaultInspector();
+
+        EditorGUILayout.Space(10);
+        if (GUILayout.Button("Draw Debug"))
+            lifeGuardian.DrawDebug();
     }
 }

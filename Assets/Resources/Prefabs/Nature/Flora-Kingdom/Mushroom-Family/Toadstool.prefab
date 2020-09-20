@@ -24,6 +24,7 @@ MonoBehaviour:
   energyDistribution: 2
   castOffEntity: {fileID: 0}
   castOffDistance: 0
+  returnLeftoverEnergy: 1
   objectToActivate: {fileID: 0}
   selfDestruct: 0
   triggerSpawn: 0
@@ -250,7 +251,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LODs.Array.data[1].renderers.Array.data[0].renderer
       value: 
-      objectReference: {fileID: 902971443063881503}
+      objectReference: {fileID: 0}
     - target: {fileID: 7784330374298399770, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: m_LocalReferencePoint.x
@@ -276,18 +277,22 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
       value: 0.14724557
       objectReference: {fileID: 0}
+    - target: {fileID: 7784330374298399770, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.006877875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784330374298399770, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8929178427029252989, guid: 288ff8e7fcd13e740aee790d49106778, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 288ff8e7fcd13e740aee790d49106778, type: 3}
 --- !u!1 &7719352930728151883 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6457183713139666284, guid: 288ff8e7fcd13e740aee790d49106778,
-    type: 3}
-  m_PrefabInstance: {fileID: 3655833244572362279}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &902971443063881503 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4484423359255828792, guid: 288ff8e7fcd13e740aee790d49106778,
     type: 3}
   m_PrefabInstance: {fileID: 3655833244572362279}
   m_PrefabAsset: {fileID: 0}

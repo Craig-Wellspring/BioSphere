@@ -4800,11 +4800,6 @@ PrefabInstance:
       propertyPath: biteSize
       value: 0.15
       objectReference: {fileID: 0}
-    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
-      propertyPath: drawBiteSphere
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3897007467088990014, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: predatorList.Array.size
@@ -4997,9 +4992,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
-      propertyPath: eggToSpawn
+      propertyPath: castoffSeed
       value: 
-      objectReference: {fileID: 692861899004652731, guid: 9a483fcd344f0d149bb9a8be5207ab09,
+      objectReference: {fileID: 5108705363584736325, guid: 45e3129b561a9c0498e1921577921627,
+        type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.g
+      value: 0.895764
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.r
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggColor.b
+      value: 0.4704966
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: newEggSize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: offspringCreature
+      value: 
+      objectReference: {fileID: 2396180645501600818, guid: b97e40fac0541a6468aec3beb931521e,
+        type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: offspringSeed
+      value: 
+      objectReference: {fileID: 5108705363584736325, guid: 45e3129b561a9c0498e1921577921627,
         type: 3}
     - target: {fileID: 8844286852851837445, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}

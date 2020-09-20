@@ -9820,7 +9820,7 @@ GameObject:
   - component: {fileID: 7119818804719218592}
   - component: {fileID: 429465076194467618}
   - component: {fileID: 3467069760908349858}
-  - component: {fileID: 2534402439377192243}
+  - component: {fileID: 155340022717208282}
   - component: {fileID: 4791765333547306487}
   - component: {fileID: 940273958730520052}
   - component: {fileID: 3489073789983701844}
@@ -9875,7 +9875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e01b55904fd2474cb72a9e1f45998b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2534402439377192243
+--- !u!114 &155340022717208282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9884,11 +9884,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6095046655658794419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a185b855f7ef83448b9b78487aa81786, type: 3}
+  m_Script: {fileID: 11500000, guid: 95bd1c0150f62434e8bc687da432821c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onStart: 0
+  onStart: 1
   onUpdate: 1
+  rotationSpeed: 50
+  orientTarget: 0
 --- !u!54 &4791765333547306487
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -46,14 +46,16 @@ MonoBehaviour:
   newFruit:
   - {fileID: 0}
   whenToSpawn: 0
-  objectToActivate: {fileID: 0}
-  selfDestruct: 1
-  seeds: 1
-  seedSuccessChance: 100
-  divideRemainingEnergy: 0
-  castOffEntity: {fileID: 0}
-  castOffDistance: 2
+  parentRelationship: 0
+  spawnOnSurface: 0
   randomSpawnArea: 0
   randomYRotation: 1
-  parentRelationship: 0
+  seeds: 1
+  seedSuccessChance: 100
+  energyDistribution: 2
+  castOffEntity: {fileID: 0}
+  castOffDistance: 2
+  returnLeftoverEnergy: 0
+  objectToActivate: {fileID: 0}
+  selfDestruct: 1
   triggerSpawn: 0

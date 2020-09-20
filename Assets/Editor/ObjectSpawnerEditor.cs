@@ -6,12 +6,11 @@ public class ObjectSpawnerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        ObjectSpawner objectSpawner = (ObjectSpawner)target;
+        DrawDefaultInspector();
+        EditorGUILayout.Space(10);
 
+        ObjectSpawner objectSpawner = (ObjectSpawner)target;
         if (GUILayout.Button("Draw Debug"))
             objectSpawner.DrawDebug();
-
-        EditorGUILayout.Space(10);
-        DrawDefaultInspector();
     }
 }
