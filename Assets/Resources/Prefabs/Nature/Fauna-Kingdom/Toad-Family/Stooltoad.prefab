@@ -5374,12 +5374,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
+      propertyPath: adlBodyColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
       propertyPath: bodyColliders.Array.data[0]
       value: 
       objectReference: {fileID: 2279810860505719681}
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bodyColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 502716661065007945}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: speed.baseValue
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: perception.baseValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: mainBodyCollider
+      value: 
+      objectReference: {fileID: 2279810860505719681}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[0]
       value: 
       objectReference: {fileID: 502716661065007945}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
@@ -5483,6 +5508,12 @@ PrefabInstance:
       propertyPath: logMorphs
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: carniMorph
+      value: 
+      objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
+        type: 3}
     - target: {fileID: 7777804111700510589, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bodyColliders.Array.size
@@ -5549,7 +5580,7 @@ PrefabInstance:
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: incubationSpeed
-      value: 0.6
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}

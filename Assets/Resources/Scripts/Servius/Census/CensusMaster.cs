@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class CensusMaster : MonoBehaviour
 {
+    #region Singleton
     public static CensusMaster Census { get; private set; }
+    private void Awake()
+    {
+        if (Census == null)
+            Census = this;
+        else
+            Destroy(gameObject); //should never happen
+    }
+    #endregion
 
+    
     [Header("Overpopulation Control")]
     [Tooltip("Emergency stop for global overpopulation"), SerializeField]
     private int globalOvergrowth = 30000;
@@ -16,8 +26,8 @@ public class CensusMaster : MonoBehaviour
     [Header("Event Log")]
     public bool logPopulationIncrease = false;
     public bool logPopulationDecrease = false;
-    public bool logExtinctions = false;
     public bool logEmergences = false;
+    public bool logExtinctions = false;
 
     [Header("Current Populations")]
     [SerializeField]
@@ -25,17 +35,6 @@ public class CensusMaster : MonoBehaviour
     public List<CensusData> listOfSpecies;
 
 
-    private void Awake()
-    {
-        if (Census == null)
-        {
-            Census = this;
-        }
-        else
-        {
-            Destroy(gameObject); //should never happen
-        }
-    }
 
     public void PopulationIncrease(string _newMember)
     {

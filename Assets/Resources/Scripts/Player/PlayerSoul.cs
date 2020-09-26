@@ -6,18 +6,16 @@ using Pathfinding;
 
 public class PlayerSoul : AdvancedMonoBehaviour
 {
+    #region Singleton
     public static PlayerSoul Cam { get; private set; }
     private void Awake()
     {
         if (Cam == null)
-        {
             Cam = this;
-        }
         else
-        {
             Destroy(gameObject); //should never happen
-        }
     }
+    #endregion
 
     public Cinemachine.CinemachineVirtualCamera currentTarget;
     public Cinemachine.CinemachineVirtualCamera lifeGuardian;

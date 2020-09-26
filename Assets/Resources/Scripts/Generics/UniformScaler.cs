@@ -3,7 +3,7 @@
 [ExecuteAlways]
 public class UniformScaler : MonoBehaviour
 {
-    [Range(0f, 100f)]
+    [Range(0f, 200f)]
     public float scale = 1f;
 
     public void UpdateScale()

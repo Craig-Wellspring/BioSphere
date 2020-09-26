@@ -15,6 +15,6 @@ public class VPerceptionEditor : Editor
     {
         VisualPerception vPerception = (VisualPerception)target;
         Gizmos.color = Color.white;
-        Gizmos.DrawSphere(vPerception.transform.position, vPerception.perceptionRadius);
+        Gizmos.DrawSphere(vPerception.transform.position, vPerception.sightRadius);
     }
 }

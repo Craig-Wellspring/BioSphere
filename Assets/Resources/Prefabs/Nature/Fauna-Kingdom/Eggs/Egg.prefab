@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 5554193337663847160}
   - component: {fileID: 8146910721262214652}
   - component: {fileID: 6785260389747595392}
-  - component: {fileID: 7514558022492730038}
-  - component: {fileID: 4701508348408450060}
   - component: {fileID: 6742531837929581015}
   - component: {fileID: 8326461450898260506}
   - component: {fileID: 5963490746402909659}
@@ -67,38 +65,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!95 &7514558022492730038
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900247564299706058}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f014b39c426e07942b2640516ab277c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4701508348408450060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900247564299706058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4648f57e0d9d668419f4fc4b0b6f1e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatureToHatch: {fileID: 0}
 --- !u!136 &6742531837929581015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -172,6 +138,8 @@ GameObject:
   m_Component:
   - component: {fileID: 834156339536324638}
   - component: {fileID: 2883027486007876832}
+  - component: {fileID: 1515310557582218609}
+  - component: {fileID: 8845468127366392276}
   m_Layer: 30
   m_Name: Egg
   m_TagString: Egg
@@ -212,6 +180,38 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!114 &1515310557582218609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452051350941145613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4648f57e0d9d668419f4fc4b0b6f1e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatureToHatch: {fileID: 0}
+--- !u!95 &8845468127366392276
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452051350941145613}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f014b39c426e07942b2640516ab277c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6210946331554837099
 GameObject:
   m_ObjectHideFlags: 0
@@ -5140,8 +5140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyReserve: 0
-  nutritionalValue: 0
-  chewRateModifier: 1
+  nutritionalValue: 5
+  chewRateModifier: 2
   destroyRoot: 1
 --- !u!136 &6920605206020314414
 CapsuleCollider:

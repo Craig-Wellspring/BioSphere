@@ -56,6 +56,7 @@ public class Metabolism : MonoBehaviour
     float hungerTimer = 0f;
     Slider hungerBar;
     Image hungerFill;
+    float energyIngested;
 
     EnergyData selfEData;
     Vitality vitality;
@@ -149,40 +150,22 @@ public class Metabolism : MonoBehaviour
     }
 
 
-    //// Stop Eating \\\\
-    public void StopEating()
+
+
+    //// Consume food object one bite per frame \\\\
+    public void Bite(EnergyData _eData, float _biteSize)
     {
-        EatingEnds?.Invoke();
-
-        if (targetEData != null)
-        {
-            currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed -= StopEating;
-            targetEData = null;
-        }
-
-        currentTargetFood = null;
-
-
-        //Update UI
-        if (hungerBar)
-        {
-            hungerFill.color = primaryColor;
-            hungerBar.gameObject.SetActive(false);
-        }
-    }
-
-
-
-    //// Gain nutritional value from the food \\\\
-    public void Ingest(EnergyData _eData, float _biteSize)
-    {
-        // Allocate Energy
+        // Adjust bite size
         if (_eData.nutritionalValue < _biteSize)
             _biteSize = _eData.nutritionalValue;
 
+        // Remove energy from food
         _eData.nutritionalValue -= _biteSize;
-        selfEData.GainEnergy(_biteSize);
 
+        // Cache energy gained from bite
+        energyIngested += _biteSize;
+
+        // Become less hungry
         if (hungerUnits > 0)
             hungerUnits -= _biteSize;
 
@@ -194,33 +177,68 @@ public class Metabolism : MonoBehaviour
             StopEating();
         }
 
-        // Update diet history        
-        bool newFood = true;
-        foreach (DietData foodType in dietHistory)
-        {
-            if (foodType.foodTag.Equals(_eData.tag))
-            {
-                newFood = false;
-                foodType.energyUnits += _biteSize;
-                break;
-            }
-        }
-        if (newFood)
-            dietHistory.Add(new DietData(_eData.tag, _biteSize));
-            
 
-        // Check Hunger and Energy levels
+        // Check Hunger levels and stop when completely full
         if (hungerPercentage <= hungryAtPercent)
         {
-            StopEating();
             NowFull?.Invoke();
             return;
         }
         if (hungerPercentage <= wastingAtPercent)
         {
             WastingEnds?.Invoke();
+            return;
+        }
+        if (hungerPercentage <= 1)
+        {
+            StopEating();
         }
     }
+
+
+
+    //// Stop Eating \\\\
+    public void StopEating()
+    {
+        EatingEnds?.Invoke();
+
+
+        // Update diet history   
+        if (targetEData != null)
+        {
+            bool newFood = true;
+            foreach (DietData _foodType in dietHistory)
+            {
+                if (_foodType.foodTag.Equals(targetEData.tag))
+                {
+                    newFood = false;
+                    _foodType.energyUnits += energyIngested;
+                    break;
+                }
+            }
+            if (newFood)
+                dietHistory.Add(new DietData(targetEData.tag, energyIngested));
+
+
+            // Gain energy from food eaten
+            selfEData.GainEnergy(energyIngested);
+            energyIngested = 0;
+
+            // Clear target data
+            currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed -= StopEating;
+            targetEData = null;
+        }
+        currentTargetFood = null;
+
+
+        //Update UI
+        if (hungerBar)
+        {
+            hungerFill.color = primaryColor;
+            hungerBar.gameObject.SetActive(false);
+        }
+    }
+
 
 
 
@@ -251,7 +269,7 @@ public class Metabolism : MonoBehaviour
     //// Draw Debug BiteSphere \\\\
     private void OnDrawGizmosSelected()
     {
-        if (drawBiteSphere)
+        if (drawBiteSphere && mouth != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(mouth.position + (transform.forward * biteSize / 2), biteSize);

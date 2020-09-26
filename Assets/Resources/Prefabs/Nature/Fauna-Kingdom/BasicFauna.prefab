@@ -37,8 +37,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4658365877093987288}
-  - {fileID: 7173857854691505054}
   - {fileID: 8351545068497355797}
+  - {fileID: 7173857854691505054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -352,7 +352,7 @@ RectTransform:
   - {fileID: 8357954067529338423}
   - {fileID: 109414602901769474}
   m_Father: {fileID: 400250}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -431,11 +431,11 @@ GameObject:
   - component: {fileID: 4707972342552166584}
   - component: {fileID: 2748659348047256063}
   - component: {fileID: 2909323061587037465}
+  - component: {fileID: 2131904891924997232}
   - component: {fileID: 3486346588474071174}
   - component: {fileID: 8086205142144112776}
-  - component: {fileID: 2131904891924997232}
-  - component: {fileID: 8816028523584167361}
   - component: {fileID: 7419024281370543850}
+  - component: {fileID: 8816028523584167361}
   - component: {fileID: 7485800211558301736}
   m_Layer: 0
   m_Name: Vitals
@@ -484,7 +484,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c9d9220b1ce844993caafeb0fc351a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyColliders: []
+  currentLevel: 1
+  maxHealth:
+    baseValue: 5
+  speed:
+    baseValue: 2
+  perception:
+    baseValue: 10
+  metabolismRate:
+    baseValue: 3
+  targetCreatureStat: 0
+  mainBodyCollider: {fileID: 0}
+  adlBodyColliders: []
   corpse: {fileID: 7476881784630833516}
 --- !u!114 &2909323061587037465
 MonoBehaviour:
@@ -502,6 +513,21 @@ MonoBehaviour:
   nutritionalValue: 0
   chewRateModifier: 1
   destroyRoot: 1
+--- !u!114 &2131904891924997232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 5
+  maxHealth: 5
+  dead: 0
 --- !u!114 &3486346588474071174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,14 +543,14 @@ MonoBehaviour:
   hungerUnits: 0
   hungerPercentage: 0
   dietHistory: []
-  hungryAtPercent: 10
+  hungryAtPercent: 20
   wastingAtPercent: 80
   maximumHungerUnits: 100
   hungryMeatEater: 1
   dietList: []
   preyList: []
   metabolismRate: 3
-  hungerGainedPerTick: 2
+  hungerGainedPerTick: 1.5
   mouth: {fileID: 0}
   biteSize: 0.4
   chewSpeed: 2
@@ -545,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyesTransform: {fileID: 0}
-  perceptionRadius: 3
+  sightRadius: 5
   nearbyMates: []
   closestMate: {fileID: 0}
   nearbyFood: []
@@ -559,39 +585,6 @@ MonoBehaviour:
   preySightLines: 0
   predatorSightLines: 0
   searchMasks: 0
---- !u!114 &2131904891924997232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 5
-  dead: 0
---- !u!114 &8816028523584167361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eggToSpawn: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
-    type: 3}
-  newEggColor: {r: 0.8117647, g: 0.7921569, b: 0.72156864, a: 0}
-  offspringCreature: {fileID: 0}
-  offspringSeed: {fileID: 0}
-  logEggLaying: 0
 --- !u!114 &7419024281370543850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,11 +597,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f87a3912d9735488b0efce962fa634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
-  statToEvolve: 0
   evolutionCost: 50
-  hungerIncreasePerEvo: 0.3
+  hungerIncreasePerEvo: 0.1
   logEvolution: 0
+--- !u!114 &8816028523584167361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returnPercentToSource: 0.8
+  eggToSpawn: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
+    type: 3}
+  newEggColor: {r: 0.8117647, g: 0.7921569, b: 0.72156864, a: 0}
+  newEggSize: 1
+  incubationSpeed: 0.1
+  canHatch: 1
+  offspringCreature: {fileID: 0}
+  offspringSeed: {fileID: 0}
+  logEggLaying: 0
+  logSeedLaying: 0
 --- !u!114 &7485800211558301736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,7 +1072,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400250}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8736678724299907244
 MonoBehaviour:

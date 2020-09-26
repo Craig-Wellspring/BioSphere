@@ -70,7 +70,7 @@ public class Morphology : MonoBehaviour
 
         //Debug
         if (logMorphs)
-            Debug.Log(transform.root.name + " is trying to morph into " + _newForm.name);
+            Debug.Log(transform.root.name + " has morphed into " + _newForm.name);
     }
 
 
@@ -78,13 +78,33 @@ public class Morphology : MonoBehaviour
     //// Functions used by Animator: Create new form and destroy old form \\\\
     public void SpawnForm(GameObject _newForm)
     {
-        EnergyData eData = GetComponent<EnergyData>();
         //Spawn new Creature Form
-        GetComponent<Ovary>().SpawnObject(_newForm, 0, false, null, eData.energyReserve, eData);
+        EnergyData eData = GetComponent<EnergyData>();
+        GameObject newCreature = GetComponent<Ovary>().SpawnObject(_newForm, 0, false, null, eData, eData.energyReserve);
+
+        // Pass down Current Level and stat block
+        PassOnCData(GetComponent<CreatureData>(), newCreature.GetComponent<CreatureData>());
     }
     public void DespawnForm()
     {
         //Despawn old Creature Form
         Destroy(transform.root.gameObject);
+    }
+
+    void PassOnCData(CreatureData _sourceCData, CreatureData _newCData, bool _matchStats = true)
+    {
+        // Match current level
+        _newCData.currentLevel = _sourceCData.currentLevel;
+
+        // Match current stats
+        if (_matchStats)
+        {
+            _newCData.maxHealth.baseValue = _sourceCData.maxHealth.baseValue;
+            _newCData.speed.baseValue = _sourceCData.speed.baseValue;
+            _newCData.perception.baseValue = _sourceCData.perception.baseValue;
+            _newCData.metabolismRate.baseValue = _sourceCData.metabolismRate.baseValue;
+
+            _newCData.PushStatsToOrigin();
+        }
     }
 }

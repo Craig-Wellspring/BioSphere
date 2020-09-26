@@ -36,6 +36,8 @@ public class Vitality : MonoBehaviour
     void Start()
     {
         cData = GetComponent<CreatureData>();
+        if (cData.corpse == null)
+            throw new System.Exception("No corpse found");
         corpseEData = cData.corpse.GetComponent<EnergyData>();
         selfEData = GetComponent<EnergyData>();
 
@@ -102,8 +104,10 @@ public class Vitality : MonoBehaviour
 
 
         //Deactivate Body and Activate Corpse
-        foreach (Collider _body in cData.bodyColliders)
+        cData.mainBodyCollider.enabled = false;
+        foreach (Collider _body in cData.adlBodyColliders)
             _body.enabled = false;
+
         cData.corpse.SetActive(true);
 
         //Transfer Energy to Corpse

@@ -87,7 +87,7 @@ PrefabInstance:
         type: 3}
       propertyPath: castOffEntity
       value: 
-      objectReference: {fileID: 692861899004652731, guid: 9a483fcd344f0d149bb9a8be5207ab09,
+      objectReference: {fileID: 2396180645501600818, guid: b97e40fac0541a6468aec3beb931521e,
         type: 3}
     - target: {fileID: 8285268606592035597, guid: a93a4ebf089433f48b1cbbf6fcf35457,
         type: 3}

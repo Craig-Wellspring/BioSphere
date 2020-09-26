@@ -29,7 +29,7 @@ public class PlayerModule : AdvancedMonoBehaviour
         //Register
         vitality.DeathOccurs += Death;
 
-        PlayerSoul.Cam.soullessCreatures.Add(vCam);
+        PlayerSoul.Cam?.soullessCreatures.Add(vCam);
     }
 
     private void OnDisable()

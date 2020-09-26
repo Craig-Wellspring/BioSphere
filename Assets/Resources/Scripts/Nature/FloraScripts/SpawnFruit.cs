@@ -39,9 +39,11 @@ public class SpawnFruit : ObjectSpawner
     [SerializeField] GameObject castOffEntity;
     [SerializeField] float castOffDistance;
     [Space(10)]
-    [Tooltip("When out of Seeds, destroy this Object and activate indicated Object")]
+    [Tooltip("When out of Seeds, return remaining Energy stored to the Source")]
     [SerializeField] bool returnLeftoverEnergy = true;
+    [Tooltip("When out of Seeds, activate indicated Object")]
     [SerializeField] GameObject objectToActivate;
+    [Tooltip("When out of Seeds, destroy this Object")]
     [SerializeField] bool selfDestruct = false;
 
 
@@ -104,7 +106,7 @@ public class SpawnFruit : ObjectSpawner
                         }
 
                         // Spawn Fruit
-                        GameObject _spawnedFruit = SpawnObject(fruitToSpawn, randomSpawnArea, randomYRotation, parent, energyToGive, rootEData);
+                        GameObject _spawnedFruit = SpawnObject(fruitToSpawn, randomSpawnArea, randomYRotation, parent, rootEData, energyToGive);
 
 
                         // Find random position on spawning surface
@@ -128,7 +130,7 @@ public class SpawnFruit : ObjectSpawner
             {
                 // Spawn CastOff Entity
                 if (castOffEntity != null && rootEData.energyReserve > 0)
-                    SpawnObject(castOffEntity, castOffDistance, true, null, rootEData.energyReserve, rootEData);
+                    SpawnObject(castOffEntity, castOffDistance, true, null, rootEData, rootEData.energyReserve);
 
                 // Clear remaining seeds
                 seeds = 0;

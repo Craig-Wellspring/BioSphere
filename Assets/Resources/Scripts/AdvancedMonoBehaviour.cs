@@ -20,28 +20,28 @@ public class AdvancedMonoBehaviour : MonoBehaviour
     {
         if (_radius > 0)
         {
-            Vector3 newPos = _origin.position + (_origin.up * 5) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
+            Vector3 newPos = _origin.position + (_origin.up * 50) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
             return newPos;
         }
-        else return _origin.position + (_origin.up * 5);
+        else return _origin.position + (_origin.up * 50);
     }
 
     // Find a position on the Terrain directly beneath the position
     protected Vector3 PointOnTerrainUnderPosition(Vector3 _position)
     {   
-        if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 200, LayerMask.GetMask("Geosphere")))
+        if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 500, LayerMask.GetMask("Geosphere")))
         {
             if (hit.collider.CompareTag("Ground"))
                 return hit.point;
             else
             {
-                Debug.LogError("PointOnTerrainUnderPosition Raycast hit something not tagged as Ground.");
+                Debug.LogError("PointOnTerrainUnderPosition Raycast hit something not tagged as Ground.", this);
                 return Vector3.zero;
             }
         }
         else
         {
-            Debug.LogError("PointOnTerrainUnderPosition Raycast hit nothing.");
+            Debug.LogError("PointOnTerrainUnderPosition Raycast hit nothing.", this);
             return Vector3.zero;
         }
     }
@@ -56,13 +56,13 @@ public class AdvancedMonoBehaviour : MonoBehaviour
                 return hit.transform.gameObject;
             else
             {
-                Debug.LogError("TerrainUnderPosition Raycast hit something not tagged as Ground.");
+                Debug.LogError("TerrainUnderPosition Raycast hit something not tagged as Ground.", this);
                 return null;
             }
         }
         else
         {
-            Debug.LogError("TerrainUnderPosition Raycast hit nothing.");
+            Debug.LogError("TerrainUnderPosition Raycast hit nothing.", this);
             return null;
         }
     }

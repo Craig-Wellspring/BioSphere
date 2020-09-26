@@ -8,7 +8,15 @@ public class HatchCreature : ObjectSpawner
     void SpawnCreature()
     {
         EnergyData eggEData = GetComponentInChildren<EnergyData>();
-        SpawnObject(creatureToHatch, 0, false, null, eggEData.energyReserve + eggEData.nutritionalValue, eggEData);
+        SpawnObject(creatureToHatch, 0, false, null, eggEData, eggEData.energyReserve + eggEData.nutritionalValue);
+
+        // Activate special effects
+        Effects();
+    }
+
+    void Effects()
+    {
+        GetComponentInChildren<ParticleSystem>(true).gameObject.SetActive(true);
     }
 
 

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OnDestroyEvent : MonoBehaviour
@@ -18,8 +16,6 @@ public class OnDestroyEvent : MonoBehaviour
     private void OnDisable()
     {
         if (isPlaying)
-        {
             BeingDestroyed?.Invoke();
-        }
     }
 }

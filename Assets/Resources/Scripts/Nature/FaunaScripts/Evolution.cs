@@ -1,21 +1,15 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(CreatureData), typeof(EnergyData))]
 public class Evolution : MonoBehaviour
 {
-    #region Stats
-    [Header("Current")]
-    public int currentLevel = 1;
-    public enum StatToEvolve { MaxHealth, MetabolismSpeed, PerceptionRadius };
-    public StatToEvolve statToEvolve;
-    #endregion
-
     #region Settings
     [Header("Settings")]
     [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
     public float evolutionCost;
-    [SerializeField] float hungerIncreasePerEvo = 0.3f;
+    [SerializeField] float hungerIncreasePerEvo = 0.1f;
 
-    
+
     [Header("Debug"), SerializeField]
     bool logEvolution = false;
     #endregion
@@ -23,6 +17,7 @@ public class Evolution : MonoBehaviour
     #region Private Variables
     //Cache
     EnergyData eData;
+    CreatureData cData;
 
     //Events
     public event System.Action EvolutionBeginning;
@@ -33,55 +28,30 @@ public class Evolution : MonoBehaviour
     void Start()
     {
         eData = GetComponent<EnergyData>();
+        cData = GetComponent<CreatureData>();
     }
 
 
     public void Evolve()
     {
-        // Trigger beginning events
+        // Trigger beginning events 
         EvolutionBeginning?.Invoke();
-
-        // Increase chosen stat
-        IncreaseStat();
+        // - AI decides which stat to increase
 
         // Level up
-        IncreaseLevel();
-    
-        GetComponent<Metabolism>().hungerGainedPerTick += hungerIncreasePerEvo;
+        cData.IncreaseLevel();
+
+        // Increase chosen stat
+        cData.IncreaseStat(cData.targetCreatureStat);
+
+        /* // Increase food required to stay fed
+        GetComponent<Metabolism>().hungerGainedPerTick += hungerIncreasePerEvo;*/
 
         //Trigger ending events
         EvolutionFinishing?.Invoke();
 
+
         if (logEvolution)
-            Debug.Log(transform.root.name + " evolved to level " + currentLevel + " and increased its " + statToEvolve);
-    }
-
-
-
-    void IncreaseStat()
-    {
-        switch (statToEvolve)
-        {
-
-            //Max Health
-            case StatToEvolve.MaxHealth:
-                GetComponent<Vitality>().IncreaseMaxHealth(1);
-                break;
-
-            //Metabolism Rate
-            case StatToEvolve.MetabolismSpeed:
-                GetComponent<Metabolism>().metabolismRate += 0.5f;
-                break;
-
-            //Perception Radius
-            case StatToEvolve.PerceptionRadius:
-                GetComponent<VisualPerception>().perceptionRadius += 0.5f;
-                break;
-        }
-    }
-
-    void IncreaseLevel()
-    {
-        currentLevel += 1;
+            Debug.Log(transform.root.name + " evolved to level " + cData.currentLevel + " and increased its " + cData.targetCreatureStat + " to " + cData.CurrentTargetStat().baseValue);
     }
 }

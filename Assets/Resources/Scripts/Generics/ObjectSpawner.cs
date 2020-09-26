@@ -20,7 +20,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
     }
 
     //// Spawn Object and Add Energy \\\\
-    public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent, float _imbuedEnergy, EnergyData _sourceEData)
+    public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent, EnergyData _subtractFromEData, float _imbuedEnergy, float _returnPercentToSource = 0f)
     {
         GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _spawnAreaSize), GravityOrientedRotation(), _parent);
         newObject.name = _objectToSpawn.name;
@@ -36,7 +36,8 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         else
             newObjectEData.nutritionalValue = _imbuedEnergy;
 
-        _sourceEData?.SpendEnergy(_imbuedEnergy);
+
+        _subtractFromEData?.SpendEnergy(_imbuedEnergy, _returnPercentToSource);
 
         return newObject;
     }

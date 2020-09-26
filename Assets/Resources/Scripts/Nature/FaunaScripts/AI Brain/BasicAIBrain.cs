@@ -10,6 +10,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
     public int runAwayDistance = 10;
     [Header("Wander Settings")]
     public int wanderDistance = 10;
+    //[Header("Combat Settings")]
+    //public float aggression = 50;
     #endregion
 
 
@@ -137,33 +139,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     void Evolving()
     {
-        //Decide which stat to increase
-        /*
-        if (metabolism.hungerPercentage >= 60)
-            evo.statToEvolve = Evolution.StatToEvolve.MetabolismSpeed;
-        else if (vPerception.nearbyFood.Count < 3)
-            evo.statToEvolve = Evolution.StatToEvolve.PerceptionRadius;
-        else
-            evo.statToEvolve = Evolution.StatToEvolve.MaxHealth;
-        */
-
-        //Choose stat at random, Random.Max is exclusive
-        int random = Random.Range(1, 4);
-
-        switch (random)
-        {
-            case 1:
-                evo.statToEvolve = Evolution.StatToEvolve.MetabolismSpeed;
-                break;
-
-            case 2:
-                evo.statToEvolve = Evolution.StatToEvolve.PerceptionRadius;
-                break;
-
-            case 3:
-                evo.statToEvolve = Evolution.StatToEvolve.MaxHealth;
-                break;
-        }
+        // Randomly choose stat to increase
+        cData.targetCreatureStat = (CreatureData.TargetCreatureStat)Random.Range(0, System.Enum.GetValues(typeof(CreatureData.TargetCreatureStat)).Length);
     }
 
     void Dying()

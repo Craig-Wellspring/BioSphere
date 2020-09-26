@@ -549,7 +549,7 @@ MonoBehaviour:
   endReachedDistance: 3.25
   whenCloseToDestination: 0
   rvoDensityBehavior:
-    enabled: 1
+    enabled: 0
     densityThreshold: 0.5
     returnAfterBeingPushedAway: 0
     progressAverage: 0
@@ -3046,6 +3046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c9d9220b1ce844993caafeb0fc351a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: []
   bodyColliders:
   - {fileID: 474271237426888298}
   - {fileID: 502926610489341151}
@@ -3086,7 +3087,7 @@ MonoBehaviour:
     type: 3}
   maxEnergyPlanted: 1500
   plantingArea: 10
-  roamingArea: 30
+  roamingArea: 15
   pathingSpread: 10000
 --- !u!114 &4045510176442295646
 MonoBehaviour:

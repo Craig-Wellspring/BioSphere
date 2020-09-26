@@ -51,12 +51,12 @@ public class LifeGuardian : ObjectSpawner
 
 
     //Plant Seedgrass
-    public void PlantSeed()
+    public void PlantSeedFromSource()
     {
         float _energyToPlant = (lifeSource.lifeEnergyPool > maxEnergyPlanted + lifeSource.minimumEnergyReserve) ? maxEnergyPlanted : lifeSource.lifeEnergyPool - lifeSource.minimumEnergyReserve;
         if (_energyToPlant > 0)
         {
-            SpawnObject(seedToPlant, plantingArea, true, null, _energyToPlant, null);
+            SpawnObject(seedToPlant, plantingArea, true, null, null, _energyToPlant);
             lifeSource.lifeEnergyPool -= _energyToPlant;
         }
     }

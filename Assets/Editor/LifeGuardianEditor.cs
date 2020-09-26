@@ -9,7 +9,7 @@ public class LifeGuardianEditor : Editor
         LifeGuardian lifeGuardian = (LifeGuardian)target;
 
         if (GUILayout.Button("Plant Seed"))
-            lifeGuardian.PlantSeed();
+            lifeGuardian.PlantSeedFromSource();
             
         EditorGUILayout.Space(10);
         DrawDefaultInspector();

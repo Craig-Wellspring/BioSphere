@@ -28,6 +28,9 @@ public class EnergyData : MonoBehaviour
 
         evolution = GetComponent<Evolution>();
         ovary = GetComponent<Ovary>();
+
+        // Initialize
+        SurplusCheck();
     }
 
     private void ReturnEnergyToReserve()
@@ -46,9 +49,13 @@ public class EnergyData : MonoBehaviour
     //public event Action EnergySpent;
     //public event Action EnergyGained;
 
-    public void SpendEnergy(float _amount)
+    public void SpendEnergy(float _amount, float _returnPercentToSource = 0f)
     {
-        energyReserve -= _amount;
+        float energySpent = _amount * (1 - _returnPercentToSource);
+        float energyReturned = _amount * _returnPercentToSource;
+
+        energyReserve -= energySpent;
+        Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += energyReturned;
 
         SurplusCheck();
         //EnergySpent?.Invoke();
