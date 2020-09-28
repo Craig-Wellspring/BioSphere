@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1345774665612553577}
   - component: {fileID: 5043247283050007175}
   - component: {fileID: 1317947950957645713}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 640849114266161460}
   - component: {fileID: 1159437203735220914}
   - component: {fileID: 5114091967341351444}
+  - component: {fileID: 4492114365909440148}
   - component: {fileID: 4796803860532582312}
   - component: {fileID: 5345784106251529703}
   m_Layer: 11
@@ -343,6 +344,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyReserve: 0
+  energySurplus: 0
+  surplusThreshold: 0
+--- !u!114 &4492114365909440148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568896282945204832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   nutritionalValue: 5
   chewRateModifier: 1
   destroyRoot: 1
@@ -393,6 +408,7 @@ MonoBehaviour:
   castOffEntity: {fileID: 0}
   castOffDistance: 0
   objectToActivate: {fileID: 0}
+  returnLeftoverEnergy: 1
   selfDestruct: 0
   triggerSpawn: 0
 --- !u!1 &2823969995447108113
@@ -490,7 +506,7 @@ GameObject:
   - component: {fileID: 6985748218590417777}
   - component: {fileID: 4143199430134210544}
   - component: {fileID: 1982507744375732434}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1273,7 +1273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Rabbit
       objectReference: {fileID: 0}
     - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
       propertyPath: m_LocalPosition.x

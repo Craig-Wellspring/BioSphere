@@ -39,10 +39,10 @@ public class SpawnFruit : ObjectSpawner
     [SerializeField] GameObject castOffEntity;
     [SerializeField] float castOffDistance;
     [Space(10)]
-    [Tooltip("When out of Seeds, return remaining Energy stored to the Source")]
-    [SerializeField] bool returnLeftoverEnergy = true;
     [Tooltip("When out of Seeds, activate indicated Object")]
     [SerializeField] GameObject objectToActivate;
+    [Tooltip("When out of Seeds, return remaining Energy stored to the Source")]
+    [SerializeField] bool returnLeftoverEnergy = true;
     [Tooltip("When out of Seeds, destroy this Object")]
     [SerializeField] bool selfDestruct = false;
 
@@ -68,7 +68,7 @@ public class SpawnFruit : ObjectSpawner
         {
             // Select fruit to spawn
             GameObject fruitToSpawn = newFruit[Random.Range(0, newFruit.Count)];
-            float energyRequired = fruitToSpawn.GetComponentInChildren<EnergyData>().nutritionalValue;
+            float energyRequired = fruitToSpawn.GetComponentInChildren<NutritionalValue>().nutritionalValue;
 
             // Check if able to spawn
             if (rootEData.energyReserve > energyRequired)
@@ -93,7 +93,7 @@ public class SpawnFruit : ObjectSpawner
                         switch (energyDistribution)
                         {
                             case (EnergyDistribution.Minimum):
-                                energyToGive = fruitToSpawn.GetComponentInChildren<EnergyData>().nutritionalValue;
+                                energyToGive = fruitToSpawn.GetComponentInChildren<NutritionalValue>().nutritionalValue;
                                 break;
 
                             case (EnergyDistribution.Maximum):
@@ -106,7 +106,7 @@ public class SpawnFruit : ObjectSpawner
                         }
 
                         // Spawn Fruit
-                        GameObject _spawnedFruit = SpawnObject(fruitToSpawn, randomSpawnArea, randomYRotation, parent, rootEData, energyToGive);
+                        GameObject _spawnedFruit = SpawnObject(fruitToSpawn, rootEData, energyToGive, 0, parent, randomYRotation, randomSpawnArea);
 
 
                         // Find random position on spawning surface
@@ -130,7 +130,7 @@ public class SpawnFruit : ObjectSpawner
             {
                 // Spawn CastOff Entity
                 if (castOffEntity != null && rootEData.energyReserve > 0)
-                    SpawnObject(castOffEntity, castOffDistance, true, null, rootEData, rootEData.energyReserve);
+                    SpawnObject(castOffEntity, rootEData, rootEData.energyReserve, 0, null, true, castOffDistance);
 
                 // Clear remaining seeds
                 seeds = 0;

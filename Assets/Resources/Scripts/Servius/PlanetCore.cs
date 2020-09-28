@@ -2,6 +2,7 @@
 
 public class PlanetCore : MonoBehaviour
 {
+    #region Singleton
     public static PlanetCore Core { get; private set; }
     void Awake()
     {
@@ -10,6 +11,7 @@ public class PlanetCore : MonoBehaviour
         else
             Destroy(gameObject); //should never happen
     }
+    #endregion
 
 
     public float gravity = -10f;

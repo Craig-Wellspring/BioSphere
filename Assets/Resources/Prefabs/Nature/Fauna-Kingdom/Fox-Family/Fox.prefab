@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 5980609997302659548}
   m_Layer: 19
   m_Name: Spine2
-  m_TagString: Creature
+  m_TagString: Fox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 5980569431467975150}
   m_Layer: 19
   m_Name: Spine1
-  m_TagString: Creature
+  m_TagString: Fox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 5978930685380774922}
   m_Layer: 19
   m_Name: Neck
-  m_TagString: Creature
+  m_TagString: Fox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 5979052801534921724}
   m_Layer: 20
   m_Name: Spine
-  m_TagString: Creature
+  m_TagString: Fox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1374,6 +1374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fox
       objectReference: {fileID: 0}
+    - target: {fileID: 100250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
+      propertyPath: m_TagString
+      value: Fox
+      objectReference: {fileID: 0}
     - target: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1447,6 +1451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
+      propertyPath: adlBodyColliders.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
       propertyPath: bodyColliders.Array.data[0]
       value: 
       objectReference: {fileID: 5979052801534921724}
@@ -1468,6 +1477,41 @@ PrefabInstance:
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bodyColliders.Array.data[4]
+      value: 
+      objectReference: {fileID: 5978666121109257706}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: speed.baseValue
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: perception.baseValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: mainBodyCollider
+      value: 
+      objectReference: {fileID: 5979052801534921724}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 5980569431467975150}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 5980609997302659548}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[2]
+      value: 
+      objectReference: {fileID: 5978930685380774922}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[3]
       value: 
       objectReference: {fileID: 5978666121109257706}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
@@ -1524,11 +1568,6 @@ PrefabInstance:
         type: 3}
       propertyPath: chewSpeed
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
-      propertyPath: logEating
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4763968390723634094, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1626,6 +1665,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
         type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: offspringSeed
+      value: 
+      objectReference: {fileID: 113998, guid: 73de5404b9c56f64c98b261f357edffc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
 --- !u!1 &2352008031328858136 stripped

@@ -39,7 +39,6 @@ public class CreatureData : MonoBehaviour
         seeker = transform.root.GetComponent<Seeker>();
 
         RegisterBodyColliders();
-
         PullStatsFromOrigin();
     }
 
@@ -173,6 +172,20 @@ public class CreatureData : MonoBehaviour
         return _targetStat;
     }
 
+    public void CopyCDataTo(CreatureData _newCData)
+    {
+        // Match current level
+        _newCData.currentLevel = currentLevel;
+
+        // Match current stats
+        foreach (CreatureData.TargetCreatureStat stat in Enum.GetValues(typeof(CreatureData.TargetCreatureStat)))
+        {
+            _newCData.targetCreatureStat = stat;
+            targetCreatureStat = stat;
+            _newCData.CurrentTargetStat().baseValue = CurrentTargetStat().baseValue;
+        }
+        _newCData.PushStatsToOrigin();
+    }
 
     public void ClearPathing()
     {
@@ -222,6 +235,11 @@ public class CreatureStat
     public CreatureStat(float _baseValue) : this()
     {
         baseValue = _baseValue;
+    }
+
+    public virtual void SetStat(float _value)
+    {
+        baseValue = _value;
     }
 
     public virtual void IncreaseStat(float _value)

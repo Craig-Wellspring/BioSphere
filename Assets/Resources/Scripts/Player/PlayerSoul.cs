@@ -17,6 +17,8 @@ public class PlayerSoul : AdvancedMonoBehaviour
     }
     #endregion
 
+   
+    [Header("Camera Docks")]
     public Cinemachine.CinemachineVirtualCamera currentTarget;
     public Cinemachine.CinemachineVirtualCamera lifeGuardian;
     public List<Cinemachine.CinemachineVirtualCamera> soullessCreatures;

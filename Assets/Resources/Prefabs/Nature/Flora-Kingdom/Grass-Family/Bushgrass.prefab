@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300002, guid: d643d5ef65831454eb5a802e09952a5c, type: 3}
+    - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: chewRateModifier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: m_Size.y
@@ -124,4 +129,5 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3402847854711864255, guid: 288ff8e7fcd13e740aee790d49106778, type: 3}
+    - {fileID: 766094858670492952, guid: 288ff8e7fcd13e740aee790d49106778, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 288ff8e7fcd13e740aee790d49106778, type: 3}

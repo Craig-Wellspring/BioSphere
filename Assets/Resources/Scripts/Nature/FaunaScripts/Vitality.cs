@@ -26,7 +26,7 @@ public class Vitality : MonoBehaviour
 
     //Cache
     CreatureData cData;
-    EnergyData corpseEData;
+    NutritionalValue corpseNV;
     EnergyData selfEData;
     Slider healthBar;
     #endregion
@@ -38,8 +38,10 @@ public class Vitality : MonoBehaviour
         cData = GetComponent<CreatureData>();
         if (cData.corpse == null)
             throw new System.Exception("No corpse found");
-        corpseEData = cData.corpse.GetComponent<EnergyData>();
+        corpseNV = cData.corpse.GetComponent<NutritionalValue>();
         selfEData = GetComponent<EnergyData>();
+
+        currentHealth = cData.maxHealth.value;
 
         healthBar = transform.root.Find("Canvas").Find("Health Bar").GetComponent<Slider>();
         healthBar.maxValue = maxHealth;
@@ -66,18 +68,28 @@ public class Vitality : MonoBehaviour
         transform.root.localScale -= new Vector3(_amount / 10, _amount / 10, _amount / 10);
     }
 
+    void IncreaseCurrentHealth(int _amount)
+    {
+            healthBar.value += _amount;    
+            currentHealth += _amount;
+    }
+    void DecreaseCurrentHealth(int _amount)
+    {
+            healthBar.value -= _amount;    
+            currentHealth -= _amount;
+
+            // Show health bar if not already
+            if (!healthBar.gameObject.activeSelf)
+                healthBar.gameObject.SetActive(true);
+    }
+
     public void TakeDamage(int _amount)
     {
         if (!dead)
         {
             DamageTaken?.Invoke();
 
-            if (!healthBar.gameObject.activeSelf)
-                healthBar.gameObject.SetActive(true);
-
-            healthBar.value -= _amount;    
-            currentHealth -= _amount;
-
+            DecreaseCurrentHealth(_amount);
 
             if (currentHealth <= 0)
                 Die();
@@ -111,7 +123,7 @@ public class Vitality : MonoBehaviour
         cData.corpse.SetActive(true);
 
         //Transfer Energy to Corpse
-        corpseEData.nutritionalValue += selfEData.energyReserve;
+        corpseNV.nutritionalValue += selfEData.energyReserve;
         selfEData.energyReserve = 0;
     }
 }

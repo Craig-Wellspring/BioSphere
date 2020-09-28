@@ -25,8 +25,8 @@ MonoBehaviour:
   energyDistribution: 2
   castOffEntity: {fileID: 0}
   castOffDistance: 0
-  returnLeftoverEnergy: 1
   objectToActivate: {fileID: 0}
+  returnLeftoverEnergy: 1
   selfDestruct: 0
   triggerSpawn: 0
 --- !u!1001 &3655833244572362279
@@ -106,6 +106,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: nutritionalValue
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}

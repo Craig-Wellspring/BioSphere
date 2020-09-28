@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &113998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 468652}
+  - component: {fileID: 6857074952779338502}
+  - component: {fileID: -1883889966501293335}
+  - component: {fileID: 411202907980529522}
+  - component: {fileID: 5112931506201178671}
+  m_Layer: 0
+  m_Name: Fruit Tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &468652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6857074952779338502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cae2bc23a68c9b40b5f8db1e22b78df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabList:
+  - {fileID: 3085989116704531624, guid: 36034632d2e24da4eb1f871243b3fae5, type: 3}
+  - {fileID: 2272484978153084238, guid: 1a49c24a5a9bc084bb5e0ee523f7608d, type: 3}
+  - {fileID: 2272484978153084238, guid: 28425e47e399942439d6b902c9a37b40, type: 3}
+  - {fileID: 2272484978153084238, guid: 539935751a8abcb499791a44f2e7840f, type: 3}
+  - {fileID: 2272484978153084238, guid: 93df205356f50364191de0910d7d4072, type: 3}
+  - {fileID: 2272484978153084238, guid: ec32d227f96ee2841a48057527002371, type: 3}
+  - {fileID: 2272484978153084238, guid: 58cfc8076333fa04f990f9376512a3a4, type: 3}
+  - {fileID: 2272484978153084238, guid: f2283ec5c3e20714d9e6f1f0de3fa18d, type: 3}
+  - {fileID: 2272484978153084238, guid: 8cdb902b5d71cc54e96a997e350b59e3, type: 3}
+  - {fileID: 2272484978153084238, guid: a7dfdeb23288d284f95f3b6a704ad30b, type: 3}
+  - {fileID: 2272484978153084238, guid: 45511d206c118294fb9f2f4d0dd73541, type: 3}
+  - {fileID: 2272484978153084238, guid: 6e65a72d83f45a74cab38d3f28ed9335, type: 3}
+  - {fileID: 2272484978153084238, guid: 81ba932dcda985749a8aba34ce7ea692, type: 3}
+  - {fileID: 2272484978153084238, guid: 829285cd8e2e74f4a8a1f9efae39d709, type: 3}
+  - {fileID: 2272484978153084238, guid: 0a52ebcfe9ac82a41856867c73f49db4, type: 3}
+--- !u!114 &-1883889966501293335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113998}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95bd1c0150f62434e8bc687da432821c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart: 1
+  onUpdate: 0
+  rotationSpeed: 50
+  orientTarget: 0
+--- !u!114 &411202907980529522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5112931506201178671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  nutritionalValue: 10
+  chewRateModifier: 1
+  destroyRoot: 1

@@ -15,13 +15,13 @@ public class AnimatorEating : StateMachineBehaviour
         metabolism = animator.GetComponentInChildren<Metabolism>();
 
         //Set chewing speed
-        if (metabolism.targetEData != null)
-            chewRate = metabolism.targetEData.chewRateModifier * metabolism.chewSpeed;
+        if (metabolism.targetNV != null)
+            chewRate = metabolism.targetNV.chewRateModifier * metabolism.chewSpeed;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (metabolism.targetEData != null)
-            metabolism.Bite(metabolism.targetEData, chewRate * Time.deltaTime);
+        if (metabolism.targetNV != null)
+            metabolism.Bite(metabolism.targetNV, chewRate * Time.deltaTime);
     }
 }

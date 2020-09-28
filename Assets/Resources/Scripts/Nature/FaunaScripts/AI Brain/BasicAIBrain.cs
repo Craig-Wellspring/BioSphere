@@ -54,8 +54,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism.WastingBegins += BeginWasting;
         metabolism.WastingEnds += CeaseWasting;
 
-        eData.EnergyAboveSurplus += EnergyAboveSurplus;
-        eData.EnergyBelowSurplus += EnergyBelowSurplus;
+        eData.EnergySurplusChange += UpdateEnergySurplus;
         evo.EvolutionBeginning += Evolving;
 
         vitality.DeathOccurs += Dying;
@@ -71,8 +70,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism.WastingBegins -= BeginWasting;
         metabolism.WastingEnds -= CeaseWasting;
 
-        eData.EnergyAboveSurplus -= EnergyAboveSurplus;
-        eData.EnergyBelowSurplus -= EnergyBelowSurplus;
+        eData.EnergySurplusChange -= UpdateEnergySurplus;
         evo.EvolutionBeginning -= Evolving;
 
         vitality.DeathOccurs -= Dying;
@@ -128,13 +126,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
     }
 
 
-    void EnergyAboveSurplus()
+    void UpdateEnergySurplus()
     {
-        aiBrain.SetBool("EnergySurplus", true);
-    }
-    void EnergyBelowSurplus()
-    {
-        aiBrain.SetBool("EnergySurplus", false);
+        aiBrain.SetBool("EnergySurplus", eData.energySurplus);
     }
 
     void Evolving()

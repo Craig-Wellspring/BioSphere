@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimatorEvolve : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponentInChildren<Evolution>().Evolve();
+        Evolution evolution = animator.GetComponentInChildren<Evolution>();
+        if (animator.GetComponentInChildren<EnergyData>().energyReserve > evolution.evolutionCost)
+            evolution.Evolve();
     }
 }

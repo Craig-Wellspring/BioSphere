@@ -5505,11 +5505,6 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
-      propertyPath: logMorphs
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
       propertyPath: carniMorph
       value: 
       objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,

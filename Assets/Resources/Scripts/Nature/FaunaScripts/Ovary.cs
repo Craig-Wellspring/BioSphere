@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ovary : ObjectSpawner
 {
     [Tooltip("Return a percentage of the cost required to Lay Eggs and Seeds to the Source when spawned."), SerializeField]
-    float returnPercentToSource = 0.8f;
+    float returnPercentToSource = 50;
 
     [Header("Egg Settings")]
     [SerializeField] GameObject eggToSpawn;
@@ -19,6 +19,9 @@ public class Ovary : ObjectSpawner
     [SerializeField] GameObject offspringCreature;
 
     [Header("Seed Settings")]
+    [SerializeField] float seedingRadius = 2f;
+    [SerializeField] bool randomYRotation = true;
+    [Space(10)]
     [SerializeField] GameObject offspringSeed;
 
 
@@ -38,7 +41,7 @@ public class Ovary : ObjectSpawner
     //// Spawn Egg \\\\
     public void SpawnEgg(float _energyEndowed, GameObject _offspringCreature = null)
     {
-        GameObject newEgg = SpawnObject(eggToSpawn, 0, false, null, eData, _energyEndowed, returnPercentToSource);
+        GameObject newEgg = SpawnObject(eggToSpawn, eData, _energyEndowed, returnPercentToSource);
 
         // Set offspring
         if (_offspringCreature == null)
@@ -74,11 +77,11 @@ public class Ovary : ObjectSpawner
                 float energyToLeech = evolution.evolutionCost - eData.energyReserve;
                 eData.energyReserve += energyToLeech;
                 Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool -= energyToLeech;
-            }
-            else throw new System.Exception("Not enough Energy remaining in Global Pool to Spawn Egg");
-        }
 
-        SpawnEgg(evolution.evolutionCost);
+                SpawnEgg(evolution.evolutionCost);
+            }
+            else Debug.LogWarning("Not enough Energy remaining in Global Pool to Spawn Egg");
+        }
     }
     #endregion
 
@@ -91,7 +94,7 @@ public class Ovary : ObjectSpawner
             _offspringSeed = offspringSeed;
 
         // Expend Energy and plant Seed with the Energy spent to Evolve
-        SpawnObject(_offspringSeed, 2, false, null, eData, _energyEndowed, returnPercentToSource);
+        SpawnObject(_offspringSeed, eData, _energyEndowed, returnPercentToSource, null, randomYRotation, seedingRadius);
 
 
         // Debug
@@ -109,11 +112,11 @@ public class Ovary : ObjectSpawner
                 float energyToLeech = evolution.evolutionCost - eData.energyReserve;
                 eData.energyReserve += energyToLeech;
                 Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool -= energyToLeech;
-            }
-            else throw new System.Exception("Not enough Energy remaining in Global Pool to Spawn Seed");
-        }
 
-        SpawnSeed(evolution.evolutionCost);
+                SpawnSeed(evolution.evolutionCost);
+            }
+            else Debug.LogWarning("Not enough Energy remaining in Global Pool to Spawn Seed");
+        }
     }
     #endregion
 }

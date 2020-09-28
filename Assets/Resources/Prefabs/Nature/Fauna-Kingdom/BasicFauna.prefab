@@ -429,8 +429,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4658365877093987288}
   - component: {fileID: 4707972342552166584}
-  - component: {fileID: 2748659348047256063}
   - component: {fileID: 2909323061587037465}
+  - component: {fileID: 2748659348047256063}
   - component: {fileID: 2131904891924997232}
   - component: {fileID: 3486346588474071174}
   - component: {fileID: 8086205142144112776}
@@ -472,6 +472,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2909323061587037465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+  energySurplus: 0
+  surplusThreshold: 0
 --- !u!114 &2748659348047256063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,29 +505,13 @@ MonoBehaviour:
   speed:
     baseValue: 2
   perception:
-    baseValue: 10
+    baseValue: 5
   metabolismRate:
     baseValue: 3
   targetCreatureStat: 0
   mainBodyCollider: {fileID: 0}
   adlBodyColliders: []
   corpse: {fileID: 7476881784630833516}
---- !u!114 &2909323061587037465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyReserve: 0
-  nutritionalValue: 0
-  chewRateModifier: 1
-  destroyRoot: 1
 --- !u!114 &2131904891924997232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +555,7 @@ MonoBehaviour:
   chewSpeed: 2
   logEating: 0
   drawBiteSphere: 1
-  targetEData: {fileID: 0}
+  targetNV: {fileID: 0}
   currentTargetFood: {fileID: 0}
 --- !u!114 &8086205142144112776
 MonoBehaviour:
@@ -612,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnPercentToSource: 0.8
+  returnPercentToSource: 80
   eggToSpawn: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
     type: 3}
   newEggColor: {r: 0.8117647, g: 0.7921569, b: 0.72156864, a: 0}
@@ -620,6 +619,8 @@ MonoBehaviour:
   incubationSpeed: 0.1
   canHatch: 1
   offspringCreature: {fileID: 0}
+  seedingRadius: 2
+  randomYRotation: 1
   offspringSeed: {fileID: 0}
   logEggLaying: 0
   logSeedLaying: 0
@@ -1050,8 +1051,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8351545068497355797}
   - component: {fileID: 8736678724299907244}
+  - component: {fileID: 5138220966308714026}
   - component: {fileID: 1835522965571032941}
-  - component: {fileID: 4127540048741382585}
   - component: {fileID: 3876870131049664693}
   m_Layer: 13
   m_Name: Corpse
@@ -1086,6 +1087,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5138220966308714026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476881784630833516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutritionalValue: 0
+  chewRateModifier: 1
+  destroyRoot: 1
 --- !u!114 &1835522965571032941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,22 +1115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decayTime: 120
-  destroyRoot: 1
---- !u!114 &4127540048741382585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7476881784630833516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyReserve: 0
-  nutritionalValue: 0
-  chewRateModifier: 1
   destroyRoot: 1
 --- !u!136 &3876870131049664693
 CapsuleCollider:

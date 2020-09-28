@@ -4,80 +4,78 @@ using UnityEngine;
 [RequireComponent(typeof(OnDestroyEvent))]
 public class EnergyData : MonoBehaviour
 {
-    #region Settings
-    [Header("Energy Values")]
-    [Tooltip("On Destroy, entity will return remaining Energy Reserve and Nutritional Value to the Global Energy Reserve")]
-    public float energyReserve;
-    public float nutritionalValue;
+    public float energyReserve = 0;
 
-    [Header("Settings")]
-    public float chewRateModifier = 1f;
-    [Tooltip("Destroy the root parent entity when eaten")]
-    public bool destroyRoot = true;
-    #endregion
 
     // Cache
-    Evolution evolution;
-    Ovary ovary;
-    
+    NutritionalValue nv;
+    [HideInInspector] public bool energySurplus = false;
+    [HideInInspector] public float surplusThreshold = 0;
 
-    //// Return Energy to Global Energy Reserve when Destroyed \\\\
+
     private void Start()
     {
         GetComponent<OnDestroyEvent>().BeingDestroyed += ReturnEnergyToReserve;
 
-        evolution = GetComponent<Evolution>();
-        ovary = GetComponent<Ovary>();
-
         // Initialize
+        nv = GetComponent<NutritionalValue>();
+
         SurplusCheck();
     }
 
+
+    // Return Energy to Global Energy Reserve when Destroyed
     private void ReturnEnergyToReserve()
     {
-        if (energyReserve > 0 || nutritionalValue > 0)
+        if (energyReserve > 0)
         {
-            Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += energyReserve + nutritionalValue;
+            Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += energyReserve;
             energyReserve = 0;
-            nutritionalValue = 0;
         }
     }
 
 
 
     //// Increase and Decrease Energy Reserve Pool \\\\
-    //public event Action EnergySpent;
-    //public event Action EnergyGained;
-
-    public void SpendEnergy(float _amount, float _returnPercentToSource = 0f)
+    public void GainEnergy(float _energyGained)
     {
-        float energySpent = _amount * (1 - _returnPercentToSource);
-        float energyReturned = _amount * _returnPercentToSource;
-
-        energyReserve -= energySpent;
-        Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += energyReturned;
+        energyReserve += _energyGained;
 
         SurplusCheck();
-        //EnergySpent?.Invoke();
     }
-    public void GainEnergy(float _amount)
-    {
-        energyReserve += _amount;
 
-        SurplusCheck();
-        //EnergyGained?.Invoke();
-    }
-    
-
-    public event System.Action EnergyAboveSurplus;
-    public event System.Action EnergyBelowSurplus;
-    void SurplusCheck()
+    public bool SpendEnergy(float _energySpent, bool _makeUpWithNV = false)
     {
-        if (evolution?.evolutionCost <= energyReserve)
+        if (energyReserve >= _energySpent)
         {
-            //Tell UI and AI there is an energy surplus
-            EnergyAboveSurplus?.Invoke();
+            energyReserve -= _energySpent;
+            SurplusCheck();
+            return true;
         }
-        else EnergyBelowSurplus?.Invoke();
+        else if (_makeUpWithNV && (energyReserve + nv.nutritionalValue > _energySpent))
+        {
+            nv.nutritionalValue -= _energySpent - energyReserve;
+            energyReserve = 0;
+
+            // Catch energy overuse
+            if (nv.nutritionalValue < 0 || nv.nutritionalValue < 0)
+                Debug.LogError("Spent more energy than available", this);
+
+            return true;
+        }
+        else return false;
+    }
+
+
+    // Check for energy surplus, set bool and trigger events
+    public event System.Action EnergySurplusChange;
+    public void SurplusCheck()
+    {
+        bool _energySurplus = energyReserve >= surplusThreshold ? true : false;
+        if (energySurplus != _energySurplus)
+        {
+            energySurplus = _energySurplus;
+            EnergySurplusChange?.Invoke();
+        }
     }
 }

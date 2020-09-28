@@ -8,7 +8,14 @@ public class HatchCreature : ObjectSpawner
     void SpawnCreature()
     {
         EnergyData eggEData = GetComponentInChildren<EnergyData>();
-        SpawnObject(creatureToHatch, 0, false, null, eggEData, eggEData.energyReserve + eggEData.nutritionalValue);
+        NutritionalValue eggNV = GetComponentInChildren<NutritionalValue>();
+        
+        // Return nutritional value to energy storage
+        eggEData.energyReserve += eggNV.nutritionalValue;
+        eggNV.nutritionalValue = 0;
+
+        // Spawn creature with energy storage
+        SpawnObject(creatureToHatch, eggEData, eggEData.energyReserve);
 
         // Activate special effects
         Effects();

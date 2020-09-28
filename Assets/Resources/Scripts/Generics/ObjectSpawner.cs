@@ -1,45 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ObjectSpawner : AdvancedMonoBehaviour
 {
-    protected float spawnRadius = 3f;
-
-    //// Spawn Object \\\\
-    public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent)
+    public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0, float _percentReturnToSource = 0f, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0)
     {
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _spawnAreaSize), GravityOrientedRotation(), _parent);
+        // Spawn Object
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _randomSpawnArea), GravityOrientedRotation(), _parent);
         newObject.name = _objectToSpawn.name;
 
         // Random Rotation
         if (_randomYRotation)
             newObject.transform.RotateAround(newObject.transform.position, newObject.transform.up, Random.Range(1f, 360f));
 
-        return newObject;
-    }
+        // Allocate energy
+        if (_energyEndowed > 0)
+        {
+            float energyEndowed = _energyEndowed;
+            // Return energy to source if applicable
+            if (_percentReturnToSource > 0)
+            {
+                float energyReturned = _energyEndowed * (_percentReturnToSource / 100);
+                energyEndowed -= energyReturned;
+                Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += energyReturned;
+            }
 
-    //// Spawn Object and Add Energy \\\\
-    public GameObject SpawnObject(GameObject _objectToSpawn, float _spawnAreaSize, bool _randomYRotation, Transform _parent, EnergyData _subtractFromEData, float _imbuedEnergy, float _returnPercentToSource = 0f)
-    {
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _spawnAreaSize), GravityOrientedRotation(), _parent);
-        newObject.name = _objectToSpawn.name;
+            // Tranfer energy to new object
+            NutritionalValue newObjectNV = newObject.GetComponentInChildren<NutritionalValue>(true);
+            if (energyEndowed > newObjectNV.nutritionalValue)
+            {
+                EnergyData newObjectEData = newObject.GetComponentInChildren<EnergyData>(true);
+                newObjectEData.energyReserve = energyEndowed - newObjectNV.nutritionalValue;
+                newObjectEData.SurplusCheck();
+            }
+            else
+                newObjectNV.nutritionalValue = energyEndowed;
 
-        // Random Rotation
-        if (_randomYRotation)
-            newObject.transform.RotateAround(newObject.transform.position, newObject.transform.up, Random.Range(1f, 360f));
 
-        // Imbue energy
-        EnergyData newObjectEData = newObject.GetComponentInChildren<EnergyData>(true);
-        if (_imbuedEnergy > newObjectEData.nutritionalValue)
-            newObjectEData.energyReserve = _imbuedEnergy - newObjectEData.nutritionalValue;
+            // Consume energy from selected spawner
+            if (_subtractFromEData)
+                return _subtractFromEData.SpendEnergy(energyEndowed) ? newObject : null;
+            else
+                return newObject;
+        }
         else
-            newObjectEData.nutritionalValue = _imbuedEnergy;
-
-
-        _subtractFromEData?.SpendEnergy(_imbuedEnergy, _returnPercentToSource);
-
-        return newObject;
+            return newObject;
     }
 
 
@@ -64,8 +68,8 @@ public class ObjectSpawner : AdvancedMonoBehaviour
 
         // Draw line from origin to destination
         Debug.DrawLine(originSpherePoint, destinationSpherePoint, Color.yellow, 10);
-        
+
         // Log positions
-        Debug.Log("DrawSphere Origin: " + originSpherePoint + ", Destination: " + destinationSpherePoint);
+        Debug.Log("DrawSphere Origin: " + originSpherePoint + ", Destination: " + destinationSpherePoint + ", Distance: " + (destinationSpherePoint - originSpherePoint).magnitude);
     }
 }

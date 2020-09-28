@@ -20,10 +20,10 @@ public class AdvancedMonoBehaviour : MonoBehaviour
     {
         if (_radius > 0)
         {
-            Vector3 newPos = _origin.position + (_origin.up * 50) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
+            Vector3 newPos = _origin.position + (_origin.up * 25) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
             return newPos;
         }
-        else return _origin.position + (_origin.up * 50);
+        else return _origin.position + (_origin.up * 25);
     }
 
     // Find a position on the Terrain directly beneath the position

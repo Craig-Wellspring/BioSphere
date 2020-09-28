@@ -31,6 +31,8 @@ TagManager:
   - Seedling
   - Shrub
   - Berry
+  - FruitTree
+  - Fox
   layers:
   - Default
   - TransparentFX
