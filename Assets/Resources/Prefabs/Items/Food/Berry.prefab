@@ -64,6 +64,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1692108017345405815, guid: 7451202c51d669344a1986967ef9056c,
         type: 3}
+    - target: {fileID: 2838819599625569569, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
+        type: 3}
+      propertyPath: nutritionalValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3426599046257223712, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: m_Materials.Array.size

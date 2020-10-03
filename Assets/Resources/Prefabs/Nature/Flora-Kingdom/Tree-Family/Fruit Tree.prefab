@@ -103,6 +103,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyReserve: 0
-  nutritionalValue: 10
-  chewRateModifier: 1
-  destroyRoot: 1
+  energySurplus: 0
+  surplusThreshold: 0

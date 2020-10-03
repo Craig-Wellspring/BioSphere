@@ -434,9 +434,9 @@ GameObject:
   - component: {fileID: 2131904891924997232}
   - component: {fileID: 3486346588474071174}
   - component: {fileID: 8086205142144112776}
-  - component: {fileID: 7419024281370543850}
-  - component: {fileID: 8816028523584167361}
   - component: {fileID: 7485800211558301736}
+  - component: {fileID: 8816028523584167361}
+  - component: {fileID: 448272040755068572}
   m_Layer: 0
   m_Name: Vitals
   m_TagString: Untagged
@@ -486,7 +486,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyReserve: 0
   energySurplus: 0
-  surplusThreshold: 0
 --- !u!114 &2748659348047256063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,14 +500,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   maxHealth:
-    baseValue: 5
+    baseValue: 1
   speed:
     baseValue: 2
   perception:
-    baseValue: 5
+    baseValue: 4
   metabolismRate:
     baseValue: 3
   targetCreatureStat: 0
+  levelUpCost: 50
+  logLevelUp: 0
   mainBodyCollider: {fileID: 0}
   adlBodyColliders: []
   corpse: {fileID: 7476881784630833516}
@@ -524,8 +525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 5
+  currentHealth: 1
+  maxHealth: 1
   dead: 0
 --- !u!114 &3486346588474071174
 MonoBehaviour:
@@ -550,12 +551,16 @@ MonoBehaviour:
   preyList: []
   metabolismRate: 3
   hungerGainedPerTick: 1.5
+  hungerGainedPerLevel: 0.1
   mouth: {fileID: 0}
   biteSize: 0.4
   chewSpeed: 2
   logEating: 0
-  drawBiteSphere: 1
-  targetNV: {fileID: 0}
+  drawBiteSphere: 0
+  isEating: 0
+  isHungry: 0
+  isWasting: 0
+  targetFData: {fileID: 0}
   currentTargetFood: {fileID: 0}
 --- !u!114 &8086205142144112776
 MonoBehaviour:
@@ -570,60 +575,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyesTransform: {fileID: 0}
-  sightRadius: 5
-  nearbyMates: []
+  sightRadius: 4
   closestMate: {fileID: 0}
-  nearbyFood: []
+  nearbyMates: []
   closestFood: {fileID: 0}
-  nearbyPrey: []
+  nearbyFood: []
   closestPrey: {fileID: 0}
-  nearbyPredators: []
+  nearbyPrey: []
   closestPredator: {fileID: 0}
+  nearbyPredators: []
   drawSightSphere: 0
   foodSightLines: 0
   preySightLines: 0
   predatorSightLines: 0
   searchMasks: 0
---- !u!114 &7419024281370543850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f87a3912d9735488b0efce962fa634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  evolutionCost: 50
-  hungerIncreasePerEvo: 0.1
-  logEvolution: 0
---- !u!114 &8816028523584167361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  returnPercentToSource: 80
-  eggToSpawn: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
-    type: 3}
-  newEggColor: {r: 0.8117647, g: 0.7921569, b: 0.72156864, a: 0}
-  newEggSize: 1
-  incubationSpeed: 0.1
-  canHatch: 1
-  offspringCreature: {fileID: 0}
-  seedingRadius: 2
-  randomYRotation: 1
-  offspringSeed: {fileID: 0}
-  logEggLaying: 0
-  logSeedLaying: 0
 --- !u!114 &7485800211558301736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,6 +605,47 @@ MonoBehaviour:
   carniMorph: {fileID: 0}
   herbiMorph: {fileID: 0}
   logMorphs: 0
+--- !u!114 &8816028523584167361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returnPercentToSource: 0
+  offspringCreature: {fileID: 0}
+  eggToSpawn: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
+    type: 3}
+  newEggName: Egg
+  newEggColor: {r: 0.8117647, g: 0.7921569, b: 0.72156864, a: 0}
+  newEggSize: 1
+  incubationSpeed: 0.1
+  canHatch: 1
+  offspringSeed: {fileID: 0}
+  seedingRadius: 2
+  randomYRotation: 1
+  spawnScale0: 1
+  logEggLaying: 0
+  logSeedLaying: 0
+--- !u!114 &448272040755068572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c84d883664d98f41a2199fad1275957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentCreature: {fileID: 0}
+  ancestors: []
 --- !u!1 &3647742207210096942
 GameObject:
   m_ObjectHideFlags: 0

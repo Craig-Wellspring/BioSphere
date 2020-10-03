@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 25003132078859392}
   - component: {fileID: 9126622027875241308}
   - component: {fileID: 7277214873898980708}
-  - component: {fileID: 4300991767493428289}
   - component: {fileID: 3344522}
   - component: {fileID: 2392432}
   m_Layer: 12
@@ -75,21 +74,6 @@ MonoBehaviour:
   energyReserve: 0
   energySurplus: 0
   surplusThreshold: 0
---- !u!114 &4300991767493428289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nutritionalValue: 5
-  chewRateModifier: 1
-  destroyRoot: 1
 --- !u!33 &3344522
 MeshFilter:
   m_ObjectHideFlags: 0

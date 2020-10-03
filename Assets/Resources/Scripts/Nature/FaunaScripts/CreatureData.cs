@@ -18,6 +18,14 @@ public class CreatureData : MonoBehaviour
     [HideInInspector] public TargetCreatureStat targetCreatureStat;
 
 
+    [Header("Settings")]
+    [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
+    public float levelUpCost;
+
+    [Header("Debug")]
+    [SerializeField] bool logLevelUp = false;
+
+
     [Header("Body Parts")]
     [Tooltip("The Creature's primary body collider which must be on the same layer as the root object")]
     public Collider mainBodyCollider;
@@ -25,6 +33,7 @@ public class CreatureData : MonoBehaviour
     public List<Collider> adlBodyColliders;
     [Tooltip("GameObject that represents the Creature's corpse")]
     public GameObject corpse;
+
 
 
     // Cache
@@ -65,6 +74,29 @@ public class CreatureData : MonoBehaviour
         corpse = transform.root.Find("Corpse").gameObject;
     }
 
+
+    public event System.Action LevelUpBeginning;
+    public event System.Action LevelUpFinishing;
+    public void LevelUp()
+    {
+        // Trigger beginning events 
+        LevelUpBeginning?.Invoke();
+        // - AI decides which stat to increase
+
+        // Level up
+        IncreaseLevel();
+
+        // Increase chosen stat
+        IncreaseStat(targetCreatureStat);
+
+        //Trigger ending events
+        LevelUpFinishing?.Invoke();
+
+
+        // Debug
+        if (logLevelUp)
+            Debug.Log(transform.root.name + " evolved to level " + currentLevel + " and increased its " + targetCreatureStat + " to " + CurrentTargetStat().baseValue);
+    }
 
     public void IncreaseLevel(int _increment = 1)
     {
@@ -172,19 +204,19 @@ public class CreatureData : MonoBehaviour
         return _targetStat;
     }
 
-    public void CopyCDataTo(CreatureData _newCData)
+    public void CopyCData(CreatureData _targetCData)
     {
         // Match current level
-        _newCData.currentLevel = currentLevel;
+        _targetCData.currentLevel = currentLevel;
 
         // Match current stats
         foreach (CreatureData.TargetCreatureStat stat in Enum.GetValues(typeof(CreatureData.TargetCreatureStat)))
         {
-            _newCData.targetCreatureStat = stat;
+            _targetCData.targetCreatureStat = stat;
             targetCreatureStat = stat;
-            _newCData.CurrentTargetStat().baseValue = CurrentTargetStat().baseValue;
+            _targetCData.CurrentTargetStat().baseValue = CurrentTargetStat().baseValue;
         }
-        _newCData.PushStatsToOrigin();
+        _targetCData.PushStatsToOrigin();
     }
 
     public void ClearPathing()

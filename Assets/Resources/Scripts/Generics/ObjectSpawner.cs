@@ -16,31 +16,35 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         if (_energyEndowed > 0)
         {
             float energyEndowed = _energyEndowed;
+
             // Return energy to source if applicable
             if (_percentReturnToSource > 0)
             {
-                float energyReturned = _energyEndowed * (_percentReturnToSource / 100);
+                float energyReturned = energyEndowed * (_percentReturnToSource / 100);
                 energyEndowed -= energyReturned;
-                Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += energyReturned;
+                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += energyReturned;
             }
 
-            // Tranfer energy to new object
-            NutritionalValue newObjectNV = newObject.GetComponentInChildren<NutritionalValue>(true);
-            if (energyEndowed > newObjectNV.nutritionalValue)
+            // Delegate nutritional value
+            float energySpent = energyEndowed;
+            FoodData[] newFData = newObject.GetComponentsInChildren<FoodData>(true);
+            foreach (FoodData fData in newFData)
+                energyEndowed -= fData.nutritionalValue;
+
+            if (energyEndowed >= 0)
             {
-                EnergyData newObjectEData = newObject.GetComponentInChildren<EnergyData>(true);
-                newObjectEData.energyReserve = energyEndowed - newObjectNV.nutritionalValue;
-                newObjectEData.SurplusCheck();
+                // Transfer energy to new object
+                newObject.GetComponentInChildren<EnergyData>(true)?.AddEnergy(energyEndowed);
+
+                // Consume energy from selected spawner
+                if (_subtractFromEData)
+                    return _subtractFromEData.RemoveEnergy(energySpent) ? newObject : null;
+                else
+                    return newObject;
             }
             else
-                newObjectNV.nutritionalValue = energyEndowed;
-
-
-            // Consume energy from selected spawner
-            if (_subtractFromEData)
-                return _subtractFromEData.SpendEnergy(energyEndowed) ? newObject : null;
-            else
-                return newObject;
+                Debug.LogWarning("Not enough energy to spawn item", this);
+                return null;
         }
         else
             return newObject;

@@ -1670,6 +1670,11 @@ PrefabInstance:
       propertyPath: offspringSeed
       value: 
       objectReference: {fileID: 113998, guid: 73de5404b9c56f64c98b261f357edffc, type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eggNutritionalValue
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
 --- !u!1 &2352008031328858136 stripped

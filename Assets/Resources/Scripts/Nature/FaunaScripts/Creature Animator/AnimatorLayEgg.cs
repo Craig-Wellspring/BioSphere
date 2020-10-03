@@ -6,6 +6,6 @@ public class AnimatorLayEgg : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponentInChildren<Ovary>().SpawnEgg(animator.GetComponentInChildren<Evolution>().evolutionCost);
+        animator.GetComponentInChildren<Ovary>().SpawnEgg(animator.GetComponentInChildren<CreatureData>().levelUpCost);
     }
 }

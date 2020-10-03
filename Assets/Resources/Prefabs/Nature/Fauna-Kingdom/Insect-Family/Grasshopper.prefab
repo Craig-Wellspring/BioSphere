@@ -5030,6 +5030,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5108705363584736325, guid: 45e3129b561a9c0498e1921577921627,
         type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eggNutritionalValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8844286852851837445, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_IsActive

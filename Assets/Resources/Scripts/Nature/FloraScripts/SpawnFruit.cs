@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
 
 public class SpawnFruit : ObjectSpawner
@@ -19,9 +18,10 @@ public class SpawnFruit : ObjectSpawner
     enum ParentType { None, Child, Sibling };
     [SerializeField] bool spawnOnSurface = false;
     [Space(10)]
-    [Tooltip("Scales the size of the random spawn area. 0 is not random. Will reset Transform.")]
+    [Tooltip("Scales the size of the random spawn area. 0 is not random.")]
     [SerializeField] float randomSpawnArea = 0;
     [SerializeField] bool randomYRotation = false;
+    [SerializeField] bool spawnScale0 = false;
 
 
 
@@ -68,10 +68,14 @@ public class SpawnFruit : ObjectSpawner
         {
             // Select fruit to spawn
             GameObject fruitToSpawn = newFruit[Random.Range(0, newFruit.Count)];
-            float energyRequired = fruitToSpawn.GetComponentInChildren<NutritionalValue>().nutritionalValue;
+
+            float energyRequired = 0;
+            FoodData[] fruitFData = fruitToSpawn.GetComponentsInChildren<FoodData>(true);
+            foreach (FoodData fData in fruitFData)
+                energyRequired += fData.nutritionalValue;
 
             // Check if able to spawn
-            if (rootEData.energyReserve > energyRequired)
+            if (rootEData.energyReserve >= energyRequired)
             {
                 if ((whenToSpawn == WhenToSpawn.OnSelfSpawn) ||
                     (whenToSpawn == WhenToSpawn.OnHalfGrown && rootGrowthData.halfGrown) ||
@@ -83,17 +87,26 @@ public class SpawnFruit : ObjectSpawner
                     {
                         //Get Parent relationship
                         Transform parent = null;
-                        if (parentRelationship == ParentType.Child)
-                            parent = transform;
-                        if (parentRelationship == ParentType.Sibling && transform.parent != null)
-                            parent = transform.parent;
+                        switch (parentRelationship)
+                        {
+                            case (ParentType.None):
+                                break;
+
+                            case (ParentType.Child):
+                                parent = transform;
+                                break;
+
+                            case (ParentType.Sibling):
+                                parent = transform.parent;
+                                break;
+                        }
 
                         // Decide how much Energy to pass down
                         float energyToGive = 0;
                         switch (energyDistribution)
                         {
                             case (EnergyDistribution.Minimum):
-                                energyToGive = fruitToSpawn.GetComponentInChildren<NutritionalValue>().nutritionalValue;
+                                energyToGive = energyRequired;
                                 break;
 
                             case (EnergyDistribution.Maximum):
@@ -101,7 +114,7 @@ public class SpawnFruit : ObjectSpawner
                                 break;
 
                             case (EnergyDistribution.DivideRemaining):
-                                energyToGive = rootEData.energyReserve / seeds;
+                                energyToGive = System.Math.Max(rootEData.energyReserve / seeds, energyRequired);
                                 break;
                         }
 
@@ -109,15 +122,20 @@ public class SpawnFruit : ObjectSpawner
                         GameObject _spawnedFruit = SpawnObject(fruitToSpawn, rootEData, energyToGive, 0, parent, randomYRotation, randomSpawnArea);
 
 
-                        // Find random position on spawning surface
+                        // Adjust scale
+                        if (spawnScale0)
+                            _spawnedFruit.GetComponentInChildren<Animator>().transform.localScale = Vector3.zero;
+                
+                        // Position randomly on spawning surface
                         if (spawnOnSurface)
                         {
                             Mesh objectMesh = transform.GetComponentInChildren<MeshFilter>().mesh;
                             int randomVertIndex = Random.Range(0, objectMesh.vertices.Length);
                             Vector3 spawnPoint = transform.TransformPoint(objectMesh.vertices[randomVertIndex]);
-                            _spawnedFruit.transform.position = spawnPoint;
+                            Quaternion spawnRotation = Quaternion.FromToRotation(_spawnedFruit.transform.up, (transform.root.GetComponentInChildren<MeshRenderer>().bounds.center - _spawnedFruit.transform.position).normalized) * _spawnedFruit.transform.rotation;
 
-                            _spawnedFruit.transform.rotation = Quaternion.FromToRotation(_spawnedFruit.transform.up, (transform.root.GetComponentInChildren<MeshRenderer>().bounds.center - _spawnedFruit.transform.position).normalized) * _spawnedFruit.transform.rotation;
+                            _spawnedFruit.transform.position = spawnPoint;
+                            _spawnedFruit.transform.rotation = spawnRotation;
                         }
                     }
 
@@ -130,7 +148,7 @@ public class SpawnFruit : ObjectSpawner
             {
                 // Spawn CastOff Entity
                 if (castOffEntity != null && rootEData.energyReserve > 0)
-                    SpawnObject(castOffEntity, rootEData, rootEData.energyReserve, 0, null, true, castOffDistance);
+                    SpawnObject(castOffEntity, rootEData, rootEData.energyReserve, 0, null, false, castOffDistance);
 
                 // Clear remaining seeds
                 seeds = 0;
@@ -141,7 +159,7 @@ public class SpawnFruit : ObjectSpawner
             // Return leftover Energy to Source
             if (returnLeftoverEnergy)
             {
-                Servius.Server.GetComponent<GlobalLifeSource>().lifeEnergyPool += rootEData.energyReserve;
+                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += rootEData.energyReserve;
                 rootEData.energyReserve = 0;
             }
 

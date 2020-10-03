@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GlobalLifeSource : AdvancedMonoBehaviour
 {
     [SerializeField] private bool initialize = true;
     [Space(15)]
-    public float lifeEnergyPool = 0;
+    public float energyReserve = 0;
     public float minimumEnergyReserve;
     [Space(10)]
     public GameObject meteor;
@@ -18,7 +16,7 @@ public class GlobalLifeSource : AdvancedMonoBehaviour
         if (initialize)
         {
             SpawnMeteor();
-            FindObjectOfType<Meteor>().transform.localPosition = new Vector3(100, 100, 300);
+            FindObjectOfType<Meteor>().transform.localPosition = new Vector3(100, 100, 200);
         }
     }
 
@@ -30,6 +28,6 @@ public class GlobalLifeSource : AdvancedMonoBehaviour
         _newMeteor.name = meteor.name;
 
         _newMeteor.GetComponent<Meteor>().guardian.GetComponentInChildren<EnergyData>().energyReserve += minimumEnergyReserve;
-        lifeEnergyPool -= minimumEnergyReserve;
+        energyReserve -= minimumEnergyReserve;
     }
 }

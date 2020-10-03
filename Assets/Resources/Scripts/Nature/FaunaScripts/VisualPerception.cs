@@ -7,22 +7,22 @@ public class VisualPerception : AdvancedMonoBehaviour
 {
     [Header("Sight Range Settings")]
     [SerializeField] Transform eyesTransform;
-    public float sightRadius = 10f;
+    [Range(0, 20)] public float sightRadius = 10f;
     //public float viewAngle;
 
 
     [Header("Currently Visible")]
-    public List<Collider> nearbyMates;
     public GameObject closestMate;
+    public List<Collider> nearbyMates;
     [Space(10)]
-    public List<Collider> nearbyFood;
     public GameObject closestFood;
+    public List<Collider> nearbyFood;
     [Space(10)]
-    public List<Collider> nearbyPrey;
     public GameObject closestPrey;
+    public List<Collider> nearbyPrey;
     [Space(10)]
-    public List<Collider> nearbyPredators;
     public GameObject closestPredator;
+    public List<Collider> nearbyPredators;
 
 
     [Header("Debug")]

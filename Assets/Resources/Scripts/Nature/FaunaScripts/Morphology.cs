@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-[RequireComponent(typeof(Evolution))]
+[RequireComponent(typeof(CreatureData))]
 public class Morphology : MonoBehaviour
 {
     [Header("Current")]
@@ -19,17 +19,17 @@ public class Morphology : MonoBehaviour
 
 
     // Cache
-    Evolution evolution;
+    CreatureData cData;
 
     void Start()
     {
-        evolution = GetComponent<Evolution>();
+        cData = GetComponent<CreatureData>();
 
-        evolution.EvolutionFinishing += CalculateMorphology;
+        cData.LevelUpFinishing += CalculateMorphology;
     }
     void OnDisable()
     {
-        evolution.EvolutionFinishing -= CalculateMorphology;
+        cData.LevelUpFinishing -= CalculateMorphology;
     }
 
 
@@ -84,7 +84,10 @@ public class Morphology : MonoBehaviour
         GameObject newCreature = GetComponent<Ovary>().SpawnObject(_newForm, eData, eData.energyReserve);
 
         // Pass down Current Level and stat block
-        GetComponent<CreatureData>().CopyCDataTo(newCreature.GetComponentInChildren<CreatureData>());
+        GetComponent<CreatureData>().CopyCData(newCreature.GetComponentInChildren<CreatureData>());
+
+        // Pass down Ancestry
+        GetComponent<Genetics>().CopyGenes(newCreature.GetComponentInChildren<Genetics>());
     }
     public void DespawnForm()
     {

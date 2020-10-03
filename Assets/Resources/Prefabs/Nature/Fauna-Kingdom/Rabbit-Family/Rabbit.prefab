@@ -1601,6 +1601,11 @@ PrefabInstance:
       propertyPath: dietList.Array.data[3]
       value: Berry
       objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: isHungry
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4575123311430768913, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_ComponentOwner
@@ -1640,7 +1645,7 @@ PrefabInstance:
     - target: {fileID: 7419024281370543850, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: logEvolution
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1755,6 +1760,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1345774665612259657, guid: dc3ac9f11affff348a9a22a3f321d2d7,
         type: 3}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eggNutritionalValue
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2456671554583304284, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
     - {fileID: 5771464199595073494, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}

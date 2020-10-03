@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 606102368463510762}
   - component: {fileID: 3426599046257223712}
   - component: {fileID: 6625798104739233099}
-  - component: {fileID: 3545046565803442652}
+  - component: {fileID: 2838819599625569569}
   m_Layer: 10
   m_Name: BasicFood
   m_TagString: Untagged
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3545046565803442652
+--- !u!114 &2838819599625569569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,10 +148,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3786759678478060021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyReserve: 0
   nutritionalValue: 0
-  chewRateModifier: 2
-  destroyRoot: 0
+  chewRateModifier: 1
+  destroyRoot: 1

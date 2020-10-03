@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using Pathfinding;
 
@@ -20,14 +19,8 @@ public class Vitality : MonoBehaviour
 
 
     #region Private Variables
-    //Events
-    public event System.Action DamageTaken;
-    public event System.Action DeathOccurs;
-
     //Cache
     CreatureData cData;
-    NutritionalValue corpseNV;
-    EnergyData selfEData;
     Slider healthBar;
     #endregion
 
@@ -36,10 +29,6 @@ public class Vitality : MonoBehaviour
     void Start()
     {
         cData = GetComponent<CreatureData>();
-        if (cData.corpse == null)
-            throw new System.Exception("No corpse found");
-        corpseNV = cData.corpse.GetComponent<NutritionalValue>();
-        selfEData = GetComponent<EnergyData>();
 
         currentHealth = cData.maxHealth.value;
 
@@ -70,19 +59,21 @@ public class Vitality : MonoBehaviour
 
     void IncreaseCurrentHealth(int _amount)
     {
-            healthBar.value += _amount;    
-            currentHealth += _amount;
+        healthBar.value += _amount;
+        currentHealth += _amount;
     }
     void DecreaseCurrentHealth(int _amount)
     {
-            healthBar.value -= _amount;    
-            currentHealth -= _amount;
+        healthBar.value -= _amount;
+        currentHealth -= _amount;
 
-            // Show health bar if not already
-            if (!healthBar.gameObject.activeSelf)
-                healthBar.gameObject.SetActive(true);
+        // Show health bar if not already
+        if (!healthBar.gameObject.activeSelf)
+            healthBar.gameObject.SetActive(true);
     }
 
+
+    public event System.Action DamageTaken;
     public void TakeDamage(int _amount)
     {
         if (!dead)
@@ -96,6 +87,8 @@ public class Vitality : MonoBehaviour
         }
     }
 
+
+    public event System.Action DeathOccurs;
     public void Die()
     {
         //Die
@@ -115,15 +108,24 @@ public class Vitality : MonoBehaviour
             healthBar.gameObject.SetActive(false);
 
 
-        //Deactivate Body and Activate Corpse
+        //Deactivate Body
         cData.mainBodyCollider.enabled = false;
         foreach (Collider _body in cData.adlBodyColliders)
             _body.enabled = false;
 
-        cData.corpse.SetActive(true);
+        // Activate Corpse
+        if (cData.corpse != null)
+        {
+            cData.corpse.SetActive(true);
 
-        //Transfer Energy to Corpse
-        corpseNV.nutritionalValue += selfEData.energyReserve;
-        selfEData.energyReserve = 0;
+            //Transfer Energy to Corpse
+            EnergyData selfEData = GetComponent<EnergyData>();
+            FoodData corpseFData = cData.corpse.GetComponent<FoodData>();
+            if (selfEData && corpseFData)
+            {
+                selfEData.RemoveEnergy(selfEData.energyReserve);
+                corpseFData.AddNV(selfEData.energyReserve);
+            }
+        }
     }
 }

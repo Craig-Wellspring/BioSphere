@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Pathfinding;
 
 public class LifeGuardian : ObjectSpawner
 {
     [Space(10)]
     public GameObject seedToPlant;
-    public float maxEnergyPlanted = 500f;
+    [SerializeField] float maxEnergyPlanted = 500f;
     [Range(1, 100)]
-    public int plantingArea = 2;
+    [SerializeField] int plantingArea = 2;
     [Range(1, 100)]
     public int roamingArea = 30;
     public int pathingSpread = 5000;
@@ -53,11 +51,11 @@ public class LifeGuardian : ObjectSpawner
     //Plant Seedgrass
     public void PlantSeedFromSource()
     {
-        float _energyToPlant = (lifeSource.lifeEnergyPool > maxEnergyPlanted + lifeSource.minimumEnergyReserve) ? maxEnergyPlanted : lifeSource.lifeEnergyPool - lifeSource.minimumEnergyReserve;
+        float _energyToPlant = (lifeSource.energyReserve > maxEnergyPlanted + lifeSource.minimumEnergyReserve) ? maxEnergyPlanted : lifeSource.energyReserve - lifeSource.minimumEnergyReserve;
         if (_energyToPlant > 0)
         {
             SpawnObject(seedToPlant, null, _energyToPlant, 0, null, true, plantingArea);
-            lifeSource.lifeEnergyPool -= _energyToPlant;
+            lifeSource.energyReserve -= _energyToPlant;
         }
     }
 }

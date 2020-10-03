@@ -8,7 +8,7 @@ public class SpawnObjectVariant : MonoBehaviour
 
     void Start()
     {
-        // Spawn random variant object
+        // Replace self with random variant object
         int randomIndex = Random.Range(0, prefabList.Count);
         GameObject newObject = Instantiate(prefabList[randomIndex], transform.position, transform.rotation);
         newObject.name = this.name;
@@ -22,11 +22,11 @@ public class SpawnObjectVariant : MonoBehaviour
             newEData.energyReserve = eData.energyReserve;
             eData.energyReserve = 0;
         }
-        NutritionalValue nv = GetComponent<NutritionalValue>();
+        FoodData nv = GetComponent<FoodData>();
         if (nv != null)
         {
-            NutritionalValue newNV = newObject.GetComponentInChildren<NutritionalValue>(true);
-            newNV.nutritionalValue = nv.nutritionalValue;
+            FoodData newFData = newObject.GetComponentInChildren<FoodData>(true);
+            newFData.nutritionalValue = nv.nutritionalValue;
             nv.nutritionalValue = 0;
         }
 

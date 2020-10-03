@@ -8,14 +8,17 @@ public class HatchCreature : ObjectSpawner
     void SpawnCreature()
     {
         EnergyData eggEData = GetComponentInChildren<EnergyData>();
-        NutritionalValue eggNV = GetComponentInChildren<NutritionalValue>();
+        FoodData eggFData = GetComponentInChildren<FoodData>();
         
         // Return nutritional value to energy storage
-        eggEData.energyReserve += eggNV.nutritionalValue;
-        eggNV.nutritionalValue = 0;
+        eggEData.energyReserve += eggFData.nutritionalValue;
+        eggFData.nutritionalValue = 0;
 
         // Spawn creature with energy storage
-        SpawnObject(creatureToHatch, eggEData, eggEData.energyReserve);
+        GameObject newCreature = SpawnObject(creatureToHatch, eggEData, eggEData.energyReserve);
+
+        // Copy parent genetics
+        GetComponent<Genetics>().CopyGenes(newCreature.GetComponentInChildren<Genetics>());
 
         // Activate special effects
         Effects();

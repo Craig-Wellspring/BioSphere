@@ -21,8 +21,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
     Vitality vitality;
     Metabolism metabolism;
     VisualPerception vPerception;
-    Evolution evo;
-    //Morphology morphology;
     CreatureData cData;
 
     [HideInInspector] public Animator aiBrain;
@@ -36,8 +34,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
         vitality = GetComponentInParent<Vitality>();
         metabolism = GetComponentInParent<Metabolism>();
         vPerception = GetComponentInParent<VisualPerception>();
-        evo = GetComponentInParent<Evolution>();
-        //morphology = GetComponentInParent<Morphology>();
         cData = GetComponentInParent<CreatureData>();
 
         aiBrain = GetComponent<Animator>();
@@ -47,15 +43,13 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
 
 
-        metabolism.NowHungry += SetHungry;
-        metabolism.NowFull += SetSatiated;
-        metabolism.EatingBegins += BeginEating;
-        metabolism.EatingEnds += CeaseEating;
-        metabolism.WastingBegins += BeginWasting;
-        metabolism.WastingEnds += CeaseWasting;
+        metabolism.EatingBegins += EatingChange;
+        metabolism.EatingEnds += EatingChange;
+        metabolism.HungerChange += HungerChange;
+        metabolism.WastingChange += WastingChange;
 
         eData.EnergySurplusChange += UpdateEnergySurplus;
-        evo.EvolutionBeginning += Evolving;
+        cData.LevelUpBeginning += LevelingUp;
 
         vitality.DeathOccurs += Dying;
 
@@ -63,15 +57,13 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     private void OnDisable()
     {
-        metabolism.NowHungry -= SetHungry;
-        metabolism.NowFull -= SetSatiated;
-        metabolism.EatingBegins -= BeginEating;
-        metabolism.EatingEnds -= CeaseEating;
-        metabolism.WastingBegins -= BeginWasting;
-        metabolism.WastingEnds -= CeaseWasting;
+        metabolism.EatingBegins -= EatingChange;
+        metabolism.EatingEnds -= EatingChange;
+        metabolism.HungerChange -= HungerChange;
+        metabolism.WastingChange -= WastingChange;
 
         eData.EnergySurplusChange -= UpdateEnergySurplus;
-        evo.EvolutionBeginning -= Evolving;
+        cData.LevelUpBeginning -= LevelingUp;
 
         vitality.DeathOccurs -= Dying;
     }
@@ -95,34 +87,18 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
 
 
-    void SetHungry()
-    {
-        aiBrain.SetBool("Hungry", true);
-    }
-    void SetSatiated()
-    {
-        aiBrain.SetBool("Hungry", false);
-    }
 
-    void BeginEating()
+    void EatingChange()
     {
-        aiBrain.SetBool("Eating", true);
+        aiBrain.SetBool("Eating", metabolism.isEating);
     }
-    void CeaseEating()
+    void HungerChange()
     {
-        aiBrain.SetBool("Eating", false);
-
-        //Reset pathing
-        cData.ClearPathing();
+        aiBrain.SetBool("Hungry", metabolism.isHungry);
     }
-
-    void BeginWasting()
+    void WastingChange()
     {
-        aiBrain.SetBool("Wasting", true);
-    }
-    void CeaseWasting()
-    {
-        aiBrain.SetBool("Wasting", false);
+        aiBrain.SetBool("Wasting", metabolism.isWasting);
     }
 
 
@@ -131,7 +107,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
         aiBrain.SetBool("EnergySurplus", eData.energySurplus);
     }
 
-    void Evolving()
+    void LevelingUp()
     {
         // Randomly choose stat to increase
         cData.targetCreatureStat = (CreatureData.TargetCreatureStat)Random.Range(0, System.Enum.GetValues(typeof(CreatureData.TargetCreatureStat)).Length);

@@ -15,6 +15,9 @@ public class Servius : MonoBehaviour
     }
     #endregion
     
+
+    [SerializeField] bool pauseOnStart = false;
+    [Space(10)]
     [Range(0, 10)]
     public float timeScale = 1;
     
@@ -22,5 +25,11 @@ public class Servius : MonoBehaviour
     {
         if (Time.timeScale != timeScale)
             Time.timeScale = timeScale;
+    }
+
+    void Start()
+    {
+        if (pauseOnStart)
+            UnityEditor.EditorApplication.isPaused = true;
     }
 }

@@ -12,7 +12,7 @@ public class GolemFindPath : StateMachineBehaviour
         wanderPath.spread = lifeGuardian.pathingSpread;
         animator.GetComponentInParent<Seeker>().StartPath(wanderPath);
 
-        if (lifeSource.lifeEnergyPool > lifeSource.minimumEnergyReserve)
+        if (lifeSource.energyReserve > lifeSource.minimumEnergyReserve)
             animator.SetTrigger("PlantSeed");
     }
 }
