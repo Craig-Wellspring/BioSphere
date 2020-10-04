@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TerrainColorizer : AdvancedMonoBehaviour
 {
     TerrainColor localTerrainColor;
+    SingleGradient globalTerrainColor;
 
     int vert1Index;
     int vert2Index;
@@ -18,6 +17,7 @@ public class TerrainColorizer : AdvancedMonoBehaviour
     {
         // Cache local terrain
         localTerrainColor = TerrainUnderPosition(transform.root.position + transform.root.up).GetComponent<TerrainColor>();
+        globalTerrainColor = localTerrainColor.GetComponentInParent<SingleGradient>();
     }
 
 
@@ -34,15 +34,15 @@ public class TerrainColorizer : AdvancedMonoBehaviour
                 vert3Index = localTerrainColor.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 2];
 
                 // Color vertexes
-                Color newColor1 = Color.Lerp(localTerrainColor.colorArray[vert1Index], localTerrainColor.terrainGradient.Evaluate(1), _increment);
+                Color newColor1 = Color.Lerp(localTerrainColor.colorArray[vert1Index], globalTerrainColor.gradient.Evaluate(1), _increment);
                 vert1ColorChange = newColor1 - localTerrainColor.colorArray[vert1Index];
                 localTerrainColor.colorArray[vert1Index] = newColor1;
 
-                Color newColor2 = Color.Lerp(localTerrainColor.colorArray[vert2Index], localTerrainColor.terrainGradient.Evaluate(1), _increment);
+                Color newColor2 = Color.Lerp(localTerrainColor.colorArray[vert2Index], globalTerrainColor.gradient.Evaluate(1), _increment);
                 vert2ColorChange = newColor2 - localTerrainColor.colorArray[vert2Index];
                 localTerrainColor.colorArray[vert2Index] = newColor2;
 
-                Color newColor3 = Color.Lerp(localTerrainColor.colorArray[vert3Index], localTerrainColor.terrainGradient.Evaluate(1), _increment);
+                Color newColor3 = Color.Lerp(localTerrainColor.colorArray[vert3Index], globalTerrainColor.gradient.Evaluate(1), _increment);
                 vert3ColorChange = newColor3 - localTerrainColor.colorArray[vert3Index];
                 localTerrainColor.colorArray[vert3Index] = newColor3;
 

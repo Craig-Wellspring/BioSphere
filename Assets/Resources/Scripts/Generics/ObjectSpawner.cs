@@ -4,6 +4,27 @@ public class ObjectSpawner : AdvancedMonoBehaviour
 {
     public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0, float _percentReturnToSource = 0f, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0)
     {
+        // Calculate energy
+        if (_energyEndowed > 0)
+        {
+            // Consume energy from selected spawner
+            if (_subtractFromEData)
+                if (!_subtractFromEData.RemoveEnergy(_energyEndowed))
+                    Debug.LogWarning("Not enough energy to remove from source", this);
+
+            // Return energy to source if applicable
+            if (_percentReturnToSource > 0)
+            {
+                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += _energyEndowed * _percentReturnToSource;
+                _energyEndowed *= (1 - _percentReturnToSource);
+            }
+
+            // Compensate for nutritional value
+            FoodData[] newFData = _objectToSpawn.GetComponentsInChildren<FoodData>(true);
+            foreach (FoodData fData in newFData)
+                _energyEndowed -= fData.nutritionalValue;
+        }
+
         // Spawn Object
         GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _randomSpawnArea), GravityOrientedRotation(), _parent);
         newObject.name = _objectToSpawn.name;
@@ -12,42 +33,14 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         if (_randomYRotation)
             newObject.transform.RotateAround(newObject.transform.position, newObject.transform.up, Random.Range(1f, 360f));
 
-        // Allocate energy
+        // Transfer energy to new object
         if (_energyEndowed > 0)
-        {
-            float energyEndowed = _energyEndowed;
+            newObject.GetComponentInChildren<EnergyData>(true)?.AddEnergy(_energyEndowed);
+        else if (_energyEndowed < 0)
+            Debug.LogWarning("Tried to endow negative energy to object", this);
 
-            // Return energy to source if applicable
-            if (_percentReturnToSource > 0)
-            {
-                float energyReturned = energyEndowed * (_percentReturnToSource / 100);
-                energyEndowed -= energyReturned;
-                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += energyReturned;
-            }
 
-            // Delegate nutritional value
-            float energySpent = energyEndowed;
-            FoodData[] newFData = newObject.GetComponentsInChildren<FoodData>(true);
-            foreach (FoodData fData in newFData)
-                energyEndowed -= fData.nutritionalValue;
-
-            if (energyEndowed >= 0)
-            {
-                // Transfer energy to new object
-                newObject.GetComponentInChildren<EnergyData>(true)?.AddEnergy(energyEndowed);
-
-                // Consume energy from selected spawner
-                if (_subtractFromEData)
-                    return _subtractFromEData.RemoveEnergy(energySpent) ? newObject : null;
-                else
-                    return newObject;
-            }
-            else
-                Debug.LogWarning("Not enough energy to spawn item", this);
-                return null;
-        }
-        else
-            return newObject;
+        return newObject;
     }
 
 

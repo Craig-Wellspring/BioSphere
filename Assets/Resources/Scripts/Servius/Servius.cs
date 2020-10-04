@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Servius : MonoBehaviour
 {
@@ -16,10 +14,11 @@ public class Servius : MonoBehaviour
     #endregion
     
 
-    [SerializeField] bool pauseOnStart = false;
-    [Space(10)]
     [Range(0, 10)]
     public float timeScale = 1;
+
+    [Header("Debug")]
+    [SerializeField] bool pauseOnStart = false;
     
     void OnGUI()
     {

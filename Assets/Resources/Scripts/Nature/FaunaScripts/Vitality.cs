@@ -123,8 +123,8 @@ public class Vitality : MonoBehaviour
             FoodData corpseFData = cData.corpse.GetComponent<FoodData>();
             if (selfEData && corpseFData)
             {
-                selfEData.RemoveEnergy(selfEData.energyReserve);
                 corpseFData.AddNV(selfEData.energyReserve);
+                selfEData.RemoveEnergy(selfEData.energyReserve);
             }
         }
     }

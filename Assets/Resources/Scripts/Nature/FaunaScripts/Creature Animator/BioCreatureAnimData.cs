@@ -17,16 +17,16 @@ public class BioCreatureAnimData : MonoBehaviour
 
 
 
-        metabolism.EatingBegins += BeginEating;
-        metabolism.EatingEnds += CeaseEating;
+        metabolism.EatingBegins += ChangeEatingStatus;
+        metabolism.EatingEnds += ChangeEatingStatus;
 
         vitality.DeathOccurs += Death;
     }
 
     private void OnDisable()
     {
-        metabolism.EatingBegins -= BeginEating;
-        metabolism.EatingEnds -= CeaseEating;
+        metabolism.EatingBegins -= ChangeEatingStatus;
+        metabolism.EatingEnds -= ChangeEatingStatus;
 
         vitality.DeathOccurs -= Death;
     }
@@ -38,13 +38,9 @@ public class BioCreatureAnimData : MonoBehaviour
 
 
 
-    void BeginEating()
+    void ChangeEatingStatus()
     {
-        anim.SetBool("IsEating", true);
-    }
-    void CeaseEating()
-    {
-        anim.SetBool("IsEating", false);
+        anim.SetBool("IsEating", metabolism.isEating);
     }
 
     public void TriggerMorph()

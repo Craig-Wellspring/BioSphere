@@ -41,8 +41,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
 
 
-
-
         metabolism.EatingBegins += EatingChange;
         metabolism.EatingEnds += EatingChange;
         metabolism.HungerChange += HungerChange;
@@ -53,6 +51,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
         vitality.DeathOccurs += Dying;
 
+        // Check Energy levels
+        eData.SurplusCheck();
+        UpdateEnergySurplus();
     }
 
     private void OnDisable()

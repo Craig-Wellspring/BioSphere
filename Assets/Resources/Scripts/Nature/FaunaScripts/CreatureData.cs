@@ -18,10 +18,6 @@ public class CreatureData : MonoBehaviour
     [HideInInspector] public TargetCreatureStat targetCreatureStat;
 
 
-    [Header("Settings")]
-    [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
-    public float levelUpCost;
-
     [Header("Debug")]
     [SerializeField] bool logLevelUp = false;
 

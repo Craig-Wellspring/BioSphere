@@ -8,18 +8,18 @@ public class EnergyData : MonoBehaviour
     [Space(10)]
     public bool energySurplus = false;
 
+    [Header("Settings")]
+    [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
+    public float surplusThreshold;
 
-    CreatureData cData;
+
 
 
     void Start()
     {
         GetComponent<OnDestroyEvent>().BeingDestroyed += ReturnEnergyToReserve;
 
-        cData = GetComponent<CreatureData>();
-
-        if (cData)
-            SurplusCheck();
+        SurplusCheck();
     }
 
 
@@ -40,8 +40,7 @@ public class EnergyData : MonoBehaviour
     {
         energyReserve += _energyAdded;
 
-        if (cData)
-            SurplusCheck();
+        SurplusCheck();
     }
 
     public bool RemoveEnergy(float _energyRemoved, bool _makeUpWithNV = false)
@@ -50,8 +49,7 @@ public class EnergyData : MonoBehaviour
         {
             energyReserve -= _energyRemoved;
 
-            if (cData)
-                SurplusCheck();
+            SurplusCheck();
 
             // Catch energy overuse
             if (energyReserve < 0)
@@ -83,7 +81,7 @@ public class EnergyData : MonoBehaviour
     public event System.Action EnergySurplusChange;
     public bool SurplusCheck()
     {
-        bool _energySurplus = energyReserve >= cData.levelUpCost ? true : false;
+        bool _energySurplus = energyReserve >= surplusThreshold ? true : false;
         if (energySurplus != _energySurplus)
         {
             energySurplus = _energySurplus;

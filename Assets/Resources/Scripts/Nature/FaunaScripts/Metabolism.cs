@@ -36,7 +36,8 @@ public class Metabolism : MonoBehaviour
     public float metabolismRate = 3f;
     [Tooltip("Units of Hunger gained per tick")]
     public float hungerGainedPerTick = 3f;
-    [SerializeField] float hungerGainedPerLevel = 0.1f;
+    [Tooltip("Increase units of Hunger gained per tick every level up")]
+    [SerializeField] float hungerPerTickPerLevel = 0.1f;
     public Transform mouth;
     [Range(0, 5)] public float biteSize = 0.4f;
     [Tooltip("How quickly this creature consumes food. Higher is faster. 1 is default.")]
@@ -58,11 +59,11 @@ public class Metabolism : MonoBehaviour
 
     #region Internal Variables
     //Cache
-    float energyIngested;
+    DietData morselIngested = new DietData(null, 0);
     float hungerTimer = 0f;
     Slider hungerBar;
     Image hungerFill;
-    ColorPicker colorPicker;
+    SingleGradient colorPicker;
     #endregion
 
     private void Start()
@@ -70,12 +71,11 @@ public class Metabolism : MonoBehaviour
         // Initialize UI
         hungerBar = transform.root.Find("Canvas").Find("Hunger Bar").GetComponent<Slider>();
         hungerFill = hungerBar.transform.Find("Hunger Fill").GetComponent<Image>();
-        colorPicker = hungerFill.GetComponent<ColorPicker>();
+        colorPicker = hungerFill.GetComponent<SingleGradient>();
         hungerBar.gameObject.SetActive(false);
 
-        CreatureData cData = GetComponent<CreatureData>();
-        if (cData != null)
-            cData.LevelUpBeginning += LevelingUp;
+
+        //GetComponent<CreatureData>()?.LevelUpBeginning += LevelingUp;
     }
 
 
@@ -116,7 +116,7 @@ public class Metabolism : MonoBehaviour
 
         currentTargetFood = _targetFood;
         targetFData = currentTargetFood.GetComponent<FoodData>();
-        currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed += StopEating;
+        morselIngested.foodTag = _targetFood.tag;
 
         if (!targetFData)
             StopEating();
@@ -126,7 +126,7 @@ public class Metabolism : MonoBehaviour
         if (!hungerBar.gameObject.activeSelf)
         {
             hungerBar.gameObject.SetActive(true);
-            hungerFill.color = colorPicker.secondaryColor;
+            //hungerFill.color = colorPicker.gradient.Sample(1);
         }
 
         //Disable egg hatching
@@ -142,39 +142,28 @@ public class Metabolism : MonoBehaviour
         isEating = false;
         EatingEnds?.Invoke();
 
-
-        // Update diet history   
-        if (targetFData != null)
+        // Gain energy from food and update diet history
+        if (morselIngested.foodTag != null)
         {
-            bool newFood = true;
-            foreach (DietData _foodType in dietHistory)
-            {
-                if (_foodType.foodTag.Equals(targetFData.tag))
-                {
-                    newFood = false;
-                    _foodType.energyUnits += energyIngested;
-                    break;
-                }
-            }
-            if (newFood)
-                dietHistory.Add(new DietData(targetFData.tag, energyIngested));
+            UpdateDietHistory(morselIngested.foodTag, morselIngested.energyUnits);
 
-
-            // Gain energy from food eaten
-            GetComponent<EnergyData>().AddEnergy(energyIngested);
-            energyIngested = 0;
-
-            // Clear target data
-            currentTargetFood.GetComponent<OnDestroyEvent>().BeingDestroyed -= StopEating;
-            targetFData = null;
+            GetComponent<EnergyData>().AddEnergy(morselIngested.energyUnits);
+            morselIngested.energyUnits = 0;
+            morselIngested.foodTag = null;
         }
-        currentTargetFood = null;
+
+        // Clear target data
+        if (currentTargetFood != null)
+        {
+            currentTargetFood = null;
+        }
+        targetFData = null;
 
 
         //Update UI
         if (hungerBar)
         {
-            hungerFill.color = colorPicker.primaryColor;
+            //hungerFill.color = colorPicker.gradient.Sample(0);
             hungerBar.gameObject.SetActive(false);
         }
     }
@@ -192,7 +181,8 @@ public class Metabolism : MonoBehaviour
 
         // Transfer energy from food to mouth cache
         _targetFData.RemoveNV(_biteSize);
-        energyIngested += _biteSize;
+        morselIngested.energyUnits += _biteSize;
+
 
         // Become less hungry
         if (hungerUnits > 0)
@@ -201,10 +191,7 @@ public class Metabolism : MonoBehaviour
 
         // Destroy Food if no energy remains
         if (_targetFData.nutritionalValue == 0)
-        {
-            Devour(_targetFData.gameObject);
-            StopEating();
-        }
+            Devour(_targetFData);
 
         CheckHungerLevels();
 
@@ -214,17 +201,36 @@ public class Metabolism : MonoBehaviour
     }
 
 
-    //// Destroy food item and stop eating \\\\
-    void Devour(GameObject _target)
+    // Update diet history   
+    void UpdateDietHistory(string _foodTag, float _energyUnits)
     {
+        bool newFood = true;
+        foreach (DietData _foodType in dietHistory)
+        {
+            if (_foodType.foodTag.Equals(_foodTag))
+            {
+                newFood = false;
+                _foodType.energyUnits += _energyUnits;
+                break;
+            }
+        }
+        if (newFood)
+            dietHistory.Add(new DietData(_foodTag, _energyUnits));
+    }
+
+    //// Destroy food item and stop eating \\\\
+    void Devour(FoodData _targetFData)
+    {
+        StopEating();
+
         if (logEating)
-            Debug.Log(this.transform.root.name + " ate " + _target.name + " from " + _target.transform.root.name);
+            Debug.Log(this.transform.root.name + " ate " + _targetFData.name + " from " + _targetFData.transform.root.name);
 
         // Destroy food
-        if (targetFData.destroyRoot)
-            Destroy(_target.transform.root.gameObject);
+        if (_targetFData.destroyRoot)
+            Destroy(_targetFData.transform.root.gameObject);
         else
-            Destroy(_target);
+            Destroy(_targetFData.gameObject);
     }
 
     //// Check if Hungry or Wasting \\\\
@@ -273,8 +279,10 @@ public class Metabolism : MonoBehaviour
     // Increase food required to stay fed
     void LevelingUp()
     {
-        hungerGainedPerTick += hungerGainedPerLevel;
+        hungerGainedPerTick += hungerPerTickPerLevel;
     }
+
+
 
     //// Draw Debug BiteSphere \\\\
     private void OnDrawGizmosSelected()

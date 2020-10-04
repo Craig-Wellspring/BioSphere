@@ -13,6 +13,9 @@ public class SpawnObjectVariant : MonoBehaviour
         GameObject newObject = Instantiate(prefabList[randomIndex], transform.position, transform.rotation);
         newObject.name = this.name;
 
+        if (newObject.GetComponentInChildren<Animator>(true))
+            newObject.GetComponentInChildren<Animator>(true).transform.localScale = Vector3.zero;
+
 
         // Pass down energy to random variant if applicable
         EnergyData eData = GetComponent<EnergyData>();

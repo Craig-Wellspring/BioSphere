@@ -23,5 +23,6 @@ public class AnimatorEating : StateMachineBehaviour
     {
         if (metabolism.targetFData != null)
             metabolism.Bite(metabolism.targetFData, chewRate * Time.deltaTime);
+        else metabolism.StopEating();
     }
 }

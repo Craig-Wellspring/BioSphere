@@ -5,12 +5,9 @@ using UnityEditor;
 public class CreatureDataEditor : Editor
 {
     public override void OnInspectorGUI()
-    {           
-        DrawDefaultInspector();
-
+    {       
         CreatureData cData = (CreatureData)target;
 
-        EditorGUILayout.Space(15);
         EditorGUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Pull Stats from Origin"))
@@ -20,6 +17,9 @@ public class CreatureDataEditor : Editor
             cData.PushStatsToOrigin();
             
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(15);
+        DrawDefaultInspector();
 
     }
 }

@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 1959623356738481459}
   - component: {fileID: 1134842434350818344}
   - component: {fileID: 7628775734015288365}
-  - component: {fileID: 1321896502916942294}
+  - component: {fileID: 8941623888204566367}
   m_Layer: 5
   m_Name: Hunger Fill
   m_TagString: Untagged
@@ -264,7 +264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.4999907}
+  m_AnchoredPosition: {x: 0, y: 1.4999979}
   m_SizeDelta: {x: -24, y: -21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1134842434350818344
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1321896502916942294
+--- !u!114 &8941623888204566367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,11 +314,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 93846970011519503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7bbf05641699643a2959c925e4714e, type: 3}
+  m_Script: {fileID: 11500000, guid: d38cf4dc201305545b0b3ab8f3351b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryColor: {r: 0.15686275, g: 0.8313726, b: 0.8313726, a: 1}
-  secondaryColor: {r: 0.15686275, g: 0.8313726, b: 0.19607843, a: 1}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.30647027, g: 0.9150943, b: 0.9150943, a: 1}
+    key1: {r: 0.12156862, g: 0.7921569, b: 0.1758243, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!1 &1296924279860108605
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyReserve: 0
   energySurplus: 0
+  surplusThreshold: 50
 --- !u!114 &2748659348047256063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +536,6 @@ MonoBehaviour:
   metabolismRate:
     baseValue: 3
   targetCreatureStat: 0
-  levelUpCost: 50
   logLevelUp: 0
   mainBodyCollider: {fileID: 0}
   adlBodyColliders: []
@@ -551,7 +578,7 @@ MonoBehaviour:
   preyList: []
   metabolismRate: 3
   hungerGainedPerTick: 1.5
-  hungerGainedPerLevel: 0.1
+  hungerPerTickPerLevel: 0.1
   mouth: {fileID: 0}
   biteSize: 0.4
   chewSpeed: 2
@@ -617,13 +644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnPercentToSource: 0
-  offspringCreature: {fileID: 0}
+  returnEnergyToSource: 0.4
+  eggData: {fileID: 0}
   eggToSpawn: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
     type: 3}
-  newEggName: Egg
-  newEggColor: {r: 0.8117647, g: 0.7921569, b: 0.72156864, a: 0}
-  newEggSize: 1
+  energyAsNV: 0.2
   incubationSpeed: 0.1
   canHatch: 1
   offspringSeed: {fileID: 0}
@@ -644,6 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c84d883664d98f41a2199fad1275957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfChildren: 0
   parentCreature: {fileID: 0}
   ancestors: []
 --- !u!1 &3647742207210096942

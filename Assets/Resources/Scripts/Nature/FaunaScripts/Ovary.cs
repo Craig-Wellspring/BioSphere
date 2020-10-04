@@ -3,16 +3,15 @@
 [RequireComponent(typeof(EnergyData))]
 public class Ovary : ObjectSpawner
 {
+    [Header("Settings")]
     [Tooltip("Return a percentage of the cost required to Lay Eggs and Seeds to the Source when spawned."), SerializeField]
-    [Range(0, 100)] float returnPercentToSource = 50;
+    [Range(0, 1)] float returnEnergyToSource = 0.5f;
 
     [Header("Egg Settings")]
-    [SerializeField] GameObject offspringCreature;
+    [SerializeField] EggData eggData;
     [Space(10)]
     [SerializeField] GameObject eggToSpawn;
-    [SerializeField] string newEggName = "Egg";
-    [SerializeField] Color newEggColor;
-    [SerializeField, Range(0, 3)] float newEggSize = 1f;
+    [SerializeField, Range(0,1)] float energyAsNV = 0.2f;
     [SerializeField, Range(0, 3)] float incubationSpeed = 0.5f;
     [SerializeField] bool canHatch = true;
 
@@ -28,8 +27,6 @@ public class Ovary : ObjectSpawner
     [SerializeField] bool logEggLaying = false;
     [SerializeField] bool logSeedLaying = false;
 
-    float percentEnergyToNV = 0.2f;
-
 
     // Cache
     EnergyData eData;
@@ -38,62 +35,57 @@ public class Ovary : ObjectSpawner
         eData = GetComponent<EnergyData>();
     }
 
+
     #region Eggs
     //// Spawn Egg \\\\
-    public void SpawnEgg(float _energyEndowed, GameObject _offspringCreature = null)
+    public void SpawnEgg(float _energyEndowed, GameObject _customOffspring = null)
     {
         // Spawn egg
-        GameObject newEgg = SpawnObject(eggToSpawn, eData, _energyEndowed, returnPercentToSource);
-        if (newEgg != null)
-        {
-            // Assign name and pass on genetics
-            newEgg.name = newEggName;
-            GetComponent<Genetics>().PassDownGenes(newEgg.GetComponent<Genetics>());
+        GameObject newEgg = SpawnObject(eggToSpawn, eData, _energyEndowed, returnEnergyToSource);
 
-            // Move nutritional value to egg yolk
-            float eggNV = returnPercentToSource > 0 ? (_energyEndowed * percentEnergyToNV * (returnPercentToSource / 100)) : _energyEndowed * percentEnergyToNV;
-            newEgg.GetComponentInChildren<EnergyData>().RemoveEnergy(eggNV);
-            newEgg.GetComponentInChildren<FoodData>().AddNV(eggNV);
+        // Assign name and pass on genetics
+        newEgg.name = eggData.eggName;
+        GetComponent<Genetics>().PassDownGenes(newEgg.GetComponent<Genetics>());
+        GetComponent<Genetics>().numberOfChildren++;
 
-            // Set offspring
-            if (_offspringCreature == null)
-                _offspringCreature = offspringCreature;
-            newEgg.GetComponentInChildren<HatchCreature>().creatureToHatch = _offspringCreature;
+        // Move nutritional value to egg yolk
+        float eggNV = returnEnergyToSource > 0 ? (_energyEndowed * energyAsNV * returnEnergyToSource) : _energyEndowed * energyAsNV;
+        newEgg.GetComponentInChildren<EnergyData>().RemoveEnergy(eggNV);
+        newEgg.GetComponentInChildren<FoodData>().AddNV(eggNV);
 
-            // Set color
-            newEgg.GetComponentInChildren<MeshRenderer>().material.color = newEggColor;
+        // Set offspring
+        newEgg.GetComponentInChildren<HatchCreature>().creatureToHatch = _customOffspring ? _customOffspring : eggData.offspringCreature;
 
-            // Set size
-            newEgg.transform.GetChild(0).transform.localScale = new Vector3(newEggSize, newEggSize, newEggSize);
-            newEgg.GetComponentInChildren<Rigidbody>().mass = newEggSize;
+        // Set color
+        newEgg.GetComponentInChildren<MeshRenderer>().material.color = eggData.eggColor;
 
-            // Set incubation speed
-            newEgg.GetComponentInChildren<Animator>().SetFloat("IncubationSpeed", incubationSpeed);
+        // Set size
+        newEgg.transform.GetChild(0).transform.localScale = new Vector3(eggData.eggSize, eggData.eggSize, eggData.eggSize);
+        newEgg.GetComponentInChildren<Rigidbody>().mass = eggData.eggSize;
 
-            // Set hatchability
-            newEgg.GetComponentInChildren<Animator>().SetBool("CanHatch", canHatch);
-        }
-        else
-            Debug.LogError("Spawn Egg returned null", this);
+        // Set incubation speed
+        newEgg.GetComponentInChildren<Animator>().SetFloat("IncubationSpeed", incubationSpeed);
+
+        // Set hatchability
+        newEgg.GetComponentInChildren<Animator>().SetBool("CanHatch", canHatch);
 
 
         // Debug
         if (logEggLaying)
-            Debug.Log(transform.root.name + " laid an Egg " + "[" + _offspringCreature.name + "]");
+            Debug.Log(transform.root.name + " laid an Egg " + "[" + _customOffspring.name + "]");
     }
 
     public void LayEggButton()
     {
-        CreatureData cData = GetComponent<CreatureData>();
-        if (eData.energyReserve < cData.levelUpCost)
+        if (eData.energyReserve < eData.surplusThreshold)
         {
-            if (Servius.Server.GetComponent<GlobalLifeSource>().energyReserve > cData.levelUpCost)
+            if (Servius.Server.GetComponent<GlobalLifeSource>().energyReserve > eData.surplusThreshold)
             {
-                float energyToLeech = cData.levelUpCost - eData.energyReserve;
+                float energyToLeech = eData.surplusThreshold - eData.energyReserve;
                 eData.energyReserve += energyToLeech;
                 Servius.Server.GetComponent<GlobalLifeSource>().energyReserve -= energyToLeech;
 
-                SpawnEgg(cData.levelUpCost);
+                SpawnEgg(eData.surplusThreshold);
             }
             else Debug.LogWarning("Not enough Energy remaining in Global Pool to Spawn Egg");
         }
@@ -108,31 +100,29 @@ public class Ovary : ObjectSpawner
         if (_offspringSeed == null)
             _offspringSeed = offspringSeed;
 
-        // Expend Energy and plant Seed with the Energy spent to Evolve
-        GameObject spawnedFruit = SpawnObject(_offspringSeed, eData, _energyEndowed, returnPercentToSource, null, randomYRotation, seedingRadius);
+        // Expend Energy and plant Seed with the Energy spent
+        GameObject spawnedFruit = SpawnObject(_offspringSeed, eData, _energyEndowed, returnEnergyToSource, null, randomYRotation, seedingRadius);
 
         // Adjust scale
         if (spawnScale0)
             spawnedFruit.GetComponentInChildren<Animator>(true).transform.localScale = Vector3.zero;
 
-
         // Debug
         if (logSeedLaying)
-            Debug.Log(transform.root.name + " planted a Seed " + "[" + offspringSeed.name + "]");
+            Debug.Log(transform.root.name + " planted a Seed " + "[" + _offspringSeed.name + "]");
     }
 
     public void PlantSeedButton()
     {
-        CreatureData cData = GetComponent<CreatureData>();
-        if (eData.energyReserve < cData.levelUpCost)
+        if (eData.energyReserve < eData.surplusThreshold)
         {
-            if (Servius.Server.GetComponent<GlobalLifeSource>().energyReserve > cData.levelUpCost)
+            if (Servius.Server.GetComponent<GlobalLifeSource>().energyReserve > eData.surplusThreshold)
             {
-                float energyToLeech = cData.levelUpCost - eData.energyReserve;
+                float energyToLeech = eData.surplusThreshold - eData.energyReserve;
                 eData.energyReserve += energyToLeech;
                 Servius.Server.GetComponent<GlobalLifeSource>().energyReserve -= energyToLeech;
 
-                SpawnSeed(cData.levelUpCost);
+                SpawnSeed(eData.surplusThreshold);
             }
             else Debug.LogWarning("Not enough Energy remaining in Global Pool to Spawn Seed");
         }

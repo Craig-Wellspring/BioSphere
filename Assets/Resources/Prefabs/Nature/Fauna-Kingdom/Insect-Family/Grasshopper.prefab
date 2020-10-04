@@ -4698,7 +4698,7 @@ PrefabInstance:
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: perception.baseValue
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5035,6 +5035,17 @@ PrefabInstance:
       propertyPath: eggNutritionalValue
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: offspringPrefabPath
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eggData
+      value: 
+      objectReference: {fileID: 11400000, guid: 51f03957d0de12140b4a584e7eb0c9ef,
+        type: 2}
     - target: {fileID: 8844286852851837445, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_IsActive

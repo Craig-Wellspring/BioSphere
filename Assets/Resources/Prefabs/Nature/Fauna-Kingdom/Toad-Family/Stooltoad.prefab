@@ -4612,7 +4612,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8a4d341f618654371ad279350d04e49d, type: 2}
+  - {fileID: 2100000, guid: cca42b20867c44ba8981cb8c0958b1d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5395,7 +5395,7 @@ PrefabInstance:
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: perception.baseValue
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5602,6 +5602,12 @@ PrefabInstance:
       propertyPath: newEggColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eggData
+      value: 
+      objectReference: {fileID: 11400000, guid: d9fd5ef64881ffd43871e93b9e69e360,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
