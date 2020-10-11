@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 2709940463522897701}
   m_Layer: 0
   m_Name: Jaw
-  m_TagString: Untagged
+  m_TagString: Mouth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 2709940463522897693}
   m_Layer: 0
   m_Name: Nose
-  m_TagString: Untagged
+  m_TagString: Eyes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1606,11 +1606,46 @@ PrefabInstance:
       propertyPath: isHungry
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: mainBodyCollider
+      value: 
+      objectReference: {fileID: 515360330799272418}
+    - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1449535903441369236}
+    - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 5221389500671280505}
+    - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[2]
+      value: 
+      objectReference: {fileID: 6226907320782540325}
+    - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[3]
+      value: 
+      objectReference: {fileID: 5879410233518181047}
+    - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[4]
+      value: 
+      objectReference: {fileID: 4089229121628710035}
     - target: {fileID: 4575123311430768913, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 8875023585256384105}
+      objectReference: {fileID: 0}
     - target: {fileID: 7172435783133125434, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: radius
@@ -1758,7 +1793,7 @@ PrefabInstance:
         type: 3}
       propertyPath: offspringSeed
       value: 
-      objectReference: {fileID: 1345774665612259657, guid: dc3ac9f11affff348a9a22a3f321d2d7,
+      objectReference: {fileID: 2033288779189976937, guid: b47514016a3430248b6d8ea748ad16c4,
         type: 3}
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1775,12 +1810,6 @@ PrefabInstance:
     - {fileID: 2456671554583304284, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
     - {fileID: 5771464199595073494, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
---- !u!4 &8875023585256384105 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7247082459883604666, guid: c5bf24098b61bba4bb0da85b9f252476,
-    type: 3}
-  m_PrefabInstance: {fileID: 2285759280214191315}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2285759280214587305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,

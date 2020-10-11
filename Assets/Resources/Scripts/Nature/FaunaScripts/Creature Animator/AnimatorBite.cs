@@ -8,7 +8,7 @@ public class AnimatorBite : StateMachineBehaviour
     {
         Metabolism metabolism = animator.GetComponentInChildren<Metabolism>();
 
-        Collider[] hitFoodList = Physics.OverlapSphere(metabolism.mouth.position + (animator.transform.forward * metabolism.biteSize / 2), metabolism.biteSize, LayerMask.GetMask("FoodItem", "Corpse", "Foliage"));
+        Collider[] hitFoodList = Physics.OverlapSphere(animator.GetComponent<BodyReference>().mouth.position + (animator.transform.forward * metabolism.biteSize / 2), metabolism.biteSize, LayerMask.GetMask("FoodItem", "Corpse", "Vegetation"));
 
         foreach (Collider _hitFood in hitFoodList)
         {

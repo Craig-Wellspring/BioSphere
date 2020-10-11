@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(OnDestroyEvent))]
 public class FoodData : MonoBehaviour
 {
     [Header("Current")]
@@ -14,19 +13,18 @@ public class FoodData : MonoBehaviour
 
 
     // Return Energy to Global Energy Reserve when Destroyed
-    private void Start()
+    void OnDisable()
     {
-        GetComponent<OnDestroyEvent>().BeingDestroyed += ReturnEnergyToReserve;
+        if (Servius.Server != null)
+            ReturnEnergyToReserve(nutritionalValue);
     }
-    void ReturnEnergyToReserve()
+    
+    public void ReturnEnergyToReserve(float _amount)
     {
-        if (nutritionalValue > 0)
-        {
-            Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += nutritionalValue;
-            nutritionalValue = 0;
-        }
+        if (RemoveNV(_amount))
+            Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += _amount;
+        else Debug.LogError("Returned more nutritional value than available.", this);
     }
-
 
 
     // Add and Remove nutritional value

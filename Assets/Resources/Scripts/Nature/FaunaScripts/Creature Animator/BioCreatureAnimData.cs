@@ -43,11 +43,6 @@ public class BioCreatureAnimData : MonoBehaviour
         anim.SetBool("IsEating", metabolism.isEating);
     }
 
-    public void TriggerMorph()
-    {
-        anim.SetTrigger("Morph");
-    }
-
     void Death()
     {
         anim.SetTrigger("Die");

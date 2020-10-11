@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using Pathfinding;
 
-[RequireComponent(typeof(CreatureData))]
+[RequireComponent(typeof(CreatureStats))]
 public class Vitality : MonoBehaviour
 {
     [Header("State")]
@@ -17,20 +17,13 @@ public class Vitality : MonoBehaviour
     public bool dead = false;
 
 
-
-    #region Private Variables
     //Cache
-    CreatureData cData;
     Slider healthBar;
-    #endregion
-
 
 
     void Start()
     {
-        cData = GetComponent<CreatureData>();
-
-        currentHealth = cData.maxHealth.value;
+        currentHealth = maxHealth;
 
         healthBar = transform.root.Find("Canvas").Find("Health Bar").GetComponent<Slider>();
         healthBar.maxValue = maxHealth;
@@ -40,19 +33,17 @@ public class Vitality : MonoBehaviour
 
     public void IncreaseMaxHealth(int _amount)
     {
-        currentHealth += _amount;
         maxHealth += _amount;
         healthBar.maxValue = maxHealth;
-        healthBar.value = currentHealth;
+        IncreaseCurrentHealth(_amount);
 
         transform.root.localScale += new Vector3(_amount / 10, _amount / 10, _amount / 10);
     }
     public void DecreaseMaxHealth(int _amount)
     {
-        currentHealth -= _amount;
         maxHealth -= _amount;
         healthBar.maxValue = maxHealth;
-        healthBar.value = currentHealth;
+        DecreaseCurrentHealth(_amount);
 
         transform.root.localScale -= new Vector3(_amount / 10, _amount / 10, _amount / 10);
     }
@@ -109,18 +100,19 @@ public class Vitality : MonoBehaviour
 
 
         //Deactivate Body
-        cData.mainBodyCollider.enabled = false;
-        foreach (Collider _body in cData.adlBodyColliders)
+        BodyReference body = transform.root.GetComponent<BodyReference>();
+        body.mainBodyCollider.enabled = false;
+        foreach (Collider _body in body.adlBodyColliders)
             _body.enabled = false;
 
         // Activate Corpse
-        if (cData.corpse != null)
+        if (body.corpse != null)
         {
-            cData.corpse.SetActive(true);
+            body.corpse.SetActive(true);
 
             //Transfer Energy to Corpse
             EnergyData selfEData = GetComponent<EnergyData>();
-            FoodData corpseFData = cData.corpse.GetComponent<FoodData>();
+            FoodData corpseFData = body.corpse.GetComponent<FoodData>();
             if (selfEData && corpseFData)
             {
                 corpseFData.AddNV(selfEData.energyReserve);

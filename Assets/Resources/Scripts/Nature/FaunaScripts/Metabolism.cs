@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(OnDestroyEvent))]
-[RequireComponent(typeof(EnergyData))]
 public class Metabolism : MonoBehaviour
 {
     [Header("Current Hunger")]
@@ -38,7 +36,6 @@ public class Metabolism : MonoBehaviour
     public float hungerGainedPerTick = 3f;
     [Tooltip("Increase units of Hunger gained per tick every level up")]
     [SerializeField] float hungerPerTickPerLevel = 0.1f;
-    public Transform mouth;
     [Range(0, 5)] public float biteSize = 0.4f;
     [Tooltip("How quickly this creature consumes food. Higher is faster. 1 is default.")]
     [Range(0, 10)] public float chewSpeed = 1f;
@@ -64,10 +61,14 @@ public class Metabolism : MonoBehaviour
     Slider hungerBar;
     Image hungerFill;
     SingleGradient colorPicker;
+
+    BodyReference body;
     #endregion
 
     private void Start()
     {
+        body = transform.root.GetComponent<BodyReference>();
+
         // Initialize UI
         hungerBar = transform.root.Find("Canvas").Find("Hunger Bar").GetComponent<Slider>();
         hungerFill = hungerBar.transform.Find("Hunger Fill").GetComponent<Image>();
@@ -75,7 +76,9 @@ public class Metabolism : MonoBehaviour
         hungerBar.gameObject.SetActive(false);
 
 
-        //GetComponent<CreatureData>()?.LevelUpBeginning += LevelingUp;
+        CreatureStats cStats = GetComponent<CreatureStats>();
+        if (cStats)
+            cStats.LevelUpBeginning += LevelingUp;
     }
 
 
@@ -126,7 +129,7 @@ public class Metabolism : MonoBehaviour
         if (!hungerBar.gameObject.activeSelf)
         {
             hungerBar.gameObject.SetActive(true);
-            //hungerFill.color = colorPicker.gradient.Sample(1);
+            hungerFill.color = colorPicker.gradient.Evaluate(1);
         }
 
         //Disable egg hatching
@@ -147,23 +150,27 @@ public class Metabolism : MonoBehaviour
         {
             UpdateDietHistory(morselIngested.foodTag, morselIngested.energyUnits);
 
-            GetComponent<EnergyData>().AddEnergy(morselIngested.energyUnits);
+            EnergyData eData = GetComponent<EnergyData>();
+            if (eData != null)
+                eData.AddEnergy(morselIngested.energyUnits);
+            else
+                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += morselIngested.energyUnits;
+
             morselIngested.energyUnits = 0;
             morselIngested.foodTag = null;
         }
 
         // Clear target data
         if (currentTargetFood != null)
-        {
             currentTargetFood = null;
-        }
+
         targetFData = null;
 
 
         //Update UI
         if (hungerBar)
         {
-            //hungerFill.color = colorPicker.gradient.Sample(0);
+            hungerFill.color = colorPicker.gradient.Evaluate(0);
             hungerBar.gameObject.SetActive(false);
         }
     }
@@ -183,21 +190,19 @@ public class Metabolism : MonoBehaviour
         _targetFData.RemoveNV(_biteSize);
         morselIngested.energyUnits += _biteSize;
 
-
         // Become less hungry
         if (hungerUnits > 0)
             hungerUnits -= _biteSize;
-
-
-        // Destroy Food if no energy remains
-        if (_targetFData.nutritionalValue == 0)
-            Devour(_targetFData);
 
         CheckHungerLevels();
 
         // Stop eating if completely full
         if (hungerPercentage <= 1)
             StopEating();
+
+        // Destroy Food if no energy remains
+        if (_targetFData.nutritionalValue == 0)
+            Devour(_targetFData);
     }
 
 
@@ -287,10 +292,10 @@ public class Metabolism : MonoBehaviour
     //// Draw Debug BiteSphere \\\\
     private void OnDrawGizmosSelected()
     {
-        if (drawBiteSphere && mouth != null)
+        if (drawBiteSphere && body.mouth)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(mouth.position + (transform.forward * biteSize / 2), biteSize);
+            Gizmos.DrawWireSphere(body.mouth.position + (transform.forward * biteSize / 2), biteSize);
         }
     }
 }

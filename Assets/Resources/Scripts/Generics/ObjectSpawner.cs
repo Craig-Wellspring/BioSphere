@@ -2,7 +2,7 @@
 
 public class ObjectSpawner : AdvancedMonoBehaviour
 {
-    public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0, float _percentReturnToSource = 0f, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0)
+    public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0/*, float _percentReturnToSource = 0f*/, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0)
     {
         // Calculate energy
         if (_energyEndowed > 0)
@@ -12,12 +12,6 @@ public class ObjectSpawner : AdvancedMonoBehaviour
                 if (!_subtractFromEData.RemoveEnergy(_energyEndowed))
                     Debug.LogWarning("Not enough energy to remove from source", this);
 
-            // Return energy to source if applicable
-            if (_percentReturnToSource > 0)
-            {
-                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += _energyEndowed * _percentReturnToSource;
-                _energyEndowed *= (1 - _percentReturnToSource);
-            }
 
             // Compensate for nutritional value
             FoodData[] newFData = _objectToSpawn.GetComponentsInChildren<FoodData>(true);

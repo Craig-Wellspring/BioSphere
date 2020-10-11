@@ -10,7 +10,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
         Vector3 newPoint = PointOnTerrainUnderPosition(RandomLocalPos(_origin, _radius));
         //while (newPoint == null || newPoint == Vector3.zero)
         //    newPoint = PointOnTerrainUnderPosition(RandomLocalPos(_origin, _radius));
-            
+
         return newPoint;
     }
 
@@ -28,7 +28,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
 
     // Find a position on the Terrain directly beneath the position
     protected Vector3 PointOnTerrainUnderPosition(Vector3 _position)
-    {   
+    {
         if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 500, LayerMask.GetMask("Geosphere")))
         {
             if (hit.collider.CompareTag("Ground"))
@@ -45,7 +45,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
             return Vector3.zero;
         }
     }
-    
+
 
     // Find the Terrain object directly beneath the position
     protected GameObject TerrainUnderPosition(Vector3 _position)
@@ -147,4 +147,34 @@ public class AdvancedMonoBehaviour : MonoBehaviour
     {
         return new Vector3(Mathf.Sin(_angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(_angleInDegrees * Mathf.Deg2Rad));
     }
+
+    protected Transform FindChildWithTag(string _tag, Transform _parent = null)
+    {
+        Transform returnChild = null;
+        if (_parent == null)
+            _parent = this.transform;
+
+        foreach (Transform child in _parent.GetComponentsInChildren<Transform>(true))
+            if (child.CompareTag(_tag))
+            {
+                returnChild = child;
+                break;
+            }
+
+        return returnChild;
+    }
+    
+    protected List<Transform> FindChildrenWithTag(string _tag, Transform _parent = null)
+    {
+        List<Transform> returnChildren = null;
+        if (_parent == null)
+            _parent = this.transform;
+
+        foreach (Transform child in _parent.GetComponentsInChildren<Transform>(true))
+            if (child.CompareTag(_tag))
+                returnChildren.Add(child);
+
+        return returnChildren;
+    }
 }
+

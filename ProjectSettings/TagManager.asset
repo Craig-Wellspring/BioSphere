@@ -31,8 +31,11 @@ TagManager:
   - Seedling
   - Shrub
   - Berry
-  - FruitTree
   - Fox
+  - Leaves
+  - Trunk
+  - Eyes
+  - Mouth
   layers:
   - Default
   - TransparentFX
@@ -45,8 +48,8 @@ TagManager:
   - 
   - Targetting
   - FoodItem
+  - Vegetation
   - Foliage
-  - Flora
   - Corpse
   - 
   - 

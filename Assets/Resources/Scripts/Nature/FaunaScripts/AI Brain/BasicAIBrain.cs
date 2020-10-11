@@ -17,11 +17,10 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     #region Internal Variables
     //Cache
-    EnergyData eData;
     Vitality vitality;
     Metabolism metabolism;
     VisualPerception vPerception;
-    CreatureData cData;
+    CreatureStats cStats;
 
     [HideInInspector] public Animator aiBrain;
     [HideInInspector] public AIPath aiPath;
@@ -30,11 +29,10 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     void Start()
     {
-        eData = GetComponentInParent<EnergyData>();
         vitality = GetComponentInParent<Vitality>();
         metabolism = GetComponentInParent<Metabolism>();
         vPerception = GetComponentInParent<VisualPerception>();
-        cData = GetComponentInParent<CreatureData>();
+        cStats = GetComponentInParent<CreatureStats>();
 
         aiBrain = GetComponent<Animator>();
         aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
@@ -46,14 +44,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism.HungerChange += HungerChange;
         metabolism.WastingChange += WastingChange;
 
-        eData.EnergySurplusChange += UpdateEnergySurplus;
-        cData.LevelUpBeginning += LevelingUp;
+        cStats.LevelUpBeginning += LevelingUp;
 
         vitality.DeathOccurs += Dying;
-
-        // Check Energy levels
-        eData.SurplusCheck();
-        UpdateEnergySurplus();
     }
 
     private void OnDisable()
@@ -63,8 +56,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism.HungerChange -= HungerChange;
         metabolism.WastingChange -= WastingChange;
 
-        eData.EnergySurplusChange -= UpdateEnergySurplus;
-        cData.LevelUpBeginning -= LevelingUp;
+        cStats.LevelUpBeginning -= LevelingUp;
 
         vitality.DeathOccurs -= Dying;
     }
@@ -103,20 +95,28 @@ public class BasicAIBrain : VersionedMonoBehaviour
     }
 
 
-    void UpdateEnergySurplus()
-    {
-        aiBrain.SetBool("EnergySurplus", eData.energySurplus);
-    }
-
     void LevelingUp()
     {
         // Randomly choose stat to increase
-        cData.targetCreatureStat = (CreatureData.TargetCreatureStat)Random.Range(0, System.Enum.GetValues(typeof(CreatureData.TargetCreatureStat)).Length);
+        if (cStats.unappliedLevels > 0)
+            cStats.ConfirmLevelUp(cStats.statBlock[Random.Range(0, cStats.statBlock.Count)]);
     }
 
     void Dying()
     {
-        cData.ClearPathing();
+        ClearPathing();
         gameObject.SetActive(false);
+    }
+    
+    public void ClearPathing()
+    {
+        AIDestinationSetter destinationSetter = transform.root.GetComponent<AIDestinationSetter>();
+        AIPath aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
+        Seeker seeker = transform.root.GetComponent<Seeker>();
+
+        destinationSetter.target = null;
+        aiPath.SetPath(null);
+        aiPath.destination = Vector3.positiveInfinity;
+        seeker.CancelCurrentPathRequest();
     }
 }

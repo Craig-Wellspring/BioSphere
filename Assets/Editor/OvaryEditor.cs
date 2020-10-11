@@ -9,20 +9,19 @@ public class OvaryEditor : Editor
         DrawDefaultInspector();
 
         Ovary ovary = (Ovary)target;
-
-        EditorGUILayout.Space(10);
-        if (GUILayout.Button("Draw Debug"))
-            ovary.DrawDebug();
             
         EditorGUILayout.Space(10);
         EditorGUILayout.BeginHorizontal();
 
-        if (GUILayout.Button("Lay Egg"))
-            ovary.LayEggButton();
         if (GUILayout.Button("Plant Seed"))
             ovary.PlantSeedButton();
+        if (GUILayout.Button("Lay Egg"))
+            ovary.LayEggButton();
             
         EditorGUILayout.EndHorizontal();
 
+        EditorGUILayout.Space(10);
+        if (GUILayout.Button("Draw Debug"))
+            ovary.DrawDebug();
     }
 }

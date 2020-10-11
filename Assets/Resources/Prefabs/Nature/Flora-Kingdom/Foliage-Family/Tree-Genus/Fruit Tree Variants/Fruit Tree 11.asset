@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80337e5b6187f664e8e681efc8ed8524, type: 3}
+  m_Name: Fruit Tree 11
+  m_EditorClassIdentifier: 
+  FoliageName: Fruit Tree
+  TrunkMesh: {fileID: 6317071438175438394, guid: 43d3d9343c5eada4a806c298fc7bf724,
+    type: 3}
+  MajorBudPositions:
+  - {x: 0.225, y: 2.978, z: 0.013}
+  MajorBudMeshes:
+  - {fileID: -6502658923473866480, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 6636587098909889596, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -2298599989326516140, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 3431947911486864267, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -1736059375371284211, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -4226924727144978921, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -7314118768295684320, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 3491722113252665032, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 2833644826568818527, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 6059638260340491557, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 4151263796029962963, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -6006451784880990337, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  MinorBudPositions: []
+  MinorBudMeshes: []

@@ -7,7 +7,7 @@ public class HatchCreature : ObjectSpawner
     
     void SpawnCreature()
     {
-        EnergyData eggEData = GetComponentInChildren<EnergyData>();
+        EnergyData eggEData = GetComponent<EnergyData>();
         FoodData eggFData = GetComponentInChildren<FoodData>();
         
         // Return nutritional value to energy storage

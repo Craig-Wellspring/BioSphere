@@ -13,8 +13,6 @@ public class Genetics : MonoBehaviour
         if (parentCreature != null)
             _targetGenes.ancestors.Add(parentCreature);
         _targetGenes.parentCreature = transform.root.gameObject;
-
-        //_targetGenes.GetComponent<OnDestroyEvent>().BeingDestroyed += RemoveSelf;
     }
 
     public void CopyGenes(Genetics _targetGenes)
@@ -23,9 +21,4 @@ public class Genetics : MonoBehaviour
         _targetGenes.parentCreature = parentCreature;
         _targetGenes.ancestors = ancestors;
     }
-
-    /*void RemoveSelf()
-    {
-
-    }*/
 }

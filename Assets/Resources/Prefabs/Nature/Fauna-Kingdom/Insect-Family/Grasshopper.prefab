@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 853120598310040182}
   m_Layer: 20
   m_Name: antennae
-  m_TagString: Untagged
+  m_TagString: Eyes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3449,7 +3449,7 @@ GameObject:
   - component: {fileID: 6562599279398088416}
   m_Layer: 20
   m_Name: Jaw
-  m_TagString: Untagged
+  m_TagString: Mouth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4519,6 +4519,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Module
       objectReference: {fileID: 0}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: mainBodyCollider
+      value: 
+      objectReference: {fileID: 4844040059857294191}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eyes
+      value: 
+      objectReference: {fileID: 853120598310040182}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: mouth
+      value: 
+      objectReference: {fileID: 6562599279398088416}
     - target: {fileID: 737565596758530575, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: drawGizmos
@@ -4645,16 +4660,6 @@ PrefabInstance:
       propertyPath: bodyColliders.Array.data[0]
       value: 
       objectReference: {fileID: 4844040059857294191}
-    - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
-      propertyPath: currentHealth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
-      propertyPath: maxHealth
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2202179383635221014, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4705,6 +4710,11 @@ PrefabInstance:
       propertyPath: mainBodyCollider
       value: 
       objectReference: {fileID: 4844040059857294191}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: statBlock.Array.data[1].baseValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2819508654887748013, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_Enabled
@@ -4750,7 +4760,7 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -4785,12 +4795,12 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.data[1]
-      value: Shrub
+      value: Berry
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.data[2]
-      value: Berry
+      value: Mushroom
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -4831,7 +4841,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 5031152469302315282}
+      objectReference: {fileID: 1300248346397859815}
     - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: seedsToPlant
@@ -5046,6 +5056,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 51f03957d0de12140b4a584e7eb0c9ef,
         type: 2}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: maxSeedEnergy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8844286852851837445, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_IsActive
@@ -5092,9 +5107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5031152469302315282 stripped
+--- !u!4 &1300248346397859815 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7247082459883604666, guid: c5bf24098b61bba4bb0da85b9f252476,
+  m_CorrespondingSourceObject: {fileID: 3696216562791799887, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2396180645501698984}
   m_PrefabAsset: {fileID: 0}

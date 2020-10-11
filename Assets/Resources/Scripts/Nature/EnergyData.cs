@@ -1,59 +1,50 @@
 ﻿using UnityEngine;
+using System;
 
-[RequireComponent(typeof(OnDestroyEvent))]
 public class EnergyData : MonoBehaviour
 {
     [Header("Current")]
     public float energyReserve = 0;
-    [Space(10)]
-    public bool energySurplus = false;
-
-    [Header("Settings")]
-    [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
-    public float surplusThreshold;
-
-
-
-
-    void Start()
-    {
-        GetComponent<OnDestroyEvent>().BeingDestroyed += ReturnEnergyToReserve;
-
-        SurplusCheck();
-    }
 
 
     // Return Energy to Global Energy Reserve when Destroyed
-    void ReturnEnergyToReserve()
+    void OnDisable()
     {
-        if (energyReserve > 0)
-        {
-            Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += energyReserve;
-            energyReserve = 0;
-        }
+        if (Servius.Server != null)
+            ReturnEnergyToReserve(energyReserve);
+    }
+
+    public void ReturnEnergyToReserve(float _amount)
+    {
+        if (RemoveEnergy(_amount))
+            Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += _amount;
+        else Debug.LogError("Returned more energy than available.", this);
     }
 
 
-
     //// Increase and Decrease Energy Reserve Pool \\\\
+    public Action EnergyAdded;
     public void AddEnergy(float _energyAdded)
     {
         energyReserve += _energyAdded;
 
-        SurplusCheck();
+        EnergyAdded?.Invoke();
+        // - morphology.SurplusCheck
     }
 
+    public Action EnergyRemoved;
     public bool RemoveEnergy(float _energyRemoved, bool _makeUpWithNV = false)
     {
         if (energyReserve >= _energyRemoved)
         {
             energyReserve -= _energyRemoved;
 
-            SurplusCheck();
+            EnergyRemoved?.Invoke();
+            // - morphology.SurplusCheck
 
             // Catch energy overuse
             if (energyReserve < 0)
-                Debug.LogError("Spent more energy than available", this);
+                Debug.LogError("Removed more energy than available", this);
 
             return true;
         }
@@ -67,26 +58,12 @@ public class EnergyData : MonoBehaviour
 
                 // Catch energy overuse
                 if (fData.nutritionalValue < 0)
-                    Debug.LogError("Spent more energy than available", this);
+                    Debug.LogError("Removed more energy than available", this);
 
                 return true;
             }
             else return false;
         }
         else return false;
-    }
-
-
-    // Check for energy surplus, set bool and trigger events
-    public event System.Action EnergySurplusChange;
-    public bool SurplusCheck()
-    {
-        bool _energySurplus = energyReserve >= surplusThreshold ? true : false;
-        if (energySurplus != _energySurplus)
-        {
-            energySurplus = _energySurplus;
-            EnergySurplusChange?.Invoke();
-        }
-        return _energySurplus;
     }
 }

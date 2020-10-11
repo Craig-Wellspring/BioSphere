@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(CreatureData)), CanEditMultipleObjects]
+[CustomEditor(typeof(CreatureStats)), CanEditMultipleObjects]
 public class CreatureDataEditor : Editor
 {
     public override void OnInspectorGUI()
     {       
-        CreatureData cData = (CreatureData)target;
+        CreatureStats cStats = (CreatureStats)target;
 
         EditorGUILayout.BeginHorizontal();
 
-        if (GUILayout.Button("Pull Stats from Origin"))
-            cData.PullStatsFromOrigin();
-
         if (GUILayout.Button("Push Stats to Origin"))
-            cData.PushStatsToOrigin();
+            cStats.PushOrPullOriginStats(true);
+
+        if (GUILayout.Button("Pull Stats from Origin"))
+            cStats.PushOrPullOriginStats(false);
             
         EditorGUILayout.EndHorizontal();
 
