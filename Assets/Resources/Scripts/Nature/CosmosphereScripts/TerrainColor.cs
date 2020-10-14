@@ -6,7 +6,7 @@ public class TerrainColor : MonoBehaviour
     [HideInInspector] public Mesh terrainMesh;  
     [HideInInspector] public Color[] colorArray;
 
-    void Start()
+    void OnEnable()
     {
         // Cache
         terrainMesh = GetComponent<MeshFilter>().sharedMesh;
@@ -15,7 +15,7 @@ public class TerrainColor : MonoBehaviour
         colorArray = new Color[terrainMesh.vertices.Length];
 
         for (int i = 0; i < terrainMesh.vertices.Length; i++)
-            colorArray[i] = GetComponentInParent<SingleGradient>().gradient.Evaluate(0);
+            colorArray[i] = GetComponent<SingleGradient>().gradient.Evaluate(0);
 
         RefreshTerrainColor();
     }

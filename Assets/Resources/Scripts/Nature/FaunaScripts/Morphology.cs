@@ -120,7 +120,7 @@ public class Morphology : MonoBehaviour
         GameObject newCreature = GetComponent<Ovary>().SpawnObject(_newForm, eData, eData.energyReserve);
 
         // Pass down Current Level and stat block
-        GetComponent<CreatureStats>().CopyCData(newCreature.GetComponentInChildren<CreatureStats>());
+        GetComponent<CreatureStats>().CopyCStats(newCreature.GetComponentInChildren<CreatureStats>());
 
         // Pass down Morphology
         newCreature.GetComponentInChildren<Morphology>().morphTier = morphTier + 1;

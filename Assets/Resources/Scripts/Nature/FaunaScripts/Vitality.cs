@@ -26,52 +26,48 @@ public class Vitality : MonoBehaviour
         currentHealth = maxHealth;
 
         healthBar = transform.root.Find("Canvas").Find("Health Bar").GetComponent<Slider>();
-        healthBar.maxValue = maxHealth;
-        healthBar.value = healthBar.maxValue;
-        healthBar.gameObject.SetActive(false);
+        UpdateHealthBar();
     }
 
-    public void IncreaseMaxHealth(int _amount)
+    void UpdateHealthBar()
+    {
+        healthBar.maxValue = maxHealth;
+        healthBar.value = currentHealth;
+
+        // Show health bar if not at Max
+        healthBar.gameObject.SetActive(!currentHealth.Equals(maxHealth));
+    }
+
+    public void UpdateMaxHealth(int _amount)
     {
         maxHealth += _amount;
-        healthBar.maxValue = maxHealth;
-        IncreaseCurrentHealth(_amount);
+
+        UpdateCurrentHealth(_amount);
 
         transform.root.localScale += new Vector3(_amount / 10, _amount / 10, _amount / 10);
     }
-    public void DecreaseMaxHealth(int _amount)
-    {
-        maxHealth -= _amount;
-        healthBar.maxValue = maxHealth;
-        DecreaseCurrentHealth(_amount);
 
-        transform.root.localScale -= new Vector3(_amount / 10, _amount / 10, _amount / 10);
-    }
-
-    void IncreaseCurrentHealth(int _amount)
+    void UpdateCurrentHealth(int _amount = 0)
     {
-        healthBar.value += _amount;
         currentHealth += _amount;
-    }
-    void DecreaseCurrentHealth(int _amount)
-    {
-        healthBar.value -= _amount;
-        currentHealth -= _amount;
 
-        // Show health bar if not already
-        if (!healthBar.gameObject.activeSelf)
-            healthBar.gameObject.SetActive(true);
+        if (healthBar != null)
+            UpdateHealthBar();
+
+        if (currentHealth <= 0)
+            Die();
     }
 
 
-    public event System.Action DamageTaken;
+
+    //public event System.Action DamageTaken;
     public void TakeDamage(int _amount)
     {
         if (!dead)
         {
-            DamageTaken?.Invoke();
+            //DamageTaken?.Invoke();
 
-            DecreaseCurrentHealth(_amount);
+            UpdateCurrentHealth(-_amount);
 
             if (currentHealth <= 0)
                 Die();

@@ -48,7 +48,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Blend
+  m_BlendParameter: moveSpeed
   m_BlendParameterY: Blend
   m_MinThreshold: -0.25
   m_MaxThreshold: 2
@@ -64,7 +64,7 @@ AnimatorController:
   m_Name: Deer Animator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Blend
+  - m_Name: moveSpeed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -90,7 +90,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
+  m_Name: Idle/Locomotion
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

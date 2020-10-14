@@ -29,7 +29,7 @@ public class CreatureStats : MonoBehaviour
         GenerateStatBlock();
     }
 
-    public void CopyCData(CreatureStats _targetCStats)
+    public void CopyCStats(CreatureStats _targetCStats)
     {
         _targetCStats.currentLevel = currentLevel;
         _targetCStats.statBlock = statBlock;
@@ -83,7 +83,7 @@ public class CreatureStats : MonoBehaviour
     }
     #endregion
 
-    #region Stat Allocation
+
     void GenerateStatBlock()
     {
         // Add Speed Stat if AIPath exists
@@ -106,8 +106,13 @@ public class CreatureStats : MonoBehaviour
         if (metabolism)
             statBlock.Add(new CreatureStat("Metabolism", metabolism.metabolismRate));
     }
-
     
+
+    #region Stat Allocation
+    public void AddNewStat(string _statName, float _baseValue)
+    {
+        statBlock.Add(new CreatureStat(_statName, _baseValue));
+    }
 
     // Push or Pull Origin Stats. If _push, set stats in creature equal to current stats in statBlock. If !_push, set stats in statBlock equal to current stats in creature
     public void PushOrPullOriginStats(bool _push)
@@ -125,7 +130,7 @@ public class CreatureStats : MonoBehaviour
 
                 case "Health":
                     if (_push)
-                        GetComponent<Vitality>().IncreaseMaxHealth(Mathf.RoundToInt(_stat.baseValue - GetComponent<Vitality>().maxHealth));
+                        GetComponent<Vitality>().UpdateMaxHealth(Mathf.RoundToInt(_stat.baseValue - GetComponent<Vitality>().maxHealth));
                     else
                         _stat.baseValue = GetComponent<Vitality>().maxHealth;
                     break;
