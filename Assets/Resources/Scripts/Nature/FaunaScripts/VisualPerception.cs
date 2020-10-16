@@ -5,8 +5,11 @@ using System.Linq;
 
 public class VisualPerception : AdvancedMonoBehaviour
 {
-    [Header("Sight Range Settings")]
+    [Header("Sight Settings")]
+    public Transform eyes;
     [Range(0, 20)] public float sightRadius = 10f;
+    [SerializeField] bool drawSightSphere = false;
+    public LayerMask searchLayers;
     //public float viewAngle;
 
 
@@ -25,8 +28,6 @@ public class VisualPerception : AdvancedMonoBehaviour
 
 
     [Header("Debug")]
-    [SerializeField] bool drawSightSphere = false;
-    [Space(15)]
     [SerializeField] bool foodSightLines = true;
     [SerializeField] bool preySightLines = true;
     [SerializeField] bool predatorSightLines = true;
@@ -34,18 +35,18 @@ public class VisualPerception : AdvancedMonoBehaviour
 
 
     // Private variables
-    [HideInInspector] public int searchMasks;
-
     Metabolism metabolism;
     BodyReference body;
 
 
     void Start()
     {
-        searchMasks = LayerMask.GetMask("Fauna", "FoodItem", "Vegetation", "Corpse");
-
         metabolism = GetComponent<Metabolism>();
         body = transform.root.GetComponent<BodyReference>();
+
+
+        // Register Sight Radius in StatBlock
+        GetComponent<CreatureStats>()?.AddNewStat("Perception", sightRadius);
     }
 
 
@@ -67,19 +68,19 @@ public class VisualPerception : AdvancedMonoBehaviour
 
 
         // Check surroundings, populate a list of everything in the area
-        List<Collider> withinSightRange = Physics.OverlapSphere(body.eyes.position, sightRadius, searchMasks).ToList();
+        List<Collider> withinSightRange = Physics.OverlapSphere(eyes.position, sightRadius, searchLayers).ToList();
         withinSightRange.Remove(body.mainBodyCollider);
 
 
         //For every object in the area, check for line of sight and categorize into lists
         foreach (Collider col in withinSightRange)
         {
-            //Check for clear Sight Line
+            // Check for clear Sight Line
             RaycastHit hit;
-            Ray sightRay = new Ray(body.eyes.position, col.transform.position - body.eyes.position);
+            Ray sightRay = new Ray(eyes.position, col.transform.position - eyes.position);
             if (col.Raycast(sightRay, out hit, sightRadius))
             {
-                //Register nearby Mates
+                // Creatures with the same tag as me are my mates
                 if (col.transform.tag == body.mainBodyCollider.transform.tag)
                 {
                     nearbyMates.Add(col);
@@ -88,27 +89,27 @@ public class VisualPerception : AdvancedMonoBehaviour
 
                 if (metabolism != null)
                 {
-                    //Register nearby Food
+                    // Register food if it is part of my diet
                     if (metabolism.dietList.Contains(col.transform.tag))
                     {
                         nearbyFood.Add(col);
 
                         if (foodSightLines)
-                            Debug.DrawRay(body.eyes.position, col.transform.position - body.eyes.position, Color.cyan, Time.deltaTime);
+                            Debug.DrawRay(eyes.position, col.transform.position - eyes.position, Color.cyan, Time.deltaTime);
                         continue;
                     }
 
-                    //Register nearby Prey
+                    // Register nearby Prey
                     if (metabolism.preyList.Contains(col.transform.tag))
                     {
                         nearbyPrey.Add(col);
 
                         if (preySightLines)
-                            Debug.DrawRay(body.eyes.position, col.transform.position - body.eyes.position, Color.magenta, Time.deltaTime);
+                            Debug.DrawRay(eyes.position, col.transform.position - eyes.position, Color.magenta, Time.deltaTime);
                         continue;
                     }
 
-                    //Register nearby Predators
+                    // Creatures who see me as Prey are my Predators
                     Metabolism potentialPred = col.transform.root.GetComponentInChildren<Metabolism>();
                     if (potentialPred != null)
                     {
@@ -117,7 +118,7 @@ public class VisualPerception : AdvancedMonoBehaviour
                             nearbyPredators.Add(col);
 
                             if (predatorSightLines)
-                                Debug.DrawRay(body.eyes.position, col.transform.position - body.eyes.position, Color.red, Time.deltaTime);
+                                Debug.DrawRay(eyes.position, col.transform.position - eyes.position, Color.red, Time.deltaTime);
                             continue;
                         }
                     }
@@ -134,10 +135,10 @@ public class VisualPerception : AdvancedMonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (drawSightSphere && body.eyes)
+        if (drawSightSphere && eyes)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(transform.position, sightRadius);
+            Gizmos.DrawWireSphere(eyes.position, sightRadius);
         }
     }
 }

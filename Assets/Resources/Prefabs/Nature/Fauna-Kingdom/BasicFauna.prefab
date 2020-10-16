@@ -69,9 +69,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainBodyCollider: {fileID: 0}
   adlBodyColliders: []
-  eyes: {fileID: 0}
-  mouth: {fileID: 0}
-  corpse: {fileID: 7476881784630833516}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -530,15 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
-  statBlock:
-  - id: Speed
-    baseValue: 1
-  - id: Health
-    baseValue: 1
-  - id: Perception
-    baseValue: 4
-  - id: Metabolism
-    baseValue: 3
+  statBlock: []
   logLevelUp: 0
   unappliedLevels: 0
 --- !u!114 &2131904891924997232
@@ -553,8 +542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 1
-  maxHealth: 1
+  currentHealth: 2
+  maxHealth: 2
+  corpse: {fileID: 0}
   dead: 0
 --- !u!114 &8086205142144112776
 MonoBehaviour:
@@ -568,7 +558,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd658446b8b90646adc2b0190a9f444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyes: {fileID: 0}
+  searchLayers:
+    serializedVersion: 2
+    m_Bits: 1059840
   sightRadius: 4
+  drawSightSphere: 0
   closestMate: {fileID: 0}
   nearbyMates: []
   closestFood: {fileID: 0}
@@ -577,11 +572,9 @@ MonoBehaviour:
   nearbyPrey: []
   closestPredator: {fileID: 0}
   nearbyPredators: []
-  drawSightSphere: 0
   foodSightLines: 0
   preySightLines: 0
   predatorSightLines: 0
-  searchMasks: 0
 --- !u!114 &3486346588474071174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,19 +590,20 @@ MonoBehaviour:
   hungerUnits: 0
   hungerPercentage: 0
   dietHistory: []
-  hungryAtPercent: 20
-  wastingAtPercent: 80
-  maximumHungerUnits: 100
-  hungryMeatEater: 1
-  dietList: []
-  preyList: []
+  mouth: {fileID: 0}
+  biteSize: 0.4
+  drawBiteSphere: 0
+  chewSpeed: 2
   metabolismRate: 3
   hungerGainedPerTick: 1.5
   hungerPerTickPerLevel: 0.1
-  biteSize: 0.4
-  chewSpeed: 2
+  hungryAtPercent: 20
+  wastingAtPercent: 80
+  hungryMeatEater: 1
+  maximumHungerUnits: 100
+  dietList: []
+  preyList: []
   logEating: 0
-  drawBiteSphere: 0
   isEating: 0
   isHungry: 0
   isWasting: 0
@@ -634,8 +628,7 @@ MonoBehaviour:
   spawnScale0: 1
   eggData: {fileID: 0}
   maxEggEnergy: 50
-  eggToSpawn: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78,
-    type: 3}
+  eggType: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78, type: 3}
   energyAsNV: 0.2
   incubationSpeed: 0.1
   canHatch: 1
@@ -656,10 +649,9 @@ MonoBehaviour:
   morphLevel: 1
   morphTier: 1
   surplusThreshold: 50
-  minMorphLevel: 3
-  carniMorph: {fileID: 0}
-  herbiMorph: {fileID: 0}
+  possibleMorphs: []
   energySurplus: 0
+  logMorphs: 0
 --- !u!114 &448272040755068572
 MonoBehaviour:
   m_ObjectHideFlags: 0

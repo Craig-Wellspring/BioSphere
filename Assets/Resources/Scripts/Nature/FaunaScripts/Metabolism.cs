@@ -13,20 +13,12 @@ public class Metabolism : MonoBehaviour
     public List<DietData> dietHistory;
 
     #region Settings
-    [Header("Hunger Index Settings")]
-    [Tooltip("Hunger Percentage to become Hungry"), SerializeField]
-    [Range(0, 100)] float hungryAtPercent = 20f;
-    [Tooltip("Hunger Percentage to begin Wasting"), SerializeField]
-    [Range(0, 100)] float wastingAtPercent = 80f;
-    [Tooltip("Die when hunger level maximum reached"), SerializeField]
-    float maximumHungerUnits = 100f;
-    [Tooltip("Start eating meat when very hungry"), SerializeField]
-    bool hungryMeatEater = true;
-
-
-    [Header("Creature Diet")]
-    public List<string> dietList;
-    public List<string> preyList;
+    [Header("Bite Settings")]
+    public Transform mouth;
+    [Range(0, 5)] public float biteSize = 0.4f;
+    [SerializeField] bool drawBiteSphere = false;
+    [Tooltip("How quickly this creature consumes food. Higher is faster. 1 is default.")]
+    [Range(0, 10)] public float chewSpeed = 1f;
 
 
     [Header("Metabolism Settings")]
@@ -36,20 +28,32 @@ public class Metabolism : MonoBehaviour
     public float hungerGainedPerTick = 3f;
     [Tooltip("Increase units of Hunger gained per tick every level up")]
     [SerializeField] float hungerPerTickPerLevel = 0.1f;
-    [Range(0, 5)] public float biteSize = 0.4f;
-    [Tooltip("How quickly this creature consumes food. Higher is faster. 1 is default.")]
-    [Range(0, 10)] public float chewSpeed = 1f;
+
+
+    [Header("Hunger Index Settings")]
+    [Tooltip("Hunger Percentage to become Hungry"), SerializeField]
+    [Range(0, 100)] float hungryAtPercent = 20f;
+    [Tooltip("Hunger Percentage to begin Wasting"), SerializeField]
+    [Range(0, 100)] float wastingAtPercent = 80f;
+    [Tooltip("Start eating meat when very hungry"), SerializeField]
+    bool hungryMeatEater = true;
+    [Tooltip("Die when hunger level maximum reached"), SerializeField]
+    float maximumHungerUnits = 100f;
+
+
+    [Header("Diet Settings")]
+    public List<string> dietList;
+    public List<string> preyList;
 
 
     [Header("Debug")]
     [SerializeField] bool logEating = false;
-    [SerializeField] bool drawBiteSphere = false;
     [Space(10)]
     public bool isEating;
     public bool isHungry;
     public bool isWasting;
+    [Space(10)]
     public FoodData targetFData;
-    public GameObject currentTargetFood = null;
 
     #endregion
 
@@ -61,14 +65,10 @@ public class Metabolism : MonoBehaviour
     Slider hungerBar;
     Image hungerFill;
     SingleGradient colorPicker;
-
-    BodyReference body;
     #endregion
 
     private void Start()
     {
-        body = transform.root.GetComponent<BodyReference>();
-
         // Initialize UI
         hungerBar = transform.root.Find("Canvas").Find("Hunger Bar").GetComponent<Slider>();
         hungerFill = hungerBar.transform.Find("Hunger Fill").GetComponent<Image>();
@@ -78,7 +78,13 @@ public class Metabolism : MonoBehaviour
 
         CreatureStats cStats = GetComponent<CreatureStats>();
         if (cStats)
+        {
+            // Register Metabolism Rate in StatBlock
+            cStats.AddNewStat("Metabolism", metabolismRate);
+
+            // Increase hunger per level
             cStats.LevelUpBeginning += LevelingUp;
+        }
     }
 
 
@@ -114,23 +120,22 @@ public class Metabolism : MonoBehaviour
     public event Action EatingBegins;
     public void StartEating(GameObject _targetFood)
     {
+        targetFData = _targetFood.GetComponent<FoodData>();
+
         isEating = true;
         EatingBegins?.Invoke();
-
-        currentTargetFood = _targetFood;
-        targetFData = currentTargetFood.GetComponent<FoodData>();
-        morselIngested.foodTag = _targetFood.tag;
+        // - Tell Animator and AI
 
         if (!targetFData)
             StopEating();
 
+        morselIngested.foodTag = _targetFood.tag;
 
         //Update UI
         if (!hungerBar.gameObject.activeSelf)
-        {
             hungerBar.gameObject.SetActive(true);
-            hungerFill.color = colorPicker.gradient.Evaluate(1);
-        }
+
+        hungerFill.color = colorPicker.gradient.Evaluate(1);
 
         //Disable egg hatching
         if (_targetFood.tag == "Egg")
@@ -144,6 +149,7 @@ public class Metabolism : MonoBehaviour
     {
         isEating = false;
         EatingEnds?.Invoke();
+        // - Tell Animator and AI
 
         // Gain energy from food and update diet history
         if (morselIngested.foodTag != null)
@@ -161,9 +167,6 @@ public class Metabolism : MonoBehaviour
         }
 
         // Clear target data
-        if (currentTargetFood != null)
-            currentTargetFood = null;
-
         targetFData = null;
 
 
@@ -171,7 +174,7 @@ public class Metabolism : MonoBehaviour
         if (hungerBar)
         {
             hungerFill.color = colorPicker.gradient.Evaluate(0);
-            hungerBar.gameObject.SetActive(false);
+            //hungerBar.gameObject.SetActive(false);
         }
     }
 
@@ -187,8 +190,8 @@ public class Metabolism : MonoBehaviour
             _biteSize = _targetFData.nutritionalValue;
 
         // Transfer energy from food to mouth cache
-        _targetFData.RemoveNV(_biteSize);
-        morselIngested.energyUnits += _biteSize;
+        if (_targetFData.RemoveNV(_biteSize))
+            morselIngested.energyUnits += _biteSize;
 
         // Become less hungry
         if (hungerUnits > 0)
@@ -292,10 +295,10 @@ public class Metabolism : MonoBehaviour
     //// Draw Debug BiteSphere \\\\
     private void OnDrawGizmosSelected()
     {
-        if (drawBiteSphere && body.mouth)
+        if (drawBiteSphere && mouth)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(body.mouth.position + (transform.forward * biteSize / 2), biteSize);
+            Gizmos.DrawWireSphere(mouth.position + (transform.forward * biteSize / 2), biteSize);
         }
     }
 }

@@ -2995,11 +2995,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7284380205839659766}
-  - component: {fileID: 8744717457755611509}
-  - component: {fileID: 944790874613841003}
   - component: {fileID: 795093523122109987}
-  - component: {fileID: 2902626016777537775}
+  - component: {fileID: 944790874613841003}
   - component: {fileID: 4045510176442295646}
+  - component: {fileID: 2902626016777537775}
   - component: {fileID: 5427516257143833578}
   m_Layer: 0
   m_Name: Vitals
@@ -3022,39 +3021,6 @@ Transform:
   m_Father: {fileID: 4716575040551676}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8744717457755611509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3598128593976282276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &944790874613841003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3598128593976282276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c9d9220b1ce844993caafeb0fc351a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: []
-  bodyColliders:
-  - {fileID: 474271237426888298}
-  - {fileID: 502926610489341151}
-  - {fileID: 7271994665300224384}
-  - {fileID: 6420398833587655167}
-  - {fileID: 174527264352855406}
-  - {fileID: 8718412028701211624}
-  corpse: {fileID: 6159907349568020335}
 --- !u!114 &795093523122109987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,9 +3034,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyReserve: 0
-  nutritionalValue: 0
-  chewRateModifier: 1
-  destroyRoot: 1
+--- !u!114 &944790874613841003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598128593976282276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c9d9220b1ce844993caafeb0fc351a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  statBlock: []
+  logLevelUp: 0
+  unappliedLevels: 0
+--- !u!114 &4045510176442295646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598128593976282276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100
+  maxHealth: 100
+  corpse: {fileID: 0}
+  dead: 0
 --- !u!114 &2902626016777537775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3089,21 +3084,6 @@ MonoBehaviour:
   plantingArea: 10
   roamingArea: 15
   pathingSpread: 10000
---- !u!114 &4045510176442295646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3598128593976282276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a576a328c04bbd94e9b1108d922586a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
-  dead: 0
 --- !u!95 &5427516257143833578
 Animator:
   serializedVersion: 3
@@ -3296,7 +3276,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4709074963190049302}
   - component: {fileID: 536548001416101558}
-  - component: {fileID: 1089161892104362031}
   - component: {fileID: 3416344473392738778}
   m_Layer: 13
   m_Name: Corpse
@@ -3333,18 +3312,6 @@ CapsuleCollider:
   m_Height: 0.015
   m_Direction: 2
   m_Center: {x: 0, y: 0.004, z: 0}
---- !u!114 &1089161892104362031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6159907349568020335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3416344473392738778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3358,9 +3325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyReserve: 0
-  nutritionalValue: 0
-  chewRateModifier: 1
-  destroyRoot: 1
 --- !u!1 &7094862779258184174
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,8 +34,6 @@ TagManager:
   - Fox
   - Leaves
   - Trunk
-  - Eyes
-  - Mouth
   layers:
   - Default
   - TransparentFX

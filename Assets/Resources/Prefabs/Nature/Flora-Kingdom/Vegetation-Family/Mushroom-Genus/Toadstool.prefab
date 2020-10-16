@@ -28,7 +28,6 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   returnLeftoverEnergy: 1
   selfDestruct: 0
-  triggerSpawn: 0
 --- !u!1001 &3655833244572362279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,11 +156,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom_LOD1
       objectReference: {fileID: 0}
-    - target: {fileID: 5530495193386159698, guid: 288ff8e7fcd13e740aee790d49106778,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: nutritionalValue
@@ -202,11 +196,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fruit
       objectReference: {fileID: 0}
-    - target: {fileID: 6457183713139666284, guid: 288ff8e7fcd13e740aee790d49106778,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 6842223849493786181, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: m_Name
@@ -216,11 +205,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mushroom_LOD0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6842223849493786183, guid: 288ff8e7fcd13e740aee790d49106778,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6842223849494278757, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}

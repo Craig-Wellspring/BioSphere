@@ -64,12 +64,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newFruit:
   - {fileID: 2672454933492135370, guid: c31c455f585e21348b58e96f82825f94, type: 3}
-  whenToSpawn: 2
+  whenToSpawn: 1
   parentRelationship: 2
   spawnOnSurface: 1
   randomSpawnArea: 0
   randomYRotation: 0
-  spawnScale0: 0
+  spawnScale0: 1
   seeds: 12
   seedSuccessChance: 70
   energyDistribution: 0
@@ -78,7 +78,6 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   returnLeftoverEnergy: 1
   selfDestruct: 0
-  triggerSpawn: 0
 --- !u!1 &4356539839946110735
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,87 +125,6 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4356539839946110735}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 1293f4d95af0ea448bfefd40fbdd2888, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6123922689859354500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 763068706481978443}
-  - component: {fileID: 2704122093825776348}
-  - component: {fileID: 2475025622215466964}
-  m_Layer: 11
-  m_Name: Bush_LOD0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &763068706481978443
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6123922689859354500}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2373551390053787552}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2704122093825776348
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6123922689859354500}
-  m_Mesh: {fileID: 3015190015368719556, guid: 21801ed3faf38e9408ef37649d2af1cf, type: 3}
---- !u!23 &2475025622215466964
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6123922689859354500}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -384,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 1589592729463314789, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1752407923769582429, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
@@ -428,17 +346,38 @@ PrefabInstance:
       propertyPath: nutritionalValue
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4759473824326799664, guid: 1fedb5571d445274782330b0eea48e80,
+        type: 3}
+      propertyPath: destroyRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4959284120954668768, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -9113279409085484566, guid: 21801ed3faf38e9408ef37649d2af1cf,
         type: 3}
+    - target: {fileID: 5318401848871797388, guid: 1fedb5571d445274782330b0eea48e80,
+        type: 3}
+      propertyPath: m_Name
+      value: Bush_LOD0
+      objectReference: {fileID: 0}
     - target: {fileID: 6113023438756759090, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: fullyGrownTag
       value: Bush
       objectReference: {fileID: 0}
+    - target: {fileID: 6113023438756759090, guid: 1fedb5571d445274782330b0eea48e80,
+        type: 3}
+      propertyPath: halfGrownTag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374403201877100096, guid: 1fedb5571d445274782330b0eea48e80,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3015190015368719556, guid: 21801ed3faf38e9408ef37649d2af1cf,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 1779700459288280494, guid: 1fedb5571d445274782330b0eea48e80, type: 3}
     - {fileID: 596391832531243610, guid: 1fedb5571d445274782330b0eea48e80, type: 3}

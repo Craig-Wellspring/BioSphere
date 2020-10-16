@@ -22,8 +22,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
     VisualPerception vPerception;
     CreatureStats cStats;
 
-    [HideInInspector] public Animator aiBrain;
-    [HideInInspector] public AIPath aiPath;
+    AIDestinationSetter destinationSetter;
+    AIPath aiPath;
+    Animator aiBrain;
     #endregion
 
 
@@ -34,8 +35,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
         vPerception = GetComponentInParent<VisualPerception>();
         cStats = GetComponentInParent<CreatureStats>();
 
-        aiBrain = GetComponent<Animator>();
+        destinationSetter = transform.root.GetComponent<AIDestinationSetter>();
         aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
+        aiBrain = GetComponent<Animator>();
 
 
 
@@ -78,9 +80,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
     }
 
 
-
-
-
     void EatingChange()
     {
         aiBrain.SetBool("Eating", metabolism.isEating);
@@ -107,11 +106,9 @@ public class BasicAIBrain : VersionedMonoBehaviour
         ClearPathing();
         gameObject.SetActive(false);
     }
-    
+
     public void ClearPathing()
     {
-        AIDestinationSetter destinationSetter = transform.root.GetComponent<AIDestinationSetter>();
-        AIPath aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
         Seeker seeker = transform.root.GetComponent<Seeker>();
 
         destinationSetter.target = null;

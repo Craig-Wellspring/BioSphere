@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(CreatureStats), typeof(EnergyData))]
 public class Morphology : MonoBehaviour
@@ -7,20 +8,18 @@ public class Morphology : MonoBehaviour
     [Header("Current")]
     [SerializeField] int morphLevel = 1;
     [SerializeField] int morphTier = 1;
+    [Space(10)]
+    public bool energySurplus = false;
 
 
     [Header("Settings")]
     [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
     public float surplusThreshold = 50;
-    [SerializeField] int minMorphLevel = 3;
     [Space(10)]
-    public GameObject carniMorph;
-    public GameObject herbiMorph;
+    [SerializeField] List<MorphData> possibleMorphs;
 
 
     [Header("Debug"), SerializeField]
-    public bool energySurplus = false;
-    [Space(10)]
     bool logMorphs = false;
 
 
@@ -80,22 +79,21 @@ public class Morphology : MonoBehaviour
     {
         morphLevel += 1;
 
-        if (morphLevel >= minMorphLevel)
-        {
-            foreach (DietData foodType in GetComponent<Metabolism>().dietHistory)
-            {
-                if (foodType.foodTag.Contains("Meat") && foodType.energyUnits > 25 && carniMorph != null)
-                {
-                    TransMorph(carniMorph);
-                    break;
-                }
-                if (foodType.foodTag.Contains("Grass") && foodType.energyUnits > 50 && herbiMorph != null)
-                {
-                    TransMorph(herbiMorph);
-                    break;
-                }
-            }
-        }
+        List<GameObject> availableForms = new List<GameObject>();
+        List<DietData> dietHistory = GetComponent<Metabolism>().dietHistory;
+
+        foreach (MorphData _form in possibleMorphs)
+            if (morphLevel >= _form.minMorphLevel)
+                foreach (DietData foodType in dietHistory)
+                    if (foodType.foodTag.Contains(_form.foodTag) && foodType.energyUnits > _form.energyMinimum)
+                    {
+                        availableForms.Add(_form.morphForm);
+                        break;
+                    }
+
+        // If multiple forms are possible at level up, choose one at random
+        if (availableForms.Count > 0)
+            TransMorph(availableForms[UnityEngine.Random.Range(0, availableForms.Count)]);
     }
 
     //// Morph into available Form \\\\
@@ -132,5 +130,23 @@ public class Morphology : MonoBehaviour
     {
         //Despawn old Creature Form
         Destroy(transform.root.gameObject);
+    }
+}
+
+
+[Serializable]
+public class MorphData
+{
+    public GameObject morphForm;
+    public int minMorphLevel = 1;
+    public string foodTag;
+    public float energyMinimum;
+
+    public MorphData(GameObject _morphForm, int _minMorphLevel, string _foodTag, float _energyMinimum)
+    {
+        this.morphForm = _morphForm;
+        this.minMorphLevel = _minMorphLevel;
+        this.foodTag = _foodTag;
+        this.energyMinimum = _energyMinimum;
     }
 }

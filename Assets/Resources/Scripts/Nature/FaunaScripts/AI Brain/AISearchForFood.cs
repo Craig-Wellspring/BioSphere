@@ -26,9 +26,6 @@ public class AISearchForFood : StateMachineBehaviour
     {
         if (!destinationSetter.target)
             destinationSetter.target = null;
-
-        if (!metabolism.currentTargetFood)
-            metabolism.currentTargetFood = null;
     }
 
     void FindRandomPath(Vector3 _fromPos, int _jauntLength)

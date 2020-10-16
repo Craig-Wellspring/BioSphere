@@ -6,13 +6,12 @@ using System;
 using System.Collections.ObjectModel;
 
 
-[ExecuteAlways]
 public class CreatureStats : MonoBehaviour
 {
     [Header("Creature Stats")]
     public int currentLevel = 1;
     [Space(15)]
-    public List<CreatureStat> statBlock = new List<CreatureStat>();
+    public List<CreatureStat> statBlock;
 
 
     [Header("Debug")]
@@ -24,9 +23,10 @@ public class CreatureStats : MonoBehaviour
 
     void Start()
     {
-        // Initialize Stats
-        statBlock = new List<CreatureStat>();
-        GenerateStatBlock();
+        // Add Speed Stat if AIPath exists
+        AIPathAlignedToSurface pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
+        if (pathing)
+            AddNewStat("Speed", pathing.maxSpeed);
     }
 
     public void CopyCStats(CreatureStats _targetCStats)
@@ -54,7 +54,7 @@ public class CreatureStats : MonoBehaviour
     }
 
     public event System.Action LevelUpFinishing;
-    public void ConfirmLevelUp(CreatureStat _statToIncrease, int _increment = 1)
+    public void ConfirmLevelUp(CreatureStat _statToIncrease, float _increment = 1)
     {
         unappliedLevels--;
 
@@ -62,10 +62,7 @@ public class CreatureStats : MonoBehaviour
         IncreaseLevel();
 
         // Increase chosen stat
-        if (_statToIncrease.id.Contains("Health"))
-            _increment *= 2;
-
-        _statToIncrease.IncreaseStat(_increment);
+        _statToIncrease.IncreaseStat(ModifiedIncrement(_statToIncrease.id, _increment));
         PushOrPullOriginStats(true);
 
         //Trigger ending events
@@ -77,41 +74,52 @@ public class CreatureStats : MonoBehaviour
             Debug.Log(transform.root.name + " advanced to level " + currentLevel + " and increased its " + _statToIncrease.id + " to " + _statToIncrease.baseValue);
     }
 
+
     public void IncreaseLevel(int _increment = 1)
     {
         currentLevel += _increment;
     }
+
+
+    // Adjust stat value increment on level increase
+    float ModifiedIncrement(string _statID, float _input)
+    {
+        float output = _input;
+
+        switch (_statID)
+        {
+            case "Speed":
+                output *= 0.5f;
+                break;
+
+            case "Health":
+                output *= 2;
+                break;
+
+            case "Metabolism":
+                output *= 0.5f;
+                break;
+        }
+
+        return output;
+    }
     #endregion
 
 
-    void GenerateStatBlock()
-    {
-        // Add Speed Stat if AIPath exists
-        AIPathAlignedToSurface pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
-        if (pathing)
-            statBlock.Add(new CreatureStat("Speed", pathing.maxSpeed));
-
-        // Add Health Stat if Vitality exists
-        Vitality vitality = GetComponent<Vitality>();
-        if (vitality)
-            statBlock.Add(new CreatureStat("Health", vitality.maxHealth));
-
-        // Add Perception Stat if VPerception exists
-        VisualPerception vPerception = GetComponent<VisualPerception>();
-        if (vPerception)
-            statBlock.Add(new CreatureStat("Perception", vPerception.sightRadius));
-
-        // Add Metabolism Stat if Metabolism exists
-        Metabolism metabolism = GetComponent<Metabolism>();
-        if (metabolism)
-            statBlock.Add(new CreatureStat("Metabolism", metabolism.metabolismRate));
-    }
-    
 
     #region Stat Allocation
     public void AddNewStat(string _statName, float _baseValue)
     {
-        statBlock.Add(new CreatureStat(_statName, _baseValue));
+        bool statExists = false;
+        foreach (CreatureStat _stat in statBlock)
+            if (_stat.id.Equals(_statName))
+            {
+                statExists = true;
+                break;
+            }
+
+        if (!statExists)
+            statBlock.Add(new CreatureStat(_statName, _baseValue));
     }
 
     // Push or Pull Origin Stats. If _push, set stats in creature equal to current stats in statBlock. If !_push, set stats in statBlock equal to current stats in creature

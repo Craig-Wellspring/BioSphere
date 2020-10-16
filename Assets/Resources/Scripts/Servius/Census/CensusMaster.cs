@@ -16,12 +16,13 @@ public class CensusMaster : MonoBehaviour
     }
     #endregion
 
-    
+
     [Header("Overpopulation Control")]
     [Tooltip("Emergency stop for global overpopulation"), SerializeField]
-    private int globalOvergrowth = 30000;
+    int globalOvergrowth = 5000;
     [Tooltip("Emergency stop for overpopulation of each species"), SerializeField]
-    private int speciesOvergrowth = 10000;
+    int speciesOvergrowth = 3000;
+
 
     [Header("Event Log")]
     public bool logPopulationIncrease = false;
@@ -29,75 +30,76 @@ public class CensusMaster : MonoBehaviour
     public bool logEmergences = false;
     public bool logExtinctions = false;
 
+
     [Header("Current Populations")]
     [SerializeField]
-    private int totalPopulation = 0;
-    public List<CensusData> listOfSpecies;
+    int totalPopulation = 0;
+    [Space(10)]
+    public List<SpeciesRecord> listOfSpecies;
 
 
 
     public void PopulationIncrease(string _newMember)
     {
-        bool found = false;
+        bool exists = false;
         //Search list of species
-        foreach (CensusData member in listOfSpecies)
+        foreach (SpeciesRecord _member in listOfSpecies)
         {
             //If already on the list, add to population
-            if (member.speciesName.Equals(_newMember))
+            if (_member.speciesName.Equals(_newMember))
             {
-
-                member.populationSize += 1;
+                _member.current += 1;
+                _member.allTime += 1;
                 totalPopulation += 1;
 
                 //Log
                 if (logPopulationIncrease)
-                    Debug.Log(_newMember + " population increased to " + member.populationSize);
+                    Debug.Log(_newMember + " population increased to " + _member.current);
 
                 //Crash if population is too high
-                if (member.populationSize >= speciesOvergrowth)
+                if (_member.current >= speciesOvergrowth)
                 {
-                    Debug.Log("Crash due to " + _newMember + " overgrowth");
+                    Debug.LogError("Crash due to " + _newMember + " overgrowth");
                     UnityEditor.EditorApplication.isPlaying = false;
                 }
                 if (totalPopulation >= globalOvergrowth)
                 {
-                    Debug.Log("Crash due to global population overgrowth");
+                    Debug.LogError("Crash due to global population overgrowth");
                     UnityEditor.EditorApplication.isPlaying = false;
                 }
-                found = true;
+                exists = true;
                 break;
             }
         }
-        if (!found)
+        if (!exists)
         {
             //If not found on the list, add to list
-            listOfSpecies.Add(new CensusData(_newMember, 1));
+            listOfSpecies.Add(new SpeciesRecord(_newMember, 1, 1));
             totalPopulation += 1;
 
             //Log
             if (logEmergences)
                 Debug.Log(_newMember + " has emerged in the world.");
         }
-
     }
 
-    
+
     public void PopulationDecrease(string _lostMember)
     {
-        foreach(CensusData member in listOfSpecies)
+        foreach (SpeciesRecord _member in listOfSpecies)
         {
-            if (member.speciesName.Contains(_lostMember))
+            if (_member.speciesName.Equals(_lostMember))
             {
-                member.populationSize -= 1;
+                _member.current -= 1;
                 totalPopulation -= 1;
 
                 //Log
                 if (logPopulationDecrease)
-                    Debug.Log(_lostMember + " population decreased to " + member.populationSize);
+                    Debug.Log(_lostMember + " population decreased to " + _member.current);
 
-                if (member.populationSize < 1)
+                if (_member.current < 1)
                 {
-                    listOfSpecies.Remove(member);
+                    //listOfSpecies.Remove(_member);
 
                     //Log
                     if (logExtinctions)
@@ -109,17 +111,29 @@ public class CensusMaster : MonoBehaviour
     }
 
 
-    int CurrentPopulation(string nameOfSpecies)
+    public int CurrentPopulation(string _nameOfSpecies)
     {
-        int currentPopulation = 0;
-        foreach (CensusData speciesType in listOfSpecies)
-        {
-            if (speciesType.speciesName.Contains(nameOfSpecies))
-            {
-                currentPopulation = speciesType.populationSize;
-                break;
-            }
-        }
-        return currentPopulation;
+        foreach (SpeciesRecord _member in listOfSpecies)
+            if (_member.speciesName.Equals(_nameOfSpecies))
+                return _member.current;
+        
+        // else
+        return 0;
+    }
+}
+
+
+[System.Serializable]
+public class SpeciesRecord
+{
+    [HideInInspector] public string speciesName;
+    public int current;
+    public int allTime;
+
+    public SpeciesRecord(string _name, int _pop, int _allTimePop)
+    {
+        this.speciesName = _name;
+        this.current = _pop;
+        this.allTime = _allTimePop;
     }
 }

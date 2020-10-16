@@ -10,22 +10,12 @@ public class BodyReference : AdvancedMonoBehaviour
     public Collider mainBodyCollider;
     [Tooltip("The Creature's additional body colliders which must be on the CreatureAdl layer")]
     public List<Collider> adlBodyColliders;
-    [Space(15)]
-    public Transform eyes;
-    [Space(10)]
-
-    public Transform mouth;
-
-    [Header("Corpse")]
-    [Tooltip("GameObject that represents the Creature's corpse")]
-    public GameObject corpse;
 
 
-    void Start()
+
+    void OnEnable()
     {
         RegisterBodyColliders();
-        RegisterCorpse();
-        RegisterSensors();
     }
     
 
@@ -47,20 +37,5 @@ public class BodyReference : AdvancedMonoBehaviour
             if (_col.gameObject.layer == transform.root.gameObject.layer)
                 mainBodyCollider = _col;
         }
-    }
-
-    void RegisterCorpse()
-    {
-        // Cache corpse
-        corpse = transform.root.Find("Corpse").gameObject;
-    }
-
-    void RegisterSensors()
-    {
-        // Cache eyes transform
-        eyes = FindChildWithTag("Eyes", transform.root);
-
-        // Cache mouth transform
-        mouth = FindChildWithTag("Mouth", transform.root);
     }
 }

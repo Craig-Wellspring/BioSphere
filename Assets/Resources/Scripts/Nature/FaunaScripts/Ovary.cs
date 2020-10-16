@@ -17,7 +17,7 @@ public class Ovary : ObjectSpawner
     [Space(10)]
     [Tooltip("Maximum energy passed on to Egg offspring. Energy beyond threshold will be returned to Source.")]
     [SerializeField] float maxEggEnergy = 50f;
-    [SerializeField] GameObject eggToSpawn = null;
+    [SerializeField] GameObject eggType = null;
     [SerializeField, Range(0, 1)] float energyAsNV = 0.2f;
     [SerializeField, Range(0, 3)] float incubationSpeed = 0.5f;
     [SerializeField] bool canHatch = true;
@@ -99,7 +99,7 @@ public class Ovary : ObjectSpawner
         }
 
         // Spawn egg
-        GameObject newEgg = SpawnObject(eggToSpawn, eData, _energyEndowed);
+        GameObject newEgg = SpawnObject(eggType, eData, _energyEndowed);
 
         // Assign name and pass on genetics
         newEgg.name = eggData.eggName;

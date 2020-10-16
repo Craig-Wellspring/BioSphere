@@ -13,6 +13,11 @@ public class Vitality : MonoBehaviour
     public float maxHealth;
 
 
+    [Header("Corpse")]
+    [Tooltip("GameObject that represents the Creature's corpse")]
+    public GameObject corpse;
+
+
     [Header("Debug")]
     public bool dead = false;
 
@@ -27,6 +32,9 @@ public class Vitality : MonoBehaviour
 
         healthBar = transform.root.Find("Canvas").Find("Health Bar").GetComponent<Slider>();
         UpdateHealthBar();
+
+        // Register Max Health in StatBlock
+        GetComponent<CreatureStats>()?.AddNewStat("Health", maxHealth);
     }
 
     void UpdateHealthBar()
@@ -102,13 +110,13 @@ public class Vitality : MonoBehaviour
             _body.enabled = false;
 
         // Activate Corpse
-        if (body.corpse != null)
+        if (corpse != null)
         {
-            body.corpse.SetActive(true);
+            corpse.SetActive(true);
 
             //Transfer Energy to Corpse
             EnergyData selfEData = GetComponent<EnergyData>();
-            FoodData corpseFData = body.corpse.GetComponent<FoodData>();
+            FoodData corpseFData = corpse.GetComponent<FoodData>();
             if (selfEData && corpseFData)
             {
                 corpseFData.AddNV(selfEData.energyReserve);

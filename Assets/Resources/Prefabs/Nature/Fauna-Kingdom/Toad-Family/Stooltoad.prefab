@@ -1722,7 +1722,7 @@ GameObject:
   - component: {fileID: 6847301330718670184}
   m_Layer: 0
   m_Name: Jaw
-  m_TagString: Mouth
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4814,7 +4814,7 @@ GameObject:
   - component: {fileID: 6181251145765832575}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Eyes
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5281,6 +5281,31 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: mainBodyCollider
+      value: 
+      objectReference: {fileID: 2279810860505719681}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: adlBodyColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 502716661065007945}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eyes
+      value: 
+      objectReference: {fileID: 6181251145765832575}
+    - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: mouth
+      value: 
+      objectReference: {fileID: 6847301330718670184}
     - target: {fileID: 1064385298225998275, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: selfCollider
@@ -5367,6 +5392,11 @@ PrefabInstance:
       propertyPath: bodyColliders.Array.data[1]
       value: 
       objectReference: {fileID: 502716661065007945}
+    - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: corpse
+      value: 
+      objectReference: {fileID: 5764549722861291752}
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bodyColliders.Array.size
@@ -5407,6 +5437,11 @@ PrefabInstance:
       propertyPath: adlBodyColliders.Array.data[0]
       value: 
       objectReference: {fileID: 502716661065007945}
+    - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: statBlock.Array.data[0].baseValue
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.size
@@ -5447,6 +5482,16 @@ PrefabInstance:
       propertyPath: dietList.Array.data[1]
       value: Berry
       objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.data[2]
+      value: Berry
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: drawBiteSphere
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3870503359955136681, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: adlBodyColliders.Array.size
@@ -5476,7 +5521,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1979167458713789899}
     - target: {fileID: 4763968390723634094, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_Controller
@@ -5520,10 +5565,73 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
+      propertyPath: possibleMorphs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
       propertyPath: carniMorph
       value: 
       objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
         type: 3}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: herbiMorph
+      value: 
+      objectReference: {fileID: 2421696708626316590, guid: 8fa0af531c2ed3443afc075716a24ca9,
+        type: 3}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].morphForm
+      value: 
+      objectReference: {fileID: 2421696708626316590, guid: 8fa0af531c2ed3443afc075716a24ca9,
+        type: 3}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].morphForm
+      value: 
+      objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
+        type: 3}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].foodTag
+      value: Berry
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].energyMinimum
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].foodTag
+      value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].energyMinimum
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].minLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].minLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].minMorphLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].minMorphLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7777804111700510589, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bodyColliders.Array.size
@@ -5554,6 +5662,16 @@ PrefabInstance:
       propertyPath: eyesTransform
       value: 
       objectReference: {fileID: 6181251145765832575}
+    - target: {fileID: 8086205142144112776, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: eyes
+      value: 
+      objectReference: {fileID: 6181251145765832575}
+    - target: {fileID: 8086205142144112776, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: drawSightSphere
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8759774926469127402, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5627,15 +5745,27 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
---- !u!1 &6757980782073519402 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8499937947738678446, guid: c5bf24098b61bba4bb0da85b9f252476,
-    type: 3}
-  m_PrefabInstance: {fileID: 2899459648303872388}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2899459648303997694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2899459648303872388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1979167458713789899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3696216562791799887, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2899459648303872388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5764549722861291752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7476881784630833516, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2899459648303872388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6757980782073519402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8499937947738678446, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2899459648303872388}
   m_PrefabAsset: {fileID: 0}
