@@ -11,6 +11,7 @@ public class Vitality : MonoBehaviour
 
     [Header("Settings")]
     public float maxHealth;
+    [SerializeField] float maxHealthIncrement = 2f;
 
 
     [Header("Corpse")]
@@ -34,7 +35,7 @@ public class Vitality : MonoBehaviour
         UpdateHealthBar();
 
         // Register Max Health in StatBlock
-        GetComponent<CreatureStats>()?.AddNewStat("Health", maxHealth);
+        GetComponent<CreatureStats>()?.AddNewStat("Health", maxHealth, maxHealthIncrement);
     }
 
     void UpdateHealthBar()
@@ -92,16 +93,11 @@ public class Vitality : MonoBehaviour
 
         transform.root.gameObject.name += " (Dead)";
 
-        if (GetComponent<VisualPerception>())
-            GetComponent<VisualPerception>().enabled = false;
+        if (transform.root.TryGetComponent<AIPathAlignedToSurface>(out AIPathAlignedToSurface aiPath))
+            aiPath.enabled = false;
 
-        if (transform.root.GetComponent<AIPathAlignedToSurface>())
-            transform.root.GetComponent<AIPathAlignedToSurface>().enabled = false;
-
-        //Update Animator
-        if (healthBar.gameObject.activeSelf)
-            healthBar.gameObject.SetActive(false);
-
+        if (transform.root.TryGetComponent<AIDestinationSetter>(out AIDestinationSetter destinationSetter))
+            destinationSetter.enabled = false;
 
         //Deactivate Body
         BodyReference body = transform.root.GetComponent<BodyReference>();
@@ -115,13 +111,15 @@ public class Vitality : MonoBehaviour
             corpse.SetActive(true);
 
             //Transfer Energy to Corpse
-            EnergyData selfEData = GetComponent<EnergyData>();
-            FoodData corpseFData = corpse.GetComponent<FoodData>();
-            if (selfEData && corpseFData)
-            {
-                corpseFData.AddNV(selfEData.energyReserve);
-                selfEData.RemoveEnergy(selfEData.energyReserve);
-            }
+            if (TryGetComponent<EnergyData>(out EnergyData selfEData) && TryGetComponent<FoodData>(out FoodData corpseFData))
+                if (selfEData.RemoveEnergy(selfEData.energyReserve))
+                    corpseFData.AddNV(selfEData.energyReserve);
         }
+
+        // Deactivate Canvas
+        transform.root.Find("Canvas").gameObject.SetActive(false);
+
+        // Deactivate Vitals
+        this.gameObject.SetActive(false);
     }
 }

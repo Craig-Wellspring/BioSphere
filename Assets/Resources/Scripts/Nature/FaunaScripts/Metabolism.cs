@@ -19,13 +19,15 @@ public class Metabolism : MonoBehaviour
     [SerializeField] bool drawBiteSphere = false;
     [Tooltip("How quickly this creature consumes food. Higher is faster. 1 is default.")]
     [Range(0, 10)] public float chewSpeed = 1f;
+    [SerializeField] LayerMask biteLayers;
 
 
     [Header("Metabolism Settings")]
     [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
     public float metabolismRate = 3f;
+    [SerializeField] float metaRateIncrement = 0.5f;
     [Tooltip("Units of Hunger gained per tick")]
-    public float hungerGainedPerTick = 3f;
+    [SerializeField] float hungerGainedPerTick = 3f;
     [Tooltip("Increase units of Hunger gained per tick every level up")]
     [SerializeField] float hungerPerTickPerLevel = 0.1f;
 
@@ -62,12 +64,12 @@ public class Metabolism : MonoBehaviour
     //Cache
     DietData morselIngested = new DietData(null, 0);
     float hungerTimer = 0f;
-    Slider hungerBar;
+    [HideInInspector] public Slider hungerBar;
     Image hungerFill;
     SingleGradient colorPicker;
     #endregion
 
-    private void Start()
+    void Start()
     {
         // Initialize UI
         hungerBar = transform.root.Find("Canvas").Find("Hunger Bar").GetComponent<Slider>();
@@ -75,12 +77,14 @@ public class Metabolism : MonoBehaviour
         colorPicker = hungerFill.GetComponent<SingleGradient>();
         hungerBar.gameObject.SetActive(false);
 
+        
+
 
         CreatureStats cStats = GetComponent<CreatureStats>();
         if (cStats)
         {
             // Register Metabolism Rate in StatBlock
-            cStats.AddNewStat("Metabolism", metabolismRate);
+            cStats.AddNewStat("Metabolism", metabolismRate, metaRateIncrement);
 
             // Increase hunger per level
             cStats.LevelUpBeginning += LevelingUp;
@@ -91,10 +95,10 @@ public class Metabolism : MonoBehaviour
     //// Become more hungry over time \\\\
     void Update()
     {
-        hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
-
         if (!isEating)
             Metabolise();
+
+        hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
 
         //Update UI
         hungerBar.value = 100 - hungerPercentage;
@@ -179,11 +183,38 @@ public class Metabolism : MonoBehaviour
     }
 
 
+    Vector3 BiteCenter(float _biteSize)
+    {
+        return mouth.position + (transform.forward * _biteSize / 2);
+    }
 
+    public void Bite()
+    {
+        Collider[] hitFoodList = Physics.OverlapSphere(BiteCenter(biteSize), biteSize, biteLayers);
+
+        foreach (Collider _hitFood in hitFoodList)
+        {
+            if (dietList.Contains(_hitFood.tag))
+            {
+                StartEating(_hitFood.gameObject);
+                break;
+            }
+        }
+    }
+
+    //// Draw Debug BiteSphere \\\\
+    private void OnDrawGizmosSelected()
+    {
+        if (drawBiteSphere && mouth)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(BiteCenter(biteSize), biteSize);
+        }
+    }
 
 
     //// Consume food object one bite per frame \\\\
-    public void Bite(FoodData _targetFData, float _biteSize)
+    public void Chew(FoodData _targetFData, float _biteSize)
     {
         // Adjust bite size
         if (_targetFData.nutritionalValue < _biteSize)
@@ -288,18 +319,6 @@ public class Metabolism : MonoBehaviour
     void LevelingUp()
     {
         hungerGainedPerTick += hungerPerTickPerLevel;
-    }
-
-
-
-    //// Draw Debug BiteSphere \\\\
-    private void OnDrawGizmosSelected()
-    {
-        if (drawBiteSphere && mouth)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(mouth.position + (transform.forward * biteSize / 2), biteSize);
-        }
     }
 }
 

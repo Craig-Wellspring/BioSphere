@@ -34,6 +34,7 @@ TagManager:
   - Fox
   - Leaves
   - Trunk
+  - Underwater
   layers:
   - Default
   - TransparentFX

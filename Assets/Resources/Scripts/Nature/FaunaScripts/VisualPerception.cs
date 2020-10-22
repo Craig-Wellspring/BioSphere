@@ -8,23 +8,24 @@ public class VisualPerception : AdvancedMonoBehaviour
     [Header("Sight Settings")]
     public Transform eyes;
     [Range(0, 20)] public float sightRadius = 10f;
+    [SerializeField] float radiusIncrement = 0.5f;
     [SerializeField] bool drawSightSphere = false;
-    public LayerMask searchLayers;
+    public LayerMask visibleLayers;
     //public float viewAngle;
 
 
     [Header("Currently Visible")]
     public GameObject closestMate;
-    public List<Collider> nearbyMates;
+    public List<GameObject> nearbyMates;
     [Space(10)]
     public GameObject closestFood;
-    public List<Collider> nearbyFood;
+    public List<GameObject> nearbyFood;
     [Space(10)]
     public GameObject closestPrey;
-    public List<Collider> nearbyPrey;
+    public List<GameObject> nearbyPrey;
     [Space(10)]
     public GameObject closestPredator;
-    public List<Collider> nearbyPredators;
+    public List<GameObject> nearbyPredators;
 
 
     [Header("Debug")]
@@ -46,7 +47,7 @@ public class VisualPerception : AdvancedMonoBehaviour
 
 
         // Register Sight Radius in StatBlock
-        GetComponent<CreatureStats>()?.AddNewStat("Perception", sightRadius);
+        GetComponent<CreatureStats>()?.AddNewStat("Perception", sightRadius, radiusIncrement);
     }
 
 
@@ -68,57 +69,57 @@ public class VisualPerception : AdvancedMonoBehaviour
 
 
         // Check surroundings, populate a list of everything in the area
-        List<Collider> withinSightRange = Physics.OverlapSphere(eyes.position, sightRadius, searchLayers).ToList();
+        List<Collider> withinSightRange = Physics.OverlapSphere(eyes.position, sightRadius, visibleLayers).ToList();
         withinSightRange.Remove(body.mainBodyCollider);
 
 
         //For every object in the area, check for line of sight and categorize into lists
-        foreach (Collider col in withinSightRange)
+        foreach (Collider _col in withinSightRange)
         {
             // Check for clear Sight Line
             RaycastHit hit;
-            Ray sightRay = new Ray(eyes.position, col.transform.position - eyes.position);
-            if (col.Raycast(sightRay, out hit, sightRadius))
+            Ray sightRay = new Ray(eyes.position, _col.transform.position - eyes.position);
+            if (_col.Raycast(sightRay, out hit, sightRadius))
             {
                 // Creatures with the same tag as me are my mates
-                if (col.transform.tag == body.mainBodyCollider.transform.tag)
+                if (_col.transform.tag == body.mainBodyCollider.transform.tag)
                 {
-                    nearbyMates.Add(col);
+                    nearbyMates.Add(_col.gameObject);
                     continue;
                 }
 
                 if (metabolism != null)
                 {
                     // Register food if it is part of my diet
-                    if (metabolism.dietList.Contains(col.transform.tag))
+                    if (metabolism.dietList.Contains(_col.transform.tag))
                     {
-                        nearbyFood.Add(col);
+                        nearbyFood.Add(_col.gameObject);
 
                         if (foodSightLines)
-                            Debug.DrawRay(eyes.position, col.transform.position - eyes.position, Color.cyan, Time.deltaTime);
+                            Debug.DrawRay(eyes.position, _col.transform.position - eyes.position, Color.cyan, Time.deltaTime);
                         continue;
                     }
 
                     // Register nearby Prey
-                    if (metabolism.preyList.Contains(col.transform.tag))
+                    if (metabolism.preyList.Contains(_col.transform.tag))
                     {
-                        nearbyPrey.Add(col);
+                        nearbyPrey.Add(_col.gameObject);
 
                         if (preySightLines)
-                            Debug.DrawRay(eyes.position, col.transform.position - eyes.position, Color.magenta, Time.deltaTime);
+                            Debug.DrawRay(eyes.position, _col.transform.position - eyes.position, Color.magenta, Time.deltaTime);
                         continue;
                     }
 
                     // Creatures who see me as Prey are my Predators
-                    Metabolism potentialPred = col.transform.root.GetComponentInChildren<Metabolism>();
+                    Metabolism potentialPred = _col.transform.root.GetComponentInChildren<Metabolism>();
                     if (potentialPred != null)
                     {
                         if (potentialPred.preyList.Contains(body.mainBodyCollider.transform.tag))
                         {
-                            nearbyPredators.Add(col);
+                            nearbyPredators.Add(_col.gameObject);
 
                             if (predatorSightLines)
-                                Debug.DrawRay(eyes.position, col.transform.position - eyes.position, Color.red, Time.deltaTime);
+                                Debug.DrawRay(eyes.position, _col.transform.position - eyes.position, Color.red, Time.deltaTime);
                             continue;
                         }
                     }
@@ -127,10 +128,10 @@ public class VisualPerception : AdvancedMonoBehaviour
         }
 
         //Find the closest member of each type
-        closestFood = ClosestObjInColliderList(nearbyFood, false);
-        closestMate = ClosestObjInColliderList(nearbyMates, true);
-        closestPredator = ClosestObjInColliderList(nearbyPredators, true);
-        closestPrey = ClosestObjInColliderList(nearbyPrey, true);
+        closestFood = ClosestObjectInList(nearbyFood, false);
+        closestMate = ClosestObjectInList(nearbyMates, true);
+        closestPredator = ClosestObjectInList(nearbyPredators, true);
+        closestPrey = ClosestObjectInList(nearbyPrey, true);
     }
 
     private void OnDrawGizmosSelected()

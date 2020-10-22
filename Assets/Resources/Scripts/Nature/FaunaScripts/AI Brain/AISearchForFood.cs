@@ -9,14 +9,11 @@ public class AISearchForFood : StateMachineBehaviour
 
     Seeker seeker;
     AIDestinationSetter destinationSetter;
-    Metabolism metabolism;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         seeker = animator.transform.root.GetComponent<Seeker>();
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
-        metabolism = animator.GetComponentInParent<Metabolism>();
-
 
         FindRandomPath(animator.rootPosition, jauntLength);
     }

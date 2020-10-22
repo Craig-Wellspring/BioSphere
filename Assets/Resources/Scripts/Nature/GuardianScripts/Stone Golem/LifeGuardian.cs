@@ -8,7 +8,7 @@ public class LifeGuardian : ObjectSpawner
     [SerializeField] float maxEnergyPlanted = 500f;
     [Range(1, 100), SerializeField] int plantingArea = 2;
     [Range(1, 100)] public int roamingArea = 30;
-    public int pathingSpread = 5000;
+    [Range(1, 50)] public int pathingSpread = 5;
 
     Animator guardianBrain;
     AIPath pathing;

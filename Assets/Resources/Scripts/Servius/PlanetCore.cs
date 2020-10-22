@@ -17,18 +17,19 @@ public class PlanetCore : MonoBehaviour
     public float gravity = -10f;
     public float alignSpeed = 50f;
 
-    public void Attract(Transform body)
+    public void Attract(Rigidbody _body)
     {
-        Vector3 gravityUp = (transform.position - body.position).normalized;
+        Vector3 gravityUp = (transform.position - _body.position).normalized;
 
-        body.GetComponent<Rigidbody>().AddForce(-gravityUp * gravity);
+        _body.AddForce(-gravityUp * gravity);
     }
 
-    public void AlignWithGravity(Transform _body)
+    public void AlignWithGravity(Transform _body, bool _snap)
     {
         Vector3 gravityUp = (transform.position - _body.position).normalized;
 
         Quaternion targetRotation = Quaternion.FromToRotation(_body.up, -gravityUp) * _body.rotation;
-        _body.rotation = Quaternion.Slerp(_body.rotation, targetRotation, alignSpeed * Time.deltaTime);
+        if (!_snap)
+            _body.rotation = Quaternion.Slerp(_body.rotation, targetRotation, alignSpeed * Time.deltaTime);
     }
 }

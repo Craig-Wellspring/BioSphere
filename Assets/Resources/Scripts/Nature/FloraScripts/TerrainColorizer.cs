@@ -2,9 +2,6 @@
 
 public class TerrainColorizer : AdvancedMonoBehaviour
 {
-    TerrainColor localTerrainColor;
-    SingleGradient globalTerrainColor;
-
     int vert1Index;
     int vert2Index;
     int vert3Index;
@@ -13,11 +10,13 @@ public class TerrainColorizer : AdvancedMonoBehaviour
     Color vert2ColorChange;
     Color vert3ColorChange;
 
+
+    TerrainColor localTerrain;
+
     void OnEnable()
     {
         // Cache local terrain
-        localTerrainColor = TerrainUnderPosition(transform.root.position + transform.root.up).GetComponent<TerrainColor>();
-        globalTerrainColor = localTerrainColor.GetComponentInParent<SingleGradient>();
+        localTerrain = TerrainUnderPosition(transform.root.position + transform.root.up).terrainObject.GetComponent<TerrainColor>();
     }
 
 
@@ -26,48 +25,39 @@ public class TerrainColorizer : AdvancedMonoBehaviour
         // Color terrain a little more green on spawn
         if (Physics.Raycast(transform.root.position + transform.root.up, GravityVector(transform.root.position), out RaycastHit groundRayHit, 5, LayerMask.GetMask("Geosphere")))
         {
-            if (groundRayHit.collider.CompareTag("Ground"))
-            {
-                // Cache verts of mesh face under self
-                vert1Index = localTerrainColor.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 0];
-                vert2Index = localTerrainColor.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 1];
-                vert3Index = localTerrainColor.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 2];
+            // Cache verts of mesh face under self
+            vert1Index = localTerrain.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 0];
+            vert2Index = localTerrain.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 1];
+            vert3Index = localTerrain.terrainMesh.triangles[groundRayHit.triangleIndex * 3 + 2];
 
-                // Color vertexes
-                Color newColor1 = Color.Lerp(localTerrainColor.colorArray[vert1Index], globalTerrainColor.gradient.Evaluate(1), _increment);
-                vert1ColorChange = newColor1 - localTerrainColor.colorArray[vert1Index];
-                localTerrainColor.colorArray[vert1Index] = newColor1;
+            // Color vertexes
+            Color newColor1 = Color.Lerp(localTerrain.colorArray[vert1Index], localTerrain.terrainGradient.Evaluate(1), _increment);
+            vert1ColorChange = newColor1 - localTerrain.colorArray[vert1Index];
+            localTerrain.colorArray[vert1Index] = newColor1;
 
-                Color newColor2 = Color.Lerp(localTerrainColor.colorArray[vert2Index], globalTerrainColor.gradient.Evaluate(1), _increment);
-                vert2ColorChange = newColor2 - localTerrainColor.colorArray[vert2Index];
-                localTerrainColor.colorArray[vert2Index] = newColor2;
+            Color newColor2 = Color.Lerp(localTerrain.colorArray[vert2Index], localTerrain.terrainGradient.Evaluate(1), _increment);
+            vert2ColorChange = newColor2 - localTerrain.colorArray[vert2Index];
+            localTerrain.colorArray[vert2Index] = newColor2;
 
-                Color newColor3 = Color.Lerp(localTerrainColor.colorArray[vert3Index], globalTerrainColor.gradient.Evaluate(1), _increment);
-                vert3ColorChange = newColor3 - localTerrainColor.colorArray[vert3Index];
-                localTerrainColor.colorArray[vert3Index] = newColor3;
+            Color newColor3 = Color.Lerp(localTerrain.colorArray[vert3Index], localTerrain.terrainGradient.Evaluate(1), _increment);
+            vert3ColorChange = newColor3 - localTerrain.colorArray[vert3Index];
+            localTerrain.colorArray[vert3Index] = newColor3;
 
-                // Update terrain coloration
-                localTerrainColor.RefreshTerrainColor();
-            }
-            else
-            {
-                Debug.LogError("Colorizer Raycast hit something not tagged as Ground.");
-            }
+            // Update terrain coloration
+            localTerrain.RefreshTerrainColor();
         }
         else
-        {
             Debug.LogError("Colorizer Raycast hit nothing.");
-        }
     }
 
     void OnDisable()
     {
         // Color vertexes
-        localTerrainColor.colorArray[vert1Index] = localTerrainColor.colorArray[vert1Index] - vert1ColorChange;
-        localTerrainColor.colorArray[vert2Index] = localTerrainColor.colorArray[vert2Index] - vert2ColorChange;
-        localTerrainColor.colorArray[vert3Index] = localTerrainColor.colorArray[vert3Index] - vert3ColorChange;
+        localTerrain.colorArray[vert1Index] = localTerrain.colorArray[vert1Index] - vert1ColorChange;
+        localTerrain.colorArray[vert2Index] = localTerrain.colorArray[vert2Index] - vert2ColorChange;
+        localTerrain.colorArray[vert3Index] = localTerrain.colorArray[vert3Index] - vert3ColorChange;
 
         // Update terrain coloration
-        localTerrainColor.RefreshTerrainColor();
+        localTerrain.RefreshTerrainColor();
     }
 }

@@ -22,7 +22,7 @@ public class AnimatorEating : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (metabolism.targetFData != null)
-            metabolism.Bite(metabolism.targetFData, chewRate * Time.deltaTime);
+            metabolism.Chew(metabolism.targetFData, chewRate * Time.deltaTime);
         else metabolism.StopEating();
     }
 }

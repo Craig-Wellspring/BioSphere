@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CloudSpawner : AdvancedMonoBehaviour
 {
-    // Singleton
+    #region Singleton
     public static CloudSpawner Spawner { get; private set; }
     void Awake()
     {
@@ -13,13 +13,16 @@ public class CloudSpawner : AdvancedMonoBehaviour
         else
             Destroy(gameObject);
     }
+    #endregion
 
 
     // Settings
     public int numberOfClouds = 100;
+
     [Header("Settings")]
-    [SerializeField] private Vector2 cloudSizeMinXMaxY;
-    [SerializeField] private List<GameObject> cloudTypes;
+    [SerializeField] Vector2 spawnRadiusMinxXMaxY;
+    [SerializeField] Vector2 cloudSizeMinXMaxY;
+    [SerializeField] List<GameObject> cloudTypes;
 
 
 
@@ -34,7 +37,7 @@ public class CloudSpawner : AdvancedMonoBehaviour
 
     public void SpawnCloud(bool _increaseCount)
     {
-        Vector3 spawnPos = Random.onUnitSphere * Random.Range(145, 160);
+        Vector3 spawnPos = Random.onUnitSphere * Random.Range(spawnRadiusMinxXMaxY.x, spawnRadiusMinxXMaxY.y);
 
         GameObject newCloud = Instantiate(cloudTypes[Random.Range(0,cloudTypes.Count)], spawnPos, Quaternion.identity, transform);
         newCloud.name = "Cloud";

@@ -20,7 +20,9 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         }
 
         // Spawn Object
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, RandomGroundPos(transform.root, _randomSpawnArea), GravityOrientedRotation(), _parent);
+        
+
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, TerrainUnderPosition(PositionAbove(transform.root, _randomSpawnArea)).position, GravityOrientedRotation(), _parent);
         newObject.name = _objectToSpawn.name;
 
         // Random Rotation
@@ -42,7 +44,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
     public void DrawDebug()
     {
         // Draw sphere at origin location
-        Vector3 originSpherePoint = RandomLocalPos(transform, 0);
+        Vector3 originSpherePoint = PositionAbove(transform);
         GameObject originSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         originSphere.GetComponent<MeshRenderer>().material.color = Color.red;
         originSphere.transform.position = originSpherePoint;
@@ -50,7 +52,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         Destroy(originSphere, 10);
 
         // Draw sphere at ground position
-        Vector3 destinationSpherePoint = PointOnTerrainUnderPosition(RandomLocalPos(transform, 0));
+        Vector3 destinationSpherePoint = TerrainUnderPosition(PositionAbove(transform)).position;
         GameObject destinationSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         destinationSphere.GetComponent<MeshRenderer>().material.color = Color.green;
         destinationSphere.transform.position = destinationSpherePoint;

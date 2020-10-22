@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class GravityAttract : MonoBehaviour
 {
-    private void FixedUpdate()
+    Rigidbody rBody;
+
+    void Start()
     {
-        PlanetCore.Core.Attract(transform);
+        rBody = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        PlanetCore.Core.Attract(rBody);
     }
 }

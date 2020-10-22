@@ -142,11 +142,15 @@ public class MorphData
     public string foodTag;
     public float energyMinimum;
 
-    public MorphData(GameObject _morphForm, int _minMorphLevel, string _foodTag, float _energyMinimum)
+    public enum RequirementType { Stat, Diet }
+    public List<Tuple<RequirementType, int>> requirements;
+
+    public MorphData(GameObject _morphForm, int _minMorphLevel, List<Tuple<RequirementType, int>> _requirements)//string _foodTag, float _energyMinimum)
     {
         this.morphForm = _morphForm;
         this.minMorphLevel = _minMorphLevel;
-        this.foodTag = _foodTag;
-        this.energyMinimum = _energyMinimum;
+        this.requirements = _requirements;
+        //this.foodTag = _foodTag;
+        //this.energyMinimum = _energyMinimum;
     }
 }

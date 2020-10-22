@@ -3,6 +3,8 @@
 [ExecuteInEditMode]
 public class TerrainColor : MonoBehaviour
 {
+    public Gradient terrainGradient;
+
     [HideInInspector] public Mesh terrainMesh;  
     [HideInInspector] public Color[] colorArray;
 
@@ -15,7 +17,7 @@ public class TerrainColor : MonoBehaviour
         colorArray = new Color[terrainMesh.vertices.Length];
 
         for (int i = 0; i < terrainMesh.vertices.Length; i++)
-            colorArray[i] = GetComponent<SingleGradient>().gradient.Evaluate(0);
+            colorArray[i] = terrainGradient.Evaluate(0);
 
         RefreshTerrainColor();
     }

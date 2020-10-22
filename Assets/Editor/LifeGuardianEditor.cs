@@ -8,11 +8,12 @@ public class LifeGuardianEditor : Editor
     {
         LifeGuardian lifeGuardian = (LifeGuardian)target;
 
+            
+        DrawDefaultInspector();
+        
+        EditorGUILayout.Space(10);
         if (GUILayout.Button("Plant Seed"))
             lifeGuardian.PlantSeedFromSource();
-            
-        EditorGUILayout.Space(10);
-        DrawDefaultInspector();
 
         EditorGUILayout.Space(10);
         if (GUILayout.Button("Draw Debug"))

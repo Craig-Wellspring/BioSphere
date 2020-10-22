@@ -16,8 +16,8 @@ public class CreatureStats : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] bool logLevelUp = false;
-    [Space(10)]
-    public int unappliedLevels = 0;
+    [HideInInspector] public int unappliedLevels = 0;
+
 
 
 
@@ -26,8 +26,9 @@ public class CreatureStats : MonoBehaviour
         // Add Speed Stat if AIPath exists
         AIPathAlignedToSurface pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
         if (pathing)
-            AddNewStat("Speed", pathing.maxSpeed);
+            AddNewStat("Speed", pathing.maxSpeed, 0.5f);
     }
+
 
     public void CopyCStats(CreatureStats _targetCStats)
     {
@@ -62,7 +63,7 @@ public class CreatureStats : MonoBehaviour
         IncreaseLevel();
 
         // Increase chosen stat
-        _statToIncrease.IncreaseStat(ModifiedIncrement(_statToIncrease.id, _increment));
+        _statToIncrease.IncreaseStat(_statToIncrease.increment);
         PushOrPullOriginStats(true);
 
         //Trigger ending events
@@ -79,36 +80,12 @@ public class CreatureStats : MonoBehaviour
     {
         currentLevel += _increment;
     }
-
-
-    // Adjust stat value increment on level increase
-    float ModifiedIncrement(string _statID, float _input)
-    {
-        float output = _input;
-
-        switch (_statID)
-        {
-            case "Speed":
-                output *= 0.5f;
-                break;
-
-            case "Health":
-                output *= 2;
-                break;
-
-            case "Metabolism":
-                output *= 0.5f;
-                break;
-        }
-
-        return output;
-    }
     #endregion
 
 
 
-    #region Stat Allocation
-    public void AddNewStat(string _statName, float _baseValue)
+    #region StatBlock Management
+    public void AddNewStat(string _statName, float _baseValue, float _increment)
     {
         bool statExists = false;
         foreach (CreatureStat _stat in statBlock)
@@ -119,8 +96,9 @@ public class CreatureStats : MonoBehaviour
             }
 
         if (!statExists)
-            statBlock.Add(new CreatureStat(_statName, _baseValue));
+            statBlock.Add(new CreatureStat(_statName, _baseValue, _increment));
     }
+
 
     // Push or Pull Origin Stats. If _push, set stats in creature equal to current stats in statBlock. If !_push, set stats in statBlock equal to current stats in creature
     public void PushOrPullOriginStats(bool _push)
@@ -133,28 +111,28 @@ public class CreatureStats : MonoBehaviour
                     if (_push)
                         transform.root.GetComponent<AIPathAlignedToSurface>().maxSpeed = _stat.baseValue;
                     else
-                        _stat.baseValue = transform.root.GetComponent<AIPathAlignedToSurface>().maxSpeed;
+                        _stat.SetStat(transform.root.GetComponent<AIPathAlignedToSurface>().maxSpeed);
                     break;
 
                 case "Health":
                     if (_push)
                         GetComponent<Vitality>().UpdateMaxHealth(Mathf.RoundToInt(_stat.baseValue - GetComponent<Vitality>().maxHealth));
                     else
-                        _stat.baseValue = GetComponent<Vitality>().maxHealth;
+                        _stat.SetStat(GetComponent<Vitality>().maxHealth);
                     break;
 
                 case "Perception":
                     if (_push)
                         GetComponent<VisualPerception>().sightRadius = _stat.baseValue;
                     else
-                        _stat.baseValue = GetComponent<VisualPerception>().sightRadius;
+                        _stat.SetStat(GetComponent<VisualPerception>().sightRadius);
                     break;
 
                 case "Metabolism":
                     if (_push)
                         GetComponent<Metabolism>().metabolismRate = _stat.baseValue;
                     else
-                        _stat.baseValue = GetComponent<Metabolism>().metabolismRate;
+                        _stat.SetStat(GetComponent<Metabolism>().metabolismRate);
                     break;
             }
         }
@@ -170,6 +148,7 @@ public class CreatureStat
 {
     [HideInInspector] public string id;
     public float baseValue;
+    [HideInInspector] public float increment;
 
     protected bool isDirty = true;
     protected float lastBaseValue;
@@ -199,10 +178,11 @@ public class CreatureStat
         StatModifiers = statModifiers.AsReadOnly();
     }
 
-    public CreatureStat(string _id, float _baseValue) : this()
+    public CreatureStat(string _id, float _baseValue = 1, float _increment = 1) : this()
     {
         id = _id;
         baseValue = _baseValue;
+        increment = _increment;
     }
 
     public virtual void SetStat(float _value)

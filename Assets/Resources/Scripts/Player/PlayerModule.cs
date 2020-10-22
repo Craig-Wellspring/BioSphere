@@ -8,7 +8,6 @@ public class PlayerModule : AdvancedMonoBehaviour
     public bool isControlled = false;
     GameObject aiModule;
     Animator baseAnim;
-    Vitality vitality;
     Cinemachine.CinemachineVirtualCamera vCam;
 
     private bool playMode = true;
@@ -17,22 +16,21 @@ public class PlayerModule : AdvancedMonoBehaviour
         playMode = false;
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         //Cache
         aiModule = transform.root.GetComponentInChildren<BasicAIBrain>().gameObject;
         baseAnim = transform.root.GetComponent<Animator>();
-        vitality = GetComponentInParent<Vitality>();
         vCam = GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
+        GetComponentInParent<Vitality>().DeathOccurs += ReleaseControl;
 
-        //Register
-        vitality.DeathOccurs += Death;
 
+        //Register Camera
         PlayerSoul.Cam?.soullessCreatures.Add(vCam);
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         if (playMode)
         {
@@ -43,34 +41,27 @@ public class PlayerModule : AdvancedMonoBehaviour
                 PlayerSoul.Cam.currentTarget.enabled = true;
             }
 
-            //Unregister
-            vitality.DeathOccurs -= Death;
-
+            //Unregister Camera
             PlayerSoul.Cam.soullessCreatures.Remove(vCam);
         }
     }
 
-    void Death()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void TakeControl()
     {
-        //Enable Controller
         isControlled = true;
+
+        //Enable Controller
         GetComponent<PlayerController>().enabled = true;
+        transform.root.GetComponent<GravityAttract>().enabled = true;
 
         //Disable AI
-        transform.root.GetComponent<AIDestinationSetter>().target = null;
+        aiModule.GetComponent<BasicAIBrain>().ClearPathing();
+        aiModule.gameObject.SetActive(false);
 
         if (baseAnim.GetBool("IsSinging"))
             baseAnim.SetBool("IsSinging", false);
         if (baseAnim.GetBool("IsEating"))
             GetComponentInParent<Metabolism>().StopEating();
-
-
-        aiModule.gameObject.SetActive(false);
     }
 
     public void ReleaseControl()
@@ -79,6 +70,7 @@ public class PlayerModule : AdvancedMonoBehaviour
 
         //Disable Controller
         GetComponent<PlayerController>().enabled = false;
+        transform.root.GetComponent<GravityAttract>().enabled = false;
 
         //Enable AI
         aiModule.gameObject.SetActive(true);

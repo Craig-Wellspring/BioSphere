@@ -6,10 +6,18 @@ public class BasicAIBrain : VersionedMonoBehaviour
 {
 
     #region Settings
+    [Header("Feeding Settings")]
+    public bool pickRandomFood = true;
+
+
     [Header("Flee Settings")]
     public int runAwayDistance = 10;
-    [Header("Wander Settings")]
-    public int wanderDistance = 10;
+
+
+    [Header("Idle Settings")]
+    public bool sings = false;
+
+
     //[Header("Combat Settings")]
     //public float aggression = 50;
     #endregion
@@ -21,10 +29,11 @@ public class BasicAIBrain : VersionedMonoBehaviour
     Metabolism metabolism;
     VisualPerception vPerception;
     CreatureStats cStats;
+    Rigidbody rBody;
 
-    AIDestinationSetter destinationSetter;
     AIPath aiPath;
     Animator aiBrain;
+    Animator animator;
     #endregion
 
 
@@ -34,11 +43,11 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism = GetComponentInParent<Metabolism>();
         vPerception = GetComponentInParent<VisualPerception>();
         cStats = GetComponentInParent<CreatureStats>();
+        rBody = transform.root.GetComponent<Rigidbody>();
 
-        destinationSetter = transform.root.GetComponent<AIDestinationSetter>();
         aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
         aiBrain = GetComponent<Animator>();
-
+        animator = transform.root.GetComponent<Animator>();
 
 
         metabolism.EatingBegins += EatingChange;
@@ -47,8 +56,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism.WastingChange += WastingChange;
 
         cStats.LevelUpBeginning += LevelingUp;
-
-        vitality.DeathOccurs += Dying;
     }
 
     private void OnDisable()
@@ -59,13 +66,14 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism.WastingChange -= WastingChange;
 
         cStats.LevelUpBeginning -= LevelingUp;
-
-        vitality.DeathOccurs -= Dying;
     }
 
 
     void Update()
     {
+        // Register Speed
+        animator.SetFloat("Speed", rBody.velocity.magnitude);
+
         // Register Mates
         aiBrain.SetInteger("NearbyMates", vPerception.nearbyMates.Count);
 
@@ -83,6 +91,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
     void EatingChange()
     {
         aiBrain.SetBool("Eating", metabolism.isEating);
+        //ClearPathing();
     }
     void HungerChange()
     {
@@ -101,19 +110,11 @@ public class BasicAIBrain : VersionedMonoBehaviour
             cStats.ConfirmLevelUp(cStats.statBlock[Random.Range(0, cStats.statBlock.Count)]);
     }
 
-    void Dying()
-    {
-        ClearPathing();
-        gameObject.SetActive(false);
-    }
-
     public void ClearPathing()
     {
-        Seeker seeker = transform.root.GetComponent<Seeker>();
-
-        destinationSetter.target = null;
+        transform.root.GetComponent<AIDestinationSetter>().target = null;
         aiPath.SetPath(null);
         aiPath.destination = Vector3.positiveInfinity;
-        seeker.CancelCurrentPathRequest();
+        transform.root.GetComponent<Seeker>().CancelCurrentPathRequest();
     }
 }
