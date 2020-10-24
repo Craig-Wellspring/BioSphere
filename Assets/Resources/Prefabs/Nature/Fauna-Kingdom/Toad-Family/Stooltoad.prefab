@@ -5398,6 +5398,11 @@ PrefabInstance:
       propertyPath: corpse
       value: 
       objectReference: {fileID: 5764549722861291752}
+    - target: {fileID: 2142870634972942735, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Name
+      value: Stamina Fill
+      objectReference: {fileID: 0}
     - target: {fileID: 2748659348047256063, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bodyColliders.Array.size
@@ -5528,6 +5533,73 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 776c69a9aa9a1d8408d5e48bf11cfdc2, type: 2}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].morphForm
+      value: 
+      objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
+        type: 3}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].minMorphLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].id
+      value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].minimum
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].morphForm
+      value: 
+      objectReference: {fileID: 2421696708626316590, guid: 8fa0af531c2ed3443afc075716a24ca9,
+        type: 3}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].minMorphLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].requirementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].id
+      value: Berry
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].minimum
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].requirementType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6558807479087443014, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: sings
@@ -5557,6 +5629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: whenCloseToDestination
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173857854691505054, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.028
       objectReference: {fileID: 0}
     - target: {fileID: 7247082459883604666, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5747,6 +5824,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d9fd5ef64881ffd43871e93b9e69e360,
         type: 2}
+    - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}

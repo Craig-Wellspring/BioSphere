@@ -11,16 +11,20 @@ public class PlayerController : AdvancedMonoBehaviour
     [SerializeField] int jumpPower = 10;
     [SerializeField] LayerMask surfaceMask;
 
+
     #region Internal Variables
     // Camera Variables
     Cinemachine.CinemachineVirtualCamera vCam;
     Camera mainCam;
 
+
     // Private Variables
+    Respiration respiration;
     Seeker seeker;
     AIPathAlignedToSurface pathing;
     Rigidbody rBody;
     Animator animator;
+
 
     // Movement Variables
     float verticalLookRotation;
@@ -33,6 +37,7 @@ public class PlayerController : AdvancedMonoBehaviour
         vCam = GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
         mainCam = PlayerSoul.Cam.GetComponent<Camera>();
 
+        respiration = GetComponentInParent<Respiration>();
         seeker = transform.root.GetComponent<Seeker>();
         pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
         rBody = transform.root.GetComponent<Rigidbody>();
@@ -81,8 +86,16 @@ public class PlayerController : AdvancedMonoBehaviour
 
     void MovementInput()
     {
+        // Sprint
+        if (Input.GetButtonDown("Sprint"))
+            respiration.ToggleSprinting(true);
+        if (Input.GetButtonUp("Sprint"))
+            respiration.ToggleSprinting(false);
+
+
+        // Calculate movement
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        Vector3 targetMoveAmount = moveDir * (pathing.maxSpeed * 2);
+        Vector3 targetMoveAmount = Input.GetAxisRaw("Vertical") < 0 ? moveDir * (pathing.maxSpeed) / 2 : moveDir * (pathing.maxSpeed);
         moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, 0.15f);
     }
 
@@ -101,19 +114,13 @@ public class PlayerController : AdvancedMonoBehaviour
 
         // Sing
         if (Input.GetButtonDown("Sing"))
-        {
             animator.SetBool("IsSinging", true);
-        }
         if (Input.GetButtonUp("Sing"))
-        {
             animator.SetBool("IsSinging", false);
-        }
 
         // Jump
         if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
             Jump();
-        }
     }
 
     void Jump()

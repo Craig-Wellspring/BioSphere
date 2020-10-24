@@ -11,7 +11,7 @@ public class Vitality : MonoBehaviour
 
     [Header("Settings")]
     public float maxHealth;
-    [SerializeField] float maxHealthIncrement = 2f;
+    [SerializeField] float healthIncrement = 2f;
 
 
     [Header("Corpse")]
@@ -35,28 +35,29 @@ public class Vitality : MonoBehaviour
         UpdateHealthBar();
 
         // Register Max Health in StatBlock
-        GetComponent<CreatureStats>()?.AddNewStat("Health", maxHealth, maxHealthIncrement);
+        GetComponent<CreatureStats>()?.AddNewStat("Health", maxHealth, healthIncrement);
     }
 
     void UpdateHealthBar()
     {
-        healthBar.maxValue = maxHealth;
         healthBar.value = currentHealth;
 
         // Show health bar if not at Max
         healthBar.gameObject.SetActive(!currentHealth.Equals(maxHealth));
     }
 
-    public void UpdateMaxHealth(int _amount)
+    public void ChangeMaxHealth(int _amount)
     {
         maxHealth += _amount;
+        if (healthBar != null)
+            healthBar.maxValue = maxHealth;
 
-        UpdateCurrentHealth(_amount);
+        ChangeCurrentHealth(_amount);
 
         transform.root.localScale += new Vector3(_amount / 10, _amount / 10, _amount / 10);
     }
 
-    void UpdateCurrentHealth(int _amount = 0)
+    void ChangeCurrentHealth(int _amount = 0)
     {
         currentHealth += _amount;
 
@@ -76,7 +77,7 @@ public class Vitality : MonoBehaviour
         {
             //DamageTaken?.Invoke();
 
-            UpdateCurrentHealth(-_amount);
+            ChangeCurrentHealth(-_amount);
 
             if (currentHealth <= 0)
                 Die();

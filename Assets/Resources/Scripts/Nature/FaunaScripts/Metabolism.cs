@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Metabolism : MonoBehaviour
 {
-    [Header("Current Hunger")]
+    [Header("State")]
     [Tooltip("How Hungry the Creature currently feels")]
     public float hungerUnits = 0f;
     public float hungerPercentage = 0f;

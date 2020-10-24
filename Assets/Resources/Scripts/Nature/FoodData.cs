@@ -2,7 +2,7 @@
 
 public class FoodData : MonoBehaviour
 {
-    [Header("Current")]
+    [Header("State")]
     public float nutritionalValue;
 
     [Header("Settings")]

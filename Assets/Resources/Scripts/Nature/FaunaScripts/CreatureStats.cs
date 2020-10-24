@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 
 public class CreatureStats : MonoBehaviour
 {
-    [Header("Creature Stats")]
     public int currentLevel = 1;
     [Space(15)]
     public List<CreatureStat> statBlock;
@@ -108,31 +107,43 @@ public class CreatureStats : MonoBehaviour
             switch (_stat.id)
             {
                 case "Speed":
+                    AIPathAlignedToSurface pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
                     if (_push)
-                        transform.root.GetComponent<AIPathAlignedToSurface>().maxSpeed = _stat.baseValue;
+                        pathing.maxSpeed = _stat.baseValue;
                     else
-                        _stat.SetStat(transform.root.GetComponent<AIPathAlignedToSurface>().maxSpeed);
+                        _stat.SetStat(pathing.maxSpeed);
                     break;
 
                 case "Health":
+                    Vitality vitality = GetComponent<Vitality>();
                     if (_push)
-                        GetComponent<Vitality>().UpdateMaxHealth(Mathf.RoundToInt(_stat.baseValue - GetComponent<Vitality>().maxHealth));
+                        vitality.ChangeMaxHealth(Mathf.RoundToInt(_stat.baseValue - vitality.maxHealth));
                     else
-                        _stat.SetStat(GetComponent<Vitality>().maxHealth);
+                        _stat.SetStat(vitality.maxHealth);
+                    break;
+
+                case "Stamina":
+                    Respiration respiration = GetComponent<Respiration>();
+                    if (_push)
+                        respiration.ChangeMaxStamina(Mathf.RoundToInt(_stat.baseValue - respiration.maxStamina));
+                    else
+                        _stat.SetStat(respiration.maxStamina);
                     break;
 
                 case "Perception":
+                    VisualPerception perception = GetComponent<VisualPerception>();
                     if (_push)
-                        GetComponent<VisualPerception>().sightRadius = _stat.baseValue;
+                        perception.sightRadius = _stat.baseValue;
                     else
-                        _stat.SetStat(GetComponent<VisualPerception>().sightRadius);
+                        _stat.SetStat(perception.sightRadius);
                     break;
 
                 case "Metabolism":
+                    Metabolism metabolism = GetComponent<Metabolism>();
                     if (_push)
-                        GetComponent<Metabolism>().metabolismRate = _stat.baseValue;
+                        metabolism.metabolismRate = _stat.baseValue;
                     else
-                        _stat.SetStat(GetComponent<Metabolism>().metabolismRate);
+                        _stat.SetStat(metabolism.metabolismRate);
                     break;
             }
         }

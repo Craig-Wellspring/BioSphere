@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(EnergyData))]
-public class Ovary : ObjectSpawner
+public class Reproduction : ObjectSpawner
 {
     [Header("Seed Settings")]
     [SerializeField] GameObject offspringSeed = null;

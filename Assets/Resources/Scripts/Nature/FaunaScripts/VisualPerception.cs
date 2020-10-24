@@ -5,15 +5,6 @@ using System.Linq;
 
 public class VisualPerception : AdvancedMonoBehaviour
 {
-    [Header("Sight Settings")]
-    public Transform eyes;
-    [Range(0, 20)] public float sightRadius = 10f;
-    [SerializeField] float radiusIncrement = 0.5f;
-    [SerializeField] bool drawSightSphere = false;
-    public LayerMask visibleLayers;
-    //public float viewAngle;
-
-
     [Header("Currently Visible")]
     public GameObject closestMate;
     public List<GameObject> nearbyMates;
@@ -28,6 +19,15 @@ public class VisualPerception : AdvancedMonoBehaviour
     public List<GameObject> nearbyPredators;
 
 
+    [Header("Sight Settings")]
+    public Transform eyes;
+    [Range(0, 20)] public float sightRadius = 10f;
+    [SerializeField] float radiusIncrement = 0.5f;
+    [SerializeField] bool drawSightSphere = false;
+    public LayerMask visibleLayers;
+    //public float viewAngle;
+
+
     [Header("Debug")]
     [SerializeField] bool foodSightLines = true;
     [SerializeField] bool preySightLines = true;
@@ -38,6 +38,7 @@ public class VisualPerception : AdvancedMonoBehaviour
     // Private variables
     Metabolism metabolism;
     BodyReference body;
+    float sightRefreshRate = 0.25f;
 
 
     void Start()
@@ -48,11 +49,14 @@ public class VisualPerception : AdvancedMonoBehaviour
 
         // Register Sight Radius in StatBlock
         GetComponent<CreatureStats>()?.AddNewStat("Perception", sightRadius, radiusIncrement);
+
+        // Start Seeing
+        InvokeRepeating("Sight", sightRefreshRate, sightRefreshRate);
     }
 
 
 
-    void Update()
+    void Sight()
     {
         //Clear vision from last frame
         nearbyFood.Clear();

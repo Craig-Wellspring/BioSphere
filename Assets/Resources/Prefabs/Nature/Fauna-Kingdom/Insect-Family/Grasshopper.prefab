@@ -4707,12 +4707,12 @@ PrefabInstance:
     - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -4916,6 +4916,119 @@ PrefabInstance:
       propertyPath: m_ComponentOwner
       value: 
       objectReference: {fileID: 1300248346397859815}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[2].requirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].morphForm
+      value: 
+      objectReference: {fileID: 2899459648303840798, guid: 6e45d92b269b98341b05e58dc60616e2,
+        type: 3}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].morphForm
+      value: 
+      objectReference: {fileID: 2285759280214289225, guid: 03e12790c4f2801438488ee905de8b05,
+        type: 3}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].minMorphLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].minMorphLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].requirementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].id
+      value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].minimum
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].requirementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].id
+      value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].minimum
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[1].requirementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[1].id
+      value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[1].minimum
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[2].morphForm
+      value: 
+      objectReference: {fileID: 2899459648303840798, guid: 6e45d92b269b98341b05e58dc60616e2,
+        type: 3}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[2].minMorphLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[2].requirements.Array.data[0].requirementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[2].requirements.Array.data[0].id
+      value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[2].requirements.Array.data[0].minimum
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6506158839891824101, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: seedsToPlant
@@ -5031,6 +5144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
+      propertyPath: possibleForms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
       propertyPath: herbiMorph
       value: 
       objectReference: {fileID: 2285759280214289225, guid: 03e12790c4f2801438488ee905de8b05,
@@ -5092,6 +5210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: possibleMorphs.Array.data[1].energyMinimum
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485800211558301736, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7739786857982873997, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}

@@ -3,7 +3,7 @@ using System;
 
 public class EnergyData : MonoBehaviour
 {
-    [Header("Current")]
+    [Header("State")]
     public float energyReserve = 0;
 
 
