@@ -10,14 +10,20 @@ public class EnergyData : MonoBehaviour
     // Return Energy to Global Energy Reserve when Destroyed
     void OnDisable()
     {
-        if (Servius.Server != null)
+        if (Servius.Server != null && energyReserve > 0)
             ReturnEnergyToReserve(energyReserve);
     }
 
     public void ReturnEnergyToReserve(float _amount)
     {
         if (RemoveEnergy(_amount))
-            Servius.Server.GetComponent<GlobalLifeSource>().energyReserve += _amount;
+        {
+            GlobalLifeSource lifeSource = Servius.Server.GetComponent<GlobalLifeSource>();
+            lifeSource.energyReserve += _amount;
+            
+            if (lifeSource.logEnergyReturn)
+                Debug.Log("Returned " + _amount + " Energy to Source.", this);
+        }
         else Debug.LogError("Returned more energy than available.", this);
     }
 
@@ -51,13 +57,13 @@ public class EnergyData : MonoBehaviour
         else if (_makeUpWithNV)
         {
             FoodData fData = GetComponent<FoodData>();
-            if (energyReserve + fData.nutritionalValue >= _energyRemoved)
+            if (energyReserve + fData.nutritionalValue.x >= _energyRemoved)
             {
-                fData.nutritionalValue -= _energyRemoved - energyReserve;
+                fData.nutritionalValue.x -= _energyRemoved - energyReserve;
                 energyReserve = 0;
 
                 // Catch energy overuse
-                if (fData.nutritionalValue < 0)
+                if (fData.nutritionalValue.x < 0)
                     Debug.LogError("Removed more energy than available", this);
 
                 return true;

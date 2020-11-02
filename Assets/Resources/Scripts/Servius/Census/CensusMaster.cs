@@ -59,13 +59,13 @@ public class CensusMaster : MonoBehaviour
                 //Crash if population is too high
                 if (_member.current >= speciesOvergrowth)
                 {
-                    Debug.LogError("Crash due to " + _newMember + " overgrowth");
-                    UnityEditor.EditorApplication.isPlaying = false;
+                    Debug.LogError("Warning: " + _newMember + " overgrowth");
+                    //UnityEditor.EditorApplication.isPlaying = false;
                 }
                 if (totalPopulation >= globalOvergrowth)
                 {
-                    Debug.LogError("Crash due to global population overgrowth");
-                    UnityEditor.EditorApplication.isPlaying = false;
+                    Debug.LogError("Warning: Global population overgrowth");
+                    //UnityEditor.EditorApplication.isPlaying = false;
                 }
                 exists = true;
                 break;

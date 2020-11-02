@@ -129,6 +129,16 @@ PrefabInstance:
       propertyPath: chewRateModifier
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: nutritionalValue.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: nutritionalValue.y
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: m_Size.x

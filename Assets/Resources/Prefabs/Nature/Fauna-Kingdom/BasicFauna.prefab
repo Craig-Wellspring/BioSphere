@@ -257,8 +257,8 @@ MonoBehaviour:
   agentTimeHorizon: 2
   obstacleTimeHorizon: 2
   maxNeighbours: 10
-  layer: 1
-  collidesWith: -1
+  layer: 8
+  collidesWith: 15
   wallAvoidForce: 1
   wallAvoidFalloff: 1
   priority: 0.5
@@ -354,7 +354,7 @@ MonoBehaviour:
   gradient:
     serializedVersion: 2
     key0: {r: 0.30647027, g: 0.9150943, b: 0.9150943, a: 1}
-    key1: {r: 0.12156862, g: 0.7921569, b: 0.1758243, a: 1}
+    key1: {r: 0.12156862, g: 0.17126065, b: 0.7921569, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -410,8 +410,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_Children:
-  - {fileID: 8357954067529338423}
   - {fileID: 109414602901769474}
+  - {fileID: 8357954067529338423}
   - {fileID: 1508676251800779626}
   m_Father: {fileID: 400250}
   m_RootOrder: 1
@@ -494,8 +494,8 @@ GameObject:
   - component: {fileID: 2748659348047256063}
   - component: {fileID: 2131904891924997232}
   - component: {fileID: 999438302657518291}
-  - component: {fileID: 3486346588474071174}
   - component: {fileID: 8086205142144112776}
+  - component: {fileID: 3486346588474071174}
   - component: {fileID: 8816028523584167361}
   - component: {fileID: 5742506860675060162}
   - component: {fileID: 448272040755068572}
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 2
   maxHealth: 2
-  healthIncrement: 2
+  healthIncreasePerLevel: 2
   corpse: {fileID: 0}
   dead: 0
 --- !u!114 &999438302657518291
@@ -585,50 +585,8 @@ MonoBehaviour:
   isExhausted: 0
   isSprinting: 0
   maxStamina: 100
-  stamIncrement: 10
-  breathRate: 0.1
-  metabolismStat:
-    id: 
-    baseValue: 0
-    increment: 0
---- !u!114 &3486346588474071174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a35916ad0225f1408a9fc805cfd19fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hungerUnits: 0
-  hungerPercentage: 0
-  dietHistory: []
-  mouth: {fileID: 0}
-  biteSize: 0.4
-  drawBiteSphere: 0
-  chewSpeed: 2
-  biteLayers:
-    serializedVersion: 2
-    m_Bits: 11264
-  metabolismRate: 3
-  metaRateIncrement: 0.5
-  hungerGainedPerTick: 1.5
-  hungerPerTickPerLevel: 0.1
-  hungryAtPercent: 20
-  wastingAtPercent: 80
-  hungryMeatEater: 1
-  maximumHungerUnits: 100
-  dietList: []
-  preyList: []
-  logEating: 0
-  isEating: 0
-  isHungry: 0
-  isWasting: 0
-  targetFData: {fileID: 0}
-  hungerBar: {fileID: 0}
+  stamIncreasePerLevel: 10
+  amphibious: 0
 --- !u!114 &8086205142144112776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,12 +611,49 @@ MonoBehaviour:
   sightRadius: 4
   radiusIncrement: 0.5
   drawSightSphere: 0
+  cullUnderwater: 1
   visibleLayers:
     serializedVersion: 2
     m_Bits: 1059840
   foodSightLines: 0
   preySightLines: 0
   predatorSightLines: 0
+--- !u!114 &3486346588474071174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467497012653493642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35916ad0225f1408a9fc805cfd19fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerUnits: 0
+  hungerPercentage: 0
+  dietHistory: []
+  mouth: {fileID: 0}
+  biteSize: 0.4
+  drawBiteSphere: 0
+  chewSpeed: 2
+  biteLayers:
+    serializedVersion: 2
+    m_Bits: 11264
+  hungerGainedPerTick: 0.25
+  hungerPerTickPerLevel: 0.05
+  hungryAtPercent: 20
+  wastingAtPercent: 80
+  hungryMeatEater: 1
+  maximumHungerUnits: 100
+  dietList: []
+  preyList: []
+  logEating: 0
+  isEating: 0
+  isHungry: 0
+  isWasting: 0
+  targetFData: {fileID: 0}
+  hungerBar: {fileID: 0}
 --- !u!114 &8816028523584167361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,9 +666,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac4ab037a3e4a749a6a1c7f29ab869e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 6144
+  bumpRadius: 2
+  drawBumpSphere: 0
   offspringSeed: {fileID: 0}
   maxSeedEnergy: 50
   seedingRadius: 2
+  aboveWaterOnly: 1
   randomYRotation: 1
   spawnScale0: 1
   eggData: {fileID: 0}
@@ -866,7 +867,7 @@ RectTransform:
   - {fileID: 7951274472046004559}
   - {fileID: 8759774926469127402}
   m_Father: {fileID: 7173857854691505054}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1104,7 +1105,7 @@ RectTransform:
   - {fileID: 1897972869609563565}
   - {fileID: 1959623356738481459}
   m_Father: {fileID: 7173857854691505054}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1444,9 +1445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nutritionalValue: 0
+  nutritionalValue: {x: 0, y: 0}
   chewRateModifier: 1
-  destroyRoot: 1
+  consumptionType: 0
 --- !u!114 &1835522965571032941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1564,15 +1565,15 @@ PrefabInstance:
       objectReference: {fileID: 400250}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a790a8d0058a954b8c6ae2ec7189f99, type: 3}
---- !u!4 &2114154110356943304 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
-    type: 3}
-  m_PrefabInstance: {fileID: 681250431128740873}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1182987401748583200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1810052799862290217, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
+    type: 3}
+  m_PrefabInstance: {fileID: 681250431128740873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2114154110356943304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
     type: 3}
   m_PrefabInstance: {fileID: 681250431128740873}
   m_PrefabAsset: {fileID: 0}

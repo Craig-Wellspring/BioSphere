@@ -18,10 +18,11 @@ MonoBehaviour:
   whenToSpawn: 1
   parentRelationship: 0
   spawnOnSurface: 0
+  aboveWaterOnly: 1
   randomSpawnArea: 4
   randomYRotation: 1
   spawnScale0: 0
-  seeds: 1
+  seeds: {x: 0, y: 0}
   seedSuccessChance: 70
   energyDistribution: 1
   castOffEntity: {fileID: 0}
@@ -156,6 +157,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mushroom_LOD1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: nutritionalValue.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: nutritionalValue.y
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5903858121702242424, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}

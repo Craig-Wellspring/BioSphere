@@ -11,8 +11,8 @@ public class HatchCreature : ObjectSpawner
         FoodData eggFData = GetComponentInChildren<FoodData>();
         
         // Return nutritional value to energy storage
-        eggEData.energyReserve += eggFData.nutritionalValue;
-        eggFData.nutritionalValue = 0;
+        eggEData.energyReserve += eggFData.nutritionalValue.x;
+        eggFData.nutritionalValue.x = 0;
 
         // Spawn creature with energy storage
         GameObject newCreature = SpawnObject(creatureToHatch, eggEData, eggEData.energyReserve);

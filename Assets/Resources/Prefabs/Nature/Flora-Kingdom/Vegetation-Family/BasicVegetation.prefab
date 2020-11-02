@@ -127,14 +127,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6457183713139666284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nutritionalValue: 10
+  nutritionalValue: {x: 0, y: 10}
   chewRateModifier: 1.5
-  destroyRoot: 1
+  consumptionType: 1
 --- !u!114 &1065377328634644644
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class PlayerController : AdvancedMonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     // Inspector Variables
+    [SerializeField] bool mouseCamera = false;
     [SerializeField] Vector2 mouseSensitivity = new Vector2(250f, 250f);
     [SerializeField] Vector2 verticalLookClamp = new Vector2(-60, 60);
+    [Space(10)]
+    [SerializeField] float turnSpeed = 100f;
     [SerializeField] int jumpPower = 10;
     [SerializeField] LayerMask surfaceMask;
 
@@ -20,10 +23,13 @@ public class PlayerController : AdvancedMonoBehaviour
 
     // Private Variables
     Respiration respiration;
+    Metabolism metabolism;
+
     Seeker seeker;
     AIPathAlignedToSurface pathing;
     Rigidbody rBody;
     Animator animator;
+    BioCreatureAnimData animData;
 
 
     // Movement Variables
@@ -38,10 +44,13 @@ public class PlayerController : AdvancedMonoBehaviour
         mainCam = PlayerSoul.Cam.GetComponent<Camera>();
 
         respiration = GetComponentInParent<Respiration>();
+        metabolism = GetComponentInParent<Metabolism>();
+
         seeker = transform.root.GetComponent<Seeker>();
         pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
         rBody = transform.root.GetComponent<Rigidbody>();
         animator = transform.root.GetComponent<Animator>();
+        animData = transform.root.GetComponent<BioCreatureAnimData>();
     }
 
     void Update()
@@ -50,7 +59,8 @@ public class PlayerController : AdvancedMonoBehaviour
         MovementInput();
         AuxInput();
 
-        animator.SetFloat("Speed", Input.GetAxisRaw("Vertical") * rBody.velocity.magnitude);
+        animator.SetFloat("Speed", Input.GetAxisRaw("Vertical") * animator.GetFloat("Speed"));
+        //animator.SetFloat("TurnSpeed", Input.GetAxisRaw("Horizontal"));
     }
     void FixedUpdate()
     {
@@ -61,11 +71,14 @@ public class PlayerController : AdvancedMonoBehaviour
     void MouseInput()
     {
         // Move Camera
-        transform.root.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity.x);
-        verticalLookRotation += Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity.y;
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, verticalLookClamp.x, verticalLookClamp.y);
+        if (mouseCamera)
+        {
+            verticalLookRotation += Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity.x;
+            verticalLookRotation += Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity.y;
+            verticalLookRotation = Mathf.Clamp(verticalLookRotation, verticalLookClamp.x, verticalLookClamp.y);
 
-        vCam.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+            vCam.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+        }
 
 
         // Click to move
@@ -92,9 +105,11 @@ public class PlayerController : AdvancedMonoBehaviour
         if (Input.GetButtonUp("Sprint"))
             respiration.ToggleSprinting(false);
 
+        // Calculate rotation
+        transform.root.Rotate(Vector3.up * Input.GetAxisRaw("Horizontal") * Time.deltaTime * turnSpeed);
 
         // Calculate movement
-        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        Vector3 moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;
         Vector3 targetMoveAmount = Input.GetAxisRaw("Vertical") < 0 ? moveDir * (pathing.maxSpeed) / 2 : moveDir * (pathing.maxSpeed);
         moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, 0.15f);
     }
@@ -102,20 +117,15 @@ public class PlayerController : AdvancedMonoBehaviour
     void AuxInput()
     {
         // Eat
-        if (Input.GetButtonDown("Eat") && !animator.GetBool("IsEating"))
-        {
+        if (Input.GetButtonDown("Eat") && !metabolism.isEating)
             animator.SetTrigger("Bite");
-        }
-        if (Input.GetButtonUp("Eat") && animator.GetBool("IsEating"))
-        {
-            GetComponentInParent<Metabolism>().StopEating();
-            animator.SetBool("IsEating", false);
-        }
+        if (Input.GetButtonUp("Eat") && metabolism.isEating)
+            metabolism.StopEating();
 
         // Sing
-        if (Input.GetButtonDown("Sing"))
+        if (Input.GetButtonDown("Sing") && animator.parameters.ToString().Contains("IsSinging"))
             animator.SetBool("IsSinging", true);
-        if (Input.GetButtonUp("Sing"))
+        if (Input.GetButtonUp("Sing") && animator.parameters.ToString().Contains("IsSinging"))
             animator.SetBool("IsSinging", false);
 
         // Jump
@@ -126,7 +136,7 @@ public class PlayerController : AdvancedMonoBehaviour
     void Jump()
     {
         animator.SetTrigger("Jump");
-        rBody.AddForce(GravityVector(transform.root.position) * jumpPower);
+        rBody.AddForce(UtilityFunctions.GravityVector(transform.root.position) * jumpPower);
     }
 
     bool IsGrounded()

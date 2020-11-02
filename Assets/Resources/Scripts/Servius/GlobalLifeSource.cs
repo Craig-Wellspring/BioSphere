@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class GlobalLifeSource : AdvancedMonoBehaviour
+public class GlobalLifeSource : MonoBehaviour
 {
     [SerializeField] private bool initialize = true;
-    [Space(15)]
+
+    [Header("Energy Settings")]
     public float energyReserve = 0;
     public float minimumEnergyReserve;
-    [Space(10)]
+    public bool logEnergyReturn = false;
+
+    [Header("Meteor Settings")]
     [SerializeField] GameObject meteor;
     [SerializeField] float spawnRadius = 100;
 

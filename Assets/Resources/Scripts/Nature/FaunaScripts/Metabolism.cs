@@ -23,13 +23,10 @@ public class Metabolism : MonoBehaviour
 
 
     [Header("Metabolism Settings")]
-    [Tooltip("Time in Seconds it takes to gain one unit of Hunger")]
-    public float metabolismRate = 3f;
-    [SerializeField] float metaRateIncrement = 0.5f;
     [Tooltip("Units of Hunger gained per tick")]
-    [SerializeField] float hungerGainedPerTick = 3f;
+    [SerializeField] float hungerGainedPerTick = 0.15f;
     [Tooltip("Increase units of Hunger gained per tick every level up")]
-    [SerializeField] float hungerPerTickPerLevel = 0.1f;
+    [SerializeField] float hungerPerTickPerLevel = 0.01f;
 
 
     [Header("Hunger Index Settings")]
@@ -51,19 +48,19 @@ public class Metabolism : MonoBehaviour
     [Header("Debug")]
     [SerializeField] bool logEating = false;
     [Space(10)]
-    public bool isEating;
-    public bool isHungry;
-    public bool isWasting;
+    public bool isEating = false;
+    public bool isHungry = false;
+    public bool isWasting = false;
     [Space(10)]
-    public FoodData targetFData;
+    public FoodData targetFData = null;
+    DietData morselIngested = new DietData(null, 0);
 
     #endregion
 
 
     #region Internal Variables
     //Cache
-    DietData morselIngested = new DietData(null, 0);
-    float hungerTimer = 0f;
+    float metabolismRate = 0.250f;
     [HideInInspector] public Slider hungerBar;
     Image hungerFill;
     SingleGradient colorPicker;
@@ -77,47 +74,33 @@ public class Metabolism : MonoBehaviour
         colorPicker = hungerFill.GetComponent<SingleGradient>();
         hungerBar.gameObject.SetActive(false);
 
-        
 
-
-        CreatureStats cStats = GetComponent<CreatureStats>();
-        if (cStats)
+        if (TryGetComponent<CreatureStats>(out CreatureStats cStats))
         {
-            // Register Metabolism Rate in StatBlock
-            cStats.AddNewStat("Metabolism", metabolismRate, metaRateIncrement);
-
             // Increase hunger per level
             cStats.LevelUpBeginning += LevelingUp;
         }
+
+        // Start Metabolising
+        InvokeRepeating("Metabolise", metabolismRate, metabolismRate);
     }
 
 
     //// Become more hungry over time \\\\
-    void Update()
+    void Metabolise()
     {
         if (!isEating)
-            Metabolise();
+        {
+            CheckHungerLevels();
 
-        hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
+            if (hungerPercentage < 100)
+                hungerUnits += hungerGainedPerTick;
+        }
 
-        //Update UI
+        // Update UI
         hungerBar.value = 100 - hungerPercentage;
     }
 
-    void Metabolise()
-    {
-        hungerTimer += Time.deltaTime;
-        if (hungerTimer >= metabolismRate)
-        {
-            hungerTimer = 0f;
-
-            //Get more hungry and update Hunger status
-            if (hungerPercentage < 100)
-                hungerUnits += hungerGainedPerTick;
-
-            CheckHungerLevels();
-        }
-    }
 
 
     //// Start Eating \\\\
@@ -135,13 +118,13 @@ public class Metabolism : MonoBehaviour
 
         morselIngested.foodTag = _targetFood.tag;
 
-        //Update UI
+        // Update UI
         if (!hungerBar.gameObject.activeSelf)
             hungerBar.gameObject.SetActive(true);
 
         hungerFill.color = colorPicker.gradient.Evaluate(1);
 
-        //Disable egg hatching
+        // Disable egg hatching
         if (_targetFood.tag == "Egg")
             _targetFood.GetComponentInParent<Animator>().SetBool("CanHatch", false);
     }
@@ -174,7 +157,7 @@ public class Metabolism : MonoBehaviour
         targetFData = null;
 
 
-        //Update UI
+        // Update UI
         if (hungerBar)
         {
             hungerFill.color = colorPicker.gradient.Evaluate(0);
@@ -203,7 +186,7 @@ public class Metabolism : MonoBehaviour
     }
 
     //// Draw Debug BiteSphere \\\\
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         if (drawBiteSphere && mouth)
         {
@@ -217,8 +200,8 @@ public class Metabolism : MonoBehaviour
     public void Chew(FoodData _targetFData, float _biteSize)
     {
         // Adjust bite size
-        if (_targetFData.nutritionalValue < _biteSize)
-            _biteSize = _targetFData.nutritionalValue;
+        if (_targetFData.nutritionalValue.x < _biteSize)
+            _biteSize = _targetFData.nutritionalValue.x;
 
         // Transfer energy from food to mouth cache
         if (_targetFData.RemoveNV(_biteSize))
@@ -235,7 +218,7 @@ public class Metabolism : MonoBehaviour
             StopEating();
 
         // Destroy Food if no energy remains
-        if (_targetFData.nutritionalValue == 0)
+        if (_targetFData.nutritionalValue.x == 0)
             Devour(_targetFData);
     }
 
@@ -265,16 +248,34 @@ public class Metabolism : MonoBehaviour
         if (logEating)
             Debug.Log(this.transform.root.name + " ate " + _targetFData.name + " from " + _targetFData.transform.root.name);
 
-        // Destroy food
-        if (_targetFData.destroyRoot)
-            Destroy(_targetFData.transform.root.gameObject);
-        else
-            Destroy(_targetFData.gameObject);
+
+        // Consume food object
+        switch (_targetFData.consumptionType)
+        {
+            case (FoodData.ConsumptionType.DestroyObject):
+                Destroy(_targetFData.gameObject);
+                break;
+
+            case (FoodData.ConsumptionType.DestroyRoot):
+                Destroy(_targetFData.transform.root.gameObject);
+                break;
+
+            case (FoodData.ConsumptionType.DisableObject):
+                _targetFData.gameObject.SetActive(false);
+                _targetFData.GetComponentInParent<FoliageRegrowth>()?.ConsumeFoliage(_targetFData.gameObject);
+                break;
+
+            case (FoodData.ConsumptionType.DisableRoot):
+                _targetFData.transform.root.gameObject.SetActive(false);
+                break;
+        }
     }
 
     //// Check if Hungry or Wasting \\\\
     void CheckHungerLevels()
     {
+        hungerPercentage = (hungerUnits / maximumHungerUnits) * 100;
+
         if (HungerCheck())
             if (WastingCheck())
                 WasteAway();

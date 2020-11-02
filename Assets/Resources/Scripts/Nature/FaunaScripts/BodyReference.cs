@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class BodyReference : AdvancedMonoBehaviour
+public class BodyReference : MonoBehaviour
 {
     [Header("Body Parts")]
     [Tooltip("The Creature's primary body collider which must be on the same layer as the root object")]

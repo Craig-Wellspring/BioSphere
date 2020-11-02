@@ -30,7 +30,7 @@ public class SpawnObjectVariant : MonoBehaviour
         {
             FoodData newFData = newObject.GetComponentInChildren<FoodData>(true);
             newFData.nutritionalValue = nv.nutritionalValue;
-            nv.nutritionalValue = 0;
+            nv.nutritionalValue.x = 0;
         }
 
         // Destroy spawner object

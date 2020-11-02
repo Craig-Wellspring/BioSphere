@@ -9,8 +9,11 @@ public class Reproduction : ObjectSpawner
     [Tooltip("Maximum energy passed on to Seed offspring. Energy beyond threshold will be returned to Source. If 0, SeedNV will be used.")]
     [SerializeField] float maxSeedEnergy = 50f;
     [SerializeField, Range(0, 50)] int seedingRadius = 2;
+    [Tooltip("Must spawn seed above sea level.")]
+    [SerializeField] bool aboveWaterOnly = true;
     [SerializeField] bool randomYRotation = true;
     [SerializeField] bool spawnScale0 = true;
+
 
     [Header("Egg Settings")]
     [SerializeField] EggData eggData = null;
@@ -46,7 +49,7 @@ public class Reproduction : ObjectSpawner
 
         // If maxSeedEnergy is 0, use SeedNV as max
         if (maxSeedEnergy == 0)
-            maxSeedEnergy = _offspringSeed.GetComponentInChildren<FoodData>().nutritionalValue;
+            maxSeedEnergy = _offspringSeed.GetComponentInChildren<FoodData>().nutritionalValue.y;
 
         // Return excess energy to source if more than maximum
         if (_energyEndowed > maxSeedEnergy)
@@ -56,7 +59,7 @@ public class Reproduction : ObjectSpawner
         }
 
         // Expend Energy and plant Seed with the Energy spent
-        GameObject spawnedFruit = SpawnObject(_offspringSeed, eData, _energyEndowed, null, randomYRotation, seedingRadius);
+        GameObject spawnedFruit = SpawnObject(_offspringSeed, eData, _energyEndowed, null, randomYRotation, seedingRadius, aboveWaterOnly);
 
         // Adjust scale
         if (spawnScale0)

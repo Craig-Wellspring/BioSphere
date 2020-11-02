@@ -12,15 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b7d1cb72d673c41a3f108b0e8704cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  bumpRadius: 0.5
+  drawBumpSphere: 0
   newFruit:
   - {fileID: 1104414689510456586, guid: 8bc562f5e45303c4b846ca990bc2b4c2, type: 3}
   whenToSpawn: 1
   parentRelationship: 0
   spawnOnSurface: 0
+  aboveWaterOnly: 1
   randomSpawnArea: 5
   randomYRotation: 1
   spawnScale0: 1
-  seeds: 15
+  seeds: {x: 0, y: 12}
   seedSuccessChance: 80
   energyDistribution: 0
   castOffEntity: {fileID: 0}
@@ -40,15 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b7d1cb72d673c41a3f108b0e8704cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  bumpRadius: 1
+  drawBumpSphere: 1
   newFruit:
   - {fileID: 4949613627835273838, guid: 960363e38c23bf044b783e994943bf70, type: 3}
   whenToSpawn: 2
   parentRelationship: 0
   spawnOnSurface: 0
+  aboveWaterOnly: 1
   randomSpawnArea: 15
   randomYRotation: 1
   spawnScale0: 1
-  seeds: 2
+  seeds: {x: 0, y: 2}
   seedSuccessChance: 100
   energyDistribution: 2
   castOffEntity: {fileID: 2396180645501600818, guid: b97e40fac0541a6468aec3beb931521e,

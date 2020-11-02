@@ -16,8 +16,11 @@ public class SpawnFruit : ObjectSpawner
     [Header("Placing Settings")]
     [SerializeField] ParentType parentRelationship;
     enum ParentType { None, Child, Sibling };
+    [Tooltip("Spawn seed on a random vertex of this object's mesh.")]
     [SerializeField] bool spawnOnSurface = false;
     [Space(10)]
+    [Tooltip("Must spawn seed above sea level.")]
+    [SerializeField] bool aboveWaterOnly = true;
     [Tooltip("Scales the size of the random spawn area. 0 is not random.")]
     [SerializeField] float randomSpawnArea = 0;
     [SerializeField] bool randomYRotation = false;
@@ -26,7 +29,8 @@ public class SpawnFruit : ObjectSpawner
 
 
     [Header("Seed Settings")]
-    public int seeds = 1;
+    [Tooltip("Current / Maximum")]
+    public Vector2 seeds;
     [SerializeField] float seedSuccessChance = 100;
     [SerializeField] EnergyDistribution energyDistribution;
     enum EnergyDistribution { Minimum, Maximum, DivideRemaining };
@@ -51,11 +55,12 @@ public class SpawnFruit : ObjectSpawner
     EnergyData rootEData;
     GrowthData growthData;
 
-    public void Start()
+    void Start()
     {
         rootEData = transform.root.GetComponent<EnergyData>();
-
         growthData = GetComponent<GrowthData>();
+
+
         if (growthData)
         {
             growthData.halfGrownTrigger += HalfGrown;
@@ -67,6 +72,10 @@ public class SpawnFruit : ObjectSpawner
             TriggerSpawn();
     }
 
+    void OnEnable()
+    {
+        seeds.x = seeds.y;
+    }
 
     void HalfGrown()
     {
@@ -84,7 +93,7 @@ public class SpawnFruit : ObjectSpawner
     {
         if (newFruit.Count > 0)
         {
-            while (seeds > 0)
+            if (seeds.x > 0)
             {
                 // Select fruit to spawn
                 GameObject fruitToSpawn = newFruit[Random.Range(0, newFruit.Count)];
@@ -92,11 +101,7 @@ public class SpawnFruit : ObjectSpawner
                 float energyRequired = 0;
                 FoodData[] fruitFData = fruitToSpawn.GetComponentsInChildren<FoodData>(true);
                 foreach (FoodData fData in fruitFData)
-                    energyRequired += fData.nutritionalValue;
-
-                VariableFoliage variableFoliage = fruitToSpawn.GetComponent<VariableFoliage>();
-                if (variableFoliage)
-                    energyRequired += variableFoliage.majorBudNV + variableFoliage.minorBudNV;
+                    energyRequired += fData.nutritionalValue.y;
 
 
                 // Check if able to spawn
@@ -134,12 +139,12 @@ public class SpawnFruit : ObjectSpawner
                                 break;
 
                             case (EnergyDistribution.DivideRemaining):
-                                energyToGive = System.Math.Max(rootEData.energyReserve / seeds, energyRequired);
+                                energyToGive = Mathf.Max(rootEData.energyReserve / seeds.x, energyRequired);
                                 break;
                         }
 
                         // Spawn Fruit
-                        GameObject _spawnedFruit = SpawnObject(fruitToSpawn, rootEData, energyToGive, parent, randomYRotation, randomSpawnArea);
+                        GameObject _spawnedFruit = SpawnObject(fruitToSpawn, rootEData, energyToGive, parent, randomYRotation, randomSpawnArea, aboveWaterOnly);
 
 
                         // Adjust scale
@@ -161,16 +166,17 @@ public class SpawnFruit : ObjectSpawner
                         }
                     }
 
-                    seeds -= 1;
+                    seeds.x--;
+                    TriggerSpawn();
                 }
                 else  // If not enough Energy to spawn new Fruit
                 {
                     // Spawn CastOff Entity
                     if (castOffEntity != null && rootEData.energyReserve > 0)
-                        SpawnObject(castOffEntity, rootEData, rootEData.energyReserve, null, false, castOffDistance);
+                        SpawnObject(castOffEntity, rootEData, rootEData.energyReserve, null, false, castOffDistance, true);
 
                     // Clear remaining seeds
-                    seeds = 0;
+                    seeds.x = 0;
                 }
             }
 

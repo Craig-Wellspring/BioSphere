@@ -609,8 +609,8 @@ MonoBehaviour:
   agentTimeHorizon: 2
   obstacleTimeHorizon: 2
   maxNeighbours: 10
-  layer: 1
-  collidesWith: -1
+  layer: 4
+  collidesWith: 2
   wallAvoidForce: 1
   wallAvoidFalloff: 1
   priority: 0.5
@@ -3070,7 +3070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   maxHealth: 100
-  maxHealthIncrement: 50
+  healthIncreasePerLevel: 2
   corpse: {fileID: 6159907349568020335}
   dead: 0
 --- !u!114 &2902626016777537775
@@ -3085,6 +3085,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924ed792011022c44a26ce739e6061c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  bumpRadius: 1
+  drawBumpSphere: 0
   seedToPlant: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
     type: 3}
   maxEnergyPlanted: 1500

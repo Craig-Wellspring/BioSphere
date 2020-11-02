@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Meteor : AdvancedMonoBehaviour
+public class Meteor : MonoBehaviour
 {
     public GameObject guardian;
 
@@ -21,7 +21,7 @@ public class Meteor : AdvancedMonoBehaviour
         transform.Find("Impact").gameObject.SetActive(true);
 
         //Spawn Guardian
-        guardian.transform.position = TerrainUnderPosition(PositionAbove(transform)).position;
+        guardian.transform.position = UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform)).position;
         guardian.transform.SetParent(null);
         guardian.SetActive(true);
         PlayerSoul.Cam.currentTarget = guardian.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d49f98f82bf0ee4aa872ea345cad16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  majorBudNV: 15
-  minorBudNV: 5
+  foliageNV: 30
   randomFoliage:
   - {fileID: 11400000, guid: e774face668cfaf488bba677a951c090, type: 2}
   - {fileID: 11400000, guid: c07567d9307b0cb4282041ccab97990c, type: 2}
@@ -158,13 +157,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4759473824326799664, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
-      propertyPath: nutritionalValue
-      value: 15
+      propertyPath: nutritionalValue.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4759473824326799664, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
-      propertyPath: chewRateModifier
-      value: 0.3
+      propertyPath: nutritionalValue.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4959284120954668768, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
@@ -180,6 +179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467898994875618992, guid: 1fedb5571d445274782330b0eea48e80,
+        type: 3}
+      propertyPath: newLeafNV
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1779700459288280494, guid: 1fedb5571d445274782330b0eea48e80, type: 3}

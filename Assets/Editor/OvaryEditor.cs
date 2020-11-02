@@ -1,27 +1,27 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Ovary))]
-public class OvaryEditor : Editor
+[CustomEditor(typeof(Reproduction))]
+public class ReproductionEditor : Editor
 {
     public override void OnInspectorGUI()
     {           
         DrawDefaultInspector();
 
-        Ovary ovary = (Ovary)target;
+        Reproduction reproduction = (Reproduction)target;
             
         EditorGUILayout.Space(10);
         EditorGUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Plant Seed"))
-            ovary.PlantSeedButton();
+            reproduction.PlantSeedButton();
         if (GUILayout.Button("Lay Egg"))
-            ovary.LayEggButton();
+            reproduction.LayEggButton();
             
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space(10);
         if (GUILayout.Button("Draw Debug"))
-            ovary.DrawDebug();
+            reproduction.DrawDebug();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Pathfinding;
 
-public class PlayerSoul : AdvancedMonoBehaviour
+public class PlayerSoul : MonoBehaviour
 {
     #region Singleton
     public static PlayerSoul Cam { get; private set; }

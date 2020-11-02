@@ -2015,11 +2015,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
-      propertyPath: hungerGainedPerTick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
       propertyPath: chewSpeed
       value: 0.7
       objectReference: {fileID: 0}
@@ -2135,6 +2130,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: bab1f06c2a5dfd743b6f4003371af789,
         type: 2}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpLayers.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpRadius
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
 --- !u!4 &3598737383267920276 stripped

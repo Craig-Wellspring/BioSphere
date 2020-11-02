@@ -49,7 +49,7 @@ public class LifeGuardian : ObjectSpawner
         float _energyToPlant = (lifeSource.energyReserve > maxEnergyPlanted + lifeSource.minimumEnergyReserve) ? maxEnergyPlanted : lifeSource.energyReserve - lifeSource.minimumEnergyReserve;
         if (_energyToPlant > 0)
         {
-            SpawnObject(seedToPlant, null, _energyToPlant, null, true, plantingArea);
+            SpawnObject(seedToPlant, null, _energyToPlant, null, true, plantingArea, true);
             lifeSource.energyReserve -= _energyToPlant;
         }
     }

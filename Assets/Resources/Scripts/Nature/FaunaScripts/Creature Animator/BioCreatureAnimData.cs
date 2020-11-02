@@ -6,13 +6,14 @@ public class BioCreatureAnimData : MonoBehaviour
     Animator anim;
     Metabolism metabolism;
     Vitality vitality;
+    Rigidbody rBody;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         metabolism = GetComponentInChildren<Metabolism>();
         vitality = GetComponentInChildren<Vitality>();
-
+        rBody = transform.root.GetComponent<Rigidbody>();
 
 
         metabolism.EatingBegins += ChangeEatingStatus;
@@ -31,6 +32,8 @@ public class BioCreatureAnimData : MonoBehaviour
 
     void Update()
     {
+        // Register Speed
+        anim.SetFloat("Speed", rBody.velocity.magnitude);
     }
 
 
@@ -38,6 +41,7 @@ public class BioCreatureAnimData : MonoBehaviour
     {
         metabolism.Bite();
     }
+
     void ChangeEatingStatus()
     {
         anim.SetBool("IsEating", metabolism.isEating);

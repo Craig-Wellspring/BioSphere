@@ -11,7 +11,7 @@ public class Vitality : MonoBehaviour
 
     [Header("Settings")]
     public float maxHealth;
-    [SerializeField] float healthIncrement = 2f;
+    [SerializeField] float healthIncreasePerLevel = 2f;
 
 
     [Header("Corpse")]
@@ -35,7 +35,7 @@ public class Vitality : MonoBehaviour
         UpdateHealthBar();
 
         // Register Max Health in StatBlock
-        GetComponent<CreatureStats>()?.AddNewStat("Health", maxHealth, healthIncrement);
+        GetComponent<CreatureStats>()?.AddNewStat("Health", maxHealth, healthIncreasePerLevel);
     }
 
     void UpdateHealthBar()
@@ -64,7 +64,7 @@ public class Vitality : MonoBehaviour
         if (healthBar != null)
             UpdateHealthBar();
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !dead)
             Die();
     }
 
@@ -78,9 +78,6 @@ public class Vitality : MonoBehaviour
             //DamageTaken?.Invoke();
 
             ChangeCurrentHealth(-_amount);
-
-            if (currentHealth <= 0)
-                Die();
         }
     }
 
@@ -112,9 +109,12 @@ public class Vitality : MonoBehaviour
             corpse.SetActive(true);
 
             //Transfer Energy to Corpse
-            if (TryGetComponent<EnergyData>(out EnergyData selfEData) && TryGetComponent<FoodData>(out FoodData corpseFData))
-                if (selfEData.RemoveEnergy(selfEData.energyReserve))
-                    corpseFData.AddNV(selfEData.energyReserve);
+            if (TryGetComponent<EnergyData>(out EnergyData selfEData) && corpse.TryGetComponent<FoodData>(out FoodData corpseFData))
+            {
+                float remainingEnergy = selfEData.energyReserve;
+                if (selfEData.RemoveEnergy(remainingEnergy))
+                    corpseFData.AddNV(remainingEnergy);
+            }
         }
 
         // Deactivate Canvas

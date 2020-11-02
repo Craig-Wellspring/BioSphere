@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class VisualPerception : AdvancedMonoBehaviour
+public class VisualPerception : MonoBehaviour
 {
     [Header("Currently Visible")]
     public GameObject closestMate;
@@ -24,6 +24,8 @@ public class VisualPerception : AdvancedMonoBehaviour
     [Range(0, 20)] public float sightRadius = 10f;
     [SerializeField] float radiusIncrement = 0.5f;
     [SerializeField] bool drawSightSphere = false;
+    [Space(10)]
+    [SerializeField] bool cullUnderwater = true;
     public LayerMask visibleLayers;
     //public float viewAngle;
 
@@ -38,7 +40,8 @@ public class VisualPerception : AdvancedMonoBehaviour
     // Private variables
     Metabolism metabolism;
     BodyReference body;
-    float sightRefreshRate = 0.25f;
+
+    float sightRefreshRate = 0.250f;
 
 
     void Start()
@@ -76,10 +79,22 @@ public class VisualPerception : AdvancedMonoBehaviour
         List<Collider> withinSightRange = Physics.OverlapSphere(eyes.position, sightRadius, visibleLayers).ToList();
         withinSightRange.Remove(body.mainBodyCollider);
 
+        if (cullUnderwater)
+            foreach (Collider _target in withinSightRange)
+                if (!UtilityFunctions.AboveSeaLevel(_target.transform.position))
+                    withinSightRange.Remove(_target);
+
 
         //For every object in the area, check for line of sight and categorize into lists
         foreach (Collider _col in withinSightRange)
         {
+            // Remove objects if they are under water
+            if (cullUnderwater && !UtilityFunctions.AboveSeaLevel(_col.transform.position))
+            {
+                //withinSightRange.Remove(_col);
+                continue;
+            }
+
             // Check for clear Sight Line
             RaycastHit hit;
             Ray sightRay = new Ray(eyes.position, _col.transform.position - eyes.position);
@@ -132,10 +147,10 @@ public class VisualPerception : AdvancedMonoBehaviour
         }
 
         //Find the closest member of each type
-        closestFood = ClosestObjectInList(nearbyFood, false);
-        closestMate = ClosestObjectInList(nearbyMates, true);
-        closestPredator = ClosestObjectInList(nearbyPredators, true);
-        closestPrey = ClosestObjectInList(nearbyPrey, true);
+        closestFood = UtilityFunctions.ClosestObjectToTransform(transform, nearbyFood, false);
+        closestMate = UtilityFunctions.ClosestObjectToTransform(transform, nearbyMates, true);
+        closestPredator = UtilityFunctions.ClosestObjectToTransform(transform, nearbyPredators, true);
+        closestPrey = UtilityFunctions.ClosestObjectToTransform(transform, nearbyPrey, true);
     }
 
     private void OnDrawGizmosSelected()

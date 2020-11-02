@@ -35,20 +35,24 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317078159193006458}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.0005213171, y: 0.23421031, z: -0.009850714}
-  m_Size: 0.4658546
+  m_LocalReferencePoint: {x: -0.000000029802322, y: 0.0024106503, z: 0.000000044703484}
+  m_Size: 0.5649339
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.25
+  - screenRelativeHeight: 0.072479285
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 0}
-  - screenRelativeHeight: 0.029624999
+    - renderer: {fileID: 9098967755747715029}
+  - screenRelativeHeight: 0.031383604
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 0}
+    - renderer: {fileID: 2769331574108709974}
+  - screenRelativeHeight: 0.0068922387
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7823035937578181854}
   m_Enabled: 1
 --- !u!114 &2247231859293230655
 MonoBehaviour:
@@ -62,21 +66,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b7d1cb72d673c41a3f108b0e8704cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  bumpRadius: 1
+  drawBumpSphere: 0
   newFruit:
   - {fileID: 2672454933492135370, guid: c31c455f585e21348b58e96f82825f94, type: 3}
   whenToSpawn: 1
   parentRelationship: 2
   spawnOnSurface: 1
+  aboveWaterOnly: 1
   randomSpawnArea: 0
   randomYRotation: 0
   spawnScale0: 1
-  seeds: 12
+  seeds: {x: 10, y: 10}
   seedSuccessChance: 70
   energyDistribution: 0
   castOffEntity: {fileID: 0}
   castOffDistance: 0
   objectToActivate: {fileID: 0}
-  returnLeftoverEnergy: 1
+  returnLeftoverEnergy: 0
   selfDestruct: 0
 --- !u!1 &4356539839946110735
 GameObject:
@@ -351,6 +361,11 @@ PrefabInstance:
       propertyPath: destroyRoot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4759473824326799664, guid: 1fedb5571d445274782330b0eea48e80,
+        type: 3}
+      propertyPath: nutritionalValue.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4959284120954668768, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: m_Mesh
@@ -399,6 +414,12 @@ GameObject:
 --- !u!4 &2373551390053787552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4379536468355065223, guid: 1fedb5571d445274782330b0eea48e80,
+    type: 3}
+  m_PrefabInstance: {fileID: 2033288779189862951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9098967755747715029 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7093652820694738418, guid: 1fedb5571d445274782330b0eea48e80,
     type: 3}
   m_PrefabInstance: {fileID: 2033288779189862951}
   m_PrefabAsset: {fileID: 0}

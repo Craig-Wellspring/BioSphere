@@ -16,54 +16,65 @@ public class Respiration : MonoBehaviour
 
     [Header("Settings")]
     public int maxStamina = 100;
-    public int stamIncrement = 10;
-    [SerializeField] float breathRate = 0.2f;
+    public int stamIncreasePerLevel = 10;
+    [Tooltip("Can breathe under water.")]
+    public bool amphibious = false;
+
+    float breathingRate = 0.250f;
     int staminaIncrement = 1;
-    int sprintMod = 3;
-    float speedMod;
+    int baseStamina = 100;
+    int sprintMod = 2;
+    bool depleted = false;
 
 
     // Cache
     Slider staminaBar;
+
     AIPathAlignedToSurface pathing;
+    Vitality vitality;
     CreatureStats cStats;
-    [Header("Debug")]
-    public CreatureStat metabolismStat;
+
 
 
     void Start()
     {
-        currentStamina = maxStamina;
-
         pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
+        vitality = GetComponent<Vitality>();
         cStats = GetComponent<CreatureStats>();
-        if (GetComponent<Metabolism>())
-        {
-            foreach (CreatureStat _stat in cStats.statBlock)
-                if (_stat.id.Equals("Metabolism"))
-                {
-                    metabolismStat = _stat;
-                    break;
-                }
-        }
 
         staminaBar = transform.root.Find("Canvas").Find("Stamina Bar").GetComponent<Slider>();
+        currentStamina = maxStamina;
         UpdateStaminaBar();
 
         // Register Max Stamina in StatBlock
-        GetComponent<CreatureStats>()?.AddNewStat("Stamina", maxStamina, stamIncrement);
+        GetComponent<CreatureStats>()?.AddNewStat("Stamina", maxStamina, stamIncreasePerLevel);
 
-        // Start breathing
-        InvokeRepeating("Breathe", breathRate, breathRate);
+        // Start Breathing
+        InvokeRepeating("Breathe", breathingRate, breathingRate);
     }
 
-    void UpdateStaminaBar()
+
+    void Breathe()
     {
-        staminaBar.value = currentStamina;
+        if (isSprinting)
+            ChangeCurrentStamina(-staminaIncrement * sprintMod);
 
-        // Show stamina bar if not at Max
-        staminaBar.gameObject.SetActive(!currentStamina.Equals(maxStamina));
+        if (canBreathe)
+        {
+            // Gain Stamina
+            if (currentStamina < maxStamina && !isSprinting)
+                ChangeCurrentStamina(staminaIncrement);
+        }
+        else
+        {
+            // Lose Stamina until it is depleted, then use HP
+            if (currentStamina < 0)
+                vitality.TakeDamage(staminaIncrement);
+            else
+                ChangeCurrentStamina(-staminaIncrement);
+        }
     }
+
 
     public void ChangeMaxStamina(int _amount)
     {
@@ -76,8 +87,7 @@ public class Respiration : MonoBehaviour
 
     void ChangeCurrentStamina(int _amount = 0)
     {
-        if (currentStamina < maxStamina)
-            currentStamina += _amount;
+        currentStamina += _amount;
 
         if (staminaBar != null)
             UpdateStaminaBar();
@@ -85,57 +95,53 @@ public class Respiration : MonoBehaviour
         StaminaQuery();
     }
 
-
-    bool StaminaQuery()
+    void UpdateStaminaBar()
     {
-        bool _exhaustion = currentStamina >= 0 ? false : true;
+        staminaBar.value = currentStamina;
 
-        // Toggle Exhaustion
-        if (isExhausted != _exhaustion)
-        {
-            isExhausted = _exhaustion;
-            if (isExhausted) // Become Exhausted
-            {
-                metabolismStat.AddModifier(new StatModifier(-50, StatModType.PercentAdd, 1, this));
-            }
-            else // Become Refreshed
-            {
-                metabolismStat.RemoveAllModifiersFromSource(this);
-            }
-        }
-
-        return _exhaustion;
+        // Show stamina bar if not at Max
+        staminaBar.gameObject.SetActive(!currentStamina.Equals(maxStamina));
     }
 
-    void Breathe()
+    void StaminaQuery()
     {
-        if (canBreathe)
-            ChangeCurrentStamina(staminaIncrement);
-        else ChangeCurrentStamina(-staminaIncrement);
-    }
-
-    public void ToggleSprinting(bool _start)
-    {
-        if (_start && !isExhausted)
+        if (!depleted)
         {
-            speedMod = pathing.maxSpeed;
-            pathing.maxSpeed += speedMod;
-            StartCoroutine("Sprinting");
+            isExhausted = currentStamina > 0 ? false : true;
+
+            if (isExhausted)
+            {
+                // Become Exhausted
+                ToggleSprinting(false);
+                depleted = true;
+            }
         }
         else
         {
-            pathing.maxSpeed -= speedMod;
-            speedMod = 0;
-            StopCoroutine("Sprinting");
+            if (currentStamina >= baseStamina)
+                depleted = false;
         }
     }
 
-    IEnumerator Sprinting()
+
+    float _speedMod;
+    public void ToggleSprinting(bool _start)
     {
-        for (; ; )
+        if (_start)
         {
-            ChangeCurrentStamina(-staminaIncrement * sprintMod);
-            yield return new WaitForSeconds(breathRate);
+            if (!isExhausted)
+            {
+                _speedMod = cStats.GetStat("Speed").baseValue;
+                pathing.maxSpeed += _speedMod;
+                isSprinting = true;
+            }      
+            // else tell UI low stamina
+        }
+        else
+        {
+            pathing.maxSpeed -= _speedMod;
+            _speedMod = 0;
+            isSprinting = false;
         }
     }
 }

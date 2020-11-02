@@ -1,8 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
 
-public class ObjectSpawner : AdvancedMonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
-    public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0/*, float _percentReturnToSource = 0f*/, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0)
+    [Header("Spawn Collision")]
+    [Tooltip("Find a new spawn position if point collides with objects in these layers."), SerializeField]
+    LayerMask bumpLayers;
+    [Tooltip("Area to check for other objects."), SerializeField]
+    float bumpRadius = 2;
+    [SerializeField]
+    bool drawBumpSphere = false;
+
+    public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0, bool _aboveSeaLevel = false)
     {
         // Calculate energy
         if (_energyEndowed > 0)
@@ -10,19 +21,13 @@ public class ObjectSpawner : AdvancedMonoBehaviour
             // Consume energy from selected spawner
             if (_subtractFromEData)
                 if (!_subtractFromEData.RemoveEnergy(_energyEndowed))
-                    Debug.LogWarning("Not enough energy to remove from source", this);
-
-
-            // Compensate for nutritional value
-            FoodData[] newFData = _objectToSpawn.GetComponentsInChildren<FoodData>(true);
-            foreach (FoodData fData in newFData)
-                _energyEndowed -= fData.nutritionalValue;
+                    Debug.LogWarning("Not enough energy to remove from source eData", this);
         }
 
         // Spawn Object
-        
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, FindSpawnPos(_randomSpawnArea, _aboveSeaLevel), UtilityFunctions.GravityOrientedRotation(transform), _parent);
 
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, TerrainUnderPosition(PositionAbove(transform.root, _randomSpawnArea)).position, GravityOrientedRotation(), _parent);
+        // Rename
         newObject.name = _objectToSpawn.name;
 
         // Random Rotation
@@ -30,21 +35,65 @@ public class ObjectSpawner : AdvancedMonoBehaviour
             newObject.transform.RotateAround(newObject.transform.position, newObject.transform.up, Random.Range(1f, 360f));
 
         // Transfer energy to new object
+        EnergyData _newEData = newObject.GetComponentInChildren<EnergyData>(true);
         if (_energyEndowed > 0)
-            newObject.GetComponentInChildren<EnergyData>(true)?.AddEnergy(_energyEndowed);
+            _newEData?.AddEnergy(_energyEndowed);
         else if (_energyEndowed < 0)
             Debug.LogWarning("Tried to endow negative energy to object", this);
+
+        // Enable and allocate nutritional value
+        foreach(FoodData fData in newObject.GetComponentsInChildren<FoodData>())
+            fData.enabled = true;
 
 
         return newObject;
     }
 
+    Vector3 FindSpawnPos(float _spawnRadius = 0, bool _aboveSeaLevel = true, int _maxTries = 100)
+    {
+        int tries = 0;
+        float newRadius = _spawnRadius;
 
+        // Get a new point
+        Vector3 spawnPos = _aboveSeaLevel ? UtilityFunctions.FindDryLand(transform.root, _spawnRadius) : UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform.root, _spawnRadius)).position;
+
+        // Get a list of other objects in the area
+        List<Collider> objectsInArea = Physics.OverlapSphere(spawnPos, bumpRadius, bumpLayers).ToList();
+
+        while (objectsInArea.Count > 0)
+        {
+            // Find a new point and check for other objects
+            spawnPos = _aboveSeaLevel ? UtilityFunctions.FindDryLand(transform.root, newRadius) : UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform.root, newRadius)).position;
+            objectsInArea = Physics.OverlapSphere(spawnPos, bumpRadius, bumpLayers).ToList();
+
+            // Increase search radius
+            newRadius += 0.5f;
+            tries++;
+            if (tries > _maxTries)
+            {
+                Debug.LogWarning("Spawn area crowded.", this.transform);
+                return Vector3.zero;
+            }
+        }
+
+        return spawnPos;
+    }
+
+
+    //// Draw Debug BumpSphere \\\\
+    void OnDrawGizmosSelected()
+    {
+        if (drawBumpSphere)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, bumpRadius);
+        }
+    }
 
     public void DrawDebug()
     {
         // Draw sphere at origin location
-        Vector3 originSpherePoint = PositionAbove(transform);
+        Vector3 originSpherePoint = UtilityFunctions.PositionAbove(transform);
         GameObject originSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         originSphere.GetComponent<MeshRenderer>().material.color = Color.red;
         originSphere.transform.position = originSpherePoint;
@@ -52,7 +101,7 @@ public class ObjectSpawner : AdvancedMonoBehaviour
         Destroy(originSphere, 10);
 
         // Draw sphere at ground position
-        Vector3 destinationSpherePoint = TerrainUnderPosition(PositionAbove(transform)).position;
+        Vector3 destinationSpherePoint = UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform)).position;
         GameObject destinationSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         destinationSphere.GetComponent<MeshRenderer>().material.color = Color.green;
         destinationSphere.transform.position = destinationSpherePoint;

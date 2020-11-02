@@ -1603,11 +1603,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
-      propertyPath: hungerGainedPerTick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
-        type: 3}
       propertyPath: metabolismRate
       value: 3
       objectReference: {fileID: 0}
@@ -1685,7 +1680,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 3238999168012185756}
+      objectReference: {fileID: 1140102514860146675}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: possibleMorphs.Array.size
@@ -1981,6 +1976,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9fc1601369c3a04488e8df44cc9f266e,
         type: 2}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpLayers.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2456671554583304284, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
     - {fileID: 5771464199595073494, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
@@ -1991,9 +2006,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2285759280214191315}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3238999168012185756 stripped
+--- !u!4 &1140102514860146675 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3696216562791799887, guid: c5bf24098b61bba4bb0da85b9f252476,
+  m_CorrespondingSourceObject: {fileID: 1182987401748583200, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2285759280214191315}
   m_PrefabAsset: {fileID: 0}

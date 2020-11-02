@@ -5527,7 +5527,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 1979167458713789899}
+      objectReference: {fileID: 4059471653712145060}
     - target: {fileID: 4763968390723634094, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_Controller
@@ -5824,6 +5824,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d9fd5ef64881ffd43871e93b9e69e360,
         type: 2}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: drawBumpSphere
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5856,9 +5866,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2899459648303872388}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1979167458713789899 stripped
+--- !u!4 &4059471653712145060 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3696216562791799887, guid: c5bf24098b61bba4bb0da85b9f252476,
+  m_CorrespondingSourceObject: {fileID: 1182987401748583200, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2899459648303872388}
   m_PrefabAsset: {fileID: 0}

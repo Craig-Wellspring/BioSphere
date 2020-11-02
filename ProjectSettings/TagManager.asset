@@ -35,6 +35,7 @@ TagManager:
   - Leaves
   - Trunk
   - Underwater
+  - Mouth
   layers:
   - Default
   - TransparentFX
@@ -44,7 +45,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PostProcessing
   - Targetting
   - FoodItem
   - Vegetation

@@ -98,6 +98,15 @@ public class CreatureStats : MonoBehaviour
             statBlock.Add(new CreatureStat(_statName, _baseValue, _increment));
     }
 
+    public CreatureStat GetStat(string _statName)
+    {
+        foreach (CreatureStat _stat in statBlock)
+            if (_stat.id.Equals(_statName))
+                return _stat;
+
+        return null;
+    }
+
 
     // Push or Pull Origin Stats. If _push, set stats in creature equal to current stats in statBlock. If !_push, set stats in statBlock equal to current stats in creature
     public void PushOrPullOriginStats(bool _push)
@@ -136,14 +145,6 @@ public class CreatureStats : MonoBehaviour
                         perception.sightRadius = _stat.baseValue;
                     else
                         _stat.SetStat(perception.sightRadius);
-                    break;
-
-                case "Metabolism":
-                    Metabolism metabolism = GetComponent<Metabolism>();
-                    if (_push)
-                        metabolism.metabolismRate = _stat.baseValue;
-                    else
-                        _stat.SetStat(metabolism.metabolismRate);
                     break;
             }
         }

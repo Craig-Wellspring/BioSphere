@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
-public class PlayerModule : AdvancedMonoBehaviour
+public class PlayerModule : MonoBehaviour
 {
     public bool isControlled = false;
     GameObject aiModule;
@@ -58,10 +57,14 @@ public class PlayerModule : AdvancedMonoBehaviour
         aiModule.GetComponent<BasicAIBrain>().ClearPathing();
         aiModule.gameObject.SetActive(false);
 
-        if (baseAnim.GetBool("IsSinging"))
-            baseAnim.SetBool("IsSinging", false);
-        if (baseAnim.GetBool("IsEating"))
-            GetComponentInParent<Metabolism>().StopEating();
+        //if (baseAnim.GetBool("IsSinging"))
+        //    baseAnim.SetBool("IsSinging", false);
+
+        Metabolism metabolism = GetComponentInParent<Metabolism>();
+        if (metabolism.isEating)
+            metabolism.StopEating();
+        if (!metabolism.dietList.Contains("Meat"))
+            metabolism.dietList.Add("Meat");
     }
 
     public void ReleaseControl()

@@ -29,7 +29,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
     Metabolism metabolism;
     VisualPerception vPerception;
     CreatureStats cStats;
-    Rigidbody rBody;
 
     AIPath aiPath;
     Animator aiBrain;
@@ -43,7 +42,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
         metabolism = GetComponentInParent<Metabolism>();
         vPerception = GetComponentInParent<VisualPerception>();
         cStats = GetComponentInParent<CreatureStats>();
-        rBody = transform.root.GetComponent<Rigidbody>();
 
         aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
         aiBrain = GetComponent<Animator>();
@@ -71,9 +69,6 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     void Update()
     {
-        // Register Speed
-        animator.SetFloat("Speed", rBody.velocity.magnitude);
-
         // Register Mates
         aiBrain.SetInteger("NearbyMates", vPerception.nearbyMates.Count);
 

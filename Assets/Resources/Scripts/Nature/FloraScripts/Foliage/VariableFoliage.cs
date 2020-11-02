@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class VariableFoliage : MonoBehaviour
 {
-    public float majorBudNV;
-    public float minorBudNV;
-    [Space(10)]
     [SerializeField] List<FoliageVariantData> randomFoliage;
 
     void Start()
@@ -36,8 +33,7 @@ public class VariableFoliage : MonoBehaviour
             }
         }
 
-        // Set mesh, collider, offset, and nutritional value of each leaf object
-        EnergyData eData = GetComponent<EnergyData>();
+        // Set mesh, collider, and nutritional value of each leaf object
         for (int i = 0; i < totalBudCount; i++)
         {
             Transform _targetLeaf = trunk.GetChild(i);
@@ -48,9 +44,6 @@ public class VariableFoliage : MonoBehaviour
                 _targetLeaf.GetComponentInChildren<MeshFilter>().mesh = randomMesh;
                 _targetLeaf.GetComponent<MeshCollider>().sharedMesh = randomMesh;
                 _targetLeaf.localPosition = randomVariation.majorBudPositions[i];
-                if (eData.RemoveEnergy(majorBudNV))
-                    _targetLeaf.GetComponent<FoodData>().AddNV(majorBudNV);
-                //else Destroy(_targetLeaf);
             }
             else
             {
@@ -58,9 +51,6 @@ public class VariableFoliage : MonoBehaviour
                 _targetLeaf.GetComponentInChildren<MeshFilter>().mesh = randomMesh;
                 _targetLeaf.GetComponent<MeshCollider>().sharedMesh = randomMesh;
                 _targetLeaf.localPosition = randomVariation.minorBudPositions[i - randomVariation.majorBudPositions.Count];
-                if (eData.RemoveEnergy(minorBudNV))
-                    _targetLeaf.GetComponent<FoodData>().AddNV(minorBudNV);
-                //else Destroy(_targetLeaf);
             }
         }
     }

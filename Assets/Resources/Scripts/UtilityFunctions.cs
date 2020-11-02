@@ -2,34 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdvancedMonoBehaviour : MonoBehaviour
+
+public static class UtilityFunctions
 {
     // Find a position in a random radius on a plane 25 units above the origin transform
-    protected Vector3 PositionAbove(Transform _origin, float _radius = 0)
+    public static Vector3 PositionAbove(Transform _origin, float _radius = 0, float _height = 25)
     {
         if (_radius > 0)
         {
             Vector3 newPos = _origin.position + (_origin.up * 25) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
             return newPos;
         }
-        else return _origin.position + (_origin.up * 25);
+        else return _origin.position + (_origin.up * _height);
     }
 
     // Find a position on the Terrain directly beneath the position given
-    protected (Vector3 position, GameObject terrainObject) TerrainUnderPosition(Vector3 _position)
+    public static (Vector3 position, GameObject terrainObject) GroundBelowPosition(Vector3 _position)
     {
         if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 500, LayerMask.GetMask("Geosphere")))
             return (hit.point, hit.transform.gameObject);
         else
         {
-            Debug.LogError("PointOnTerrainUnderPosition Raycast hit nothing.", this);
+            Debug.LogError("PointOnTerrainUnderPosition Raycast hit nothing.");
             return (Vector3.zero, null);
         }
     }
 
+    public static bool AboveSeaLevel(Vector3 _point)
+    {
+        // Cast a ray from point to center, if it hits water, it's above sea level
+        Vector3 direction = Vector3.zero - _point;
+        Ray ray = new Ray(_point, direction);
+        if (Physics.Raycast(_point, direction, out RaycastHit hit, direction.magnitude, LayerMask.GetMask("Water")))
+            return true;
+        else return false;
+    }
+
+    public static Vector3 FindDryLand(Transform _origin, float _radius, int _maxTries = 100)
+    {
+        int tries = 0;
+        float newRadius = _radius;
+        Vector3 newPoint = GroundBelowPosition(PositionAbove(_origin, _radius)).position;
+
+        while (!AboveSeaLevel(newPoint))
+        {
+            newPoint = GroundBelowPosition(PositionAbove(_origin, newRadius)).position;
+
+            newRadius += 0.5f;
+            tries++;
+            if (tries > _maxTries)
+            {
+                Debug.LogWarning("Could not find dry land.", _origin);
+                return Vector3.zero;
+            }
+        }
+
+        return newPoint;
+    }
+
+
 
     // Get Vector pointing toward global zero
-    protected Vector3 GravityVector(Vector3 _fromPos)
+    public static Vector3 GravityVector(Vector3 _fromPos)
     {
         Vector3 gravityVector = (Vector3.zero - _fromPos).normalized;
         return gravityVector;
@@ -37,15 +71,15 @@ public class AdvancedMonoBehaviour : MonoBehaviour
 
 
     // Get gravity aligned rotation
-    protected Quaternion GravityOrientedRotation()
+    public static Quaternion GravityOrientedRotation(Transform _transform)
     {
-        Quaternion targetRotation = Quaternion.FromToRotation(transform.up, -GravityVector(transform.position)) * transform.rotation;
+        Quaternion targetRotation = Quaternion.FromToRotation(_transform.up, -GravityVector(_transform.position)) * _transform.rotation;
 
         return targetRotation;
     }
 
 
-    protected GameObject ClosestObjectInList(List<GameObject> _objectList, bool _returnRoot)
+    public static GameObject ClosestObjectToTransform(Transform _origin, List<GameObject> _objectList, bool _returnRoot)
     {
         GameObject closestObj = null;
         float closestDistanceSqr = Mathf.Infinity;
@@ -53,9 +87,9 @@ public class AdvancedMonoBehaviour : MonoBehaviour
         {
             if (_object != null)
             {
-                Vector3 directionToTarget = _object.transform.position - transform.position;
+                Vector3 directionToTarget = _object.transform.position - _origin.position;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;
-                if (dSqrToTarget < closestDistanceSqr && _object != this.gameObject)
+                if (dSqrToTarget < closestDistanceSqr && _object != _origin.gameObject)
                 {
                     closestDistanceSqr = dSqrToTarget;
                     closestObj = _returnRoot ? _object.transform.root.gameObject : _object;
@@ -131,7 +165,7 @@ public class AdvancedMonoBehaviour : MonoBehaviour
 
         return returnChild;
     }
-    
+
 
     protected List<Transform> FindChildrenWithTag(string _tag, Transform _parent = null)
     {
@@ -148,4 +182,5 @@ public class AdvancedMonoBehaviour : MonoBehaviour
     */
     #endregion
 }
+
 

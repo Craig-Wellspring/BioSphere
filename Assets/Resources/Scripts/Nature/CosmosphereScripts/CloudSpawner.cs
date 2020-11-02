@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudSpawner : AdvancedMonoBehaviour
+public class CloudSpawner : MonoBehaviour
 {
     #region Singleton
     public static CloudSpawner Spawner { get; private set; }
@@ -41,7 +41,7 @@ public class CloudSpawner : AdvancedMonoBehaviour
 
         GameObject newCloud = Instantiate(cloudTypes[Random.Range(0,cloudTypes.Count)], spawnPos, Quaternion.identity, transform);
         newCloud.name = "Cloud";
-        newCloud.transform.rotation = Quaternion.FromToRotation(newCloud.transform.up, -GravityVector(newCloud.transform.position)) * newCloud.transform.rotation;
+        newCloud.transform.rotation = Quaternion.FromToRotation(newCloud.transform.up, -UtilityFunctions.GravityVector(newCloud.transform.position)) * newCloud.transform.rotation;
         newCloud.transform.localScale = new Vector3(Random.Range(cloudSizeMinXMaxY.x, cloudSizeMinXMaxY.y), Random.Range(cloudSizeMinXMaxY.x, cloudSizeMinXMaxY.y), Random.Range(cloudSizeMinXMaxY.x, cloudSizeMinXMaxY.y));
 
         if (_increaseCount)
