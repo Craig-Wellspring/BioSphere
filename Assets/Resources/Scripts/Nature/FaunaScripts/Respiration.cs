@@ -68,10 +68,10 @@ public class Respiration : MonoBehaviour
         else
         {
             // Lose Stamina until it is depleted, then use HP
-            if (currentStamina < 0)
-                vitality.TakeDamage(staminaIncrement);
-            else
+            if (currentStamina > 0)
                 ChangeCurrentStamina(-staminaIncrement);
+            else
+                vitality.TakeDamage(staminaIncrement);
         }
     }
 

@@ -35,7 +35,7 @@ public class Reproduction : ObjectSpawner
     EnergyData eData;
     void Start()
     {
-        eData = GetComponent<EnergyData>();
+        eData = GetComponentInParent<EnergyData>();
     }
 
 

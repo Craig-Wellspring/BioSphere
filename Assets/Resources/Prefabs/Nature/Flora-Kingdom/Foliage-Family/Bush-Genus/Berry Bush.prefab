@@ -71,8 +71,8 @@ MonoBehaviour:
     m_Bits: 0
   bumpRadius: 1
   drawBumpSphere: 0
-  newFruit:
-  - {fileID: 2672454933492135370, guid: c31c455f585e21348b58e96f82825f94, type: 3}
+  newFruit: {fileID: 2672454933492135370, guid: c31c455f585e21348b58e96f82825f94,
+    type: 3}
   whenToSpawn: 1
   parentRelationship: 2
   spawnOnSurface: 1
@@ -88,6 +88,18 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   returnLeftoverEnergy: 0
   selfDestruct: 0
+--- !u!114 &2433305717648741290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317078159193006458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0263f2fb6f944fbc2277ad34f298c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4356539839946110735
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,11 +4,10 @@ using Pathfinding;
 public class LifeGuardian : ObjectSpawner
 {
     [Space(10)]
-    public GameObject seedToPlant;
-    [SerializeField] float maxEnergyPlanted = 500f;
     [Range(1, 100), SerializeField] int plantingArea = 2;
     [Range(1, 100)] public int roamingArea = 30;
     [Range(1, 50)] public int pathingSpread = 5;
+
 
     Animator guardianBrain;
     AIPath pathing;
@@ -46,10 +45,10 @@ public class LifeGuardian : ObjectSpawner
     //Plant Seedgrass
     public void PlantSeedFromSource()
     {
-        float _energyToPlant = (lifeSource.energyReserve > maxEnergyPlanted + lifeSource.minimumEnergyReserve) ? maxEnergyPlanted : lifeSource.energyReserve - lifeSource.minimumEnergyReserve;
+        float _energyToPlant = (lifeSource.energyReserve > lifeSource.maxEnergyPlanted + lifeSource.minimumEnergyReserve) ? lifeSource.maxEnergyPlanted : lifeSource.energyReserve - lifeSource.minimumEnergyReserve;
         if (_energyToPlant > 0)
         {
-            SpawnObject(seedToPlant, null, _energyToPlant, null, true, plantingArea, true);
+            SpawnObject(lifeSource.seedToPlant, null, _energyToPlant, null, true, plantingArea, true);
             lifeSource.energyReserve -= _energyToPlant;
         }
     }

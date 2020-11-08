@@ -14,14 +14,12 @@ public class PlanetCore : MonoBehaviour
     #endregion
 
 
-    public float gravity = -10f;
+    public float gravityForce = 10f;
     public float alignSpeed = 50f;
 
     public void Attract(Rigidbody _body)
     {
-        Vector3 gravityUp = (transform.position - _body.position).normalized;
-
-        _body.AddForce(-gravityUp * gravity);
+        _body.AddForce(UtilityFunctions.GravityVector(_body.transform.position) * gravityForce, ForceMode.Acceleration);
     }
 
     public void AlignWithGravity(Transform _body, bool _snap)

@@ -71,7 +71,6 @@ GameObject:
   - component: {fileID: 6113023438756759090}
   - component: {fileID: 387015595841044675}
   - component: {fileID: 4688033946351409519}
-  - component: {fileID: 3667436677016688261}
   - component: {fileID: 3445487871510083988}
   - component: {fileID: 4959284120954668768}
   m_Layer: 11
@@ -125,12 +124,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthSpeed: 1
   halfGrownTag: Leaves
-  activateObjectsHG: []
   gainIndependenceHG: 0
   addTerrainColor: 0
+  activateObjectsHG: []
+  spawnScale0HG: 1
   fullyGrownTag: 
-  activateObjectsFG: []
   gainIndependenceFG: 0
+  activateObjectsFG: []
+  spawnScale0FG: 1
 --- !u!95 &387015595841044675
 Animator:
   serializedVersion: 3
@@ -168,7 +169,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
---- !u!114 &3667436677016688261
+--- !u!114 &3445487871510083988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752407923769582429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38cf4dc201305545b0b3ab8f3351b36, type: 3}
+  m_Script: {fileID: 11500000, guid: d42bbf7b24b616549b01cb1578abc22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gradient:
@@ -209,18 +210,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
---- !u!114 &3445487871510083988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752407923769582429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d42bbf7b24b616549b01cb1578abc22d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &4959284120954668768
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -382,12 +371,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthSpeed: 1
   halfGrownTag: 
-  activateObjectsHG: []
   gainIndependenceHG: 0
   addTerrainColor: 0.6
+  activateObjectsHG: []
+  spawnScale0HG: 1
   fullyGrownTag: 
-  activateObjectsFG: []
   gainIndependenceFG: 0
+  activateObjectsFG: []
+  spawnScale0FG: 1
 --- !u!95 &564489690420819139
 Animator:
   serializedVersion: 3

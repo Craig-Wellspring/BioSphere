@@ -5451,7 +5451,7 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5491,7 +5491,7 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.data[2]
-      value: Berry
+      value: Fruit
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5755,6 +5755,11 @@ PrefabInstance:
       propertyPath: drawSightSphere
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8351545068497355797, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8759774926469127402, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5854,12 +5859,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2899459648303872388}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5764549722861291752 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7476881784630833516, guid: c5bf24098b61bba4bb0da85b9f252476,
-    type: 3}
-  m_PrefabInstance: {fileID: 2899459648303872388}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6757980782073519402 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8499937947738678446, guid: c5bf24098b61bba4bb0da85b9f252476,
@@ -5869,6 +5868,12 @@ GameObject:
 --- !u!4 &4059471653712145060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1182987401748583200, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2899459648303872388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5764549722861291752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7476881784630833516, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2899459648303872388}
   m_PrefabAsset: {fileID: 0}

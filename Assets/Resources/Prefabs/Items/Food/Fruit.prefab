@@ -33,8 +33,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gradient:
     serializedVersion: 2
-    key0: {r: 0.32955217, g: 0, b: 1, a: 1}
-    key1: {r: 0.6415094, g: 0, b: 0.4334053, a: 1}
+    key0: {r: 0.6226415, g: 0.026432883, b: 0.32407635, a: 1}
+    key1: {r: 0.6698113, g: 0.16071162, b: 0, a: 1}
     key2: {r: 0.9471822, g: 0, b: 1, a: 0}
     key3: {r: 0.9471822, g: 0, b: 1, a: 0}
     key4: {r: 0.9471822, g: 0, b: 1, a: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   halfGrown: 0
   fullyGrown: 0
   growthSpeed: 1
-  halfGrownTag: Berry
+  halfGrownTag: Fruit
   gainIndependenceHG: 0
   addTerrainColor: 0
   activateObjectsHG: []
@@ -94,18 +94,18 @@ PrefabInstance:
     - target: {fileID: 114915662414270826, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: m_Radius
-      value: 0.015
+      value: 0.034
       objectReference: {fileID: 0}
     - target: {fileID: 114915662414270826, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: m_Center.y
-      value: -0.017
+      value: -0.035
       objectReference: {fileID: 0}
     - target: {fileID: 606102368463510762, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -1692108017345405815, guid: 17250e2e94fb2444aa883ecda60aaa2b,
+      objectReference: {fileID: -1692108017345405815, guid: 7451202c51d669344a1986967ef9056c,
         type: 3}
     - target: {fileID: 1983486783165235167, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 2838819599625569569, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: nutritionalValue.y
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3426599046257223712, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 3529067329290632428, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: m_Mass
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3529067329290632428, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 3786759678478060021, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}
       propertyPath: m_Name
-      value: Berry
+      value: Fruit
       objectReference: {fileID: 0}
     - target: {fileID: 3786759678478060021, guid: 79abd7b0aa3a42a4fbf1e80e1947d68d,
         type: 3}

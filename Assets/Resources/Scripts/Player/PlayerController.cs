@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector2 mouseSensitivity = new Vector2(250f, 250f);
     [SerializeField] Vector2 verticalLookClamp = new Vector2(-60, 60);
     [Space(10)]
-    [SerializeField] float turnSpeed = 100f;
+    [SerializeField] float turnSpeed = 120f;
     [SerializeField] int jumpPower = 10;
     [SerializeField] LayerMask surfaceMask;
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
             respiration.ToggleSprinting(false);
 
         // Calculate rotation
-        transform.root.Rotate(Vector3.up * Input.GetAxisRaw("Horizontal") * Time.deltaTime * turnSpeed);
+        transform.root.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * turnSpeed);
 
         // Calculate movement
         Vector3 moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;

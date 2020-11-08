@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 7911708878628409014}
   m_Layer: 0
   m_Name: Jaw
-  m_TagString: Mouth
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1986,7 +1986,7 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -2011,7 +2011,7 @@ PrefabInstance:
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: dietList.Array.data[4]
-      value: Mushroom
+      value: Fruit
       objectReference: {fileID: 0}
     - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -2033,6 +2033,11 @@ PrefabInstance:
       propertyPath: mouth
       value: 
       objectReference: {fileID: 7911708878628409014}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList.Array.data[5]
+      value: Mushroom
+      objectReference: {fileID: 0}
     - target: {fileID: 3876870131049664693, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_Center.y
@@ -2108,6 +2113,11 @@ PrefabInstance:
       propertyPath: eyes
       value: 
       objectReference: {fileID: 7911708878628409012}
+    - target: {fileID: 8351545068497355797, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8759774926469127402, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2158,15 +2168,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2421696708626283188}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5068977358701366232 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7476881784630833516, guid: c5bf24098b61bba4bb0da85b9f252476,
-    type: 3}
-  m_PrefabInstance: {fileID: 2421696708626283188}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2421696708625883598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2421696708626283188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5068977358701366232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7476881784630833516, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2421696708626283188}
   m_PrefabAsset: {fileID: 0}

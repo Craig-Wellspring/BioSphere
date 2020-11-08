@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GenericDecay : MonoBehaviour
 {
-    public float decayTime;
+    [SerializeField] float decayTime;
     public bool destroyRoot = false;
 
     private void OnEnable()

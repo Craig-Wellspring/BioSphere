@@ -13,16 +13,22 @@ public class FoodData : MonoBehaviour
     public enum ConsumptionType { DestroyObject, DestroyRoot, DisableObject, DisableRoot }
     public ConsumptionType consumptionType;
 
+
     // On Spawn transfer energy from eData to NV
     void OnEnable()
     {
-        if (transform.root.TryGetComponent<EnergyData>(out EnergyData eData))
-        {
-            float availableEnergy = Mathf.Min(nutritionalValue.y, eData.energyReserve);
+        EnergyData eData = null;
+        if (TryGetComponent<EnergyData>(out EnergyData localEData))
+            eData = localEData;
+        else if (transform.root.TryGetComponent<EnergyData>(out EnergyData rootEData))
+            eData = rootEData;
 
-            if (eData.RemoveEnergy(availableEnergy))
-                AddNV(availableEnergy);
-        }
+
+        float availableEnergy = Mathf.Min(nutritionalValue.y, eData.energyReserve);
+
+        if (eData.RemoveEnergy(availableEnergy))
+            AddNV(availableEnergy);
+
     }
 
 

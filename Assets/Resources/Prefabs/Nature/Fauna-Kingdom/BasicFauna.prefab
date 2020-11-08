@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400250}
   - component: {fileID: 3297599652082431522}
+  - component: {fileID: 2649493348847815723}
   - component: {fileID: 690026276287503509}
   - component: {fileID: 9500000}
   - component: {fileID: 3362489841897072205}
@@ -38,6 +39,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2476248279026277508}
   - {fileID: 4658365877093987288}
   - {fileID: 7173857854691505054}
   - {fileID: 8351545068497355797}
@@ -56,6 +58,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2649493348847815723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
 --- !u!114 &690026276287503509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +395,36 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+--- !u!1 &921679236421474247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2476248279026277508}
+  m_Layer: 20
+  m_Name: Brain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2476248279026277508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921679236421474247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400250}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1296924279860108605
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +459,7 @@ RectTransform:
   - {fileID: 8357954067529338423}
   - {fileID: 1508676251800779626}
   m_Father: {fileID: 400250}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -490,7 +535,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4658365877093987288}
-  - component: {fileID: 2909323061587037465}
   - component: {fileID: 2748659348047256063}
   - component: {fileID: 2131904891924997232}
   - component: {fileID: 999438302657518291}
@@ -520,21 +564,8 @@ Transform:
   - {fileID: 2114154110356943304}
   - {fileID: 7739786857982873997}
   m_Father: {fileID: 400250}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2909323061587037465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467497012653493642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyReserve: 0
 --- !u!114 &2748659348047256063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,8 +671,8 @@ MonoBehaviour:
   biteLayers:
     serializedVersion: 2
     m_Bits: 11264
-  hungerGainedPerTick: 0.25
-  hungerPerTickPerLevel: 0.05
+  hungerGainedPerTick: 0.15
+  hungerPerTickPerLevel: 0.001
   hungryAtPercent: 20
   wastingAtPercent: 80
   hungryMeatEater: 1
@@ -1431,7 +1462,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400250}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5138220966308714026
 MonoBehaviour:
@@ -1447,7 +1478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nutritionalValue: {x: 0, y: 0}
   chewRateModifier: 1
-  consumptionType: 0
+  consumptionType: 1
 --- !u!114 &1835522965571032941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,15 +1596,15 @@ PrefabInstance:
       objectReference: {fileID: 400250}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a790a8d0058a954b8c6ae2ec7189f99, type: 3}
---- !u!4 &1182987401748583200 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1810052799862290217, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
-    type: 3}
-  m_PrefabInstance: {fileID: 681250431128740873}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2114154110356943304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
+    type: 3}
+  m_PrefabInstance: {fileID: 681250431128740873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1182987401748583200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1810052799862290217, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
     type: 3}
   m_PrefabInstance: {fileID: 681250431128740873}
   m_PrefabAsset: {fileID: 0}

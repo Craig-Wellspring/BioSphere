@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(CreatureStats), typeof(EnergyData))]
+[RequireComponent(typeof(CreatureStats))]
 public class Evolution : MonoBehaviour
 {
     [Header("State")]
@@ -30,7 +30,7 @@ public class Evolution : MonoBehaviour
 
     void Start()
     {
-        eData = GetComponent<EnergyData>();
+        eData = GetComponentInParent<EnergyData>();
         eData.EnergyAdded += SurplusQuery;
         eData.EnergyRemoved += SurplusQuery;
         SurplusQuery();
@@ -133,7 +133,7 @@ public class Evolution : MonoBehaviour
     public void SpawnForm(GameObject _newForm)
     {
         //Spawn new Creature Form
-        EnergyData eData = GetComponent<EnergyData>();
+        EnergyData eData = GetComponentInParent<EnergyData>();
         GameObject newCreature = GetComponent<Reproduction>().SpawnObject(_newForm, eData, eData.energyReserve);
 
         // Pass down Current Level and stat block

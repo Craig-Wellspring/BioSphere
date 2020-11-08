@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d49f98f82bf0ee4aa872ea345cad16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foliageNV: 30
   randomFoliage:
   - {fileID: 11400000, guid: e774face668cfaf488bba677a951c090, type: 2}
   - {fileID: 11400000, guid: c07567d9307b0cb4282041ccab97990c, type: 2}
@@ -45,6 +44,40 @@ MonoBehaviour:
   onUpdate: 0
   rotationSpeed: 50
   orientTarget: 0
+--- !u!114 &684892135903662889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639594012408101563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b7d1cb72d673c41a3f108b0e8704cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  bumpRadius: 1
+  drawBumpSphere: 0
+  newFruit: {fileID: 2672454933492135370, guid: 7c4c8b21e53822048a1b7b69523e8038,
+    type: 3}
+  whenToSpawn: 1
+  parentRelationship: 2
+  spawnOnSurface: 1
+  aboveWaterOnly: 1
+  randomSpawnArea: 0
+  randomYRotation: 0
+  spawnScale0: 1
+  seeds: {x: 10, y: 10}
+  seedSuccessChance: 70
+  energyDistribution: 0
+  castOffEntity: {fileID: 0}
+  castOffDistance: 0
+  objectToActivate: {fileID: 0}
+  returnLeftoverEnergy: 0
+  selfDestruct: 0
 --- !u!1001 &3085989116704496102
 PrefabInstance:
   m_ObjectHideFlags: 0

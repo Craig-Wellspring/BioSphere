@@ -79,21 +79,13 @@ public class VisualPerception : MonoBehaviour
         List<Collider> withinSightRange = Physics.OverlapSphere(eyes.position, sightRadius, visibleLayers).ToList();
         withinSightRange.Remove(body.mainBodyCollider);
 
-        if (cullUnderwater)
-            foreach (Collider _target in withinSightRange)
-                if (!UtilityFunctions.AboveSeaLevel(_target.transform.position))
-                    withinSightRange.Remove(_target);
-
 
         //For every object in the area, check for line of sight and categorize into lists
         foreach (Collider _col in withinSightRange)
         {
-            // Remove objects if they are under water
+            // Don't see objects that are under water
             if (cullUnderwater && !UtilityFunctions.AboveSeaLevel(_col.transform.position))
-            {
-                //withinSightRange.Remove(_col);
                 continue;
-            }
 
             // Check for clear Sight Line
             RaycastHit hit;

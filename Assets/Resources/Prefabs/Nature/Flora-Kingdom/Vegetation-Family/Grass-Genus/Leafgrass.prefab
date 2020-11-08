@@ -17,8 +17,8 @@ MonoBehaviour:
     m_Bits: 2048
   bumpRadius: 1
   drawBumpSphere: 1
-  newFruit:
-  - {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24, type: 3}
+  newFruit: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
+    type: 3}
   whenToSpawn: 1
   parentRelationship: 0
   spawnOnSurface: 0

@@ -15,17 +15,16 @@ public class ObjectSpawner : MonoBehaviour
 
     public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0, bool _aboveSeaLevel = false)
     {
-        // Calculate energy
-        if (_energyEndowed > 0)
-        {
-            // Consume energy from selected spawner
-            if (_subtractFromEData)
-                if (!_subtractFromEData.RemoveEnergy(_energyEndowed))
-                    Debug.LogWarning("Not enough energy to remove from source eData", this);
-        }
+        // Consume energy from spawner
+        if (_energyEndowed > 0 && _subtractFromEData)
+            if (!_subtractFromEData.RemoveEnergy(_energyEndowed))
+                Debug.LogWarning("Not enough energy to remove from source eData", this);
 
         // Spawn Object
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, FindSpawnPos(_randomSpawnArea, _aboveSeaLevel), UtilityFunctions.GravityOrientedRotation(transform), _parent);
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, FindSpawnPos(_randomSpawnArea, _aboveSeaLevel), Quaternion.identity, _parent);
+
+        // Orient to gravity
+        newObject.transform.rotation = UtilityFunctions.GravityOrientedRotation(newObject.transform);
 
         // Rename
         newObject.name = _objectToSpawn.name;
@@ -41,7 +40,7 @@ public class ObjectSpawner : MonoBehaviour
         else if (_energyEndowed < 0)
             Debug.LogWarning("Tried to endow negative energy to object", this);
 
-        // Enable and allocate nutritional value
+        // Allocate nutritional value
         foreach(FoodData fData in newObject.GetComponentsInChildren<FoodData>())
             fData.enabled = true;
 

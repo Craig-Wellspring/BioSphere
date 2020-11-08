@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 1065377328634644644}
   - component: {fileID: 4953273927556451896}
   - component: {fileID: 7784330374298399770}
-  - component: {fileID: 1398034972959911394}
   - component: {fileID: 2589863276047315539}
   - component: {fileID: 5903858121702242424}
   m_Layer: 11
@@ -149,12 +148,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthSpeed: 5
   halfGrownTag: Grass
-  activateObjectsHG: []
   gainIndependenceHG: 0
   addTerrainColor: 0.5
+  activateObjectsHG: []
+  spawnScale0HG: 1
   fullyGrownTag: 
-  activateObjectsFG: []
   gainIndependenceFG: 0
+  activateObjectsFG: []
+  spawnScale0FG: 1
 --- !u!95 &4953273927556451896
 Animator:
   serializedVersion: 3
@@ -197,7 +198,7 @@ LODGroup:
     renderers:
     - renderer: {fileID: 0}
   m_Enabled: 1
---- !u!114 &1398034972959911394
+--- !u!114 &2589863276047315539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6457183713139666284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38cf4dc201305545b0b3ab8f3351b36, type: 3}
+  m_Script: {fileID: 11500000, guid: d42bbf7b24b616549b01cb1578abc22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gradient:
@@ -238,18 +239,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
---- !u!114 &2589863276047315539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6457183713139666284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d42bbf7b24b616549b01cb1578abc22d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &5903858121702242424
 BoxCollider:
   m_ObjectHideFlags: 0

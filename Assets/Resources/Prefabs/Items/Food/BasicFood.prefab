@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4595524785962046287}
+  - component: {fileID: 5345414064319361800}
+  - component: {fileID: 2838819599625569569}
+  - component: {fileID: 1983486783165235167}
   - component: {fileID: 5654184796306641800}
   - component: {fileID: 3529067329290632428}
   - component: {fileID: 114915662414270826}
   - component: {fileID: 606102368463510762}
   - component: {fileID: 3426599046257223712}
-  - component: {fileID: 5345414064319361800}
-  - component: {fileID: 2838819599625569569}
-  - component: {fileID: 1983486783165235167}
   m_Layer: 10
   m_Name: BasicFood
   m_TagString: Untagged
@@ -38,6 +38,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5345414064319361800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786759678478060021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyReserve: 0
+--- !u!114 &2838819599625569569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786759678478060021}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutritionalValue: {x: 0, y: 0}
+  chewRateModifier: 1
+  consumptionType: 0
+--- !u!114 &1983486783165235167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786759678478060021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2862520a16287a545bbe9a687be84ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decayTime: 120
+  destroyRoot: 1
 --- !u!114 &5654184796306641800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,45 +170,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5345414064319361800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3786759678478060021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1520ce410bf8b459f836df7e4aaf9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyReserve: 0
---- !u!114 &2838819599625569569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3786759678478060021}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nutritionalValue: {x: 0, y: 0}
-  chewRateModifier: 1
-  consumptionType: 0
---- !u!114 &1983486783165235167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3786759678478060021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2862520a16287a545bbe9a687be84ea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decayTime: 120
-  destroyRoot: 1

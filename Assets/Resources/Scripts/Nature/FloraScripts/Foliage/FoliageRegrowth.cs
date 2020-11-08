@@ -9,6 +9,7 @@ public class FoliageRegrowth : MonoBehaviour
     [Space(10)]
     [Tooltip("Destroys the root object when no Energy remains.")]
     [SerializeField] bool destroyWhenDepleted = true;
+
     [Tooltip("Seconds to wait before destroying root object. 0 is instant.")]
     [SerializeField] int decayTime = 120;
 
@@ -27,7 +28,7 @@ public class FoliageRegrowth : MonoBehaviour
     {
         _leafObject.tag = "Seedling";
         _leafObject.transform.localScale = Vector3.zero;
-        RegrowLeaves(_leafObject, secondsDormant);
+        StartCoroutine(RegrowLeaves(_leafObject, secondsDormant));
     }
 
     IEnumerator RegrowLeaves(GameObject _leafObject, int _delay)

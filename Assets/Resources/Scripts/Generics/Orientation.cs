@@ -24,6 +24,11 @@ public class Orientation : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, NewOrientation(), rotationSpeed * Time.deltaTime);
     }
 
+    public void SnapToGround()
+    {
+        transform.position = UtilityFunctions.GroundBelowPosition(transform.position).position;
+    }
+
     public void SnapOrient()
     {
         transform.rotation = NewOrientation();

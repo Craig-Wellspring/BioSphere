@@ -143,7 +143,7 @@ public class Metabolism : MonoBehaviour
         {
             UpdateDietHistory(morselIngested.foodTag, morselIngested.energyUnits);
 
-            EnergyData eData = GetComponent<EnergyData>();
+            EnergyData eData = GetComponentInParent<EnergyData>();
             if (eData != null)
                 eData.AddEnergy(morselIngested.energyUnits);
             else
@@ -261,8 +261,8 @@ public class Metabolism : MonoBehaviour
                 break;
 
             case (FoodData.ConsumptionType.DisableObject):
-                _targetFData.gameObject.SetActive(false);
                 _targetFData.GetComponentInParent<FoliageRegrowth>()?.ConsumeFoliage(_targetFData.gameObject);
+                _targetFData.gameObject.SetActive(false);
                 break;
 
             case (FoodData.ConsumptionType.DisableRoot):

@@ -106,15 +106,9 @@ public class Vitality : MonoBehaviour
         // Activate Corpse
         if (corpse != null)
         {
-            corpse.SetActive(true);
-
             //Transfer Energy to Corpse
-            if (TryGetComponent<EnergyData>(out EnergyData selfEData) && corpse.TryGetComponent<FoodData>(out FoodData corpseFData))
-            {
-                float remainingEnergy = selfEData.energyReserve;
-                if (selfEData.RemoveEnergy(remainingEnergy))
-                    corpseFData.AddNV(remainingEnergy);
-            }
+            corpse.GetComponent<FoodData>().nutritionalValue.y = GetComponentInParent<EnergyData>().energyReserve;
+            corpse.SetActive(true);
         }
 
         // Deactivate Canvas

@@ -35,7 +35,7 @@ TagManager:
   - Leaves
   - Trunk
   - Underwater
-  - Mouth
+  - Fruit
   layers:
   - Default
   - TransparentFX

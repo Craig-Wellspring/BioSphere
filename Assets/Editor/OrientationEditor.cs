@@ -10,6 +10,9 @@ public class OrientationEditor : Editor
         if (GUILayout.Button("Snap Orient"))
             orientation.SnapOrient();
 
+        if (GUILayout.Button("Snap To Ground"))
+            orientation.SnapToGround();
+
         EditorGUILayout.Space(10);
         DrawDefaultInspector();
     }
