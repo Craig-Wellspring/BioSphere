@@ -10,7 +10,7 @@ public class AIMoveTowardsFood : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        vPerception = animator.GetComponentInParent<VisualPerception>();
+        vPerception = animator.transform.root.GetComponentInChildren<VisualPerception>();
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
 
         if (vPerception.nearbyFood.Count > 0)

@@ -59,7 +59,11 @@ public class Evolution : MonoBehaviour
     void LevelUp()
     {
         if (TryGetComponent<Reproduction>(out Reproduction reproduction))
-            reproduction.SpawnSeed(surplusThreshold);
+        {
+            if (reproduction.offspringSeed != null)
+                reproduction.SpawnSeed(surplusThreshold);
+            else eData.ReturnEnergyToReserve(surplusThreshold);
+        }
         else eData.ReturnEnergyToReserve(surplusThreshold);
 
         GetComponent<CreatureStats>()?.TriggerLevelUp();
@@ -70,9 +74,6 @@ public class Evolution : MonoBehaviour
     public void AttemptTransMorph()
     {
         morphLevel += 1;
-
-        // Initialize empty list
-        //List<GameObject> availableForms = new List<GameObject>();
 
         foreach (MorphData _morph in possibleMorphs)
         {
@@ -86,19 +87,41 @@ public class Evolution : MonoBehaviour
                     {
                         case MorphRequirement.RequirementType.Diet:
                             foreach (DietData foodType in GetComponent<Metabolism>().dietHistory)
-                                if (foodType.foodTag.Equals(_req.id) && foodType.energyUnits >= _req.minimum)
+                                if (foodType.foodTag.Equals(_req.id))
                                 {
-                                    reqsMet++;
-                                    break;
+                                    if (_req.greaterThan)
+                                    {
+                                        if (foodType.energyUnits >= _req.threshold)
+                                        {
+                                            reqsMet++;
+                                            break;
+                                        }
+                                    }
+                                    else if (foodType.energyUnits <= _req.threshold)
+                                    {
+                                        reqsMet++;
+                                        break;
+                                    }
                                 }
                             break;
 
                         case MorphRequirement.RequirementType.Stat:
                             foreach (CreatureStat stat in cStats.statBlock)
-                                if (stat.id.Equals(_req.id) && stat.value >= _req.minimum)
+                                if (stat.id.Equals(_req.id))
                                 {
-                                    reqsMet++;
-                                    break;
+                                    if (_req.greaterThan)
+                                    {
+                                        if (stat.value >= _req.threshold)
+                                        {
+                                            reqsMet++;
+                                            break;
+                                        }
+                                    }
+                                    else if (stat.value <= _req.threshold)
+                                    {
+                                        reqsMet++;
+                                        break;
+                                    }
                                 }
                             break;
                     }
@@ -106,19 +129,15 @@ public class Evolution : MonoBehaviour
 
                 if (reqsMet == _morph.requirements.Count)
                     TransMorph(_morph.morphForm);
-                //availableForms.Add(_morph.morphForm);
             }
         }
-
-        // If multiple forms are possible at level up, choose one at random
-        //if (availableForms.Count > 0)
-        //    TransMorph(availableForms[UnityEngine.Random.Range(0, availableForms.Count)]);
     }
 
     //// Morph into available Form \\\\
     void TransMorph(GameObject _newForm)
     {
         SpawnForm(_newForm);
+
 
         //Debug
         if (logMorphs)
@@ -135,6 +154,14 @@ public class Evolution : MonoBehaviour
         //Spawn new Creature Form
         EnergyData eData = GetComponentInParent<EnergyData>();
         GameObject newCreature = GetComponent<Reproduction>().SpawnObject(_newForm, eData, eData.energyReserve);
+
+        PlayerModule playerModule = transform.root.GetComponentInChildren<PlayerModule>();
+        if (playerModule.isControlled)
+        {
+            playerModule.ReleaseControl();
+            newCreature.GetComponentInChildren<PlayerModule>().TakeControl();
+        }
+
 
         // Pass down Current Level and stat block
         GetComponent<CreatureStats>().CopyCStats(newCreature.GetComponentInChildren<CreatureStats>());
@@ -176,12 +203,14 @@ public class MorphRequirement
     public enum RequirementType { Stat, Diet }
     public RequirementType requirementType;
     public string id;
-    public float minimum = 1;
+    public bool greaterThan = true;
+    public float threshold = 1;
 
-    public MorphRequirement(RequirementType _requirementType, string _id, float _minimum)
+    public MorphRequirement(RequirementType _requirementType, string _id, bool _greaterThan, float _threshold)
     {
         this.requirementType = _requirementType;
         this.id = _id;
-        this.minimum = _minimum;
+        this.greaterThan = _greaterThan;
+        this.threshold = _threshold;
     }
 }

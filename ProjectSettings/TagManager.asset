@@ -36,6 +36,7 @@ TagManager:
   - Trunk
   - Underwater
   - Fruit
+  - Fawn
   layers:
   - Default
   - TransparentFX

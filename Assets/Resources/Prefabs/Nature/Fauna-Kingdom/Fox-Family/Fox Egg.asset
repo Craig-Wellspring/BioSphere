@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fox Egg
   m_EditorClassIdentifier: 
   EggName: Fox Egg
-  OffspringCreature: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
+  OffspringCreature: {fileID: 6147935006488187692, guid: 7c93a5ef53b76b749a1ce5972eb4bf51,
     type: 3}
   EggColor: {r: 1, g: 0.58961684, b: 0, a: 1}
   EggSize: 0.6

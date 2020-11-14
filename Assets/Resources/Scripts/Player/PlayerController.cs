@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
         vCam = GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
         mainCam = PlayerSoul.Cam.GetComponent<Camera>();
 
-        respiration = GetComponentInParent<Respiration>();
-        metabolism = GetComponentInParent<Metabolism>();
+        respiration = transform.root.GetComponentInChildren<Respiration>();
+        metabolism = transform.root.GetComponentInChildren<Metabolism>();
 
         seeker = transform.root.GetComponent<Seeker>();
         pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
@@ -81,19 +81,12 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        // Click to move
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit clickHitInfo, 1000, surfaceMask))
-            {
-                ABPath walkPath = ABPath.Construct(transform.root.position, clickHitInfo.point);
-                seeker.StartPath(walkPath);
-            }
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            ClearPathing();
         }
     }
 

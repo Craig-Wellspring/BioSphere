@@ -11734,14 +11734,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36d1458f62f50f4db7ea2ac693d6807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMeteor: 1
+  energyReserve: 15000
+  minimumEnergyReserve: 200
+  logEnergyReturn: 0
   quickStart: 1
   seedToPlant: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
     type: 3}
-  energyReserve: 15000
-  minimumEnergyReserve: 200
   maxEnergyPlanted: 1500
-  logEnergyReturn: 0
+  spawnMeteor: 1
   meteor: {fileID: 6095046655658794419, guid: 9d26e26c95622854396298675d261cf3, type: 3}
   spawnRadius: 100
 --- !u!114 &2066092717

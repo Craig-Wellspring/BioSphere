@@ -38,15 +38,16 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     void Start()
     {
-        vitality = GetComponentInParent<Vitality>();
-        metabolism = GetComponentInParent<Metabolism>();
-        vPerception = GetComponentInParent<VisualPerception>();
-        cStats = GetComponentInParent<CreatureStats>();
+        vitality = transform.root.GetComponentInChildren<Vitality>();
+        metabolism = transform.root.GetComponentInChildren<Metabolism>();
+        vPerception = transform.root.GetComponentInChildren<VisualPerception>();
+        cStats = transform.root.GetComponentInChildren<CreatureStats>();
 
         aiPath = transform.root.GetComponent<AIPathAlignedToSurface>();
         aiBrain = GetComponent<Animator>();
         animator = transform.root.GetComponent<Animator>();
 
+        vitality.DeathOccurs += Die;
 
         metabolism.EatingBegins += EatingChange;
         metabolism.EatingEnds += EatingChange;
@@ -58,6 +59,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
 
     private void OnDisable()
     {
+        vitality.DeathOccurs -= Die;
+
         metabolism.EatingBegins -= EatingChange;
         metabolism.EatingEnds -= EatingChange;
         metabolism.HungerChange -= HungerChange;
@@ -86,7 +89,8 @@ public class BasicAIBrain : VersionedMonoBehaviour
     void EatingChange()
     {
         aiBrain.SetBool("Eating", metabolism.isEating);
-        //ClearPathing();
+        if (!metabolism.isEating)
+            ClearPathing();
     }
     void HungerChange()
     {
@@ -103,6 +107,12 @@ public class BasicAIBrain : VersionedMonoBehaviour
         // Randomly choose stat to increase
         if (cStats.unappliedLevels > 0)
             cStats.ConfirmLevelUp(cStats.statBlock[Random.Range(0, cStats.statBlock.Count)]);
+    }
+
+
+    void Die()
+    {
+        this.gameObject.SetActive(false);
     }
 
     public void ClearPathing()

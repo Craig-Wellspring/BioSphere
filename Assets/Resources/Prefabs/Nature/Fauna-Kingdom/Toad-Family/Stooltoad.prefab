@@ -5527,7 +5527,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 4059471653712145060}
+      objectReference: {fileID: 0}
     - target: {fileID: 4763968390723634094, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_Controller
@@ -5552,7 +5552,7 @@ PrefabInstance:
         type: 3}
       propertyPath: possibleMorphs.Array.data[0].morphForm
       value: 
-      objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
+      objectReference: {fileID: 6147935006488187692, guid: 7c93a5ef53b76b749a1ce5972eb4bf51,
         type: 3}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5588,7 +5588,7 @@ PrefabInstance:
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].id
-      value: Berry
+      value: Meat
       objectReference: {fileID: 0}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5599,6 +5599,26 @@ PrefabInstance:
         type: 3}
       propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].requirementType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].greaterThan
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].threshold
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].greaterThan
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].threshold
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 6558807479087443014, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5755,6 +5775,11 @@ PrefabInstance:
       propertyPath: drawSightSphere
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8086205142144112776, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: sightRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8351545068497355797, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_RootOrder
@@ -5853,21 +5878,15 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: c5bf24098b61bba4bb0da85b9f252476, type: 3}
---- !u!4 &2899459648303997694 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
-    type: 3}
-  m_PrefabInstance: {fileID: 2899459648303872388}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6757980782073519402 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8499937947738678446, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2899459648303872388}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4059471653712145060 stripped
+--- !u!4 &2899459648303997694 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1182987401748583200, guid: c5bf24098b61bba4bb0da85b9f252476,
+  m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2899459648303872388}
   m_PrefabAsset: {fileID: 0}

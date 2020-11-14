@@ -7,7 +7,7 @@ public class AIEating : StateMachineBehaviour
         //If still eating when leaving state, stop eating
         if (animator.GetBool("Eating"))
         {
-            animator.GetComponentInParent<Metabolism>().StopEating();
+            animator.transform.root.GetComponentInChildren<Metabolism>().StopEating();
         }
     }
 }

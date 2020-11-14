@@ -9,13 +9,14 @@ using System.Collections.ObjectModel;
 public class CreatureStats : MonoBehaviour
 {
     public int currentLevel = 1;
+    public int unappliedLevels = 0;
+    
     [Space(15)]
     public List<CreatureStat> statBlock;
 
 
     [Header("Debug")]
     [SerializeField] bool logLevelUp = false;
-    [HideInInspector] public int unappliedLevels = 0;
 
 
 
@@ -139,6 +140,7 @@ public class CreatureStats : MonoBehaviour
                         _stat.SetStat(respiration.maxStamina);
                     break;
 
+                /*
                 case "Perception":
                     VisualPerception perception = GetComponent<VisualPerception>();
                     if (_push)
@@ -146,6 +148,7 @@ public class CreatureStats : MonoBehaviour
                     else
                         _stat.SetStat(perception.sightRadius);
                     break;
+                */
             }
         }
     }

@@ -22,7 +22,7 @@ public class VisualPerception : MonoBehaviour
     [Header("Sight Settings")]
     public Transform eyes;
     [Range(0, 20)] public float sightRadius = 10f;
-    [SerializeField] float radiusIncrement = 0.5f;
+    //[SerializeField] float radiusIncrement = 0.5f;
     [SerializeField] bool drawSightSphere = false;
     [Space(10)]
     [SerializeField] bool cullUnderwater = true;
@@ -51,7 +51,7 @@ public class VisualPerception : MonoBehaviour
 
 
         // Register Sight Radius in StatBlock
-        GetComponent<CreatureStats>()?.AddNewStat("Perception", sightRadius, radiusIncrement);
+        // GetComponent<CreatureStats>()?.AddNewStat("Perception", sightRadius, radiusIncrement);
 
         // Start Seeing
         InvokeRepeating("Sight", sightRefreshRate, sightRefreshRate);

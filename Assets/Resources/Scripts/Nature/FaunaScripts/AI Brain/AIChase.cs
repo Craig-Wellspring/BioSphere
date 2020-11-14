@@ -12,7 +12,7 @@ public class AIChase : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
-        vPerception = animator.GetComponentInParent<VisualPerception>();
+        vPerception = animator.transform.root.GetComponentInChildren<VisualPerception>();
         predatorBrain = animator.GetComponent<PredatorBrainModule>();
     }
 

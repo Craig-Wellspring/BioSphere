@@ -13,7 +13,8 @@ public class AIFlee : StateMachineBehaviour
         visualPerception = animator.transform.root.GetComponentInChildren<VisualPerception>();
         seeker = animator.transform.root.GetComponent<Seeker>();
 
-        animator.GetComponentInParent<Metabolism>().StopEating();
+        animator.transform.root.GetComponentInChildren<Metabolism>().StopEating();
+        animator.GetComponent<BasicAIBrain>().ClearPathing();
 
         if (visualPerception.closestPredator != null)
             FleeFromTarget(animator.transform.root, visualPerception.closestPredator.transform);

@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 4759473824326799664, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: nutritionalValue.y
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4959284120954668768, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}

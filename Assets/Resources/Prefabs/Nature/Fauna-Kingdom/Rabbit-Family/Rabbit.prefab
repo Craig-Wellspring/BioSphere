@@ -1685,7 +1685,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 1140102514860146675}
+      objectReference: {fileID: 0}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: possibleMorphs.Array.size
@@ -1705,7 +1705,7 @@ PrefabInstance:
         type: 3}
       propertyPath: possibleMorphs.Array.data[0].morphForm
       value: 
-      objectReference: {fileID: 6147935006488187692, guid: 43d7bc3bea02b47488a75f2d7b056fc7,
+      objectReference: {fileID: 6147935006488187692, guid: 7c93a5ef53b76b749a1ce5972eb4bf51,
         type: 3}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1752,6 +1752,26 @@ PrefabInstance:
         type: 3}
       propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].requirementType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].greaterThan
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[0].requirements.Array.data[0].threshold
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].greaterThan
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: possibleMorphs.Array.data[1].requirements.Array.data[0].threshold
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7172435783133125434, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1913,6 +1933,11 @@ PrefabInstance:
       propertyPath: eyes
       value: 
       objectReference: {fileID: 2709940463522897693}
+    - target: {fileID: 8086205142144112776, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: sightRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8351545068497355797, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_RootOrder
@@ -1973,7 +1998,7 @@ PrefabInstance:
         type: 3}
       propertyPath: offspringSeed
       value: 
-      objectReference: {fileID: 2033288779189976937, guid: b47514016a3430248b6d8ea748ad16c4,
+      objectReference: {fileID: 5108705363584736325, guid: 40a150a5d9117ee40969dd7c7a852eb5,
         type: 3}
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -2019,12 +2044,6 @@ GameObject:
 --- !u!4 &2285759280214587305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
-    type: 3}
-  m_PrefabInstance: {fileID: 2285759280214191315}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1140102514860146675 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1182987401748583200, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2285759280214191315}
   m_PrefabAsset: {fileID: 0}

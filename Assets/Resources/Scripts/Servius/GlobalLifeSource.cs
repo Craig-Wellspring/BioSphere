@@ -2,20 +2,20 @@
 
 public class GlobalLifeSource : MonoBehaviour
 {
-    [SerializeField] bool spawnMeteor = true;
-    [SerializeField] bool quickStart = false;
-    public GameObject seedToPlant;
-
-
-    [Header("Energy Settings")]
+    [Header("State")]
     public float energyReserve = 0;
 
-    [Space(10)]
+    [Header("Energy Settings")]
     public float minimumEnergyReserve = 200;
-    public float maxEnergyPlanted = 1500;
     public bool logEnergyReturn = false;
 
+    [Header("Seeding Settings")]
+    [SerializeField] bool quickStart = false;
+    public GameObject seedToPlant;
+    public float maxEnergyPlanted = 1500;
+
     [Header("Meteor Settings")]
+    [SerializeField] bool spawnMeteor = true;
     [SerializeField] GameObject meteor;
     [SerializeField] float spawnRadius = 100;
 

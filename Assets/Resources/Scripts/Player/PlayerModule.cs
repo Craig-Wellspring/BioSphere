@@ -22,7 +22,7 @@ public class PlayerModule : MonoBehaviour
         baseAnim = transform.root.GetComponent<Animator>();
         vCam = GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
-        GetComponentInParent<Vitality>().DeathOccurs += ReleaseControl;
+        //transform.root.GetComponentInChildren<Vitality>().DeathOccurs += ReleaseControl;
 
 
         //Register Camera
@@ -60,11 +60,14 @@ public class PlayerModule : MonoBehaviour
         //if (baseAnim.GetBool("IsSinging"))
         //    baseAnim.SetBool("IsSinging", false);
 
-        Metabolism metabolism = GetComponentInParent<Metabolism>();
-        if (metabolism.isEating)
-            metabolism.StopEating();
-        if (!metabolism.dietList.Contains("Meat"))
-            metabolism.dietList.Add("Meat");
+        Metabolism metabolism = transform.root.GetComponentInChildren<Metabolism>();
+        if (metabolism)
+        {
+            if (metabolism.isEating)
+                metabolism.StopEating();
+            if (!metabolism.dietList.Contains("Meat"))
+                metabolism.dietList.Add("Meat");
+        }
     }
 
     public void ReleaseControl()

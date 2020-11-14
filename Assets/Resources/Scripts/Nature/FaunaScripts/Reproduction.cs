@@ -4,7 +4,8 @@
 public class Reproduction : ObjectSpawner
 {
     [Header("Seed Settings")]
-    [SerializeField] GameObject offspringSeed = null;
+    public GameObject offspringSeed = null;
+    
     [Space(10)]
     [Tooltip("Maximum energy passed on to Seed offspring. Energy beyond threshold will be returned to Source. If 0, SeedNV will be used.")]
     [SerializeField] float maxSeedEnergy = 50f;

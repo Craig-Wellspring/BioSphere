@@ -12,7 +12,7 @@ public class PredatorBrainModule : MonoBehaviour
     void Start()
     {
         aiBrain = GetComponent<Animator>();
-        vPerception = GetComponentInParent<VisualPerception>();
+        vPerception = transform.root.GetComponentInChildren<VisualPerception>();
     }
 
     void Update()
