@@ -22,15 +22,17 @@ public class Respiration : MonoBehaviour
 
     float breathingRate = 0.250f;
     int staminaIncrement = 1;
-    int baseStamina = 100;
+    int baseStamina = 99;
     int sprintMod = 2;
+    float speedIncreaseMult = 0.5f;
     bool depleted = false;
 
 
     // Cache
     Slider staminaBar;
 
-    AIPathAlignedToSurface pathing;
+    //AIPathAlignedToSurface pathing;
+    Runner runner;
     Vitality vitality;
     CreatureStats cStats;
 
@@ -38,7 +40,8 @@ public class Respiration : MonoBehaviour
 
     void Start()
     {
-        pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
+        //pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
+        runner = transform.root.GetComponent<Runner>();
         vitality = GetComponent<Vitality>();
         cStats = GetComponent<CreatureStats>();
 
@@ -131,17 +134,19 @@ public class Respiration : MonoBehaviour
         {
             if (!isExhausted)
             {
-                _speedMod = cStats.GetStat("Speed").baseValue;
-                pathing.maxSpeed += _speedMod;
+                _speedMod = cStats.GetStat("Speed").baseValue * speedIncreaseMult;
+                runner.ChangeSpeed(_speedMod);
                 isSprinting = true;
             }      
             // else tell UI low stamina
         }
         else
         {
-            pathing.maxSpeed -= _speedMod;
+            runner.ChangeSpeed(-_speedMod);
             _speedMod = 0;
             isSprinting = false;
         }
     }
+
+
 }

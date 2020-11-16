@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     Respiration respiration;
     Metabolism metabolism;
 
+    Runner runner;
     Seeker seeker;
-    AIPathAlignedToSurface pathing;
     Rigidbody rBody;
     Animator animator;
     BioCreatureAnimData animData;
@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
         respiration = transform.root.GetComponentInChildren<Respiration>();
         metabolism = transform.root.GetComponentInChildren<Metabolism>();
 
+        runner = transform.root.GetComponent<Runner>();
         seeker = transform.root.GetComponent<Seeker>();
-        pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
         rBody = transform.root.GetComponent<Rigidbody>();
         animator = transform.root.GetComponent<Animator>();
         animData = transform.root.GetComponent<BioCreatureAnimData>();
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
         // Calculate movement
         Vector3 moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;
-        Vector3 targetMoveAmount = Input.GetAxisRaw("Vertical") < 0 ? moveDir * (pathing.maxSpeed) / 2 : moveDir * (pathing.maxSpeed);
+        Vector3 targetMoveAmount = Input.GetAxisRaw("Vertical") < 0 ? moveDir * (runner.moveSpeed) / 2 : moveDir * (runner.moveSpeed);
         moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, 0.15f);
     }
 
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         else return false;
     }
 
-
+    /*
     void ClearPathing()
     {
         transform.root.GetComponent<AIDestinationSetter>().target = null;
@@ -148,4 +148,5 @@ public class PlayerController : MonoBehaviour
         pathing.destination = Vector3.positiveInfinity;
         seeker.CancelCurrentPathRequest();
     }
+    */
 }

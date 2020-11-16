@@ -22,8 +22,8 @@ public class PlayerModule : MonoBehaviour
         baseAnim = transform.root.GetComponent<Animator>();
         vCam = GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
-        //transform.root.GetComponentInChildren<Vitality>().DeathOccurs += ReleaseControl;
-
+        // Register events
+        transform.root.GetComponentInChildren<Vitality>().DeathOccurs += UnregisterCam;
 
         //Register Camera
         PlayerSoul.Cam?.soullessCreatures.Add(vCam);
@@ -33,6 +33,11 @@ public class PlayerModule : MonoBehaviour
     {
         if (playMode)
         {
+            // Unregister events
+            Vitality vitality = transform.root.GetComponentInChildren<Vitality>();
+            if (vitality != null)
+                vitality.DeathOccurs -= UnregisterCam;
+
             //Move Camera back to Guardian
             if (PlayerSoul.Cam.currentTarget == vCam)
             {
@@ -40,9 +45,13 @@ public class PlayerModule : MonoBehaviour
                 PlayerSoul.Cam.currentTarget.enabled = true;
             }
 
-            //Unregister Camera
-            PlayerSoul.Cam.soullessCreatures.Remove(vCam);
+            UnregisterCam();
         }
+    }
+
+    void UnregisterCam()
+    {
+        PlayerSoul.Cam.soullessCreatures.Remove(vCam);
     }
 
     public void TakeControl()
@@ -65,8 +74,8 @@ public class PlayerModule : MonoBehaviour
         {
             if (metabolism.isEating)
                 metabolism.StopEating();
-            if (!metabolism.dietList.Contains("Meat"))
-                metabolism.dietList.Add("Meat");
+            //if (!metabolism.dietList.Contains("Meat"))
+                //metabolism.dietList.Add("Meat");
         }
     }
 

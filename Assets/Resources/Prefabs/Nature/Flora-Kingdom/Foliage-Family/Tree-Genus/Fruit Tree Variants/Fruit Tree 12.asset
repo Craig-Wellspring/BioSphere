@@ -13,51 +13,22 @@ MonoBehaviour:
   m_Name: Fruit Tree 12
   m_EditorClassIdentifier: 
   FoliageName: Fruit Tree
-  TrunkMesh: {fileID: -746729487478724325, guid: 43d3d9343c5eada4a806c298fc7bf724,
+  TrunkMesh: {fileID: -3667027849555920977, guid: 43d3d9343c5eada4a806c298fc7bf724,
     type: 3}
-  MajorBudPositions: []
-  MajorBudMeshes: []
-  MinorBudPositions:
-  - {x: -0.251, y: 4.65, z: -0.115}
-  - {x: -0.384, y: 3.925, z: 1.057}
-  - {x: 0.083, y: 3.496, z: -0.989}
-  - {x: 1.222, y: 2.833, z: -0.294}
-  - {x: -1.107, y: 2.931, z: 0.854}
-  - {x: -1.456, y: 1.919, z: -0.353}
-  MinorBudMeshes:
-  - {fileID: 6013393151791204076, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 2355379693682995488, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -2577108615342813300, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 8137425875684812275, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -8368744256606357766, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -8269009825079809854, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -7010512404793933334, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 7446903551483533412, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -4602684256834583026, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 7700454134238318230, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 1608856894288462782, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 3373021178889827175, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 6227049478241899818, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 5080448163438940146, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 4130697643919965343, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -7468170296907405695, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -7351751550183553947, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 3938537603074447673, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 6289690092637492722, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -6039784487625645281, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 8763511675574060657, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 7270047924318480628, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 2999245216504922438, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 6841165384988730953, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 1736480528228357321, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -7962952771438468875, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 6542644283777893772, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 5871574637036449861, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 4626234026803992001, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 4285826091568616820, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 4247959218460260809, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -3073945497458456887, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -1563588926286893213, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: 653952642552673263, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -2379996823171678549, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  - {fileID: -1685207866761567059, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  MajorBudPositions:
+  - {x: -0.159, y: 2.967, z: -0.039}
+  MajorBudMeshes:
+  - {fileID: -6502658923473866480, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 6636587098909889596, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -2298599989326516140, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 3431947911486864267, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -1736059375371284211, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -4226924727144978921, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -7314118768295684320, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 3491722113252665032, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 2833644826568818527, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 6059638260340491557, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 4151263796029962963, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -6006451784880990337, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  MinorBudPositions: []
+  MinorBudMeshes: []

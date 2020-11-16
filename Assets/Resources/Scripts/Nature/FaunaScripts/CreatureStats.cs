@@ -20,16 +20,6 @@ public class CreatureStats : MonoBehaviour
 
 
 
-
-    void Start()
-    {
-        // Add Speed Stat if AIPath exists
-        AIPathAlignedToSurface pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
-        if (pathing)
-            AddNewStat("Speed", pathing.maxSpeed, 0.5f);
-    }
-
-
     public void CopyCStats(CreatureStats _targetCStats)
     {
         _targetCStats.currentLevel = currentLevel;
@@ -117,11 +107,11 @@ public class CreatureStats : MonoBehaviour
             switch (_stat.id)
             {
                 case "Speed":
-                    AIPathAlignedToSurface pathing = transform.root.GetComponent<AIPathAlignedToSurface>();
+                    Runner runner = transform.root.GetComponent<Runner>();
                     if (_push)
-                        pathing.maxSpeed = _stat.baseValue;
+                        runner.ChangeSpeed(_stat.baseValue - runner.moveSpeed);
                     else
-                        _stat.SetStat(pathing.maxSpeed);
+                        _stat.SetStat(runner.moveSpeed);
                     break;
 
                 case "Health":

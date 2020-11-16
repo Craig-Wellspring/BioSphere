@@ -4896,6 +4896,16 @@ PrefabInstance:
       propertyPath: drawBiteSphere
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: diet
+      value: 177
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList
+      value: 49
+      objectReference: {fileID: 0}
     - target: {fileID: 3897007467088990014, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: predatorList.Array.size

@@ -28,7 +28,7 @@ public class AISearchForFood : StateMachineBehaviour
     void FindRandomPath(Vector3 _fromPos, int _jauntLength)
     {
         RandomPath levyPath = RandomPath.Construct(_fromPos, _jauntLength * 1000);
-        levyPath.spread = 1000;
+
         seeker.CancelCurrentPathRequest();
         seeker.StartPath(levyPath);
     }

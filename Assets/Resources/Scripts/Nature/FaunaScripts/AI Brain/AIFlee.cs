@@ -19,10 +19,14 @@ public class AIFlee : StateMachineBehaviour
         if (visualPerception.closestPredator != null)
             FleeFromTarget(animator.transform.root, visualPerception.closestPredator.transform);
 
+        animator.transform.root.GetComponentInChildren<Respiration>().ToggleSprinting(true);
+
         animator.SetBool("Fleeing", true);
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.transform.root.GetComponentInChildren<Respiration>().ToggleSprinting(false);
+
         if (!visualPerception.closestPredator)
             animator.SetBool("Fleeing", false);
     }

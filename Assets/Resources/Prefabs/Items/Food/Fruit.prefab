@@ -75,12 +75,12 @@ MonoBehaviour:
   halfGrown: 0
   fullyGrown: 0
   growthSpeed: 1
-  halfGrownTag: Fruit
+  halfGrownTag: 
   gainIndependenceHG: 0
   addTerrainColor: 0
   activateObjectsHG: []
   spawnScale0HG: 0
-  fullyGrownTag: 
+  fullyGrownTag: Fruit
   gainIndependenceFG: 1
   activateObjectsFG: []
   spawnScale0FG: 0

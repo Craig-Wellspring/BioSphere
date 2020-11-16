@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Fruit Tree 13
   m_EditorClassIdentifier: 
   FoliageName: Fruit Tree
-  TrunkMesh: {fileID: -3667027849555920977, guid: 43d3d9343c5eada4a806c298fc7bf724,
+  TrunkMesh: {fileID: -4391509498373854947, guid: 43d3d9343c5eada4a806c298fc7bf724,
     type: 3}
   MajorBudPositions:
-  - {x: -0.159, y: 2.967, z: -0.039}
+  - {x: 0.057, y: 2.984, z: -0.198}
   MajorBudMeshes:
   - {fileID: -6502658923473866480, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
   - {fileID: 6636587098909889596, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
@@ -30,5 +30,22 @@ MonoBehaviour:
   - {fileID: 6059638260340491557, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
   - {fileID: 4151263796029962963, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
   - {fileID: -6006451784880990337, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
-  MinorBudPositions: []
-  MinorBudMeshes: []
+  MinorBudPositions:
+  - {x: -0.527, y: 2.067, z: 0.457}
+  MinorBudMeshes:
+  - {fileID: 6013393151791204076, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 2355379693682995488, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -2577108615342813300, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 8137425875684812275, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -8368744256606357766, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -8269009825079809854, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -7010512404793933334, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 7446903551483533412, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 4626234026803992001, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 4285826091568616820, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 4247959218460260809, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -3073945497458456887, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -1563588926286893213, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: 653952642552673263, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -2379996823171678549, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}
+  - {fileID: -1685207866761567059, guid: 43d3d9343c5eada4a806c298fc7bf724, type: 3}

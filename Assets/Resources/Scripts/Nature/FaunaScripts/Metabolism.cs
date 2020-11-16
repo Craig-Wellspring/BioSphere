@@ -13,15 +13,6 @@ public class Metabolism : MonoBehaviour
     public List<DietData> dietHistory;
 
     #region Settings
-    [Header("Bite Settings")]
-    public Transform mouth;
-    [Range(0, 5)] public float biteSize = 0.4f;
-    [SerializeField] bool drawBiteSphere = false;
-    [Tooltip("How quickly this creature consumes food. Higher is faster. 1 is default.")]
-    [Range(0, 10)] public float chewSpeed = 1f;
-    [SerializeField] LayerMask biteLayers;
-
-
     [Header("Metabolism Settings")]
     [Tooltip("Units of Hunger gained per tick")]
     [SerializeField] float hungerGainedPerTick = 0.15f;
@@ -40,8 +31,18 @@ public class Metabolism : MonoBehaviour
     float maximumHungerUnits = 100f;
 
 
+    [Header("Bite Settings")]
+    public Transform mouth;
+    [Range(0, 5)] public float biteSize = 0.4f;
+    [SerializeField] bool drawBiteSphere = false;
+    [Tooltip("How quickly this creature consumes food. Higher is faster. 1 is default.")]
+    [Range(0, 10)] public float chewSpeed = 1f;
+    [SerializeField] LayerMask biteLayers;
+
+
     [Header("Diet Settings")]
-    public List<string> dietList;
+    public FoodCategories dietList;
+    //public List<string> dietList;
     public List<string> preyList;
 
 
@@ -59,6 +60,21 @@ public class Metabolism : MonoBehaviour
 
 
     #region Internal Variables
+    [Flags]
+    public enum FoodCategories
+    {
+        Nothing,
+        Grass = (1 << 0),
+        Shrub = (1 << 1),
+        Bush = (1 << 2),
+        Leaves = (1 << 3),
+        Berry = (1 << 4),
+        Fruit = (1 << 5),
+        Grain = (1 << 6),
+        Mushroom = (1 << 7),
+        Meat = (1 << 8)
+    }
+
     //Cache
     float metabolismRate = 0.250f;
     [HideInInspector] public Slider hungerBar;
@@ -177,7 +193,8 @@ public class Metabolism : MonoBehaviour
 
         foreach (Collider _hitFood in hitFoodList)
         {
-            if (dietList.Contains(_hitFood.tag))
+            //if (dietList.Contains(_hitFood.tag))
+            if (dietList.ToString().Contains(_hitFood.tag))
             {
                 StartEating(_hitFood.gameObject);
                 break;
@@ -308,8 +325,10 @@ public class Metabolism : MonoBehaviour
     void WasteAway()
     {
         //Eat meat if desperate for food
-        if (!dietList.Contains("Meat") && hungryMeatEater)
-            dietList.Add("Meat");
+        if (!dietList.HasFlag(FoodCategories.Meat) && hungryMeatEater)
+            dietList |= FoodCategories.Meat;
+        //if (!dietList.Contains("Meat") && hungryMeatEater)
+            //dietList.Add("Meat");
 
         Vitality vitality = GetComponent<Vitality>();
         if (!vitality.dead && hungerPercentage >= 100)

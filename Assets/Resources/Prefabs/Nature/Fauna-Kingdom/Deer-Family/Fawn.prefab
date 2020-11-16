@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 7155036233882095003}
   m_Layer: 20
   m_Name: Spine1
-  m_TagString: Fawn
+  m_TagString: Deer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1208,7 +1208,7 @@ GameObject:
   - component: {fileID: 1340082288043901743}
   m_Layer: 19
   m_Name: Neck1
-  m_TagString: Fawn
+  m_TagString: Deer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1633,6 +1633,26 @@ PrefabInstance:
       propertyPath: dietList.Array.data[6]
       value: Mushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: diet
+      value: 247
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: hungryMeatEater
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: biteLayers.m_Bits
+      value: 3072
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486346588474071174, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: dietList
+      value: 247
+      objectReference: {fileID: 0}
     - target: {fileID: 3876870131049664693, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_Center.y
@@ -1773,6 +1793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sightRadius
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086205142144112776, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: visibleLayers.m_Bits
+      value: 1051648
       objectReference: {fileID: 0}
     - target: {fileID: 8351545068497355797, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}

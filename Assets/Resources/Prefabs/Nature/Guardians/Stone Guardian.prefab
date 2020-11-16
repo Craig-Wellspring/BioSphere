@@ -426,11 +426,10 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7284380205839659766}
+  - {fileID: 8875703106909429005}
   - {fileID: 4709074963190049302}
-  - {fileID: 4044175913256040}
   - {fileID: 4177165394927694}
   - {fileID: 1154949470396305229}
-  - {fileID: 8875703106909429005}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1042,8 +1041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  damageStat: 0
   logAttacks: 0
-  attackDamage: 3
 --- !u!1 &1409318252410982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1366,7 @@ Transform:
   m_Children:
   - {fileID: 4706941493510772}
   - {fileID: 4093278666090822}
+  - {fileID: 4044175913256040}
   m_Father: {fileID: 4716575040551676}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1381,7 +1381,7 @@ GameObject:
   - component: {fileID: 4044175913256040}
   - component: {fileID: 137267928819981050}
   m_Layer: 0
-  m_Name: body
+  m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,7 +1398,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4716575040551676}
+  m_Father: {fileID: 4177165394927694}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &137267928819981050
@@ -2260,8 +2260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  damageStat: 0
   logAttacks: 0
-  attackDamage: 3
 --- !u!1 &1828892462027120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,8 +2450,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  damageStat: 0
   logAttacks: 0
-  attackDamage: 3
 --- !u!1 &1846578103429664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,8 +2818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  damageStat: 0
   logAttacks: 0
-  attackDamage: 3
 --- !u!1 &1992428359570152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,7 +2955,7 @@ Transform:
   m_Children:
   - {fileID: 2389651612460799134}
   m_Father: {fileID: 4716575040551676}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30, y: -125, z: 0}
 --- !u!114 &8262880283968893972
 MonoBehaviour:
@@ -3053,9 +3053,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
+  unappliedLevels: 0
   statBlock: []
   logLevelUp: 0
-  unappliedLevels: 0
 --- !u!114 &4045510176442295646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3090,9 +3090,6 @@ MonoBehaviour:
     m_Bits: 2048
   bumpRadius: 1
   drawBumpSphere: 0
-  seedToPlant: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
-    type: 3}
-  maxEnergyPlanted: 1500
   plantingArea: 8
   roamingArea: 40
   pathingSpread: 10
@@ -3308,7 +3305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4716575040551676}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &536548001416101558
 CapsuleCollider:

@@ -329,12 +329,12 @@ PrefabInstance:
     - target: {fileID: 1752407923769582429, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1985612067430448436, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: activateObjectsHG.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1985612067430448436, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}

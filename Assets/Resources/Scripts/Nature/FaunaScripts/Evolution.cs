@@ -10,6 +10,7 @@ public class Evolution : MonoBehaviour
     [SerializeField] int morphTier = 1;
     [Space(10)]
     public bool energySurplus = false;
+    //public float energyMinimum = 0;
 
 
     [Header("Settings")]

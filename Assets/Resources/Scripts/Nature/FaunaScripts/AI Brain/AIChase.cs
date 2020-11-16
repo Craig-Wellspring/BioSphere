@@ -14,6 +14,8 @@ public class AIChase : StateMachineBehaviour
         destinationSetter = animator.transform.root.GetComponent<AIDestinationSetter>();
         vPerception = animator.transform.root.GetComponentInChildren<VisualPerception>();
         predatorBrain = animator.GetComponent<PredatorBrainModule>();
+        
+        animator.transform.root.GetComponentInChildren<Respiration>().ToggleSprinting(true);
     }
 
 
@@ -34,5 +36,7 @@ public class AIChase : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         destinationSetter.target = null;
+            
+        animator.transform.root.GetComponentInChildren<Respiration>().ToggleSprinting(false);
     }
 }

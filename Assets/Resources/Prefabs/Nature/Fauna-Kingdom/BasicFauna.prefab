@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2295254378370508571}
   - component: {fileID: 737565596758530575}
   - component: {fileID: 7172435783133125434}
+  - component: {fileID: 7506748035224664471}
   - component: {fileID: 1965756471402263389}
   - component: {fileID: 3395481251386001511}
   - component: {fileID: 7176181105287769093}
@@ -221,6 +222,20 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   preventMovingBackwards: 0
   constrainInsideGraph: 0
+--- !u!114 &7506748035224664471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ce3eab5bd72a9418b666783cad6b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  speedIncrement: 0.5
 --- !u!114 &1965756471402263389
 MonoBehaviour:
   m_ObjectHideFlags: 0
