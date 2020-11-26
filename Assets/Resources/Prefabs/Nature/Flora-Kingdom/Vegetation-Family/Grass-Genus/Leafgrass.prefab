@@ -16,7 +16,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   bumpRadius: 1
-  drawBumpSphere: 1
+  drawBumpSphere: 0
   newFruit: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
     type: 3}
   whenToSpawn: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
   randomSpawnArea: 10
   randomYRotation: 1
   spawnScale0: 1
-  seeds: {x: 3, y: 3}
+  seeds: {x: 0, y: 3}
   seedSuccessChance: 100
   energyDistribution: 2
   castOffEntity: {fileID: 2396180645501600818, guid: b97e40fac0541a6468aec3beb931521e,

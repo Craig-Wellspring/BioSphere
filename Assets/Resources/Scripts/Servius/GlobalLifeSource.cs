@@ -5,18 +5,25 @@ public class GlobalLifeSource : MonoBehaviour
     [Header("State")]
     public float energyReserve = 0;
 
+
     [Header("Energy Settings")]
     public float minimumEnergyReserve = 200;
+    public bool logEnergyTaken = false;
     public bool logEnergyReturn = false;
 
+
     [Header("Seeding Settings")]
-    [SerializeField] bool quickStart = false;
     public GameObject seedToPlant;
-    public float maxEnergyPlanted = 1500;
+    [Space(10)]
+
+    [SerializeField, Range(0,100)] int quickStartSeeds = 20;
+
 
     [Header("Meteor Settings")]
-    [SerializeField] bool spawnMeteor = true;
     [SerializeField] GameObject meteor;
+    [Space(10)]
+
+    [SerializeField] bool spawnMeteor = true;
     [SerializeField] float spawnRadius = 100;
 
 
@@ -25,32 +32,37 @@ public class GlobalLifeSource : MonoBehaviour
         if (spawnMeteor)
             SpawnMeteor();
 
-        if (quickStart)
+        if (quickStartSeeds > 0)
         {
-            while (energyReserve > minimumEnergyReserve)
-            {
-                Vector3 seedPos = UtilityFunctions.GroundBelowPosition(Random.onUnitSphere * spawnRadius).position;
+            for (int i = 0; i < quickStartSeeds; i++)
+                if (energyReserve > minimumEnergyReserve)
+                {
+                    Vector3 seedPos = UtilityFunctions.GroundBelowPosition(Random.onUnitSphere * spawnRadius).position;
 
-                while (!UtilityFunctions.AboveSeaLevel(seedPos))
-                    seedPos = UtilityFunctions.GroundBelowPosition(Random.onUnitSphere * spawnRadius).position;
+                    while (!UtilityFunctions.AboveSeaLevel(seedPos))
+                        seedPos = UtilityFunctions.GroundBelowPosition(Random.onUnitSphere * spawnRadius).position;
 
-                PlantSeedFromSource(seedPos);
-            }
+                    PlantSeedFromSource(seedPos);
+                }
         }
+    }
+
+    public float EnergyAvailable(float _maxEnergy)
+    {
+        return (energyReserve > _maxEnergy + minimumEnergyReserve) ? _maxEnergy : energyReserve - minimumEnergyReserve;
     }
 
     //Plant Seedgrass
     public void PlantSeedFromSource(Vector3 _spawnPos)
     {
-        float _energyToPlant = (energyReserve > maxEnergyPlanted + minimumEnergyReserve) ? maxEnergyPlanted : energyReserve - minimumEnergyReserve;
+        float _energyToPlant = EnergyAvailable(seedToPlant.GetComponentInChildren<FoodData>().nutritionalValue.y);
         if (_energyToPlant > 0)
         {
             GameObject newSeed = Instantiate(seedToPlant, _spawnPos, Quaternion.identity, null);
 
             newSeed.transform.rotation = UtilityFunctions.GravityOrientedRotation(newSeed.transform);
             newSeed.name = seedToPlant.name;
-            newSeed.GetComponent<EnergyData>().AddEnergy(_energyToPlant);
-            energyReserve -= _energyToPlant;
+            newSeed.GetComponent<EnergyData>().TakeEnergyFromSource(_energyToPlant);
 
             foreach (FoodData fData in newSeed.GetComponentsInChildren<FoodData>())
                 fData.enabled = true;

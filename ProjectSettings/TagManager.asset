@@ -36,6 +36,7 @@ TagManager:
   - Trunk
   - Underwater
   - Fruit
+  - Elk
   layers:
   - Default
   - TransparentFX

@@ -426,10 +426,10 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7284380205839659766}
-  - {fileID: 8875703106909429005}
   - {fileID: 4709074963190049302}
   - {fileID: 4177165394927694}
   - {fileID: 1154949470396305229}
+  - {fileID: 8875703106909429005}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1368,7 +1368,7 @@ Transform:
   - {fileID: 4093278666090822}
   - {fileID: 4044175913256040}
   m_Father: {fileID: 4716575040551676}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1487036727172872
 GameObject:
@@ -2936,7 +2936,7 @@ GameObject:
   - component: {fileID: 8875703106909429005}
   - component: {fileID: 8262880283968893972}
   m_Layer: 0
-  m_Name: CameraDock
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2955,7 +2955,7 @@ Transform:
   m_Children:
   - {fileID: 2389651612460799134}
   m_Father: {fileID: 4716575040551676}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 30, y: -125, z: 0}
 --- !u!114 &8262880283968893972
 MonoBehaviour:
@@ -3305,7 +3305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4716575040551676}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &536548001416101558
 CapsuleCollider:
@@ -3366,7 +3366,7 @@ RectTransform:
   m_Children:
   - {fileID: 32922850388685540}
   m_Father: {fileID: 4716575040551676}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

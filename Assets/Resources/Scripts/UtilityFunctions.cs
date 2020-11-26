@@ -10,7 +10,7 @@ public static class UtilityFunctions
     {
         if (_radius > 0)
         {
-            Vector3 newPos = _origin.position + (_origin.up * 25) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
+            Vector3 newPos = _origin.position + (_origin.up * _height) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
             return newPos;
         }
         else return _origin.position + (_origin.up * _height);
@@ -23,7 +23,7 @@ public static class UtilityFunctions
             return (hit.point, hit.transform.gameObject);
         else
         {
-            Debug.LogError("PointOnTerrainUnderPosition Raycast hit nothing.");
+            Debug.LogError("GroundBelowPosition Raycast hit nothing.");
             return (Vector3.zero, null);
         }
     }
@@ -48,7 +48,7 @@ public static class UtilityFunctions
         {
             newPoint = GroundBelowPosition(PositionAbove(_origin, newRadius)).position;
 
-            newRadius += 0.5f;
+            newRadius += 0.3f;
             tries++;
             if (tries > _maxTries)
             {
@@ -99,6 +99,22 @@ public static class UtilityFunctions
         return closestObj;
     }
 
+
+    // Check if Parameter exists in Animator
+    public static bool AnimatorHasParameter(Animator _animator, string _paramName)
+    {
+        bool found = false;
+        foreach (AnimatorControllerParameter parameter in _animator.parameters)
+        {
+            if (parameter.name.Equals(_paramName))
+            {
+                found = true;
+                break;
+            }
+        }
+
+        return found;
+    }
 
     #region Unused Functions
     /*

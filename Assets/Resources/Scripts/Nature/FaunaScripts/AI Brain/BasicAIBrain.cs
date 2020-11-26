@@ -105,7 +105,7 @@ public class BasicAIBrain : VersionedMonoBehaviour
     void LevelingUp()
     {
         // Randomly choose stat to increase
-        if (cStats.unappliedLevels > 0)
+        while (cStats.unappliedLevels > 0)
             cStats.ConfirmLevelUp(cStats.statBlock[Random.Range(0, cStats.statBlock.Count)]);
     }
 

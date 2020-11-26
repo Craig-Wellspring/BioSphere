@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 using System;
 using System.Collections.ObjectModel;
 
@@ -25,7 +24,7 @@ public class CreatureStats : MonoBehaviour
         _targetCStats.currentLevel = currentLevel;
         _targetCStats.statBlock = statBlock;
 
-        _targetCStats.PushOrPullOriginStats(true);
+        _targetCStats.StartCoroutine("DelayedPush");
     }
 
 
@@ -58,7 +57,7 @@ public class CreatureStats : MonoBehaviour
 
         //Trigger ending events
         LevelUpFinishing?.Invoke();
-        // - morphology.AttemptTransMorph();
+        // - evolution.AttemptTransMorph();
 
         // Debug
         if (logLevelUp)
@@ -98,6 +97,12 @@ public class CreatureStats : MonoBehaviour
         return null;
     }
 
+    public IEnumerator DelayedPush()
+    {
+        yield return null;
+        PushOrPullOriginStats(true);
+    } 
+
 
     // Push or Pull Origin Stats. If _push, set stats in creature equal to current stats in statBlock. If !_push, set stats in statBlock equal to current stats in creature
     public void PushOrPullOriginStats(bool _push)
@@ -129,16 +134,6 @@ public class CreatureStats : MonoBehaviour
                     else
                         _stat.SetStat(respiration.maxStamina);
                     break;
-
-                /*
-                case "Perception":
-                    VisualPerception perception = GetComponent<VisualPerception>();
-                    if (_push)
-                        perception.sightRadius = _stat.baseValue;
-                    else
-                        _stat.SetStat(perception.sightRadius);
-                    break;
-                */
             }
         }
     }

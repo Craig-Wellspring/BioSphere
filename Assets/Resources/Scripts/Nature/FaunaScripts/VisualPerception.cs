@@ -102,7 +102,6 @@ public class VisualPerception : MonoBehaviour
                 if (metabolism != null)
                 {
                     // Register food if it is part of my diet
-                    //if (metabolism.dietList.Contains(_col.transform.tag))
                     if (metabolism.dietList.ToString().Contains(_col.transform.tag))
                     {
                         nearbyFood.Add(_col.gameObject);

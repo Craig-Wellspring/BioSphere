@@ -11,18 +11,33 @@ public class EnergyData : MonoBehaviour
     void OnDisable()
     {
         if (Servius.Server != null && energyReserve > 0)
-            ReturnEnergyToReserve(energyReserve);
+            ReturnEnergyToSource(energyReserve);
     }
 
-    public void ReturnEnergyToReserve(float _amount)
+    public void TakeEnergyFromSource(float _amount, bool _surplusQuery = true)
     {
-        if (RemoveEnergy(_amount))
+        GlobalLifeSource lifeSource = Servius.Server.GetComponent<GlobalLifeSource>();
+        float energyTaken = lifeSource.EnergyAvailable(_amount);
+
+        if (energyTaken > 0)
+        {
+            lifeSource.energyReserve -= energyTaken;
+            AddEnergy(energyTaken);
+            
+            if (lifeSource.logEnergyTaken)
+                Debug.Log(transform.root.name + " took " + _amount + " Energy from Source.", this);
+        }
+    }
+
+    public void ReturnEnergyToSource(float _amount, bool _surplusQuery = true)
+    {
+        if (RemoveEnergy(_amount, _surplusQuery))
         {
             GlobalLifeSource lifeSource = Servius.Server.GetComponent<GlobalLifeSource>();
             lifeSource.energyReserve += _amount;
-            
+
             if (lifeSource.logEnergyReturn)
-                Debug.Log("Returned " + _amount + " Energy to Source.", this);
+                Debug.Log(transform.root.name + " returned " + _amount + " Energy to Source.", this);
         }
         else Debug.LogError("Returned more energy than available.", this);
     }
@@ -39,36 +54,21 @@ public class EnergyData : MonoBehaviour
     }
 
     public Action EnergyRemoved;
-    public bool RemoveEnergy(float _energyRemoved, bool _makeUpWithNV = false)
+    public bool RemoveEnergy(float _energyRemoved, bool _surplusQuery = true)
     {
         if (energyReserve >= _energyRemoved)
         {
             energyReserve -= _energyRemoved;
 
-            EnergyRemoved?.Invoke();
-            // - morphology.SurplusCheck
+            if (_surplusQuery)
+                EnergyRemoved?.Invoke();
+            // - evolution.SurplusQuery
 
             // Catch energy overuse
             if (energyReserve < 0)
                 Debug.LogError("Removed more energy than available", this);
 
             return true;
-        }
-        else if (_makeUpWithNV)
-        {
-            FoodData fData = GetComponent<FoodData>();
-            if (energyReserve + fData.nutritionalValue.x >= _energyRemoved)
-            {
-                fData.nutritionalValue.x -= _energyRemoved - energyReserve;
-                energyReserve = 0;
-
-                // Catch energy overuse
-                if (fData.nutritionalValue.x < 0)
-                    Debug.LogError("Removed more energy than available", this);
-
-                return true;
-            }
-            else return false;
         }
         else return false;
     }

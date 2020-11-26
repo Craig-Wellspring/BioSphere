@@ -6,6 +6,8 @@ public class Attack : MonoBehaviour
 {
     public bool isActive = true;
 
+    [SerializeField, Range(0, 3)] float baseStatAsDmg = 1f;
+
     public DamageStat damageStat;
     public enum DamageStat { Strength, Dexterity, Intellect }
 
@@ -51,7 +53,7 @@ public class Attack : MonoBehaviour
         Vitality targetVitality = _targetRoot.GetComponentInChildren<Vitality>();
         if (targetVitality)
         {
-            int damage = Mathf.RoundToInt(cStats.GetStat(damageStat.ToString()).value);
+            int damage = Mathf.RoundToInt((cStats.GetStat(damageStat.ToString()).value) * baseStatAsDmg);
             targetVitality.TakeDamage(damage);
 
             if (logAttacks)

@@ -3,25 +3,41 @@ using System;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(CreatureStats))]
-public class Evolution : MonoBehaviour
+public class Evolution : ObjectSpawner
 {
     [Header("State")]
     [SerializeField] int morphLevel = 1;
     [SerializeField] int morphTier = 1;
-    [Space(10)]
-    public bool energySurplus = false;
-    //public float energyMinimum = 0;
+    [SerializeField] bool energySurplus = false;
 
 
-    [Header("Settings")]
+    [Header("Surplus")]
     [Tooltip("Energy Stored is considered In Surplus if beyond this Threshold")]
-    public float surplusThreshold = 50;
+    [SerializeField] float surplusThreshold = 50;
+    [SerializeField] float energyMinimum = 10;
+
+
+    [Header("Seed Settings")]
+    [SerializeField] GameObject offspringSeed = null;
+
     [Space(10)]
+    [Tooltip("Maximum energy passed on to Seed offspring. Energy beyond threshold will be returned to Source. If 0, SeedNV will be used.")]
+    [SerializeField] float maxSeedEnergy = 50f;
+    [SerializeField, Range(0, 50)] int seedingRadius = 2;
+    [Tooltip("Must spawn seed above sea level.")]
+    [SerializeField] bool aboveWaterOnly = true;
+    [SerializeField] bool randomYRotation = true;
+    [SerializeField] bool spawnScale0 = true;
+
+
+    [Header("Morphology")]
     [SerializeField] List<MorphData> possibleMorphs;
 
 
-    [Header("Debug"), SerializeField]
-    bool logMorphs = false;
+
+    [Header("Debug")]
+    [SerializeField] bool logSeedLaying = false;
+    [SerializeField] bool logMorphs = false;
 
 
 
@@ -48,10 +64,11 @@ public class Evolution : MonoBehaviour
     }
 
 
+
     // Check for energy surplus, set bool and trigger events
     public void SurplusQuery()
     {
-        energySurplus = eData.energyReserve >= surplusThreshold ? true : false;
+        energySurplus = eData.energyReserve >= surplusThreshold + energyMinimum ? true : false;
 
         if (energySurplus)
             LevelUp();
@@ -59,18 +76,67 @@ public class Evolution : MonoBehaviour
 
     void LevelUp()
     {
-        if (TryGetComponent<Reproduction>(out Reproduction reproduction))
-        {
-            if (reproduction.offspringSeed != null)
-                reproduction.SpawnSeed(surplusThreshold);
-            else eData.ReturnEnergyToReserve(surplusThreshold);
-        }
-        else eData.ReturnEnergyToReserve(surplusThreshold);
+        if (offspringSeed != null)
+            SpawnSeed(surplusThreshold);
+        else eData.ReturnEnergyToSource(surplusThreshold);
+
+        surplusThreshold = Mathf.RoundToInt(surplusThreshold * 1.1f);
 
         GetComponent<CreatureStats>()?.TriggerLevelUp();
     }
 
+    #region Seeds
+    //// Spawn Seed \\\\
+    public void SpawnSeed(float _energyEndowed, GameObject _offspringSeed = null)
+    {
+        // Choose Cast-off Seed
+        if (_offspringSeed == null)
+            _offspringSeed = offspringSeed;
 
+        // If maxSeedEnergy is 0, use SeedNV as max
+        if (maxSeedEnergy == 0)
+            maxSeedEnergy = _offspringSeed.GetComponentInChildren<FoodData>().nutritionalValue.y;
+
+        // Calculate excess energy if more than maximum
+        if (_energyEndowed > maxSeedEnergy)
+        {
+            eData.ReturnEnergyToSource(_energyEndowed - maxSeedEnergy, false);
+            _energyEndowed = maxSeedEnergy;
+        }
+
+        // Expend Energy and plant Seed with the Energy spent
+        GameObject spawnedFruit = SpawnObject(_offspringSeed, eData, _energyEndowed, null, randomYRotation, seedingRadius, aboveWaterOnly);
+
+
+        // Adjust scale
+        if (spawnScale0)
+            spawnedFruit.GetComponentInChildren<Animator>(true).transform.localScale = Vector3.zero;
+
+        // Debug
+        if (logSeedLaying)
+            Debug.Log(transform.root.name + " planted a Seed " + "[" + _offspringSeed.name + "]");
+    }
+
+    public void PlantSeedButton()
+    {
+        if (eData.energyReserve < maxSeedEnergy)
+        {
+            if (Servius.Server.GetComponent<GlobalLifeSource>().energyReserve > maxSeedEnergy)
+            {
+                float energyToLeech = maxSeedEnergy - eData.energyReserve;
+                eData.energyReserve += energyToLeech;
+                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve -= energyToLeech;
+            }
+            else Debug.LogWarning("Not enough Energy remaining in Global Pool to Spawn Seed");
+        }
+
+        if (eData.energyReserve >= maxSeedEnergy)
+            SpawnSeed(maxSeedEnergy);
+    }
+    #endregion
+
+
+    #region Morphology
     //// Check what Forms are eligible to Morph into \\\\
     public void AttemptTransMorph()
     {
@@ -84,46 +150,46 @@ public class Evolution : MonoBehaviour
 
                 foreach (MorphRequirement _req in _morph.requirements)
                 {
+                    bool disqualified = false;
                     switch (_req.requirementType)
                     {
                         case MorphRequirement.RequirementType.Diet:
+
                             foreach (DietData foodType in GetComponent<Metabolism>().dietHistory)
                                 if (foodType.foodTag.Equals(_req.id))
-                                {
-                                    if (_req.greaterThan)
+                                    if (foodType.energyUnits >= _req.threshold)
                                     {
-                                        if (foodType.energyUnits >= _req.threshold)
-                                        {
+                                        if (_req.greaterThan)
                                             reqsMet++;
-                                            break;
-                                        }
-                                    }
-                                    else if (foodType.energyUnits <= _req.threshold)
-                                    {
-                                        reqsMet++;
+                                        else
+                                            disqualified = true;
+
                                         break;
                                     }
-                                }
+
+                            if (!_req.greaterThan && !disqualified)
+                                reqsMet++;
+
                             break;
 
+
                         case MorphRequirement.RequirementType.Stat:
+
                             foreach (CreatureStat stat in cStats.statBlock)
                                 if (stat.id.Equals(_req.id))
-                                {
-                                    if (_req.greaterThan)
+                                    if (stat.value >= _req.threshold)
                                     {
-                                        if (stat.value >= _req.threshold)
-                                        {
+                                        if (_req.greaterThan)
                                             reqsMet++;
-                                            break;
-                                        }
-                                    }
-                                    else if (stat.value <= _req.threshold)
-                                    {
-                                        reqsMet++;
+                                        else
+                                            disqualified = true;
+
                                         break;
                                     }
-                                }
+
+                            if (!_req.greaterThan && !disqualified)
+                                reqsMet++;
+
                             break;
                     }
                 }
@@ -139,7 +205,6 @@ public class Evolution : MonoBehaviour
     {
         SpawnForm(_newForm);
 
-
         //Debug
         if (logMorphs)
             Debug.Log(transform.root.name + " has morphed into " + _newForm.name);
@@ -154,21 +219,31 @@ public class Evolution : MonoBehaviour
     {
         //Spawn new Creature Form
         EnergyData eData = GetComponentInParent<EnergyData>();
-        GameObject newCreature = GetComponent<Reproduction>().SpawnObject(_newForm, eData, eData.energyReserve);
+        GameObject newCreature = SpawnObject(_newForm, eData, eData.energyReserve);
+
+        // Reset position to match origin
+        newCreature.transform.position = transform.position;
+        newCreature.transform.rotation = UtilityFunctions.GravityOrientedRotation(newCreature.transform);
 
         PlayerModule playerModule = transform.root.GetComponentInChildren<PlayerModule>();
         if (playerModule.isControlled)
         {
             playerModule.ReleaseControl();
+            PlayerSoul.Cam.SwitchCamTo(newCreature.transform.root.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
             newCreature.GetComponentInChildren<PlayerModule>().TakeControl();
         }
+        else if (PlayerSoul.Cam.currentTarget.transform.root == this.transform.root)
+            PlayerSoul.Cam.SwitchCamTo(newCreature.transform.root.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
 
 
         // Pass down Current Level and stat block
         GetComponent<CreatureStats>().CopyCStats(newCreature.GetComponentInChildren<CreatureStats>());
 
         // Pass down Morphology
-        newCreature.GetComponentInChildren<Evolution>().morphTier = morphTier + 1;
+        Evolution newCreatureEvo = newCreature.GetComponentInChildren<Evolution>();
+        newCreatureEvo.morphTier = morphTier + 1;
+        newCreatureEvo.energyMinimum *= 2;
+        newCreatureEvo.surplusThreshold = surplusThreshold;
 
         // Pass down Ancestry
         GetComponent<Genetics>().CopyGenes(newCreature.GetComponentInChildren<Genetics>());
@@ -179,7 +254,6 @@ public class Evolution : MonoBehaviour
         Destroy(transform.root.gameObject);
     }
 }
-
 
 
 [Serializable]
@@ -204,6 +278,7 @@ public class MorphRequirement
     public enum RequirementType { Stat, Diet }
     public RequirementType requirementType;
     public string id;
+    [Tooltip("False for Less Than. Inclusive ( >= / <= | null )")]
     public bool greaterThan = true;
     public float threshold = 1;
 
@@ -215,3 +290,4 @@ public class MorphRequirement
         this.threshold = _threshold;
     }
 }
+#endregion

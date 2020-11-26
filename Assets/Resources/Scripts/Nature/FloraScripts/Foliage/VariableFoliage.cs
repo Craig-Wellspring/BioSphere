@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VariableFoliage : MonoBehaviour
 {
+    enum LeafSpawnTrigger { OnStart, OnHalfGrown, OnFullyGrown }
+    [SerializeField] LeafSpawnTrigger leafSpawnTrigger;
     [SerializeField] List<FoliageVariantData> randomFoliage;
 
     void Start()
@@ -29,11 +31,27 @@ public class VariableFoliage : MonoBehaviour
                 newLeaf.name = trunk.GetChild(0).name;
                 newLeaf.transform.localScale = Vector3.zero;
 
-                growthData.activateObjectsHG.Add(newLeaf);
+                switch (leafSpawnTrigger)
+                {
+                    case (LeafSpawnTrigger.OnStart):
+                        trunk.GetChild(0).gameObject.SetActive(true);
+                        newLeaf.gameObject.SetActive(true);
+                        break;
+
+                    case (LeafSpawnTrigger.OnHalfGrown):
+                        growthData.activateObjectsHG.Add(trunk.GetChild(0).gameObject);
+                        growthData.activateObjectsHG.Add(newLeaf);
+                        break;
+
+                    case (LeafSpawnTrigger.OnFullyGrown):
+                        growthData.activateObjectsFG.Add(trunk.GetChild(0).gameObject);
+                        growthData.activateObjectsFG.Add(newLeaf);
+                        break;
+                }
             }
         }
 
-        // Set mesh, collider, and nutritional value of each leaf object
+        // Set mesh and collider of each leaf object
         for (int i = 0; i < totalBudCount; i++)
         {
             Transform _targetLeaf = trunk.GetChild(i);

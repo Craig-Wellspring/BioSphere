@@ -1335,6 +1335,11 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 591813331498077581, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Name
+      value: Player Module
+      objectReference: {fileID: 0}
     - target: {fileID: 690026276287503509, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: adlBodyColliders.Array.size
@@ -1429,27 +1434,42 @@ PrefabInstance:
     - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.192
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.425
+      value: -1.34
       objectReference: {fileID: 0}
     - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2164396
+      value: 0.05419624
       objectReference: {fileID: 0}
     - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97629607
+      value: 0.9985303
       objectReference: {fileID: 0}
     - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000007217698
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -3.9174783e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114154110356943304, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2131904891924997232, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1680,6 +1700,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
+      objectReference: {fileID: 7844448675806140758}
+    - target: {fileID: 4575123311430768913, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4575123311430768913, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 2285759280214587305}
+    - target: {fileID: 5114527657816503715, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114527657816503715, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114527657816503715, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_AngularDamping
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1824,6 +1869,27 @@ PrefabInstance:
       propertyPath: possibleMorphs.Array.data[2].requirements.Array.data[0].requirementType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpLayers.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: offspringSeed
+      value: 
+      objectReference: {fileID: 5108705363584736325, guid: 40a150a5d9117ee40969dd7c7a852eb5,
+        type: 3}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: maxSeedEnergy
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7172435783133125434, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: radius
@@ -1843,6 +1909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175217377725116386, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_ScreenY
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7247082459883604666, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -2065,12 +2136,12 @@ PrefabInstance:
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bumpLayers.m_Bits
-      value: 4096
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8816028523584167361, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bumpRadius
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9218527292029191418, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -2095,6 +2166,12 @@ GameObject:
 --- !u!4 &2285759280214587305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400250, guid: c5bf24098b61bba4bb0da85b9f252476,
+    type: 3}
+  m_PrefabInstance: {fileID: 2285759280214191315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7844448675806140758 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8315247408431592837, guid: c5bf24098b61bba4bb0da85b9f252476,
     type: 3}
   m_PrefabInstance: {fileID: 2285759280214191315}
   m_PrefabAsset: {fileID: 0}

@@ -54,7 +54,7 @@ public class Vitality : MonoBehaviour
 
         ChangeCurrentHealth(_amount);
 
-        transform.root.localScale += new Vector3(_amount / 10, _amount / 10, _amount / 10);
+        //transform.root.localScale += new Vector3(_amount / 10, _amount / 10, _amount / 10);
     }
 
     void ChangeCurrentHealth(int _amount = 0)

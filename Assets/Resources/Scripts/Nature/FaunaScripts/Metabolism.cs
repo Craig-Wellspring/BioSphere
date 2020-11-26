@@ -42,7 +42,6 @@ public class Metabolism : MonoBehaviour
 
     [Header("Diet Settings")]
     public FoodCategories dietList;
-    //public List<string> dietList;
     public List<string> preyList;
 
 
@@ -53,6 +52,7 @@ public class Metabolism : MonoBehaviour
     public bool isHungry = false;
     public bool isWasting = false;
     [Space(10)]
+    
     public FoodData targetFData = null;
     DietData morselIngested = new DietData(null, 0);
 
@@ -193,7 +193,6 @@ public class Metabolism : MonoBehaviour
 
         foreach (Collider _hitFood in hitFoodList)
         {
-            //if (dietList.Contains(_hitFood.tag))
             if (dietList.ToString().Contains(_hitFood.tag))
             {
                 StartEating(_hitFood.gameObject);
@@ -327,8 +326,6 @@ public class Metabolism : MonoBehaviour
         //Eat meat if desperate for food
         if (!dietList.HasFlag(FoodCategories.Meat) && hungryMeatEater)
             dietList |= FoodCategories.Meat;
-        //if (!dietList.Contains("Meat") && hungryMeatEater)
-            //dietList.Add("Meat");
 
         Vitality vitality = GetComponent<Vitality>();
         if (!vitality.dead && hungerPercentage >= 100)

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d49f98f82bf0ee4aa872ea345cad16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leafSpawnTrigger: 0
   randomFoliage:
-  - {fileID: 11400000, guid: 193e13987a70a6e4cbd9f30c9e0f18b5, type: 2}
-  - {fileID: 11400000, guid: 338177579eac6b842a3e047b465778b2, type: 2}
-  - {fileID: 11400000, guid: 2e54c90171a5a0343af47199cfd5dcd6, type: 2}
+  - {fileID: 11400000, guid: db0f8f5a2c66bb44397ac521dc6a11e4, type: 2}
+  - {fileID: 11400000, guid: 51ec50c9575ebf846a7e7ad10a04ef7f, type: 2}
+  - {fileID: 11400000, guid: c9e5abe7c020c4940837a805529064a1, type: 2}
 --- !u!114 &4582606650660306485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,6 +33,40 @@ MonoBehaviour:
   onUpdate: 0
   rotationSpeed: 50
   orientTarget: 0
+--- !u!114 &5827184798851669146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168744976936320051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b7d1cb72d673c41a3f108b0e8704cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  bumpRadius: 0.5
+  drawBumpSphere: 0
+  newFruit: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
+    type: 3}
+  whenToSpawn: 1
+  parentRelationship: 0
+  spawnOnSurface: 0
+  aboveWaterOnly: 1
+  randomSpawnArea: 8
+  randomYRotation: 1
+  spawnScale0: 1
+  seeds: {x: 0, y: 10}
+  seedSuccessChance: 100
+  energyDistribution: 0
+  castOffEntity: {fileID: 0}
+  castOffDistance: 0
+  objectToActivate: {fileID: 0}
+  returnLeftoverEnergy: 1
+  selfDestruct: 0
 --- !u!1001 &3085989116704496102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41,7 +76,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 113998, guid: 1fedb5571d445274782330b0eea48e80, type: 3}
       propertyPath: m_Name
-      value: Pine Tree
+      value: Bush Tree
       objectReference: {fileID: 0}
     - target: {fileID: 468652, guid: 1fedb5571d445274782330b0eea48e80, type: 3}
       propertyPath: m_LocalPosition.x
@@ -109,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 1752407923769582429, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779700459288280494, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
@@ -130,12 +165,7 @@ PrefabInstance:
     - target: {fileID: 1985612067430448436, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: addTerrainColor
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747760569714460702, guid: 1fedb5571d445274782330b0eea48e80,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4379536468355065223, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
@@ -152,11 +182,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4450783628685298633, guid: 1fedb5571d445274782330b0eea48e80,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4759473824326799664, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: nutritionalValue.x
@@ -165,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 4759473824326799664, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: nutritionalValue.y
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4959284120954668768, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
@@ -187,11 +212,6 @@ PrefabInstance:
       propertyPath: newLeafNV
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5467898994875618992, guid: 1fedb5571d445274782330b0eea48e80,
-        type: 3}
-      propertyPath: secondsDormant
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1779700459288280494, guid: 1fedb5571d445274782330b0eea48e80, type: 3}
     - {fileID: 596391832531243610, guid: 1fedb5571d445274782330b0eea48e80, type: 3}
@@ -199,6 +219,12 @@ PrefabInstance:
 --- !u!1 &3085989116704531624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 113998, guid: 1fedb5571d445274782330b0eea48e80,
+    type: 3}
+  m_PrefabInstance: {fileID: 3085989116704496102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8168744976936320051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6597373809721812437, guid: 1fedb5571d445274782330b0eea48e80,
     type: 3}
   m_PrefabInstance: {fileID: 3085989116704496102}
   m_PrefabAsset: {fileID: 0}

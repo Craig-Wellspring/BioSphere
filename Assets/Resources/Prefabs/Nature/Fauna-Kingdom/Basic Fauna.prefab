@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 3395481251386001511}
   - component: {fileID: 7176181105287769093}
   m_Layer: 20
-  m_Name: BasicFauna
+  m_Name: Basic Fauna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,6 +678,12 @@ MonoBehaviour:
   hungerUnits: 0
   hungerPercentage: 0
   dietHistory: []
+  hungerGainedPerTick: 0.15
+  hungerPerTickPerLevel: 0.001
+  hungryAtPercent: 20
+  wastingAtPercent: 80
+  hungryMeatEater: 1
+  maximumHungerUnits: 100
   mouth: {fileID: 0}
   biteSize: 0.4
   drawBiteSphere: 0
@@ -685,13 +691,7 @@ MonoBehaviour:
   biteLayers:
     serializedVersion: 2
     m_Bits: 11264
-  hungerGainedPerTick: 0.15
-  hungerPerTickPerLevel: 0.001
-  hungryAtPercent: 20
-  wastingAtPercent: 80
-  hungryMeatEater: 1
-  maximumHungerUnits: 100
-  dietList: []
+  dietList: 0
   preyList: []
   logEating: 0
   isEating: 0
@@ -713,22 +713,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bumpLayers:
     serializedVersion: 2
-    m_Bits: 6144
-  bumpRadius: 2
+    m_Bits: 0
+  bumpRadius: 0
   drawBumpSphere: 0
-  offspringSeed: {fileID: 0}
-  maxSeedEnergy: 50
-  seedingRadius: 2
-  aboveWaterOnly: 1
-  randomYRotation: 1
-  spawnScale0: 1
   eggData: {fileID: 0}
   maxEggEnergy: 50
   eggType: {fileID: 4452051350941145613, guid: f54afc36c40abd94e96e3008b7d64a78, type: 3}
   energyAsNV: 0.2
   incubationSpeed: 0.1
   canHatch: 1
-  logSeedLaying: 0
   logEggLaying: 0
 --- !u!114 &5742506860675060162
 MonoBehaviour:
@@ -742,11 +735,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6887074388407d34e867b35996c4cf67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  bumpRadius: 2
+  drawBumpSphere: 0
   morphLevel: 1
   morphTier: 1
   energySurplus: 0
   surplusThreshold: 50
+  energyMinimum: 10
+  offspringSeed: {fileID: 0}
+  maxSeedEnergy: 50
+  seedingRadius: 2
+  aboveWaterOnly: 1
+  randomYRotation: 1
+  spawnScale0: 1
   possibleMorphs: []
+  logSeedLaying: 0
   logMorphs: 0
 --- !u!114 &448272040755068572
 MonoBehaviour:
@@ -760,6 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c84d883664d98f41a2199fad1275957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  age: 0
   numberOfChildren: 0
   parentCreature: {fileID: 0}
   ancestors: []
@@ -1554,7 +1561,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8315247408431592837}
     - target: {fileID: 3894016917214739736, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
         type: 3}
       propertyPath: m_Follow
@@ -1565,11 +1572,22 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 400250}
+    - target: {fileID: 7703186814537911275, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
+        type: 3}
+      propertyPath: m_ScreenY
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a790a8d0058a954b8c6ae2ec7189f99, type: 3}
 --- !u!4 &2114154110356943304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1450918147078182337, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
+    type: 3}
+  m_PrefabInstance: {fileID: 681250431128740873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8315247408431592837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8796085181234532748, guid: 2a790a8d0058a954b8c6ae2ec7189f99,
     type: 3}
   m_PrefabInstance: {fileID: 681250431128740873}
   m_PrefabAsset: {fileID: 0}

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Meteor Mat
+  m_Name: Meteor Mat - d
   m_Shader: {fileID: -6465566751694194690, guid: 541a55eba94046743a558f35db82d629,
     type: 3}
   m_ShaderKeywords: _EMISSION _ENVIRONMENTREFLECTIONS_OFF _NORMALMAP _RECEIVE_SHADOWS_OFF
@@ -107,3 +107,4 @@ Material:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0.16470589, g: 0.20392157, b: 0.21176471, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_BuildTextureStacks: []

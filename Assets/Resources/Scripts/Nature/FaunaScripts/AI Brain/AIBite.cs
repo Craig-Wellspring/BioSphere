@@ -10,7 +10,7 @@ public class AIBite : StateMachineBehaviour
         animator.transform.root.GetComponent<Animator>().SetTrigger("Bite");
 
         // Look at target
-        animator.transform.root.LookAt(animator.transform.root.GetComponent<AIDestinationSetter>().target, animator.rootPosition);
-        PlanetCore.Core.AlignWithGravity(animator.transform.root, true);
+        //animator.transform.root.LookAt(animator.transform.root.GetComponent<AIDestinationSetter>().target, animator.rootPosition);
+        //PlanetCore.Core.AlignWithGravity(animator.transform.root, true);
     }
 }

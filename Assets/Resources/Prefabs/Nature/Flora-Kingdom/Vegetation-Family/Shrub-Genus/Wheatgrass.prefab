@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6754617908171216900}
+  - component: {fileID: 2153792263267129630}
   - component: {fileID: 5041884359095947317}
   - component: {fileID: 4198432886362514051}
   - component: {fileID: 4860252330092115805}
   - component: {fileID: 8152414702700488167}
   - component: {fileID: 5451410229857245134}
   m_Layer: 11
-  m_Name: Wheatgrass
+  m_Name: Wheat
   m_TagString: Seedling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +35,20 @@ Transform:
   m_Children:
   - {fileID: 6730681765619854725}
   m_Father: {fileID: 5108705363585024101}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2153792263267129630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161767978596826977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5041884359095947317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nutritionalValue: {x: 0, y: 12}
+  nutritionalValue: {x: 0, y: 11}
   chewRateModifier: 2
   consumptionType: 0
 --- !u!114 &4198432886362514051
@@ -69,8 +82,7 @@ MonoBehaviour:
   halfGrownTag: Grain
   gainIndependenceHG: 1
   addTerrainColor: 0
-  activateObjectsHG:
-  - {fileID: 5428542512486172535}
+  activateObjectsHG: []
   spawnScale0HG: 1
   fullyGrownTag: 
   gainIndependenceFG: 0
@@ -218,18 +230,19 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4173429859943849100}
+  - component: {fileID: 8415094171704756691}
   - component: {fileID: 8335626363516427006}
   - component: {fileID: 1787713954213347767}
   - component: {fileID: 2524333185531758045}
   - component: {fileID: 258156551455844664}
   - component: {fileID: 7728325213302804813}
   m_Layer: 11
-  m_Name: Wheatgrass
+  m_Name: Wheat
   m_TagString: Seedling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4173429859943849100
 Transform:
   m_ObjectHideFlags: 0
@@ -243,8 +256,20 @@ Transform:
   m_Children:
   - {fileID: 3783884791800660135}
   m_Father: {fileID: 5108705363585024101}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8415094171704756691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428542512486172535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8335626363516427006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nutritionalValue: {x: 0, y: 12}
+  nutritionalValue: {x: 0, y: 11}
   chewRateModifier: 2
   consumptionType: 0
 --- !u!114 &1787713954213347767
@@ -278,8 +303,7 @@ MonoBehaviour:
   halfGrownTag: Grain
   gainIndependenceHG: 1
   addTerrainColor: 0
-  activateObjectsHG:
-  - {fileID: 7882448004109197007}
+  activateObjectsHG: []
   spawnScale0HG: 1
   fullyGrownTag: 
   gainIndependenceFG: 0
@@ -509,13 +533,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3635264275728802595}
+  - component: {fileID: 4838828513236861891}
   - component: {fileID: 7383620231146784093}
   - component: {fileID: 4850801475208958927}
   - component: {fileID: 7849803004767462480}
   - component: {fileID: 7528412162419468050}
   - component: {fileID: 2014202160990442235}
   m_Layer: 11
-  m_Name: Wheatgrass
+  m_Name: Wheat
   m_TagString: Seedling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -536,6 +561,18 @@ Transform:
   m_Father: {fileID: 5108705363585024101}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4838828513236861891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882448004109197007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4814d4107b4304ebd828dc34cfa3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7383620231146784093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,7 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cedee5582399144a2e2e0e8c473f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nutritionalValue: {x: 0, y: 12}
+  nutritionalValue: {x: 0, y: 11}
   chewRateModifier: 2
   consumptionType: 0
 --- !u!114 &4850801475208958927
@@ -641,7 +678,7 @@ PrefabInstance:
     - target: {fileID: 1065377328634644644, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: activateObjectsFG.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1065377328634644644, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
@@ -667,7 +704,7 @@ PrefabInstance:
         type: 3}
       propertyPath: activateObjectsFG.Array.data[0]
       value: 
-      objectReference: {fileID: 161767978596826977}
+      objectReference: {fileID: 7882448004109197007}
     - target: {fileID: 1065377328634644644, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: gainIndependenceHG
@@ -716,7 +753,7 @@ PrefabInstance:
     - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: nutritionalValue.y
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5872123736219345397, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}

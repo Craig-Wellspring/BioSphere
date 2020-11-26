@@ -66,16 +66,17 @@ public class PlayerModule : MonoBehaviour
         aiModule.GetComponent<BasicAIBrain>().ClearPathing();
         aiModule.gameObject.SetActive(false);
 
-        //if (baseAnim.GetBool("IsSinging"))
-        //    baseAnim.SetBool("IsSinging", false);
+        if (UtilityFunctions.AnimatorHasParameter(baseAnim, "IsSinging"))
+            baseAnim.SetBool("IsSinging", false);
 
         Metabolism metabolism = transform.root.GetComponentInChildren<Metabolism>();
         if (metabolism)
         {
             if (metabolism.isEating)
                 metabolism.StopEating();
-            //if (!metabolism.dietList.Contains("Meat"))
-                //metabolism.dietList.Add("Meat");
+
+            if (!metabolism.dietList.HasFlag(Metabolism.FoodCategories.Meat))
+                metabolism.dietList |= Metabolism.FoodCategories.Meat;
         }
     }
 

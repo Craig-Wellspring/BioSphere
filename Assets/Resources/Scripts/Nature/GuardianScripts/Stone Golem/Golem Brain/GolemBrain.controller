@@ -69,6 +69,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -6045637408750357639}
   - {fileID: 7007332121855287479}
+  - {fileID: 5874546369312987756}
   m_StateMachineBehaviours:
   - {fileID: 2347428386236629229}
   m_Position: {x: 50, y: 50, z: 0}
@@ -115,7 +116,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idle
-  m_Speed: 0.1
+  m_Speed: 0.05
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8610845541945603470}
@@ -192,6 +193,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea9e86c6494df94897cd40d4d3cd84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1101 &5874546369312987756
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: DestinationDistance
+    m_EventTreshold: 1000
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -1146231488412812190}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &6280708382167499098
 AnimatorState:
   serializedVersion: 5

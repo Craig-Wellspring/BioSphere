@@ -11709,15 +11709,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36d1458f62f50f4db7ea2ac693d6807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyReserve: 15000
+  energyReserve: 25000
   minimumEnergyReserve: 200
+  logEnergyTaken: 0
   logEnergyReturn: 0
-  quickStart: 1
   seedToPlant: {fileID: 8593085983151731646, guid: c040fb6dcfaec294fb277a6ddcf35e24,
     type: 3}
-  maxEnergyPlanted: 1500
-  spawnMeteor: 1
+  quickStartSeeds: 20
   meteor: {fileID: 6095046655658794419, guid: 9d26e26c95622854396298675d261cf3, type: 3}
+  spawnMeteor: 1
   spawnRadius: 100
 --- !u!114 &2066092717
 MonoBehaviour:
@@ -11741,6 +11741,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1934204120089370960, guid: 6070e20244a83674e8d2d2a77eec614a,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934204120089370960, guid: 6070e20244a83674e8d2d2a77eec614a,
+        type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934204120089370960, guid: 6070e20244a83674e8d2d2a77eec614a,
+        type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370962, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_Name
@@ -11759,37 +11774,37 @@ PrefabInstance:
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.000002
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.75259495
+      value: 0.28978413
       objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.1398144
+      value: 0.000000016468093
       objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.1398144
+      value: -0.0000000049861373
       objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.62809616
+      value: 0.95709205
       objectReference: {fileID: 0}
     - target: {fileID: 1934204120089370967, guid: 6070e20244a83674e8d2d2a77eec614a,
         type: 3}

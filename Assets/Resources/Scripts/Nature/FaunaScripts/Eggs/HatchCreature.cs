@@ -2,6 +2,7 @@
 
 public class HatchCreature : ObjectSpawner
 {
+    [Space(15)]
     public GameObject creatureToHatch;
 
     
@@ -17,6 +18,11 @@ public class HatchCreature : ObjectSpawner
         // Spawn creature with energy storage
         GameObject newCreature = SpawnObject(creatureToHatch, eggEData, eggEData.energyReserve);
 
+
+        // Switch SoulCam to hatched creature
+        if (PlayerSoul.Cam.currentTarget == transform.root.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>())
+            PlayerSoul.Cam.SwitchCamTo(newCreature.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
+
         // Copy parent genetics
         GetComponent<Genetics>().CopyGenes(newCreature.GetComponentInChildren<Genetics>());
 
@@ -26,12 +32,15 @@ public class HatchCreature : ObjectSpawner
 
     void Effects()
     {
-        GetComponentInChildren<ParticleSystem>(true).gameObject.SetActive(true);
+        GameObject FXObj = GetComponentInChildren<ParticleSystem>(true).gameObject;
+        FXObj.transform.position = transform.GetChild(0).position;
+        FXObj.SetActive(true);
     }
 
 
     void CrackShell()
     {
-        Destroy(transform.root.gameObject);
+        transform.GetChild(0).gameObject.SetActive(false);
+        Destroy(transform.root.gameObject, 2);
     }
 }

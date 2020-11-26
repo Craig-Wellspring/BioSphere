@@ -1,21 +1,7 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(EnergyData))]
 public class Reproduction : ObjectSpawner
 {
-    [Header("Seed Settings")]
-    public GameObject offspringSeed = null;
-    
-    [Space(10)]
-    [Tooltip("Maximum energy passed on to Seed offspring. Energy beyond threshold will be returned to Source. If 0, SeedNV will be used.")]
-    [SerializeField] float maxSeedEnergy = 50f;
-    [SerializeField, Range(0, 50)] int seedingRadius = 2;
-    [Tooltip("Must spawn seed above sea level.")]
-    [SerializeField] bool aboveWaterOnly = true;
-    [SerializeField] bool randomYRotation = true;
-    [SerializeField] bool spawnScale0 = true;
-
-
     [Header("Egg Settings")]
     [SerializeField] EggData eggData = null;
     [Space(10)]
@@ -28,77 +14,20 @@ public class Reproduction : ObjectSpawner
 
 
     [Header("Debug")]
-    [SerializeField] bool logSeedLaying = false;
     [SerializeField] bool logEggLaying = false;
-
-
-    // Cache
-    EnergyData eData;
-    void Start()
-    {
-        eData = GetComponentInParent<EnergyData>();
-    }
-
-
-    #region Seeds
-    //// Spawn Seed \\\\
-    public void SpawnSeed(float _energyEndowed, GameObject _offspringSeed = null)
-    {
-        // Choose Cast-off Seed
-        if (_offspringSeed == null)
-            _offspringSeed = offspringSeed;
-
-        // If maxSeedEnergy is 0, use SeedNV as max
-        if (maxSeedEnergy == 0)
-            maxSeedEnergy = _offspringSeed.GetComponentInChildren<FoodData>().nutritionalValue.y;
-
-        // Return excess energy to source if more than maximum
-        if (_energyEndowed > maxSeedEnergy)
-        {
-            eData.ReturnEnergyToReserve(_energyEndowed - maxSeedEnergy);
-            _energyEndowed = maxSeedEnergy;
-        }
-
-        // Expend Energy and plant Seed with the Energy spent
-        GameObject spawnedFruit = SpawnObject(_offspringSeed, eData, _energyEndowed, null, randomYRotation, seedingRadius, aboveWaterOnly);
-
-        // Adjust scale
-        if (spawnScale0)
-            spawnedFruit.GetComponentInChildren<Animator>(true).transform.localScale = Vector3.zero;
-
-        // Debug
-        if (logSeedLaying)
-            Debug.Log(transform.root.name + " planted a Seed " + "[" + _offspringSeed.name + "]");
-    }
-
-    public void PlantSeedButton()
-    {
-        if (eData.energyReserve < maxSeedEnergy)
-        {
-            if (Servius.Server.GetComponent<GlobalLifeSource>().energyReserve > maxSeedEnergy)
-            {
-                float energyToLeech = maxSeedEnergy - eData.energyReserve;
-                eData.energyReserve += energyToLeech;
-                Servius.Server.GetComponent<GlobalLifeSource>().energyReserve -= energyToLeech;
-            }
-            else Debug.LogWarning("Not enough Energy remaining in Global Pool to Spawn Seed");
-        }
-
-        if (eData.energyReserve >= maxSeedEnergy)
-            SpawnEgg(maxSeedEnergy);
-    }
-    #endregion
 
 
 
     #region Eggs
     //// Spawn Egg \\\\
-    public void SpawnEgg(float _energyEndowed, GameObject _customOffspring = null)
+    public GameObject SpawnEgg(float _energyEndowed, GameObject _customOffspring = null)
     {
+        EnergyData eData = GetComponentInParent<EnergyData>();
+
         // Return excess energy to source if more than maximum
         if (_energyEndowed > maxEggEnergy)
         {
-            eData.ReturnEnergyToReserve(_energyEndowed - maxEggEnergy);
+            eData.ReturnEnergyToSource(_energyEndowed - maxEggEnergy);
             _energyEndowed = maxEggEnergy;
         }
 
@@ -135,10 +64,15 @@ public class Reproduction : ObjectSpawner
         // Debug
         if (logEggLaying)
             Debug.Log(transform.root.name + " laid an Egg " + "[" + _customOffspring.name + "]");
+
+        
+        return newEgg;
     }
 
     public void LayEggButton()
     {
+        EnergyData eData = GetComponentInParent<EnergyData>();
+
         if (eData.energyReserve < maxEggEnergy)
         {
             if (Servius.Server.GetComponent<GlobalLifeSource>().energyReserve > maxEggEnergy)

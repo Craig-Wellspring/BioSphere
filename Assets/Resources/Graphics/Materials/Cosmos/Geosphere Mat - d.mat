@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Geosphere Mat
+  m_Name: Geosphere Mat - d
   m_Shader: {fileID: -6465566751694194690, guid: 94bb58c9a50f9ea49a2dc9062fc34d8d,
     type: 3}
   m_ShaderKeywords: 

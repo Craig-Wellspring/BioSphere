@@ -17,6 +17,14 @@ public class AIMoveTowardsFood : StateMachineBehaviour
             targetFood = animator.GetComponent<BasicAIBrain>().pickRandomFood ? vPerception.nearbyFood[Random.Range(0, vPerception.nearbyFood.Count)] : vPerception.closestFood;
 
         destinationSetter.target = targetFood ? targetFood.transform : null;
+
+        if (animator.transform.root.GetComponentInChildren<Metabolism>().isWasting)
+            animator.transform.root.GetComponentInChildren<Respiration>()?.ToggleSprinting(true);
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.transform.root.GetComponentInChildren<Respiration>()?.ToggleSprinting(false);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,6 +35,16 @@ public class AIMoveTowardsFood : StateMachineBehaviour
                 targetFood = animator.GetComponent<BasicAIBrain>().pickRandomFood ? vPerception.nearbyFood[Random.Range(0, vPerception.nearbyFood.Count)] : vPerception.closestFood;
 
             destinationSetter.target = targetFood ? targetFood.transform : null;
+        }
+
+        if (destinationSetter.target)
+        {
+            Vector3 targetDirection = destinationSetter.target.position - animator.transform.root.position;
+            if (targetDirection.magnitude < 4)
+            {
+                Vector3 newDirection = Vector3.RotateTowards(animator.transform.forward, targetDirection, Time.deltaTime, 0);
+                animator.transform.root.rotation = Quaternion.LookRotation(newDirection, -UtilityFunctions.GravityVector(animator.transform.root.position));
+            }
         }
     }
 }

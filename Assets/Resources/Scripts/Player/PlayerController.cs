@@ -116,9 +116,11 @@ public class PlayerController : MonoBehaviour
             metabolism.StopEating();
 
         // Sing
-        if (Input.GetButtonDown("Sing") && animator.parameters.ToString().Contains("IsSinging"))
+        if (Input.GetButtonDown("Sing") && UtilityFunctions.AnimatorHasParameter(animator, "IsSinging"))
+        {
             animator.SetBool("IsSinging", true);
-        if (Input.GetButtonUp("Sing") && animator.parameters.ToString().Contains("IsSinging"))
+        }
+        if (Input.GetButtonUp("Sing") && UtilityFunctions.AnimatorHasParameter(animator, "IsSinging"))
             animator.SetBool("IsSinging", false);
 
         // Jump

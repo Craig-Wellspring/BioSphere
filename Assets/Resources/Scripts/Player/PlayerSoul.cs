@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Pathfinding;
+using Cinemachine;
 
 public class PlayerSoul : MonoBehaviour
 {
@@ -19,11 +19,11 @@ public class PlayerSoul : MonoBehaviour
 
 
     [Header("Camera Docks")]
-    public Cinemachine.CinemachineVirtualCamera currentTarget;
+    public CinemachineVirtualCamera currentTarget;
     [Space(15)]
-    public Cinemachine.CinemachineVirtualCamera lifeGuardian;
-    public List<Cinemachine.CinemachineVirtualCamera> soullessCreatures;
-    Cinemachine.CinemachineBrain camBrain;
+    public CinemachineVirtualCamera lifeGuardian;
+    public List<CinemachineVirtualCamera> soullessCreatures;
+    CinemachineBrain camBrain;
     PlayerModule playerMod;
     FreeCamera freeCam;
 
@@ -31,7 +31,7 @@ public class PlayerSoul : MonoBehaviour
     void Start()
     {
         freeCam = GetComponent<FreeCamera>();
-        camBrain = GetComponent<Cinemachine.CinemachineBrain>();
+        camBrain = GetComponent<CinemachineBrain>();
     }
 
     void Update()
@@ -58,6 +58,7 @@ public class PlayerSoul : MonoBehaviour
             }
         }
 
+
         if (playerMod == null || !playerMod.isControlled)
         {
             // Keypad0 detaches camera
@@ -82,9 +83,7 @@ public class PlayerSoul : MonoBehaviour
                 {
                     if (lifeGuardian != null && !lifeGuardian.enabled)
                     {
-                        currentTarget.enabled = false;
-                        currentTarget = lifeGuardian;
-                        currentTarget.enabled = true;
+                        SwitchCamTo(lifeGuardian);
 
                         Debug.Log("Viewing: " + currentTarget.transform.root.name);
                     }
@@ -106,8 +105,26 @@ public class PlayerSoul : MonoBehaviour
                 // Keypad8/Up moves Camera to next species
                 if (Input.GetKeyDown(KeyCode.Keypad8))
                     CycleThroughSpecies(true);
+
+                // KeypadPlus makes currently viewed creature lay an egg and takes control of that egg
+                if (Input.GetKeyDown(KeyCode.KeypadPlus) && currentTarget != lifeGuardian)
+                {
+                    Reproduction ovary = currentTarget.transform.root.GetComponentInChildren<Reproduction>();
+                    if (ovary)
+                    {
+                        GameObject egg = ovary.SpawnEgg(Mathf.Min(currentTarget.transform.root.GetComponent<EnergyData>().energyReserve, 50));
+                        SwitchCamTo(egg.GetComponentInChildren<CinemachineVirtualCamera>());
+                    }
+                }
             }
         }
+    }
+
+    public void SwitchCamTo(CinemachineVirtualCamera _targetCam)
+    {
+        currentTarget.enabled = false;
+        currentTarget = _targetCam;
+        currentTarget.enabled = true;
     }
 
     void CycleThroughIndividuals(bool _countUp)
@@ -154,19 +171,49 @@ public class PlayerSoul : MonoBehaviour
 
 
             // Disable camera on this creature, move to target creature, and enable camera
-            currentTarget.enabled = false;
-            currentTarget = soullessCreatures[creatureIndex];
-            currentTarget.enabled = true;
+            SwitchCamTo(soullessCreatures[creatureIndex]);
 
             Debug.Log("Viewing creature #" + (creatureIndex + 1) + " : " + currentTarget.transform.root.name);
         }
     }
 
 
+
     void CycleThroughSpecies(bool _countUp)
     {
+        // Generate a list of available cams by GameObject and sort alphabetically
+        List<GameObject> creatureList = new List<GameObject>();
+        soullessCreatures.ForEach(x => creatureList.Add(x.transform.root.gameObject));
+        creatureList.Sort();
+
+
+        foreach (GameObject obj in creatureList)
+        {
+            if (_countUp)
+            {
+                if (System.String.Compare(obj.name, currentTarget.transform.root.name.Replace(" (Dead)", string.Empty)) > 0)
+                {
+                    SwitchCamTo(obj.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
+                    break;
+                }
+            }
+            else
+            {
+                if (System.String.Compare(obj.name, currentTarget.transform.root.name.Replace(" (Dead)", string.Empty)) < 0)
+                {
+                    SwitchCamTo(obj.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
+                    break;
+                }
+            }
+
+
+            Debug.Log("Viewing creature #" + soullessCreatures.IndexOf(currentTarget) + " : " + currentTarget.transform.root.name);
+        }
+
+
+        /*
         // Check if there are multiple species
-        foreach (Cinemachine.CinemachineVirtualCamera creature in soullessCreatures)
+        foreach (CinemachineVirtualCamera creature in soullessCreatures)
         {
             if (creature.transform.root.name != soullessCreatures[0].transform.root.name)
             {
@@ -186,7 +233,7 @@ public class PlayerSoul : MonoBehaviour
 
                     // Find the next creature with a different name than the current target
                     int attempts = 0;
-                    while (soullessCreatures[creatureIndex].transform.root.name == currentTarget.transform.root.name.Replace(" (Dead)", string.Empty))
+                    while (System.String.Compare(currentTarget.transform.root.name.Replace(" (Dead)", string.Empty), soullessCreatures[creatureIndex].transform.root.name, true) >= 0)
                     {
                         if (_countUp)
                             creatureIndex++;
@@ -199,7 +246,7 @@ public class PlayerSoul : MonoBehaviour
                             creatureIndex = 0;
 
                         attempts++;
-                        if (attempts > soullessCreatures.Count)
+                        if (attempts > 1000) //soullessCreatures.Count)
                         {
                             Debug.Log("No other species exist");
                             break;
@@ -208,15 +255,13 @@ public class PlayerSoul : MonoBehaviour
                 }
 
                 // Disable camera on this creature, move to target creature, and enable camera
-                currentTarget.enabled = false;
-                currentTarget = soullessCreatures[creatureIndex];
-                currentTarget.enabled = true;
+                SwitchCamTo(soullessCreatures[creatureIndex]);
 
 
                 Debug.Log("Viewing creature #" + (creatureIndex + 1) + " : " + currentTarget.transform.root.name);
 
                 break;
             }
-        }
+        }*/
     }
 }

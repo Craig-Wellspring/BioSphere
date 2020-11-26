@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d49f98f82bf0ee4aa872ea345cad16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leafSpawnTrigger: 0
   randomFoliage:
   - {fileID: 11400000, guid: e774face668cfaf488bba677a951c090, type: 2}
   - {fileID: 11400000, guid: c07567d9307b0cb4282041ccab97990c, type: 2}
@@ -153,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 1752407923769582429, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779700459288280494, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
@@ -174,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 1985612067430448436, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}
       propertyPath: addTerrainColor
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4379536468355065223, guid: 1fedb5571d445274782330b0eea48e80,
         type: 3}

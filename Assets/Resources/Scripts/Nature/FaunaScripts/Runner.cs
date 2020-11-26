@@ -8,6 +8,7 @@ public class Runner : MonoBehaviour
     public float moveSpeed = 1;
     [SerializeField] float speedIncrement = 0.5f;
 
+
     AIPathAlignedToSurface pathing;
     CreatureStats cStats;
 
@@ -19,6 +20,7 @@ public class Runner : MonoBehaviour
         // Update runspeed
         moveSpeed = pathing.maxSpeed;
 
+        // Add Speed to stat block
         cStats?.AddNewStat("Speed", moveSpeed, speedIncrement);
     }
     

@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2196685056946454377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593085983151731646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b4bbff4d0b92842a8a891642c945f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3625059090464388347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,7 +28,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   bumpRadius: 0.5
-  drawBumpSphere: 0
+  drawBumpSphere: 1
   newFruit: {fileID: 1104414689510456586, guid: 8bc562f5e45303c4b846ca990bc2b4c2,
     type: 3}
   whenToSpawn: 1
@@ -26,8 +38,8 @@ MonoBehaviour:
   randomSpawnArea: 5
   randomYRotation: 1
   spawnScale0: 1
-  seeds: {x: 0, y: 12}
-  seedSuccessChance: 80
+  seeds: {x: 0, y: 20}
+  seedSuccessChance: 75
   energyDistribution: 0
   castOffEntity: {fileID: 0}
   castOffDistance: 2
@@ -49,7 +61,7 @@ MonoBehaviour:
   bumpLayers:
     serializedVersion: 2
     m_Bits: 2048
-  bumpRadius: 1
+  bumpRadius: 3
   drawBumpSphere: 1
   newFruit: {fileID: 4949613627835273838, guid: 960363e38c23bf044b783e994943bf70,
     type: 3}
@@ -182,6 +194,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7784330374298399770, guid: 288ff8e7fcd13e740aee790d49106778,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.13314281
+      objectReference: {fileID: 0}
     - target: {fileID: 8929178427029252989, guid: 288ff8e7fcd13e740aee790d49106778,
         type: 3}
       propertyPath: colorIncrement
@@ -189,6 +206,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 288ff8e7fcd13e740aee790d49106778, type: 3}
+--- !u!1 &8593085983151731646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6842223849493786181, guid: 288ff8e7fcd13e740aee790d49106778,
+    type: 3}
+  m_PrefabInstance: {fileID: 3005220891692752379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8081769019160227991 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6457183713139666284, guid: 288ff8e7fcd13e740aee790d49106778,

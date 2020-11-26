@@ -41,20 +41,22 @@ public class ObjectSpawner : MonoBehaviour
             Debug.LogWarning("Tried to endow negative energy to object", this);
 
         // Allocate nutritional value
-        foreach(FoodData fData in newObject.GetComponentsInChildren<FoodData>())
+        foreach (FoodData fData in newObject.GetComponentsInChildren<FoodData>())
             fData.enabled = true;
 
 
         return newObject;
     }
 
-    Vector3 FindSpawnPos(float _spawnRadius = 0, bool _aboveSeaLevel = true, int _maxTries = 100)
+    protected Vector3 FindSpawnPos(float _spawnRadius = 0, bool _aboveSeaLevel = true, int _maxTries = 200)
     {
         int tries = 0;
         float newRadius = _spawnRadius;
 
         // Get a new point
-        Vector3 spawnPos = _aboveSeaLevel ? UtilityFunctions.FindDryLand(transform.root, _spawnRadius) : UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform.root, _spawnRadius)).position;
+        Vector3 spawnPos = transform.root.position;
+        if (_spawnRadius > 0)
+            spawnPos = _aboveSeaLevel ? UtilityFunctions.FindDryLand(transform.root, _spawnRadius) : UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform.root, _spawnRadius)).position;
 
         // Get a list of other objects in the area
         List<Collider> objectsInArea = Physics.OverlapSphere(spawnPos, bumpRadius, bumpLayers).ToList();
@@ -63,6 +65,7 @@ public class ObjectSpawner : MonoBehaviour
         {
             // Find a new point and check for other objects
             spawnPos = _aboveSeaLevel ? UtilityFunctions.FindDryLand(transform.root, newRadius) : UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform.root, newRadius)).position;
+
             objectsInArea = Physics.OverlapSphere(spawnPos, bumpRadius, bumpLayers).ToList();
 
             // Increase search radius
