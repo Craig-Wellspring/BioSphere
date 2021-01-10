@@ -14,7 +14,15 @@ public class SpawnFruitEditor : Editor
         if (GUILayout.Button("Trigger Spawn"))
             spawnFruit.TriggerSpawn();
         EditorGUILayout.Space(10);
+        
+        EditorGUILayout.BeginHorizontal();
+
         if (GUILayout.Button("Draw Debug"))
             spawnFruit.DrawDebug();
+        if (GUILayout.Button("Draw Spawn Debug"))
+            spawnFruit.DrawSpawnDebug(spawnFruit.randomSpawnArea, spawnFruit.aboveWaterOnly);
+        
+        EditorGUILayout.EndHorizontal();
+        
     }
 }

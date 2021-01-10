@@ -52,7 +52,7 @@ public class Metabolism : MonoBehaviour
     public bool isHungry = false;
     public bool isWasting = false;
     [Space(10)]
-    
+
     public FoodData targetFData = null;
     DietData morselIngested = new DietData(null, 0);
 
@@ -230,8 +230,8 @@ public class Metabolism : MonoBehaviour
         CheckHungerLevels();
 
         // Stop eating if completely full
-        if (hungerPercentage <= 1)
-            StopEating();
+        //if (hungerPercentage <= 1)
+        //    StopEating();
 
         // Destroy Food if no energy remains
         if (_targetFData.nutritionalValue.x == 0)

@@ -39,7 +39,7 @@ public class GlobalLifeSource : MonoBehaviour
                 {
                     Vector3 seedPos = UtilityFunctions.GroundBelowPosition(Random.onUnitSphere * spawnRadius).position;
 
-                    while (!UtilityFunctions.AboveSeaLevel(seedPos))
+                    while (!UtilityFunctions.IsAboveSeaLevel(seedPos))
                         seedPos = UtilityFunctions.GroundBelowPosition(Random.onUnitSphere * spawnRadius).position;
 
                     PlantSeedFromSource(seedPos);

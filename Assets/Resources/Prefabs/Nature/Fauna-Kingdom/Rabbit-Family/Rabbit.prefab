@@ -1872,12 +1872,12 @@ PrefabInstance:
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bumpLayers.m_Bits
-      value: 2048
+      value: 6144
       objectReference: {fileID: 0}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bumpRadius
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -1914,6 +1914,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ScreenY
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176181105287769093, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7247082459883604666, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}

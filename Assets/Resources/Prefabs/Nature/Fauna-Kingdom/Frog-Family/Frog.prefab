@@ -5736,7 +5736,7 @@ PrefabInstance:
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: bumpRadius
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
@@ -5744,6 +5744,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7802581606224676962, guid: da2e16b2dbedebb478b77314e1c3fcd4,
         type: 3}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: bumpLayers.m_Bits
+      value: 6144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742506860675060162, guid: c5bf24098b61bba4bb0da85b9f252476,
+        type: 3}
+      propertyPath: drawBumpSphere
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6558807479087443014, guid: c5bf24098b61bba4bb0da85b9f252476,
         type: 3}
       propertyPath: sings

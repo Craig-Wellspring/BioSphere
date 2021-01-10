@@ -9,17 +9,16 @@ public static class UtilityFunctions
     public static Vector3 PositionAbove(Transform _origin, float _radius = 0, float _height = 25)
     {
         if (_radius > 0)
-        {
-            Vector3 newPos = _origin.position + (_origin.up * _height) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
-            return newPos;
-        }
-        else return _origin.position + (_origin.up * _height);
+            return _origin.position + (_origin.up * _height) + (_origin.right * Random.Range(-_radius, _radius)) + (_origin.forward * (Random.Range(-_radius, _radius)));
+        else
+            return _origin.position + (-GravityVector(_origin.position) * _height);
     }
+
 
     // Find a position on the Terrain directly beneath the position given
     public static (Vector3 position, GameObject terrainObject) GroundBelowPosition(Vector3 _position)
     {
-        if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 500, LayerMask.GetMask("Geosphere")))
+        if (Physics.Raycast(_position, GravityVector(_position), out RaycastHit hit, 5000, LayerMask.GetMask("Geosphere")))
             return (hit.point, hit.transform.gameObject);
         else
         {
@@ -28,36 +27,71 @@ public static class UtilityFunctions
         }
     }
 
-    public static bool AboveSeaLevel(Vector3 _point)
+    public static bool IsAboveSeaLevel(Vector3 _point, int _groundWaterDepth = 50)
     {
         // Cast a ray from point to center, if it hits water, it's above sea level
-        Vector3 direction = Vector3.zero - _point;
-        Ray ray = new Ray(_point, direction);
-        if (Physics.Raycast(_point, direction, out RaycastHit hit, direction.magnitude, LayerMask.GetMask("Water")))
+        Vector3 direction = GravityVector(_point);
+        if (Physics.Raycast(_point, direction, out RaycastHit hit, direction.magnitude * _groundWaterDepth, LayerMask.GetMask("Water")))
             return true;
         else return false;
     }
 
-    public static Vector3 FindDryLand(Transform _origin, float _radius, int _maxTries = 100)
+
+    public static Vector3 FindNearbyPos(Transform _origin, float _radius = 0, bool _aboveSeaLevel = false, float _bumpRadius = 0, int _bumpLayers = 0)
     {
+        // Get a new point at origin
+        float checkRadius = _radius;
+        Vector3 checkPos = _origin.position;
+
+        bool validPoint = false;
         int tries = 0;
-        float newRadius = _radius;
-        Vector3 newPoint = GroundBelowPosition(PositionAbove(_origin, _radius)).position;
-
-        while (!AboveSeaLevel(newPoint))
+        while (!validPoint)
         {
-            newPoint = GroundBelowPosition(PositionAbove(_origin, newRadius)).position;
-
-            newRadius += 0.3f;
-            tries++;
-            if (tries > _maxTries)
+            // Maximum attempts to find a valid position
+            if (tries > 300)
             {
-                Debug.LogWarning("Could not find dry land.", _origin);
+                Debug.LogWarning(_origin.name + " could not find valid spawn position.", _origin);
                 return Vector3.zero;
             }
+
+
+            // Randomize position
+            if (_radius > 0)
+            {
+                checkPos = GroundBelowPosition(PositionAbove(_origin, checkRadius)).position;
+
+                // Increase search radius for future attempts
+                checkRadius += 0.2f;
+
+
+                // Check for exclusive spawn area requirements
+                if (_bumpRadius > 0)
+                {
+                    // Get a list of other objects in the area
+                    Collider[] objectsNearby = Physics.OverlapSphere(checkPos, _bumpRadius, _bumpLayers);
+
+                    // Find a new point if there is something in the area
+                    if (objectsNearby.Length > 0)
+                    {
+                        tries++;
+                        continue;
+                    }
+                }
+            }
+            
+            // Check for Sea Level requirements
+            if (_aboveSeaLevel && !IsAboveSeaLevel(checkPos))
+            {
+                tries++;
+                continue;
+            }
+
+
+            // If it makes it this far, the position is good, exit the loop
+            validPoint = true;
         }
 
-        return newPoint;
+        return checkPos;
     }
 
 
@@ -65,8 +99,7 @@ public static class UtilityFunctions
     // Get Vector pointing toward global zero
     public static Vector3 GravityVector(Vector3 _fromPos)
     {
-        Vector3 gravityVector = (Vector3.zero - _fromPos).normalized;
-        return gravityVector;
+        return (Vector3.zero - _fromPos).normalized;
     }
 
 

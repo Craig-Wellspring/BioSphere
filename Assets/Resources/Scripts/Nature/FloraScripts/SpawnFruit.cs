@@ -20,9 +20,9 @@ public class SpawnFruit : ObjectSpawner
 
     [Space(10)]
     [Tooltip("Must spawn seed above sea level.")]
-    [SerializeField] bool aboveWaterOnly = true;
+    public bool aboveWaterOnly = true;
     [Tooltip("Scales the size of the random spawn area. 0 is not random.")]
-    [SerializeField] float randomSpawnArea = 0;
+    public float randomSpawnArea = 0;
     [SerializeField] bool randomYRotation = false;
     [SerializeField] bool spawnScale0 = false;
 

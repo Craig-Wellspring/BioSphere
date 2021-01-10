@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class ObjectSpawner : MonoBehaviour
     float bumpRadius = 2;
     [SerializeField]
     bool drawBumpSphere = false;
+    [SerializeField] bool debug = false;
 
     public GameObject SpawnObject(GameObject _objectToSpawn, EnergyData _subtractFromEData = null, float _energyEndowed = 0, Transform _parent = null, bool _randomYRotation = false, float _randomSpawnArea = 0, bool _aboveSeaLevel = false)
     {
@@ -20,8 +20,11 @@ public class ObjectSpawner : MonoBehaviour
             if (!_subtractFromEData.RemoveEnergy(_energyEndowed))
                 Debug.LogWarning("Not enough energy to remove from source eData", this);
 
+        // Find Spawning position
+        Vector3 spawnPos = UtilityFunctions.FindNearbyPos(transform.root, _randomSpawnArea, _aboveSeaLevel, bumpRadius, bumpLayers);
+
         // Spawn Object
-        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, FindSpawnPos(_randomSpawnArea, _aboveSeaLevel), Quaternion.identity, _parent);
+        GameObject newObject = (GameObject)Instantiate(_objectToSpawn, spawnPos, Quaternion.identity, _parent);
 
         // Orient to gravity
         newObject.transform.rotation = UtilityFunctions.GravityOrientedRotation(newObject.transform);
@@ -48,40 +51,8 @@ public class ObjectSpawner : MonoBehaviour
         return newObject;
     }
 
-    protected Vector3 FindSpawnPos(float _spawnRadius = 0, bool _aboveSeaLevel = true, int _maxTries = 200)
-    {
-        int tries = 0;
-        float newRadius = _spawnRadius;
 
-        // Get a new point
-        Vector3 spawnPos = transform.root.position;
-        if (_spawnRadius > 0)
-            spawnPos = _aboveSeaLevel ? UtilityFunctions.FindDryLand(transform.root, _spawnRadius) : UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform.root, _spawnRadius)).position;
-
-        // Get a list of other objects in the area
-        List<Collider> objectsInArea = Physics.OverlapSphere(spawnPos, bumpRadius, bumpLayers).ToList();
-
-        while (objectsInArea.Count > 0)
-        {
-            // Find a new point and check for other objects
-            spawnPos = _aboveSeaLevel ? UtilityFunctions.FindDryLand(transform.root, newRadius) : UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform.root, newRadius)).position;
-
-            objectsInArea = Physics.OverlapSphere(spawnPos, bumpRadius, bumpLayers).ToList();
-
-            // Increase search radius
-            newRadius += 0.5f;
-            tries++;
-            if (tries > _maxTries)
-            {
-                Debug.LogWarning("Spawn area crowded.", this.transform);
-                return Vector3.zero;
-            }
-        }
-
-        return spawnPos;
-    }
-
-
+    #region Debug
     //// Draw Debug BumpSphere \\\\
     void OnDrawGizmosSelected()
     {
@@ -96,24 +67,50 @@ public class ObjectSpawner : MonoBehaviour
     {
         // Draw sphere at origin location
         Vector3 originSpherePoint = UtilityFunctions.PositionAbove(transform);
-        GameObject originSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        originSphere.GetComponent<MeshRenderer>().material.color = Color.red;
-        originSphere.transform.position = originSpherePoint;
-        originSphere.transform.localScale *= 0.2f;
-        Destroy(originSphere, 10);
+
+        DrawDebugSphere(originSpherePoint, Color.red);
+
 
         // Draw sphere at ground position
         Vector3 destinationSpherePoint = UtilityFunctions.GroundBelowPosition(UtilityFunctions.PositionAbove(transform)).position;
-        GameObject destinationSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        destinationSphere.GetComponent<MeshRenderer>().material.color = Color.green;
-        destinationSphere.transform.position = destinationSpherePoint;
-        destinationSphere.transform.localScale *= 0.2f;
-        Destroy(destinationSphere, 10);
 
-        // Draw line from origin to destination
-        Debug.DrawLine(originSpherePoint, destinationSpherePoint, Color.yellow, 10);
+        DrawDebugSphere(destinationSpherePoint, Color.green);
+
 
         // Log positions
         Debug.Log("DrawSphere Origin: " + originSpherePoint + ", Destination: " + destinationSpherePoint + ", Distance: " + (destinationSpherePoint - originSpherePoint).magnitude);
     }
+
+    public void DrawSpawnDebug(float _radius, bool _aboveSeaLevel)
+    {
+        // Find spawning location
+        Vector3 sphereSpawnPoint = UtilityFunctions.FindNearbyPos(transform.root, _radius, _aboveSeaLevel, bumpRadius, bumpLayers);
+
+        DrawDebugSphere(sphereSpawnPoint, Color.magenta);
+
+        // Log position
+        Debug.Log("Debug Spawn Position: " + sphereSpawnPoint);
+    }
+
+
+    GameObject DrawDebugSphere(Vector3 _spawnPos, Color _color)
+    {
+        // Create sphere
+        GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        debugSphere.GetComponent<MeshRenderer>().material.color = _color;
+        debugSphere.transform.localScale *= 0.3f;
+
+        // Position and orient sphere
+        debugSphere.transform.position = _spawnPos;
+        debugSphere.transform.rotation = UtilityFunctions.GravityOrientedRotation(debugSphere.transform);
+
+        // Draw indicator line
+        Debug.DrawLine(_spawnPos, UtilityFunctions.PositionAbove(debugSphere.transform, 0, 3), _color, 10);
+
+        // Decay
+        Destroy(debugSphere, 10);
+
+        return debugSphere;
+    }
+    #endregion
 }

@@ -225,6 +225,7 @@ public class Evolution : ObjectSpawner
         newCreature.transform.position = transform.position;
         newCreature.transform.rotation = UtilityFunctions.GravityOrientedRotation(newCreature.transform);
 
+        // Pass player control to new form if applicable
         PlayerModule playerModule = transform.root.GetComponentInChildren<PlayerModule>();
         if (playerModule.isControlled)
         {

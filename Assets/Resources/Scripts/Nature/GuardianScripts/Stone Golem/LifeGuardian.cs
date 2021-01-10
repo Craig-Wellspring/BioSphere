@@ -45,6 +45,6 @@ public class LifeGuardian : ObjectSpawner
     //Plant Seedgrass
     public void PlantSeedFromSource()
     {
-        lifeSource.PlantSeedFromSource(FindSpawnPos(plantingArea));
+        lifeSource.PlantSeedFromSource(UtilityFunctions.FindNearbyPos(transform.root, plantingArea, true));
     }
 }

@@ -25,26 +25,42 @@ public class VariableFoliage : MonoBehaviour
         if (totalBudCount > 1)
         {
             GrowthData growthData = trunk.GetComponent<GrowthData>();
+            
+
+            switch (leafSpawnTrigger)
+            {
+                case (LeafSpawnTrigger.OnStart):
+                    trunk.GetChild(0).gameObject.SetActive(true);
+                    break;
+
+                case (LeafSpawnTrigger.OnHalfGrown):
+                    growthData.activateObjectsHG.Add(trunk.GetChild(0).gameObject);
+                    break;
+
+                case (LeafSpawnTrigger.OnFullyGrown):
+                    growthData.activateObjectsFG.Add(trunk.GetChild(0).gameObject);
+                    break;
+            }
+
+
             for (int i = 0; i < totalBudCount - 1; i++)
             {
                 GameObject newLeaf = Instantiate(trunk.GetChild(0).gameObject, trunk.position, trunk.rotation, trunk);
                 newLeaf.name = trunk.GetChild(0).name;
                 newLeaf.transform.localScale = Vector3.zero;
 
+
                 switch (leafSpawnTrigger)
                 {
                     case (LeafSpawnTrigger.OnStart):
-                        trunk.GetChild(0).gameObject.SetActive(true);
                         newLeaf.gameObject.SetActive(true);
                         break;
 
                     case (LeafSpawnTrigger.OnHalfGrown):
-                        growthData.activateObjectsHG.Add(trunk.GetChild(0).gameObject);
                         growthData.activateObjectsHG.Add(newLeaf);
                         break;
 
                     case (LeafSpawnTrigger.OnFullyGrown):
-                        growthData.activateObjectsFG.Add(trunk.GetChild(0).gameObject);
                         growthData.activateObjectsFG.Add(newLeaf);
                         break;
                 }

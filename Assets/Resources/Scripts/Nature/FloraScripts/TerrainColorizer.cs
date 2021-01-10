@@ -22,7 +22,7 @@ public class TerrainColorizer : MonoBehaviour
 
     public void ColorizeTerrain(float _increment)
     {
-        if (UtilityFunctions.AboveSeaLevel(transform.root.position))
+        if (UtilityFunctions.IsAboveSeaLevel(transform.root.position))
         {
             // Color terrain a little more green on spawn
             if (Physics.Raycast(transform.root.position + transform.root.up, UtilityFunctions.GravityVector(transform.root.position), out RaycastHit groundRayHit, 5, LayerMask.GetMask("Geosphere")))

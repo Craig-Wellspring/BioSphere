@@ -84,7 +84,7 @@ public class VisualPerception : MonoBehaviour
         foreach (Collider _col in withinSightRange)
         {
             // Don't see objects that are under water
-            if (cullUnderwater && !UtilityFunctions.AboveSeaLevel(_col.transform.position))
+            if (cullUnderwater && !UtilityFunctions.IsAboveSeaLevel(_col.transform.position))
                 continue;
 
             // Check for clear Sight Line

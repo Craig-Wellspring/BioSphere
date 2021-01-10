@@ -16,4 +16,4 @@ MonoBehaviour:
   OffspringCreature: {fileID: 2396180645501600818, guid: b97e40fac0541a6468aec3beb931521e,
     type: 3}
   EggColor: {r: 0.9528302, g: 0.89040965, b: 0.4449537, a: 1}
-  EggSize: 0.1
+  EggSize: 0.05

@@ -10,7 +10,8 @@ public class ObjectSpawnerEditor : Editor
         EditorGUILayout.Space(10);
 
         ObjectSpawner objectSpawner = (ObjectSpawner)target;
+        
         if (GUILayout.Button("Draw Debug"))
-            objectSpawner.DrawDebug();
+            objectSpawner.DrawDebug();        
     }
 }
